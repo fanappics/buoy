@@ -1,0 +1,10 @@
+.github/
+.vscode/
+npm-debug.log
+.idea/
+coverage/
+.vs/
+build/
+release/
+**/*.spec.ts
+/package-lock.json
