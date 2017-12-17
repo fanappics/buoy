@@ -1,5 +1,5 @@
 # buoy
 
-![Buoy logo](./buoylogo.svg)
+![Buoy logo](./buoylogo.png)
 
 Vue.js UI library
