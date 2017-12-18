@@ -1,5 +1,5 @@
 {
-  "name": "@fanatics/buoy",
+  "name": "@fanaticsinc/buoy",
   "version": "0.1.0",
   "description": "Brands UI library for Vue projects",
   "main": "src/index.js",
