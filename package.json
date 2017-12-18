@@ -16,7 +16,7 @@
     "accessibility"
   ],
   "author": "Brands Frontend",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
