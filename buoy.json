@@ -1,0 +1,6 @@
+{
+  "make": {
+    "source": "stub",
+    "target": "src/components"
+  }
+}
