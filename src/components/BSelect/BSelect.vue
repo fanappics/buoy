@@ -1,5 +1,12 @@
 <template>
-  <select></select>
+  <select>
+    <option
+        v-for="item in dataList"
+        v-bind:option='item'
+        v-bind:key='item.id'
+    >
+    </option>
+  </select>
 </template>
 
 <script>
