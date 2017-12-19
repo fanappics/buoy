@@ -128,6 +128,11 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
     },
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/es5/",
+      "/dist/"
+    ],
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ],
