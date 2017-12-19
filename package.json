@@ -19,8 +19,7 @@
     "test:coverage": "cross-env NODE_ENV=test jest -i --coverage",
     "lint": "eslint --ext .js,.vue src",
     "precommit": "npm run lint && npm test",
-    "prepush": "npm run lint && npm test",
-    "prepare": "git update-index --skip-worktree .env"
+    "prepush": "npm run lint && npm test"
   },
   "repository": {
     "type": "git",
