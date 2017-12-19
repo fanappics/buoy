@@ -1,1 +1,1 @@
-export { default as BBtn } from './BBtn'
+export { default as BButton } from './BButton'
