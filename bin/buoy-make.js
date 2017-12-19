@@ -52,7 +52,7 @@ function createComponent (name) {
 
   const indexSource = path.resolve(process.cwd(), config.target, './index.js')
   try {
-    fs.appendFileSync(indexSource, `export { default as ${name} } from '${name}'\n`, 'utf8')
+    fs.appendFileSync(indexSource, `export { default as ${name} } from './${name}'\n`, 'utf8')
     console.info(chalk.greenBright(`Appended component export into ${indexSource}`))
   } catch (error) {
     hasErrors = true

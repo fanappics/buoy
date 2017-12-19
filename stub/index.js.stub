@@ -1,2 +1,8 @@
 import %name% from './%name%.vue'
+
+/* istanbul ignore next */
+%name%.install = function install (Vue) {
+  Vue.component(%name%.name, %name%)
+}
+
 export default %name%
