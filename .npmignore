@@ -8,3 +8,6 @@ build/
 release/
 **/*.spec.ts
 /package-lock.json
+src/
+dev/
+stub/
