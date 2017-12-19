@@ -28,8 +28,8 @@ function createComponent (name) {
       console.info(chalk.greenBright(`Creating target directory: ${targetDir}`))
       mkdirp.sync(targetDir, 0o755)
     } catch (error) {
-      console.error(chalk.default.redBright('Failed to create target directory'))
-      console.error(chalk.default.redBright(error))
+      console.error(chalk.redBright('Failed to create target directory'))
+      console.error(chalk.redBright(error))
       process.exit(1)
     }
   } else {
@@ -45,8 +45,8 @@ function createComponent (name) {
       console.info(chalk.greenBright(`Created file ${newFile}`))
     } catch (error) {
       hasErrors = true
-      console.error(chalk.default.redBright(`File ${newFile} creation failed`))
-      console.error(chalk.default.redBright(error))
+      console.error(chalk.redBright(`File ${newFile} creation failed`))
+      console.error(chalk.redBright(error))
     }
   }
 
@@ -56,8 +56,8 @@ function createComponent (name) {
     console.info(chalk.greenBright(`Appended component export into ${indexSource}`))
   } catch (error) {
     hasErrors = true
-    console.error(chalk.default.redBright(`Appending component into ${indexSource}  failed`))
-    console.error(chalk.default.redBright(error))
+    console.error(chalk.redBright(`Appending component into ${indexSource}  failed`))
+    console.error(chalk.redBright(error))
   }
 
   process.exit(hasErrors ? 1 : 0)
