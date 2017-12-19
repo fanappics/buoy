@@ -28,7 +28,7 @@ Buoy.version = version
 function checkVueVersion () {
   const vueDep = peerDependencies.vue
   if (!Semver.satisfies(window.Vue.version, vueDep)) {
-    console.warn(`Vuetify requires Vue version ${vueDep}`)
+    console.warn(`buoy requires Vue version ${vueDep}`)
   }
 }
 
