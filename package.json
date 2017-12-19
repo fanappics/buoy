@@ -1,6 +1,6 @@
 {
   "name": "@fanaticsinc/buoy",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Brands UI library for Vue projects",
   "main": "dist/buoy.js",
   "bin": {
