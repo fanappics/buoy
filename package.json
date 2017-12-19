@@ -3,6 +3,7 @@
   "version": "0.1.4",
   "description": "Brands UI library for Vue projects",
   "main": "dist/buoy.min.js",
+  "types": "index.d.ts",
   "bin": {
     "buoy": "./bin/buoy.js"
   },
