@@ -1,11 +1,29 @@
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue,
-email, or any other method with the owners of this repository before making a change. 
+email, or any other method with the owners of this repository before making a change.
 
 Please note we have a code of conduct, please follow it in all your interactions with the project.
 
+## Reporting Issues
+
+* The issue list of this repo is **exclusively** for bug reports and feature requests. Non-conforming issues will be closed immediately.
+
+* Try to search for your issue, it may have been answered.
+
+* See if the error is reproduceable with the latest version.
+
+* If reproduceable, please provide a simple codepen or repository that can be cloned to produce the expected behavior. It is preferred that you create an initial commit with no changes first, then another one that will cause the issue.
+
+* **Never** comment "+1" or "me too!" on issues without leaving additional information, use the :+1: button in the top right instead.
+
 ## Pull Request Process
+
+1. Always work on a new branch. Making changes on your fork's `dev` or `master` branch can cause problems. (See [The beginner's guide to contributing to a GitHub project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/))
+
+1. For changes and feature requests, please include an example of what you are trying to solve and an example of the markup. It is preferred that you create an issue first however, as that will allow the team to review your proposal before you start.
+
+1. Please reference the issue # that the PR resolves, something like `Fixes #1234` or `Resolves #6458` (See [closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/))
 
 1. Ensure any install or build dependencies are removed before the end of the layer when doing a build.
 
