@@ -1,7 +1,7 @@
 <template>
-  <select>
+  <select v-model='selected'>
     <option
-        v-for="item in dataList"
+        v-for="item in options"
         v-bind:option='item'
         v-bind:key='item.id'
     >
@@ -11,13 +11,10 @@
 
 <script>
 export default {
-  name: 'select',
+  name: 'b-select',
   props: [
     'option'
   ],
-  data () {
-    return {}
-  }
 }
 </script>
 
