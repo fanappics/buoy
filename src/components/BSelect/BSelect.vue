@@ -1,20 +1,29 @@
 <template>
-  <select v-model='selected'>
-    <option
-        v-for="item in options"
-        v-bind:option='item'
-        v-bind:key='item.id'
-    >
-    </option>
-  </select>
+    <select>
+    <BSelectOption
+        v-for="option in options"
+        :key="option.id"
+        :option="option"
+    />
+    </select>
 </template>
 
 <script>
+
+import BSelectOption from './BSelectOption.vue'
+
+const options = []
+
 export default {
-  name: 'b-select',
-  props: [
-    'option'
-  ],
+    name: 'b-select',
+    components: {
+        BSelectOption
+    },
+    data () {
+        return {
+            options: options
+        }
+    },
 }
 </script>
 
