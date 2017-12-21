@@ -64,6 +64,7 @@ export default {
     background-image: url("data:image/svg+xml;charset=utf-8, \
     <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'> \
       <polygon points='0,0 60,0 30,40' style='fill:black;'/> \
-    </svg>")
+    </svg>");
+    padding: 1em;
   }
 </style>
