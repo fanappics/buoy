@@ -6,6 +6,7 @@
     <div>
       <select
         v-bind:aria-label="selectLabel"
+        v-bind:required="isRequired ? true : false"
       >
         <option disabled selected>Choose Option</option>
         <BSelectOption
