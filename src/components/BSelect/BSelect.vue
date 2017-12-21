@@ -10,8 +10,8 @@
         <option disabled selected>Choose Option</option>
         <BSelectOption
           v-for="option in options"
-          :key="option.id"
-          :option="option"
+          v-bind:key="option.id"
+          v-bind:option="option"
         />
       </select>
     </div>

@@ -1,5 +1,5 @@
 <template>
-    <option>
+    <option v-bind:value=option.id>
         {{ option.text }}
     </option>
 </template>
