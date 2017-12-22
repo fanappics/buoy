@@ -2,7 +2,7 @@
   <div>
     <BSelect
             v-bind:selectOptions=options
-            v-bind:isRequired=false
+            v-bind:isRequired=true
             selectLabel="two"
         />
   </div>

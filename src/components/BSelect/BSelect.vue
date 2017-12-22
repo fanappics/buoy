@@ -9,11 +9,13 @@
         v-bind:required="isRequired ? true : false"
       >
         <option disabled selected>Choose Option</option>
-        <BSelectOption
+        <option
           v-for="option in options"
           v-bind:key="option.id"
           v-bind:option="option"
-        />
+          v-bind:value=option.id
+        > {{ option.text }}
+        </option>
       </select>
     </div>
   </div>
@@ -21,15 +23,11 @@
 
 <script>
 
-import BSelectOption from '../BselectOption/BSelectOption.vue'
-
 const options = []
 
 export default {
   name: 'b-select',
-  components: {
-        BSelectOption
-    },
+
   props: {
     selectOptions: {
       type: Array
