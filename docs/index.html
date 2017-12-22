@@ -5,8 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Buoy UI Library</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/buoy.js"></script>
 </head>
-<body>
-  Buoy Docs
+<body id="app">
+  <header>
+    <h1>Bouy Documentation</h1>
+  </header>
+  <section>
+    <nav>
+      <strong>Components</strong>
+      <br>
+      <a href="#b-btn">Button</a>
+    </nav>
+    <main>
+      <h1 id="b-btn">Button (b-btn)</h1>
+      <b-button :text="test button" />
+      <h2>Code</h2>
+      &lt;b-button :text=&quot;test button&quot; /&gt;
+    </main>
+    <aside></aside>
+  </section>
+  <footer>
+
+  </footer>
+
+  <script>
+      Vue.use(buoy)
+      var app = new Vue({
+        el: '#app',
+        data: {
+        }
+      }) 
+      </script>
 </body>
 </html>
