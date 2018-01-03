@@ -19,5 +19,6 @@ This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and 
 You can view the live style guide and documentation [Here](https://fanappics.github.io/buoy/)
 
 ### Updating the style guide
+
 1. Run `npm run build:docs` to build the project and copy the files into the `docs` directory
 1. Make the appropriate changes in the `docs` directory.
