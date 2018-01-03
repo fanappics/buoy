@@ -92,18 +92,14 @@ export default {
       },
       set (val) {
         this.lazyValue = val
-        console.log('set input val')
         this.$emit('input', this.lazyValue)
       }
     },
     isDirty () {
       return this.lazyValue != null &&
-        (this.lazyValue.toString().length > 0 ||
+        this.lazyValue.toString().length > 0 ||
         this.badInput ||
-        ['time', 'date', 'datetime-local', 'week', 'month'].includes(this.type))
-    },
-    shouldAutoGrow () {
-      return (this.multiLine || this.textarea) && this.autoGrow
+        ['time', 'date', 'datetime-local', 'week', 'month'].includes(this.type)
     }
   },
 
@@ -121,7 +117,6 @@ export default {
       if (this.internalChange) this.internalChange = false
 
       !this.validateOnBlur && this.validate()
-      this.shouldAutoGrow && this.calculateInputHeight()
     }
   },
 
@@ -144,7 +139,6 @@ export default {
       })
     },
     onInput (e) {
-      console.log('on input')
       this.mask && this.resetSelections(e.target)
       this.inputValue = e.target.value
       this.badInput = e.target.validity && e.target.validity.badInput
@@ -220,20 +214,12 @@ export default {
         ref: 'input'
       }
 
-      if (this.shouldAutoGrow) {
-        data.style.height = this.inputHeight && `${this.inputHeight}px`
-      }
-
       if (this.placeholder) data.domProps.placeholder = this.placeholder
 
       if (!this.textarea && !this.multiLine) {
         data.domProps.type = this.type
       } else {
         data.domProps.rows = this.rows
-      }
-
-      if (this.mask) {
-        data.attrs.maxlength = this.masked.length
       }
 
       const children = [this.$createElement(tag, data)]

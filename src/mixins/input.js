@@ -71,10 +71,10 @@ export default {
     genMessages () {
       let messages = null
 
-      if (((this.hint &&
-            this.isFocused) ||
-            (this.hint &&
-            this.persistentHint)) &&
+      if ((this.hint &&
+            this.isFocused ||
+            this.hint &&
+            this.persistentHint) &&
           this.validations.length === 0
       ) {
         messages = [this.genHint()]
@@ -103,6 +103,34 @@ export default {
         error
       )
     },
+    // Used for clearable, but requires another component
+
+    // genIcon (type, defaultCallback = null) {
+    //   const shouldClear = type === 'append' && this.clearable && this.isDirty
+    //   const icon = shouldClear ? 'clear' : this[`${type}Icon`]
+    //   const callback = shouldClear
+    //     ? this.clearableCallback
+    //     : (this[`${type}IconCb`] || defaultCallback)
+
+    //   return this.$createElement('v-icon', {
+    //     'class': {
+    //       [`input-group__${type}-icon`]: true,
+    //       'input-group__icon-cb': !!callback,
+    //       'input-group__icon-clearable': shouldClear
+    //     },
+    //     props: {
+    //       disabled: this.disabled
+    //     },
+    //     on: {
+    //       click: e => {
+    //         if (!callback) return
+
+    //         e.stopPropagation()
+    //         callback()
+    //       }
+    //     }
+    //   }, icon)
+    // },
     genInputGroup (input, data = {}, defaultAppendCallback = null) {
       const children = []
       const wrapperChildren = []

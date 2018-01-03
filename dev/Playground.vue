@@ -1,12 +1,15 @@
 <template>
   <b-text-input
-    id="test"
+    id="Test"
     name="testName"
     label="This is a label"
     placeholder="This is a placeholder"
     required
-    type="currency"
     :rules="[rules.required]"
+    hint="test"
+    v-model="test"
+    solo
+    counter="25"
   ></b-text-input>
 </template>
 
@@ -15,7 +18,8 @@
     data: () => ({
       rules: {
         required: (value) => !!value || 'Required' 
-      }
+      },
+      test: ''
     })
   }
 </script>

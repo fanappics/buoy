@@ -94,7 +94,6 @@ export default {
     reset () {
       // TODO: Do this another way!
       // This is so that we can reset all types of inputs
-      console.log('reset')
       this.$emit('input', this.isMultiple ? [] : null)
       this.$emit('change', null)
 
