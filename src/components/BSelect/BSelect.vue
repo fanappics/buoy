@@ -1,28 +1,30 @@
 <template>
   <div>
     <div>
-      <h3>{{selectLabel}}<span v-if=isRequired>*</span></h3>
+      <h3>{{selectLabel}} <span v-if=isRequired>*</span></h3>
     </div>
     <div>
       <ul
         v-bind:aria-label="selectLabel"
         v-bind:class="getUlClass()"
       >
-        <li class="options" 
+        <li 
+          v-bind:class="getLiClass()" 
           style="color: #cccccc"
           v-if=!selectedOption
           v-on:click="openList"
           >Choose Option
-          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
-        <li class="options"
+        <li 
+          v-bind:class="getLiClass()"
           v-if=selectedOption
           v-on:click="openList"
           >{{ selectedOption.text }}
-          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li
-          class="options"
+          v-bind:class="getLiClass()"
           v-if=opened
           v-for="option in options"
           v-bind:key="option.id"
@@ -55,8 +57,9 @@ export default {
       type: String,
       required: true
     },
-    selectedOption: {
+    preSelectedOption: {
       type: Object,
+      required: false
     }
   },
 
@@ -69,14 +72,18 @@ export default {
       this.opened = !this.opened
     },
     getUlClass () {
-      return {'opened': this.opened}
-    }
+      return {'ulOpened': this.opened}
+    },
+    getLiClass () {
+      return {'liOpened': this.opened, 'options': true}
+    },
   },
 
   data () {
     return {
       options: this.selectOptions,
-      opened: false
+      opened: false,
+      selectedOption: this.preSelectedOption
     }
   },
 }
@@ -99,12 +106,28 @@ export default {
     list-style: none;
   }
 
-  .opened {
+  .ulOpened {
     border-style: solid;
     border-radius: .25em;
     border-width: thin;
     border-color: #3399ff;
     box-shadow:  .125em .25em .3em #cccccc;
+  }
+
+  .liOpened {
+    border-radius: 0;
+    border-style: none none solid none;
+    border-width: thin;
+    border-color: #f2f2f2;
+  }
+
+  .liOpened:hover:not(:first-child) {
+    font-weight: 600;
+    background-color: #f2f2f2;
+  }
+
+  .liOpened:last-child {
+    border-style: none;
   }
 
   .dropdownArrow {
