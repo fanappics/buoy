@@ -1,22 +1,37 @@
 <template>
   <div>
     <div>
-      <label>{{selectLabel}}<span v-if=isRequired>*</span></label>
+      <h3>{{selectLabel}}<span v-if=isRequired>*</span></h3>
     </div>
     <div>
-      <select
+      <ul
         v-bind:aria-label="selectLabel"
-        v-bind:required="isRequired ? true : false"
+        v-bind:class="getUlClass()"
       >
-        <option disabled selected>Choose Option</option>
-        <option
+        <li class="options" 
+          style="color: #cccccc"
+          v-if=!selectedOption
+          v-on:click="openList"
+          >Choose Option
+          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+        </li>
+        <li class="options"
+          v-if=selectedOption
+          v-on:click="openList"
+          >{{ selectedOption.text }}
+          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+        </li>
+        <li
+          class="options"
+          v-if=opened
           v-for="option in options"
           v-bind:key="option.id"
           v-bind:option="option"
           v-bind:value=option.id
+          v-on:click="selectOption(option)"
         > {{ option.text }}
-        </option>
-      </select>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -39,12 +54,29 @@ export default {
     selectLabel: {
       type: String,
       required: true
+    },
+    selectedOption: {
+      type: Object,
+    }
+  },
+
+  methods: {
+    openList () {
+      this.opened = !this.opened
+    },
+    selectOption (option) {
+      this.selectedOption = option
+      this.opened = !this.opened
+    },
+    getUlClass () {
+      return {'opened': this.opened}
     }
   },
 
   data () {
     return {
-      options: this.selectOptions
+      options: this.selectOptions,
+      opened: false
     }
   },
 }
@@ -52,18 +84,31 @@ export default {
 </script>
 
 <style scoped>
-  select {
-    -webkit-appearance: none; 
-    -moz-appearance: none;
-    appearance: none;
+  .options {
     width: 100%;
-    background-repeat: no-repeat;
-    background-size: .8em auto;
-    background-position: right 0.25em center;
-    background-image: url("data:image/svg+xml;charset=utf-8, \
-    <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 40'> \
-      <polygon points='0,0 60,0 30,40' style='fill:black;'/> \
-    </svg>");
-    padding: 1em;
+    padding: .5em;
+    border-style: solid;
+    border-radius: .25em;
+    border-width: thin;
+    border-color: #cccccc;
   }
+
+  ul {
+    padding: 0 1em 0 0;
+    width: 100%;
+    list-style: none;
+  }
+
+  .opened {
+    border-style: solid;
+    border-radius: .25em;
+    border-width: thin;
+    border-color: #3399ff;
+    box-shadow:  .125em .25em .3em #cccccc;
+  }
+
+  .dropdownArrow {
+    float: right;
+  }
+
 </style>

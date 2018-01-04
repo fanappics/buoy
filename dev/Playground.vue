@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="width: 50%">
     <BSelect
             v-bind:selectOptions=options
             v-bind:isRequired=true
