@@ -60,3 +60,4 @@ typings/
 es5/
 dist/
 
+.DS_Store
