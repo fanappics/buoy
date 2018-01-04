@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Multiple radio mounted html should match snapshot 1`] = `
+<div role="radiogroup" aria-labelledby="radio-group">
+    <label id="radio-group" class="">
+        Radio Group
+    </label>
+    <input type="radio" role="radio" id="radio-1" tabindex="0" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="">
+    <label id="label-radio-1" for="radio-1" class="">
+        Radio
+    </label>
+    <input type="radio" role="radio" id="radio-2" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="">
+    <label id="label-radio-2" for="radio-2" class="">
+        Radio2
+    </label>
+</div>
+`;
+
+exports[`Multiple radio with all disabled mounted html should match snapshot 1`] = `
+<div role="radiogroup" aria-labelledby="radio-group">
+    <label id="radio-group" class="disabled">
+        Radio Group
+    </label>
+    <input type="radio" role="radio" id="radio-1" disabled="disabled" tabindex="0" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="disabled">
+    <label id="label-radio-1" for="radio-1" class="disabled">
+        Radio
+    </label>
+    <input type="radio" role="radio" id="radio-2" disabled="disabled" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="disabled">
+    <label id="label-radio-2" for="radio-2" class="disabled">
+        Radio2
+    </label>
+</div>
+`;
+
+exports[`Multiple radio with default mounted html should match snapshot 1`] = `
+<div role="radiogroup" aria-labelledby="radio-group">
+    <label id="radio-group" class="">
+        Radio Group
+    </label>
+    <input type="radio" role="radio" id="radio-1" tabindex="0" aria-checked="true" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="">
+    <label id="label-radio-1" for="radio-1" class="">
+        Radio
+    </label>
+    <input type="radio" role="radio" id="radio-2" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="">
+    <label id="label-radio-2" for="radio-2" class="">
+        Radio2
+    </label>
+</div>
+`;
+
+exports[`Multiple radio with disabled mounted html should match snapshot 1`] = `
+<div role="radiogroup" aria-labelledby="radio-group">
+    <label id="radio-group" class="">
+        Radio Group
+    </label>
+    <input type="radio" role="radio" id="radio-1" tabindex="0" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="">
+    <label id="label-radio-1" for="radio-1" class="">
+        Radio
+    </label>
+    <input type="radio" role="radio" id="radio-2" disabled="disabled" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="disabled">
+    <label id="label-radio-2" for="radio-2" class="disabled">
+        Radio2
+    </label>
+</div>
+`;
+
+exports[`Single radio mounted html should match snapshot 1`] = `
+<div role="radiogroup" aria-labelledby="radio-group">
+    <label id="radio-group" class="">
+        Radio Group
+    </label>
+    <input type="radio" role="radio" id="radio" tabindex="0" aria-labelledby="label-radio" aria-posinset="0" aria-setsize="1" class="">
+    <label id="label-radio" for="radio" class="">
+        Radio
+    </label>
+</div>
+`;
