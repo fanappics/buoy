@@ -28,4 +28,9 @@ export default {
     margin: 2px 5px;
     padding: 10px;
   }
+  section {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
 </style>
