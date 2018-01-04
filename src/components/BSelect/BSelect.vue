@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h3>{{selectLabel}} <span v-if=isRequired>*</span></h3>
+      <h3>{{ selectLabel }} <span v-if=isRequired>*</span></h3>
     </div>
     <div>
       <ul
@@ -13,7 +13,7 @@
           style="color: #cccccc"
           v-if=!selectedOption
           v-on:click="openList"
-          >Choose Option
+          >{{ placeholder }}
           <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li 
@@ -28,7 +28,6 @@
           v-if=opened
           v-for="option in options"
           v-bind:key="option.id"
-          v-bind:option="option"
           v-bind:value=option.id
           v-on:click="selectOption(option)"
         > {{ option.text }}
@@ -60,6 +59,11 @@ export default {
     preSelectedOption: {
       type: Object,
       required: false
+    },
+    placeholder: {
+      type: String,
+      required: false,
+      default: 'Choose Option'
     }
   },
 
