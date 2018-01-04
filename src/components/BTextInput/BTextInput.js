@@ -121,28 +121,14 @@ export default {
   },
 
   mounted () {
-    this.shouldAutoGrow && this.calculateInputHeight()
     this.autofocus && this.focus()
   },
 
   methods: {
-    calculateInputHeight () {
-      this.inputHeight = null
-
-      this.$nextTick(() => {
-        const height = this.$refs.input
-          ? this.$refs.input.scrollHeight
-          : 0
-        const minHeight = this.rows * 24
-        const inputHeight = height < minHeight ? minHeight : height
-        this.inputHeight = inputHeight + (this.textarea ? 4 : 0)
-      })
-    },
     onInput (e) {
       this.mask && this.resetSelections(e.target)
       this.inputValue = e.target.value
       this.badInput = e.target.validity && e.target.validity.badInput
-      this.shouldAutoGrow && this.calculateInputHeight()
     },
     blur (e) {
       this.isFocused = false
