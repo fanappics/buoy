@@ -20,7 +20,10 @@ export default {
     disabled: Boolean,
     hint: String,
     hideDetails: Boolean,
-    label: String,
+    label: {
+      type: String,
+      required: true
+    },
     persistentHint: Boolean,
     placeholder: String,
     readonly: Boolean,
@@ -66,7 +69,7 @@ export default {
         attrs: {
           for: this.$attrs.id
         }
-      }, this.$slots.label || this.label)
+      }, this.required ? `${this.label}*` : this.label)
     },
     genMessages () {
       let messages = null
@@ -79,7 +82,7 @@ export default {
       ) {
         messages = [this.genHint()]
       } else if (this.validations.length) {
-        messages = [this.genError(this.validations[0])]
+        messages = [this.genError(this.validations)]
       }
 
       return this.$createElement('transition', {
@@ -94,13 +97,16 @@ export default {
         domProps: { innerHTML: this.hint }
       })
     },
-    genError (error) {
+    genError (errors) {
       return this.$createElement(
         'div',
         {
-          'class': 'input-group__messages input-group__error'
+          'class': 'input-group__messages input-group__error',
+          attrs: {
+            id: `error-${this.$attrs.id}`
+          }
         },
-        error
+        errors.length > 1 ? errors.join(', ') : errors[0]
       )
     },
     // Used for clearable, but requires another component

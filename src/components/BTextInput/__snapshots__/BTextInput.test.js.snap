@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`BTextInput should append a suffix after the input 1`] = `
+<div class="input-group input-group--text-field input-group--suffix">
+    <div class="input-group__input">
+        <input tabindex="0" type="text"><span class="input-group--text-field__suffix">.00</span></div>
+    <div class="input-group__details">
+        <!---->
+    </div>
+</div>
+`;
+
+exports[`BTextInput should display an error if an input blank and required 1`] = `
+<div class="input-group input-group--error input-group--required input-group--text-field error--text">
+    <div class="input-group__input">
+        <input id="mock" tabindex="0" required="" type="text" aria-invalid="true" aria-describedby="error-mock">
+    </div>
+    <div class="input-group__details">
+        <div id="error-mock" class="input-group__messages input-group__error v-enter v-enter-active">Required</div>
+    </div>
+</div>
+`;
+
+exports[`BTextInput should display multiple errors should they exist 1`] = `
+<div class="input-group input-group--error input-group--required input-group--text-field error--text">
+    <div class="input-group__input">
+        <input id="mock" tabindex="0" required="" type="text" aria-invalid="true" aria-describedby="error-mock">
+    </div>
+    <div class="input-group__details">
+        <div id="error-mock" class="input-group__messages input-group__error v-enter v-enter-active">Test, Required</div>
+    </div>
+</div>
+`;
+
+exports[`BTextInput should have an asterisk if required is set to true 1`] = `
+<div class="input-group input-group--required input-group--text-field">
+    <label>mock*</label>
+    <div class="input-group__input">
+        <input tabindex="0" aria-label="mock" required="" type="text">
+    </div>
+    <div class="input-group__details">
+        <!---->
+    </div>
+</div>
+`;
+
+exports[`BTextInput should have required attribute 1`] = `
+<div class="input-group input-group--required input-group--text-field">
+    <div class="input-group__input">
+        <input tabindex="0" required="" type="text">
+    </div>
+    <div class="input-group__details">
+        <!---->
+    </div>
+</div>
+`;
+
 exports[`BTextInput should not display counter when set to false 1`] = `
 <div class="input-group input-group--text-field">
     <div class="input-group__input">
@@ -15,6 +70,17 @@ exports[`BTextInput should not display counter when set to false 1`] = `
 exports[`BTextInput should not display counter when set to false 2`] = `
 <div class="input-group input-group--text-field">
     <div class="input-group__input">
+        <input tabindex="0" type="text">
+    </div>
+    <div class="input-group__details">
+        <!---->
+    </div>
+</div>
+`;
+
+exports[`BTextInput should prepend a prefix before the input 1`] = `
+<div class="input-group input-group--text-field input-group--prefix">
+    <div class="input-group__input"><span class="input-group--text-field__prefix">$</span>
         <input tabindex="0" type="text">
     </div>
     <div class="input-group__details">

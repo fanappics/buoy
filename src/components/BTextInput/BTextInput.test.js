@@ -1,9 +1,9 @@
-import { mount } from 'vue-test-utils'
+import { shallow } from 'vue-test-utils'
 import BTextInput from './BTextInput'
 
 describe('BTextInput', () => {
   it('should render component and match snapshot', () => {
-    const wrapper = mount(BTextInput)
+    const wrapper = shallow(BTextInput)
 
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -15,7 +15,7 @@ describe('BTextInput', () => {
         return h(BTextInput, { on: { keyUp: keyup }, props: { download: '' }, attrs: {} })
       }
     }
-    const wrapper = mount(component)
+    const wrapper = shallow(component)
 
     const input = wrapper.find('input')
     input.trigger('keyUp', { keyCode: 65 })
@@ -24,7 +24,7 @@ describe('BTextInput', () => {
   })
 
   it('should render aria-label attribute on text field element with label value and no id', () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         label: 'Test'
       },
@@ -36,7 +36,7 @@ describe('BTextInput', () => {
   })
 
   it('should not render aria-label attribute on text field element with no label value or id', () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         label: null
       },
@@ -48,7 +48,7 @@ describe('BTextInput', () => {
   })
 
   it('should not render aria-label attribute on text field element with id', () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         label: 'Test'
       },
@@ -62,7 +62,7 @@ describe('BTextInput', () => {
   })
 
   it('should start out as invalid', () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         rules: [(v) => !!v || 'Required']
       }
@@ -72,7 +72,7 @@ describe('BTextInput', () => {
   })
 
   it('should start validating on input', async () => {
-    const wrapper = mount(BTextInput, {})
+    const wrapper = shallow(BTextInput, {})
 
     expect(wrapper.vm.shouldValidate).toEqual(false)
     wrapper.setProps({ value: 'asd' })
@@ -81,7 +81,7 @@ describe('BTextInput', () => {
   })
 
   it('should not start validating on input if validate-on-blur prop is set', async () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         validateOnBlur: true
       }
@@ -94,7 +94,7 @@ describe('BTextInput', () => {
   })
 
   it('should not display counter when set to false', async () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         counter: true,
         max: 50
@@ -112,7 +112,7 @@ describe('BTextInput', () => {
   })
 
   it('should have readonly attribute', () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         readonly: true
       }
@@ -125,7 +125,7 @@ describe('BTextInput', () => {
 
   // for clearable - requires VIcon component
   // it('should clear input value', async () => {
-  //   const wrapper = mount(VTextField, {
+  //   const wrapper = shallow(VTextField, {
   //     propsData: {
   //       clearable: true,
   //       value: 'foo'
@@ -147,7 +147,7 @@ describe('BTextInput', () => {
 
   // it('should not clear input if not clearable and has appended icon (with callback)', async () => {
   //   const appendIconCb = jest.fn()
-  //   const wrapper = mount(VTextField, {
+  //   const wrapper = shallow(VTextField, {
   //     propsData: {
   //       value: 'foo',
   //       appendIcon: 'block',
@@ -163,7 +163,7 @@ describe('BTextInput', () => {
   // })
 
   // it('should not clear input if not clearable and has appended icon (without callback)', async () => {
-  //   const wrapper = mount(VTextField, {
+  //   const wrapper = shallow(VTextField, {
   //     propsData: {
   //       value: 'foo',
   //       appendIcon: 'block',
@@ -177,7 +177,7 @@ describe('BTextInput', () => {
   // })
 
   it('should start validating on blur', async () => {
-    const wrapper = mount(BTextInput, {})
+    const wrapper = shallow(BTextInput, {})
 
     const input = wrapper.find('input')
     expect(wrapper.vm.shouldValidate).toEqual(false)
@@ -189,7 +189,7 @@ describe('BTextInput', () => {
   })
 
   it('should keep its value on blur', async () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: {
         value: 'asd'
       }
@@ -205,7 +205,7 @@ describe('BTextInput', () => {
   })
 
   it('should update if value is changed externally', async () => {
-    const wrapper = mount(BTextInput, {})
+    const wrapper = shallow(BTextInput, {})
 
     const input = wrapper.find('input')
 
@@ -234,7 +234,7 @@ describe('BTextInput', () => {
         })
       }
     }
-    const wrapper = mount(component)
+    const wrapper = shallow(component)
 
     const input = wrapper.find('input')
 
@@ -267,7 +267,7 @@ describe('BTextInput', () => {
         })
       }
     }
-    const wrapper = mount(component)
+    const wrapper = shallow(component)
 
     const input = wrapper.find('input')
 
@@ -280,7 +280,7 @@ describe('BTextInput', () => {
   })
 
   it('should display the number 0', async () => {
-    const wrapper = mount(BTextInput, {
+    const wrapper = shallow(BTextInput, {
       propsData: { value: 0 }
     })
 
@@ -288,14 +288,16 @@ describe('BTextInput', () => {
   })
 
   it('should reset internal change on blur', async () => {
-    const wrapper = mount(BTextInput)
+    const wrapper = shallow(BTextInput)
 
     wrapper.setProps({ value: 'foo' })
     wrapper.vm.internalChange = true
     await wrapper.vm.$nextTick()
     expect(wrapper.vm.internalChange).toBe(true)
+
     wrapper.vm.blur()
     await wrapper.vm.$nextTick()
+
     expect(wrapper.vm.internalChange).toBe(false)
   })
 
@@ -304,7 +306,7 @@ describe('BTextInput', () => {
   // it('should emit input when externally set value was modified internally', async () => {
   //   let value = '33'
   //   const input = jest.fn()
-  //   const wrapper = mount(BTextInput, {
+  //   const wrapper = shallow(BTextInput, {
   //     propsData: {
   //       value
   //     }
@@ -322,4 +324,117 @@ describe('BTextInput', () => {
   //   expect(value).toBe('44')
   //   expect(input).toBeCalled()
   // })
+
+  it('should have required attribute', () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        required: true
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should have no rules when not passed rules or set to required', () => {
+    const wrapper = shallow(BTextInput)
+
+    expect(wrapper.vm.rules).toHaveLength(0)
+  })
+
+  it('should have a rule when the required flag is set', () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        required: true
+      }
+    })
+
+    expect(wrapper.vm.rules).toHaveLength(1)
+  })
+
+  it('should have an asterisk if required is set to true', () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        label: 'mock',
+        required: true
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should display an error if an input blank and required', async () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        required: true
+      },
+      attrs: {
+        id: 'mock'
+      }
+    })
+
+    const input = wrapper.find('input')
+    input.trigger('focus')
+    await wrapper.vm.$nextTick()
+    input.trigger('blur')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.hasError).toBe(true)
+    expect(wrapper.vm.validations).toHaveLength(1)
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should display multiple errors should they exist', async () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        required: true,
+        rules: [v => !!v || 'Test']
+      },
+      attrs: {
+        id: 'mock'
+      }
+    })
+
+    const input = wrapper.find('input')
+    input.trigger('focus')
+    await wrapper.vm.$nextTick()
+    input.trigger('blur')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.vm.hasError).toBe(true)
+    expect(wrapper.vm.validations).toHaveLength(2)
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should error when mounting with an invalid type', () => {
+    function mountInput () {
+      shallow(BTextInput, {
+        propsData: {
+          type: 'radio'
+        }
+      })
+    }
+
+    expect(mountInput).toThrowError(TypeError)
+    expect(mountInput).toThrowError('radio is not a valid type for b-text-input')
+  })
+
+  it('should prepend a prefix before the input', () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        prefix: '$'
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should append a suffix after the input', () => {
+    const wrapper = shallow(BTextInput, {
+      propsData: {
+        suffix: '.00'
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })

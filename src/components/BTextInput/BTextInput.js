@@ -51,7 +51,16 @@ export default {
     textarea: Boolean,
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
+      validator: value => {
+        const validTypes = ['text', 'number', 'email', 'search', 'url', 'date', 'datetime-local', 'hidden', 'password', 'month', 'week', 'tel', 'currency']
+
+        if (validTypes.indexOf(value) === -1) {
+          throw new TypeError(`${value} is not a valid type for b-text-input`)
+        }
+
+        return true
+      }
     }
   },
 
@@ -118,6 +127,10 @@ export default {
 
       !this.validateOnBlur && this.validate()
     }
+  },
+
+  beforeMount () {
+    if (this.required) this.rules.push(v => !!v || 'Required')
   },
 
   mounted () {
@@ -189,7 +202,9 @@ export default {
           ...this.$attrs,
           readonly: this.readonly,
           tabindex: this.tabindex,
-          'aria-label': (!this.$attrs || !this.$attrs.id) && this.label // Label `for` will be set if we have an id
+          'aria-label': (!this.$attrs || !this.$attrs.id) && this.label, // Label `for` will be set if we have an id
+          'aria-invalid': this.hasError,
+          'aria-describedby': this.hasError && `error-${this.$attrs.id}`
         },
         on: Object.assign(listeners, {
           blur: this.blur,
