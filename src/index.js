@@ -12,9 +12,9 @@ const Installer = {
 
     Vue.prototype.$buoy = $buoy
 
-    components.forEach(c => {
-      Vue.use(c)
-    })
+    for (const key in components) {
+      Vue.use(components[key])
+    }
   }
 }
 

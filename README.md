@@ -14,6 +14,14 @@ https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a ref
 
 This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ style guide.
 
+## Live Style Guide and Documentation
+
+You can view the live style guide and documentation [Here](https://fanappics.github.io/buoy/)
+
+### Updating the style guide
+
+1. Run `npm run build:docs` to build the project and copy the files into the `docs` directory
+1. Make the appropriate changes in the `docs` directory.
 ## CLI
 
 running `npm i -g` will install the buoy CLI tool.
