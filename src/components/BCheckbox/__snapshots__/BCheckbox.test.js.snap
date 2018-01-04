@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Multiple checkbox mounted html should match snapshot 1`] = `
+<div role="group">
+    <!---->
+    <input type="checkbox" role="checkbox" id="checkbox-1" aria-checked="true" aria-labelledby="label-checkbox-1" class="">
+    <label id="label-checkbox-1" for="checkbox-1" class="">
+        Checkbox
+    </label>
+    <input type="checkbox" role="checkbox" id="checkbox-2" disabled="disabled" aria-labelledby="label-checkbox-2" class="disabled">
+    <label id="label-checkbox-2" for="checkbox-2" class="disabled">
+        Checkbox2
+    </label>
+</div>
+`;
+
+exports[`Multiple checkbox with group label mounted html should match snapshot 1`] = `
+<div role="group" aria-labelledby="checkbox-group">
+    <label id="checkbox-group">
+        Checkbox Group
+    </label>
+    <input type="checkbox" role="checkbox" id="checkbox-1" disabled="disabled" aria-checked="true" aria-labelledby="label-checkbox-1" class="disabled">
+    <label id="label-checkbox-1" for="checkbox-1" class="disabled">
+        Checkbox
+    </label>
+    <input type="checkbox" role="checkbox" id="checkbox-2" aria-labelledby="label-checkbox-2" class="">
+    <label id="label-checkbox-2" for="checkbox-2" class="">
+        Checkbox2
+    </label>
+</div>
+`;
+
+exports[`Single checkbox mounted html should match snapshot 1`] = `
+<div role="group">
+    <!---->
+    <input type="checkbox" role="checkbox" id="checkbox" aria-labelledby="label-checkbox" class="">
+    <label id="label-checkbox" for="checkbox" class="">
+        Checkbox
+    </label>
+</div>
+`;
+
+exports[`Single checked checkbox mounted html should match snapshot 1`] = `
+<div role="group">
+    <!---->
+    <input type="checkbox" role="checkbox" id="checkbox" aria-checked="true" aria-labelledby="label-checkbox" class="">
+    <label id="label-checkbox" for="checkbox" class="">
+        Checkbox
+    </label>
+</div>
+`;
+
+exports[`Single disabled checkbox mounted html should match snapshot 1`] = `
+<div role="group">
+    <!---->
+    <input type="checkbox" role="checkbox" id="checkbox" disabled="disabled" aria-labelledby="label-checkbox" class="disabled">
+    <label id="label-checkbox" for="checkbox" class="disabled">
+        Checkbox
+    </label>
+</div>
+`;
