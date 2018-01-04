@@ -3,16 +3,24 @@
     <div>
       <h3>{{ selectLabel }} <span v-if=isRequired>*</span></h3>
     </div>
-    <div>
+    <div 
+      v-bind:aria-expanded="opened"
+      v-bind:aria-owns="selectLabel"
+      role="combobox"
+      tabindex="0"
+    >
       <ul
         v-bind:aria-label="selectLabel"
         v-bind:class="getUlClass()"
+        role="listbox"
+        v-bind:id="selectLabel"
       >
         <li 
           v-bind:class="getLiClass()" 
-          style="color: #cccccc"
           v-if=!selectedOption
           v-on:click="openList"
+          role="option"
+          style="color: #cccccc"
           >{{ placeholder }}
           <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
@@ -20,6 +28,7 @@
           v-bind:class="getLiClass()"
           v-if=selectedOption
           v-on:click="openList"
+          role="option"
           >{{ selectedOption.text }}
           <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
@@ -30,6 +39,7 @@
           v-bind:key="option.id"
           v-bind:value=option.id
           v-on:click="selectOption(option)"
+          role="option"
         > {{ option.text }}
         </li>
       </ul>
@@ -114,7 +124,6 @@ export default {
     border-style: solid;
     border-radius: .25em;
     border-width: thin;
-    border-color: #3399ff;
     box-shadow:  .125em .25em .3em #cccccc;
   }
 
