@@ -1,17 +1,17 @@
 <template>
   <div>
     <div>
-      <h4>{{ selectLabel }} <span v-if=isRequired aria-label='Required'>*</span></h4>
+      <label>{{ selectLabel }} <span v-if=isRequired aria-label='Required'>*</span></label>
     </div>
     <div 
       :aria-expanded="opened"
       :aria-owns="id"
+      :aria-label="selectLabel"
       role="combobox"
       tabindex="0"
       v-model="selectLabel"
     >
       <ul
-        :aria-label="selectLabel"
         :class="ulClass"
         role="listbox"
         :id="id"
