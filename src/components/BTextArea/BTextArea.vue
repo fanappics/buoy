@@ -61,8 +61,8 @@ export default {
     },
     inputValue: {
       get () {},
-      set (v) {
-        this.$emit('input', v)
+      set (value) {
+        this.$emit('input', value)
       }
     }
   }
