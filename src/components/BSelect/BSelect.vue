@@ -8,6 +8,7 @@
       :aria-owns="id"
       role="combobox"
       tabindex="0"
+      v-model="selectLabel"
     >
       <ul
         :aria-label="selectLabel"
@@ -17,19 +18,10 @@
       >
         <li 
           :class="getLiClass()" 
-          v-if=!selectedOption
           @click="openList"
           role="option"
-          style="color: #cccccc"
-          >{{ placeholder }}
-          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
-        </li>
-        <li 
-          :class="getLiClass()"
-          v-if=selectedOption
-          @click="openList"
-          role="option"
-          >{{ selectedOption.text }}
+          :style="[selectedOption ? {color: '#000000'} : {color: '#cccccc'}]"
+          >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li
