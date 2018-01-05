@@ -12,20 +12,20 @@
     >
       <ul
         :aria-label="selectLabel"
-        :class="getUlClass()"
+        :class="UlClass"
         role="listbox"
         :id="id"
       >
         <li 
-          :class="getLiClass()" 
+          :class="LiClass" 
           @click="openList"
           role="option"
-          :style="[selectedOption ? {color: '#000000'} : {color: '#cccccc'}]"
+          :style="selectedOption ? {color: '#000000'} : {color: '#cccccc'}"
           >{{ selectedOption ? selectedOption.text : placeholder }}
-          <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
+          <span class="DropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li
-          :class="getLiClass()"
+          :class="LiClass"
           v-if=opened
           v-for="option in options"
           :key="option.id"
@@ -45,7 +45,6 @@ const options = []
 
 export default {
   name: 'b-select',
-
   props: {
 
     id: {
@@ -82,12 +81,6 @@ export default {
       this.selectedOption = option
       this.opened = !this.opened
     },
-    getUlClass () {
-      return {'ulOpened': this.opened}
-    },
-    getLiClass () {
-      return {'liOpened': this.opened, 'options': true}
-    },
   },
 
   data () {
@@ -97,12 +90,26 @@ export default {
       selectedOption: this.preSelectedOption
     }
   },
+
+  computed: {
+    UlClass: function () {
+      return {
+        'UlOpened': this.opened
+      }
+    },
+    LiClass: function () {
+      return {
+        'LiOpened': this.opened,
+        'Options': true
+      }
+    }
+  }
 }
 
 </script>
 
 <style scoped>
-  .options {
+  .Options {
     width: 100%;
     padding: .5rem;
     border-style: solid;
@@ -117,7 +124,7 @@ export default {
     list-style: none;
   }
 
-  .ulOpened {
+  .UlOpened {
     border-style: solid;
     border-radius: .25rem;
     border-width: thin;
@@ -125,22 +132,22 @@ export default {
     border-color: #cccccc;
   }
 
-  .liOpened {
+  .LiOpened {
     border-radius: 0;
     border-style: none none solid none;
     border-width: thin;
   }
 
-  .liOpened:hover:not(:first-child) {
+  .LiOpened:hover:not(:first-child) {
     font-weight: 600;
     background-color: #f2f2f2;
   }
 
-  .liOpened:last-child {
+  .LiOpened:last-child {
     border-style: none;
   }
 
-  .dropdownArrow {
+  .DropdownArrow {
     float: right;
   }
 
