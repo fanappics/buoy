@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BTextarea should have an aria-label if label is hidden 1`] = `
+<div class="b-input-group">
+    <!---->
+    <textarea aria-label="test" cols="30" rows="5"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
+
+exports[`BTextarea should render component 1`] = `
+<div class="b-input-group">
+    <label><strong> 
+      <!----></strong></label>
+    <textarea cols="30" rows="5"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
+
+exports[`BTextarea should render component with a label 1`] = `
+<div class="b-input-group">
+    <label><strong> 
+      test<!----></strong></label>
+    <textarea cols="30" rows="5"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
+
+exports[`BTextarea should render component with label and asterisk 1`] = `
+<div class="b-input-group">
+    <label><strong> 
+      test<span aria-label="Required">*</span></strong></label>
+    <textarea cols="30" rows="5" required="required"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;

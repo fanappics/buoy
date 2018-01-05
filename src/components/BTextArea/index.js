@@ -1,9 +1,9 @@
 // import BTextInput from './BTextInput.vue'
-import BTextArea from './BTextArea.js'
+import BTextarea from './BTextarea.vue'
 
 /* istanbul ignore next */
-BTextArea.install = function install (Vue) {
-  Vue.component(BTextArea.name, BTextArea)
+BTextarea.install = function install (Vue) {
+  Vue.component(BTextarea.name, BTextarea)
 }
 
-export default BTextArea
+export default BTextarea
