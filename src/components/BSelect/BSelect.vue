@@ -100,7 +100,7 @@ export default {
     liClass: function () {
       return {
         'li-opened': this.opened,
-        'Options': true
+        'options': true
       }
     }
   }
@@ -109,7 +109,7 @@ export default {
 </script>
 
 <style scoped>
-  .Options {
+  .options {
     width: 100%;
     padding: .5rem;
     border-style: solid;
