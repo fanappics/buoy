@@ -7,8 +7,8 @@
       placeholder="This is a placeholder"
       required
       v-model="test"
+      textarea
     ></b-text-input>
-    <span>{{ test }}</span>
   </div>
 </template>
 
