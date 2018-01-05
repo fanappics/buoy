@@ -6,8 +6,9 @@ describe('BSelect', () => {
     const selectOptions = [{id: 1, text: 'test'}]
     const isRequired = false
     const selectLabel = 'test'
+    const id = 'testId'
     const wrapper = shallow(BSelect, {
-      propsData: { selectOptions, isRequired, selectLabel }
+      propsData: { id, selectOptions, isRequired, selectLabel }
     })
     expect(wrapper.props().selectOptions.length).toBe(selectOptions.length)
   })
