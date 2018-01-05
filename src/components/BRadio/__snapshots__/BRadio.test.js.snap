@@ -5,12 +5,12 @@ exports[`Multiple radio mounted html should match snapshot 1`] = `
     <label id="radio-group" class="">
         Radio Group
     </label>
-    <input type="radio" role="radio" id="radio-1" tabindex="0" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="">
-    <label id="label-radio-1" for="radio-1" class="">
+    <input type="radio" id="radio-1" name="radio-group" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2">
+    <label id="label-radio-1" for="radio-1">
         Radio
     </label>
-    <input type="radio" role="radio" id="radio-2" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="">
-    <label id="label-radio-2" for="radio-2" class="">
+    <input type="radio" id="radio-2" name="radio-group" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2">
+    <label id="label-radio-2" for="radio-2">
         Radio2
     </label>
 </div>
@@ -21,12 +21,12 @@ exports[`Multiple radio with all disabled mounted html should match snapshot 1`]
     <label id="radio-group" class="disabled">
         Radio Group
     </label>
-    <input type="radio" role="radio" id="radio-1" disabled="disabled" tabindex="0" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="disabled">
-    <label id="label-radio-1" for="radio-1" class="disabled">
+    <input type="radio" id="radio-1" name="radio-group" disabled="disabled" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2">
+    <label id="label-radio-1" for="radio-1">
         Radio
     </label>
-    <input type="radio" role="radio" id="radio-2" disabled="disabled" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="disabled">
-    <label id="label-radio-2" for="radio-2" class="disabled">
+    <input type="radio" id="radio-2" name="radio-group" disabled="disabled" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2">
+    <label id="label-radio-2" for="radio-2">
         Radio2
     </label>
 </div>
@@ -37,12 +37,12 @@ exports[`Multiple radio with default mounted html should match snapshot 1`] = `
     <label id="radio-group" class="">
         Radio Group
     </label>
-    <input type="radio" role="radio" id="radio-1" tabindex="0" aria-checked="true" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="">
-    <label id="label-radio-1" for="radio-1" class="">
+    <input type="radio" id="radio-1" name="radio-group" aria-checked="true" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2">
+    <label id="label-radio-1" for="radio-1">
         Radio
     </label>
-    <input type="radio" role="radio" id="radio-2" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="">
-    <label id="label-radio-2" for="radio-2" class="">
+    <input type="radio" id="radio-2" name="radio-group" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2">
+    <label id="label-radio-2" for="radio-2">
         Radio2
     </label>
 </div>
@@ -53,12 +53,12 @@ exports[`Multiple radio with disabled mounted html should match snapshot 1`] = `
     <label id="radio-group" class="">
         Radio Group
     </label>
-    <input type="radio" role="radio" id="radio-1" tabindex="0" aria-labelledby="label-radio-1" aria-posinset="0" aria-setsize="2" class="">
-    <label id="label-radio-1" for="radio-1" class="">
+    <input type="radio" id="radio-1" name="radio-group" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2">
+    <label id="label-radio-1" for="radio-1">
         Radio
     </label>
-    <input type="radio" role="radio" id="radio-2" disabled="disabled" tabindex="-1" aria-labelledby="label-radio-2" aria-posinset="1" aria-setsize="2" class="disabled">
-    <label id="label-radio-2" for="radio-2" class="disabled">
+    <input type="radio" id="radio-2" name="radio-group" disabled="disabled" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2">
+    <label id="label-radio-2" for="radio-2">
         Radio2
     </label>
 </div>
@@ -69,8 +69,8 @@ exports[`Single radio mounted html should match snapshot 1`] = `
     <label id="radio-group" class="">
         Radio Group
     </label>
-    <input type="radio" role="radio" id="radio" tabindex="0" aria-labelledby="label-radio" aria-posinset="0" aria-setsize="1" class="">
-    <label id="label-radio" for="radio" class="">
+    <input type="radio" id="radio" name="radio-group" aria-labelledby="radio-group label-radio" aria-posinset="0" aria-setsize="1">
+    <label id="label-radio" for="radio">
         Radio
     </label>
 </div>

@@ -4,19 +4,18 @@
       {{ groupLabel }}
     </label>
     <template v-for="(radio, index) in radios">
-      <input type="radio" role="radio" v-model="value" 
-        v-bind:id="radio.id" 
-        v-bind:value="radio.value" 
+      <input type="radio" v-model="publicValue" 
+        v-bind:id="radio.id"
+        v-bind:name="groupId"
+        v-bind:value="radio.value"
         v-bind:disabled="radio.disabled || disabled"
-        v-bind:tabindex="radio.tabindex"
         v-bind:aria-checked="radio.checked"
-        v-bind:aria-labelledby="`label-${radio.id}`"
+        v-bind:aria-labelledby="groupId + ` label-${radio.id}`"
         v-bind:aria-posinset="index"
         v-bind:aria-setsize="radios.length"
-        v-bind:class="{ disabled: radio.disabled || disabled }"
         v-on:change="setCheckedRadio(radio)"
       />
-      <label v-bind:id="`label-${radio.id}`" v-bind:for="radio.id" v-bind:class="{ disabled: radio.disabled || disabled }">
+      <label v-bind:id="`label-${radio.id}`" v-bind:for="radio.id">
         {{ radio.value }}
       </label>
     </template>
@@ -30,7 +29,7 @@ export default {
     radios: {
       type: Array,
       required: true,
-      validator: value => {
+      validator (value) {
         for (let radio of value) {
           if (!radio.id || !radio.value)
             throw new TypeError('Each radio must have an id and value defined')
@@ -53,45 +52,43 @@ export default {
       type: Boolean
     }
   },
-  created: function () {
+  created () {
     var defaultRadio = null
     this.radios.forEach((radio) => {
       if (radio.checked) {
         //Set the default checked radio button
-        this.value = radio.value
+        this.publicValue = radio.value
         defaultRadio = radio
       }
     })
     this.setCheckedRadio(defaultRadio)
   }, 
-  data: function () {
+  data () {
     return {
       value: ''
     }
   },
+  computed: {
+    //Wrapper around value so it is propegated through v-model, or 'public' as I've dubbed it
+    publicValue: {
+      get () {
+        return this.value
+      },
+      set (value) {
+        this.value = value
+        this.$emit('input', this.value)
+      }
+    }
+  },
   methods: {
-    setCheckedRadio: function (checkedRadio) {
-      this.radios.forEach((radio, index) => {
-        //Radio is checked, so set aria-checked and tabindex
-        if (radio == checkedRadio) {
+    setCheckedRadio (checkedRadio) {
+      this.radios.forEach((radio) => {
+        //Radio is checked, so set aria-checked
+        if (radio == checkedRadio)
           radio.checked = true
-          radio.tabindex = 0
-        }
-        //Radio not checked, so unset aria-checked and tabindex
-        else if (checkedRadio) {
+        //Radio not checked, so unset aria-checked
+        else
           radio.checked = false
-          radio.tabindex = -1
-        }
-        //No radio is checked, so set first button to be tabbed by default
-        else if (index == 0) {
-          radio.checked = false
-          radio.tabindex = 0
-        }
-        //No radio is checked, so set rest of the buttons to not be tabbed
-        else {
-          radio.checked = false
-          radio.tabindex = -1
-        }
       })
     }
   }
@@ -99,7 +96,7 @@ export default {
 </script>
 
 <style scoped>
-  .disabled {
+  .disabled, input:disabled, input:disabled+label {
     opacity: 0.50; 
     cursor: not-allowed;
   }
