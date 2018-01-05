@@ -122,13 +122,13 @@ export default {
     border-radius: .25rem;
     border-width: thin;
     box-shadow:  .125rem .25rem .3rem #cccccc;
+    border-color: #cccccc;
   }
 
   .liOpened {
     border-radius: 0;
     border-style: none none solid none;
     border-width: thin;
-    border-color: #f2f2f2;
   }
 
   .liOpened:hover:not(:first-child) {
