@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <h4>{{ selectLabel }} <span v-if=isRequired>*</span></h4>
+      <h4>{{ selectLabel }} <span v-if=isRequired aria-label='Required'>*</span></h4>
     </div>
     <div 
       v-bind:aria-expanded="opened"
