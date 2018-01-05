@@ -5,7 +5,9 @@ describe('BButton', () => {
   it('renders props.text when passed', () => {
     const text = 'hello world'
     const wrapper = shallow(BButton, {
-      propsData: { text }
+      slots: {
+        default: 'hello world'
+      }
     })
     expect(wrapper.text()).toBe(text)
   })

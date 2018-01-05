@@ -1,12 +1,12 @@
 <template>
   <button
-    v-bind:class="computedClass"
-    v-bind:disabled="disabled"
-    v-bind:type="type"
-    v-bind:height="height"
-    v-bind:width="width"
-    v-bind:style="computedStyle"
-    v-bind:aria-label="'aria-label'"
+    :class="computedClass"
+    :disabled="disabled"
+    :type="type"
+    :height="height"
+    :width="width"
+    :style="computedStyle"
+    :aria-label="'aria-label'"
   >
     <slot></slot>
   </button>
