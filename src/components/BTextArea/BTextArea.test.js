@@ -38,4 +38,14 @@ describe('BTextarea', () => {
 
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('should add disabled class when the disabled prop is set', () => {
+    const wrapper = shallow(BTextarea, {
+      propsData: {
+        disabled: true
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })

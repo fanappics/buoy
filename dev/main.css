@@ -6,6 +6,9 @@
   font-weight: bold;
   padding: 0.6rem 0 0.4rem;
 }
+.b-input-group.b-input-group--disabled label[data-v-93c6faae] {
+  color: #999;
+}
 .b-input-group textarea[data-v-93c6faae] {
   border: 1px solid rgba(138,138,138,0.6);
   border-radius: 0.25rem;
@@ -23,6 +26,24 @@
 }
 .b-input-group[data-v-93c6faae] ::placeholder {
   font-size: 0.8rem;
+}
+.b-input-group.b-input-group--disabled textarea[data-v-93c6faae] {
+  border-color: rgba(138,138,138,0.3);
+}
+.b-input-group.b-input-group--disabled textarea[data-v-93c6faae]:hover {
+  cursor: not-allowed;
+}
+.b-input-group.b-input-group--disabled[data-v-93c6faae] ::-webkit-input-placeholder {
+  color: #bbb;
+}
+.b-input-group.b-input-group--disabled[data-v-93c6faae] :-ms-input-placeholder {
+  color: #bbb;
+}
+.b-input-group.b-input-group--disabled[data-v-93c6faae] ::-ms-input-placeholder {
+  color: #bbb;
+}
+.b-input-group.b-input-group--disabled[data-v-93c6faae] ::placeholder {
+  color: #bbb;
 }
 .b-error textarea[data-v-93c6faae] {
   border: 1px solid #f00;

@@ -1,5 +1,5 @@
 <template>
-  <div class="b-input-group">
+  <div :class="classes">
     <label v-if="!hideLabel" :for="id">
       <strong> 
         {{ label }}<span v-if="required" aria-label="Required">*</span>
@@ -53,6 +53,12 @@ export default {
     }
   },
   computed: {
+    classes () {
+      return {
+        'b-input-group': true,
+        'b-input-group--disabled': this.disabled
+      }
+    },
     inputValue: {
       get () {},
       set (v) {
@@ -71,6 +77,9 @@ export default {
       font-size 0.825rem
       font-weight bold
       padding 0.6rem 0 0.4rem
+    &.b-input-group--disabled
+      label
+        color #999
 
   .b-input-group
     textarea
@@ -80,6 +89,13 @@ export default {
       padding .7rem
     ::placeholder
       font-size 0.8rem
+    &.b-input-group--disabled
+      textarea
+        border-color rgba(138, 138, 138, 0.3)
+        &:hover
+          cursor not-allowed
+      ::placeholder
+        color #BBB
 
   .b-error
     textarea

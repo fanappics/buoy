@@ -5,6 +5,7 @@
       label="This is a label"
       placeholder="This is a placeholder"
       required
+      disabled
       v-model="test"
     ></b-textarea>
     <span>{{ test }}</span>
