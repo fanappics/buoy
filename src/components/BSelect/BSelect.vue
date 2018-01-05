@@ -12,12 +12,12 @@
     >
       <ul
         :aria-label="selectLabel"
-        :class="UlClass"
+        :class="ulClass"
         role="listbox"
         :id="id"
       >
         <li 
-          :class="LiClass" 
+          :class="liClass" 
           @click="openList"
           role="option"
           :style="selectedOption ? {color: '#000000'} : {color: '#cccccc'}"
@@ -25,7 +25,7 @@
           <span class="DropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li
-          :class="LiClass"
+          :class="liClass"
           v-if=opened
           v-for="option in options"
           :key="option.id"
@@ -92,14 +92,14 @@ export default {
   },
 
   computed: {
-    UlClass: function () {
+    ulClass: function () {
       return {
-        'UlOpened': this.opened
+        'ul-opened': this.opened
       }
     },
-    LiClass: function () {
+    liClass: function () {
       return {
-        'LiOpened': this.opened,
+        'li-opened': this.opened,
         'Options': true
       }
     }
@@ -124,7 +124,7 @@ export default {
     list-style: none;
   }
 
-  .UlOpened {
+  .ul-opened {
     border-style: solid;
     border-radius: .25rem;
     border-width: thin;
@@ -132,18 +132,18 @@ export default {
     border-color: #cccccc;
   }
 
-  .LiOpened {
+  .li-opened {
     border-radius: 0;
     border-style: none none solid none;
     border-width: thin;
   }
 
-  .LiOpened:hover:not(:first-child) {
+  .li-opened:hover:not(:first-child) {
     font-weight: 600;
     background-color: #f2f2f2;
   }
 
-  .LiOpened:last-child {
+  .li-opened:last-child {
     border-style: none;
   }
 
