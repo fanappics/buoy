@@ -18,8 +18,6 @@ module.exports = {
     'standard'
   ],
   // add your custom rules here
-  rules: {
-    'no-mixed-operators': 'off'
-  },
+  rules: {},
   globals: {}
 }
