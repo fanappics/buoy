@@ -107,24 +107,24 @@ export default {
 <style scoped>
   .options {
     width: 100%;
-    padding: .5em;
+    padding: .5rem;
     border-style: solid;
-    border-radius: .25em;
+    border-radius: .25rem;
     border-width: thin;
     border-color: #cccccc;
   }
 
   ul {
-    padding: 0 1em 0 0;
+    padding: 0 1rem 0 0;
     width: 100%;
     list-style: none;
   }
 
   .ulOpened {
     border-style: solid;
-    border-radius: .25em;
+    border-radius: .25rem;
     border-width: thin;
-    box-shadow:  .125em .25em .3em #cccccc;
+    box-shadow:  .125rem .25rem .3rem #cccccc;
   }
 
   .liOpened {
