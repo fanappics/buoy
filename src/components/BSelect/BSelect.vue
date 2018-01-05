@@ -4,41 +4,41 @@
       <h4>{{ selectLabel }} <span v-if=isRequired aria-label='Required'>*</span></h4>
     </div>
     <div 
-      v-bind:aria-expanded="opened"
-      v-bind:aria-owns="id"
+      :aria-expanded="opened"
+      :aria-owns="id"
       role="combobox"
       tabindex="0"
     >
       <ul
-        v-bind:aria-label="selectLabel"
-        v-bind:class="getUlClass()"
+        :aria-label="selectLabel"
+        :class="getUlClass()"
         role="listbox"
-        v-bind:id="id"
+        :id="id"
       >
         <li 
-          v-bind:class="getLiClass()" 
+          :class="getLiClass()" 
           v-if=!selectedOption
-          v-on:click="openList"
+          @click="openList"
           role="option"
           style="color: #cccccc"
           >{{ placeholder }}
           <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li 
-          v-bind:class="getLiClass()"
+          :class="getLiClass()"
           v-if=selectedOption
-          v-on:click="openList"
+          @click="openList"
           role="option"
           >{{ selectedOption.text }}
           <span class="dropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li
-          v-bind:class="getLiClass()"
+          :class="getLiClass()"
           v-if=opened
           v-for="option in options"
-          v-bind:key="option.id"
-          v-bind:value=option.id
-          v-on:click="selectOption(option)"
+          :key="option.id"
+          :value=option.id
+          @click="selectOption(option)"
           role="option"
         > {{ option.text }}
         </li>
