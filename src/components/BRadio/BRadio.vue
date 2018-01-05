@@ -1,21 +1,21 @@
 <template>
-  <div role="radiogroup" v-bind:aria-labelledby="groupId">
-    <label v-show="showGroupLabel" v-bind:id="groupId" v-bind:class="{ disabled: disabled }">
+  <div role="radiogroup" :aria-labelledby="groupId">
+    <label v-show="showGroupLabel" :id="groupId" :class="{ disabled: disabled }">
       {{ groupLabel }}
     </label>
     <template v-for="(radio, index) in radios">
       <input type="radio" v-model="publicValue" 
-        v-bind:id="radio.id"
-        v-bind:name="groupId"
-        v-bind:value="radio.value"
-        v-bind:disabled="radio.disabled || disabled"
-        v-bind:aria-checked="radio.checked"
-        v-bind:aria-labelledby="groupId + ` label-${radio.id}`"
-        v-bind:aria-posinset="index"
-        v-bind:aria-setsize="radios.length"
-        v-on:change="setCheckedRadio(radio)"
+        :id="radio.id"
+        :name="groupId"
+        :value="radio.value"
+        :disabled="radio.disabled || disabled"
+        :aria-checked="radio.checked"
+        :aria-labelledby="groupId + ` label-${radio.id}`"
+        :aria-posinset="index"
+        :aria-setsize="radios.length"
+        @change="setCheckedRadio(radio)"
       />
-      <label v-bind:id="`label-${radio.id}`" v-bind:for="radio.id">
+      <label :id="`label-${radio.id}`" :for="radio.id">
         {{ radio.value }}
       </label>
     </template>
