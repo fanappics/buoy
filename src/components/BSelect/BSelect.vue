@@ -5,7 +5,7 @@
     </div>
     <div 
       v-bind:aria-expanded="opened"
-      v-bind:aria-owns="selectLabel"
+      v-bind:aria-owns="id"
       role="combobox"
       tabindex="0"
     >
@@ -13,7 +13,7 @@
         v-bind:aria-label="selectLabel"
         v-bind:class="getUlClass()"
         role="listbox"
-        v-bind:id="selectLabel"
+        v-bind:id="id"
       >
         <li 
           v-bind:class="getLiClass()" 
@@ -55,6 +55,11 @@ export default {
   name: 'b-select',
 
   props: {
+
+    id: {
+      type: String,
+      required: true
+    },
     selectOptions: {
       type: Array
     },

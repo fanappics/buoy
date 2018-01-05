@@ -3,6 +3,7 @@
     <BSelect
             v-bind:selectOptions=options
             v-bind:isRequired=true
+            v-bind:id="testId"
             v-bind:placeholder=placeholder
             selectLabel="Select Test"
         />
