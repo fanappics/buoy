@@ -22,7 +22,7 @@
           role="option"
           :style="selectedOption ? {color: '#000000'} : {color: '#cccccc'}"
           >{{ selectedOption ? selectedOption.text : placeholder }}
-          <span class="DropdownArrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
+          <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
         </li>
         <li
           :class="liClass"
@@ -147,7 +147,7 @@ export default {
     border-style: none;
   }
 
-  .DropdownArrow {
+  .dropdown-arrow {
     float: right;
   }
 
