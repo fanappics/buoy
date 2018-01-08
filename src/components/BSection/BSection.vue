@@ -1,11 +1,7 @@
 <template>
-  <section>
-    <span class="sides"></span>
-    <span class="content">
-      <slot></slot>
-    </span>
-    <span class="sides"></span>
-  </section>
+  <header>
+    <slot></slot>
+  </header>
 </template>
 
 <script>
@@ -15,17 +11,13 @@ export default {
 </script>
 
 <style scoped>
-section {
+header {
   background-color: rgb(248,248,248);
   display: flex;
   flex: 0 0 3rem;
-}
-span.sides {
-  flex: 0 0 10%;
-}
-span.content {
-  align-self: center;
-  flex: 1;
+  flex-direction: column;
   font-weight: bold;
+  justify-content: center;
+  padding: 0rem 2rem;
 }
 </style>

@@ -514,10 +514,6 @@ module.exports = function normalizeComponent (
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   name: 'b-section'
@@ -734,7 +730,7 @@ __WEBPACK_IMPORTED_MODULE_0__BSection_vue__["a" /* default */].install = functio
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BSection_vue__ = __webpack_require__(4);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e2d1df7c_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BSection_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21287e53_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BSection_vue__ = __webpack_require__(17);
 function injectStyle (ssrContext) {
   __webpack_require__(15)
 }
@@ -749,12 +745,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-e2d1df7c"
+var __vue_scopeId__ = "data-v-21287e53"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BSection_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_e2d1df7c_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BSection_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_21287e53_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BSection_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -775,7 +771,7 @@ var content = __webpack_require__(16);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("1a490223", content, true);
+var update = __webpack_require__(1)("64468ccc", content, true);
 
 /***/ }),
 /* 16 */
@@ -786,7 +782,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "section[data-v-e2d1df7c]{background-color:#f8f8f8;display:flex;flex:0 0 3em}span.sides[data-v-e2d1df7c]{flex:0 0 10%}span.content[data-v-e2d1df7c]{align-self:center;flex:1;font-weight:700}", ""]);
+exports.push([module.i, "header[data-v-21287e53]{background-color:#f8f8f8;display:flex;flex:0 0 3rem;flex-direction:column;font-weight:700;justify-content:center;padding:0 2rem}", ""]);
 
 // exports
 
@@ -796,7 +792,7 @@ exports.push([module.i, "section[data-v-e2d1df7c]{background-color:#f8f8f8;displ
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[_c('span',{staticClass:"sides"}),_vm._v(" "),_c('span',{staticClass:"content"},[_vm._t("default")],2),_vm._v(" "),_c('span',{staticClass:"sides"})])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('header',[_vm._t("default")],2)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
