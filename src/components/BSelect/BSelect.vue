@@ -10,6 +10,8 @@
       role="combobox"
       tabindex="0"
       v-model="selectLabel"
+      :id="'dropdown' + id"
+      @keyup.32="openList"
     >
       <ul
         :class="ulClass"
@@ -24,13 +26,17 @@
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
         <li
-          :class="liClass"
           v-if=opened
           v-for="option in options"
-          :key="option.id"
+          :class="liClass"
+          :key="'selectOption' + option.id"
+          :id="'option' + option.id"
           :value=option.id
           @click="selectOption(option)"
           role="option"
+          :ref="'option' + option.id"
+          @keyup="keyPressHandler"
+          tabindex='-1'
         > {{ option.text }}
         </li>
       </ul>
@@ -75,11 +81,52 @@ export default {
   methods: {
     openList () {
       this.opened = !this.opened
+      if (this.opened) {
+        this.$nextTick( function () {
+          this.setFocus()
+        })
+      } else {
+        document.querySelector(`#dropdown${this.id}`).focus()
+      }
     },
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
+      console.log(this.selectLabel)
+      document.querySelector(`#dropdown${this.id}`).focus()
     },
+    setFocus () {
+      if (this.selectedOption) {
+        const line = document.querySelector(`#${this.id} #option${this.selectedOption.id}`)
+        line.focus()
+      } else {
+        const line = document.querySelector(`#${this.id} #option${this.options[0].id}`)
+        line.focus()  
+      }
+    },
+    keyPressHandler () {
+      const target = event.target;
+      if(event.keyCode === 40) {
+        event.preventDefault();
+        if(target.nextElementSibling) {
+          const next = target.nextElementSibling;
+          next.setAttribute("tabindex", "0");
+          target.setAttribute("tabindex", "-1");
+          next.focus();
+        }
+      } else if(event.keyCode === 38) {
+        event.preventDefault();
+        if(target.previousElementSibling) {
+          const next = target.previousElementSibling;
+          const first = next.previousElementSibling;
+          if (first) {
+            next.setAttribute("tabindex", "0");
+            target.setAttribute("tabindex", "-1");
+            next.focus();
+          }
+        }
+      }
+    }
   },
 
   data () {
@@ -99,7 +146,7 @@ export default {
     liClass: function () {
       return {
         'li-opened': this.opened,
-        'options': true
+        'options': true,
       }
     },
     dropdownClass: function () {
