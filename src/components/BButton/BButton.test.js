@@ -30,16 +30,6 @@ describe('BButton', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('is disabled when disabled prop is passed', () => {
-    const wrapper = shallow(BButton, {
-      propsData: {
-        disabled: true
-      }
-    })
-
-    expect(wrapper.props().disabled).toBe(true)
-  })
-
   it('has an aria-label if one is passed', () => {
     const wrapper = shallow(BButton, {
       propsData: {
