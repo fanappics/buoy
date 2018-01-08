@@ -523,7 +523,20 @@ module.exports = function normalizeComponent (
   props: {
     label: {
       type: String
+    },
+    level: {
+      type: [String, Number],
+      default: 1,
+      validator: function validator(value) {
+        value = Number(value);
+        return !!value && value >= 0 && value <= 6;
+      }
     }
+  },
+  data: function data() {
+    return {
+      headerElement: 'h' + this.level
+    };
   }
 });
 
@@ -738,7 +751,7 @@ __WEBPACK_IMPORTED_MODULE_0__BContainer_vue__["a" /* default */].install = funct
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BContainer_vue__ = __webpack_require__(4);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_94f07bae_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BContainer_vue__ = __webpack_require__(17);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8b31b18_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BContainer_vue__ = __webpack_require__(17);
 function injectStyle (ssrContext) {
   __webpack_require__(15)
 }
@@ -753,12 +766,12 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-94f07bae"
+var __vue_scopeId__ = "data-v-f8b31b18"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
   __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_BContainer_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_94f07bae_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BContainer_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_f8b31b18_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_BContainer_vue__["a" /* default */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
@@ -779,7 +792,7 @@ var content = __webpack_require__(16);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(1)("3a5b0bd3", content, true);
+var update = __webpack_require__(1)("2f53974c", content, true);
 
 /***/ }),
 /* 16 */
@@ -790,7 +803,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "h1[data-v-94f07bae]{margin:2px 5px}div[data-v-94f07bae]{border:1px solid #d9d9d9;border-radius:3px;margin:2px 5px;padding:10px}section[data-v-94f07bae]{display:flex;flex:1;flex-direction:column}", ""]);
+exports.push([module.i, ".header[data-v-f8b31b18]{margin:2px 5px}div[data-v-f8b31b18]{border:1px solid #d9d9d9;border-radius:3px;margin:2px 5px;padding:10px}section[data-v-f8b31b18]{display:flex;flex:1;flex-direction:column}", ""]);
 
 // exports
 
@@ -800,7 +813,7 @@ exports.push([module.i, "h1[data-v-94f07bae]{margin:2px 5px}div[data-v-94f07bae]
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.label)?_c('h1',[_vm._v(_vm._s(_vm.label))]):_vm._e(),_vm._v(" "),_c('div',[_vm._t("default")],2)])}
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('section',[(_vm.label)?_c(_vm.headerElement,{tag:"component",staticClass:"header"},[_vm._v(_vm._s(_vm.label))]):_vm._e(),_vm._v(" "),_c('div',[_vm._t("default")],2)],1)}
 var staticRenderFns = []
 var esExports = { render: render, staticRenderFns: staticRenderFns }
 /* harmony default export */ __webpack_exports__["a"] = (esExports);
