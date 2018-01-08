@@ -1,2 +1,2 @@
 export { default as BButton } from './BButton'
-export { default as BTextArea } from './BTextArea'
+export { default as BTextarea } from './BTextarea'
