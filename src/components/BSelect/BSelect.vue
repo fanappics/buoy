@@ -17,12 +17,11 @@
         :id="id"
       >
         <li 
-          :class="liClass" 
+          :class="dropdownClass" 
           @click="openList"
           role="option"
-          :style="selectedOption ? {color: '#000000'} : {color: '#cccccc'}"
           >{{ selectedOption ? selectedOption.text : placeholder }}
-          <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true" style="color: #000000"></i></span>
+          <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
         <li
           :class="liClass"
@@ -102,6 +101,14 @@ export default {
         'li-opened': this.opened,
         'options': true
       }
+    },
+    dropdownClass: function () {
+      return {
+        'li-opened': this.opened,
+        'options': true,
+        'selected': this.selectedOption,
+        'unselected': !this.selectedOption
+      }
     }
   }
 }
@@ -149,6 +156,15 @@ export default {
 
   .dropdown-arrow {
     float: right;
+    color: #000000
+  }
+
+  .selected {
+    color: #000000;
+  }
+
+  .unselected {
+    color: #cccccc;
   }
 
 </style>
