@@ -5,7 +5,7 @@
     </label>
     <textarea
       v-model="inputValue"
-      v-bind="{id, name, cols, rows, placeholder, required, disabled, placeholder, hideLabel}"
+      v-bind="inputAttributes"
     />
     <div class="b-input-group--error">
       <span></span>
@@ -59,6 +59,18 @@ export default {
       get () {},
       set (value) {
         this.$emit('input', value)
+      }
+    },
+    inputAttributes () {
+      return {
+        id: this.id,
+        name: this.name,
+        cols: this.cols,
+        rows: this.rows,
+        placeholder: this.placeholder,
+        required: this.required,
+        disabled: this.disabled,
+        hideLabel: this.hideLabel
       }
     }
   }
