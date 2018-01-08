@@ -18,7 +18,7 @@ export default {
 section {
   background-color: rgb(248,248,248);
   display: flex;
-  flex: 0 0 3em;
+  flex: 0 0 3rem;
 }
 span.sides {
   flex: 0 0 10%;
