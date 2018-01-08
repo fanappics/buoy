@@ -1,12 +1,9 @@
 <template>
   <button
+    :aria-label="'aria-label'"
     :class="computedClass"
     :disabled="disabled"
-    :type="type"
-    :height="height"
-    :width="width"
     :style="computedStyle"
-    :aria-label="'aria-label'"
   >
     <slot></slot>
   </button>
@@ -17,10 +14,6 @@ export default {
   name: 'b-button',
   props: {
     'aria-label': {
-      type: String,
-      required: false
-    },
-    class: {
       type: String,
       required: false
     },
@@ -70,6 +63,9 @@ export default {
       }
       return styleObject
     }
+  },
+  render (h) {
+
   }
 }
 </script>
