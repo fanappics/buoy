@@ -17,6 +17,10 @@ export default {
       type: String,
       required: false
     },
+    color: {
+      type: String,
+      required: false
+    },
     disabled: {
       type: Boolean,
       required: false,
@@ -43,14 +47,13 @@ export default {
     computedClass () {
       // if any classes are passed through, provided them to the component as an array of strings
       const classArray = this.class ? this.class.split(' ') : [];
+      const classObj = {}
 
-      // can do differential class application in the future here, i.e.,
-      // we may want to break out 'color' as a prop to improve readability:
-      // if (this.color && !classArray.includes(this.color)) {
-        // classArray.push(this.color)
-      // }
+      if (this.color && !classArray.includes(this.color)) {
+        classObj[this.color] = this.color
+      }
 
-      return classArray
+      return classObj
     },
     computedStyle () {
       // allow size to be adjusted via props
