@@ -1,5 +1,5 @@
 <template>
-  <b-container label="test">
+  <b-container label="test" level="Six">
       <button>Test</button>
       <button>Test2</button> 
   </b-container>
