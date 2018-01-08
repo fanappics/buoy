@@ -27,7 +27,7 @@ describe('BButton', () => {
   it('is enabled when disabled prop is not passed', () => {
     const wrapper = shallow(BButton, {})
 
-    expect(wrapper.props().disabled).toBe(false)
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('is disabled when disabled prop is passed', () => {
