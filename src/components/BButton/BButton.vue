@@ -1,9 +1,9 @@
 <template>
   <button
     :aria-label="'aria-label'"
-    :class="computedClass"
     :disabled="disabled"
     :style="computedStyle"
+    :class="computedClass"
   >
     <slot></slot>
   </button>
@@ -63,9 +63,6 @@ export default {
       }
       return styleObject
     }
-  },
-  render (h) {
-
   }
 }
 </script>

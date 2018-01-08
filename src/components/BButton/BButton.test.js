@@ -50,6 +50,8 @@ describe('BButton', () => {
     expect(wrapper.props()['aria-label']).toBe('submit button')
   })
 
+  // I've asked in the vue gitter about this, but there doesn't seem to
+  // currently be a way to pass class through
   xit('has classes that are passed through class prop', () => {
     const wrapper = shallow(BButton, {
       propsData: {
@@ -57,7 +59,7 @@ describe('BButton', () => {
       }
     })
 
-    expect(wrapper.classes()).toContain('primary')
-    expect(wrapper.classes()).toContain('submit-button')
+    expect(wrapper.find('button').hasClass('primary')).toBe(true)
+    expect(wrapper.find('button').hasClass('submit-button')).toBe(true)
   })
 })
