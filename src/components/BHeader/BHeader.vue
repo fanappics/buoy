@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'b-section'
+  name: 'b-header'
 }
 </script>
 

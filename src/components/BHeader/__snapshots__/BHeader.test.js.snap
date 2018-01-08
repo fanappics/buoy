@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BSection renders correctly 1`] = `
+exports[`BHeader renders correctly 1`] = `
 <header>
     <div></div>
 </header>
