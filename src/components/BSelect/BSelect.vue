@@ -61,7 +61,7 @@ export default {
       type: String,
       required: true
     },
-    preSelectedOption: {
+    initialValue: {
       type: Object,
       required: false
     },
@@ -86,7 +86,7 @@ export default {
     return {
       options: this.selectOptions,
       opened: false,
-      selectedOption: this.preSelectedOption
+      selectedOption: this.initialValue
     }
   },
 

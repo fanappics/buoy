@@ -23,7 +23,7 @@
   data () {
     return {
       options: options,
-      placeholder: placeholder,
+      placeholder: placeholder
     }
   }
 }
