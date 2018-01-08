@@ -2,8 +2,9 @@
 
 exports[`BTextarea should add disabled class when the disabled prop is set 1`] = `
 <div class="b-input-group b-input-group--disabled">
-    <label><strong> 
-      <!----></strong></label>
+    <label>
+        <!---->
+    </label>
     <textarea cols="30" rows="5" disabled="disabled"></textarea>
     <div class="b-input-group--error"><span></span></div>
 </div>
@@ -12,15 +13,16 @@ exports[`BTextarea should add disabled class when the disabled prop is set 1`] =
 exports[`BTextarea should have an aria-label if label is hidden 1`] = `
 <div class="b-input-group">
     <!---->
-    <textarea aria-label="test" cols="30" rows="5"></textarea>
+    <textarea cols="30" rows="5" hidelabel="true"></textarea>
     <div class="b-input-group--error"><span></span></div>
 </div>
 `;
 
 exports[`BTextarea should render component 1`] = `
 <div class="b-input-group">
-    <label><strong> 
-      <!----></strong></label>
+    <label>
+        <!---->
+    </label>
     <textarea cols="30" rows="5"></textarea>
     <div class="b-input-group--error"><span></span></div>
 </div>
@@ -28,8 +30,10 @@ exports[`BTextarea should render component 1`] = `
 
 exports[`BTextarea should render component with a label 1`] = `
 <div class="b-input-group">
-    <label><strong> 
-      test<!----></strong></label>
+    <label>
+        test
+        <!---->
+    </label>
     <textarea cols="30" rows="5"></textarea>
     <div class="b-input-group--error"><span></span></div>
 </div>
@@ -37,8 +41,8 @@ exports[`BTextarea should render component with a label 1`] = `
 
 exports[`BTextarea should render component with label and asterisk 1`] = `
 <div class="b-input-group">
-    <label><strong> 
-      test<span aria-label="Required">*</span></strong></label>
+    <label>
+        test<span aria-label="Required">*</span></label>
     <textarea cols="30" rows="5" required="required"></textarea>
     <div class="b-input-group--error"><span></span></div>
 </div>

@@ -1,15 +1,11 @@
 <template>
   <div :class="classes">
     <label v-if="!hideLabel" :for="id">
-      <strong> 
-        {{ label }}<span v-if="required" aria-label="Required">*</span>
-      </strong>   
+      {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
     <textarea
       v-model="inputValue"
-      v-bind="{id, name, cols, rows, placeholder, required, disabled}"
-      :placeholder="placeholder ? placeholder : null"
-      :aria-label="hideLabel ? label : null"
+      v-bind="{id, name, cols, rows, placeholder, required, disabled, placeholder, hideLabel}"
     />
     <div class="b-input-group--error">
       <span></span>
