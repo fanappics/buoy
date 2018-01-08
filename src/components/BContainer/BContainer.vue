@@ -19,8 +19,12 @@ export default {
       default: 1,
       validator: function(value) {
         value = Number(value)
-        return !!value && (value >= 0 && value <= 6)
-    }
+        if (isNaN(value) || value < 1 || value > 6) {
+          throw new Error("Invalid header level")
+        }
+
+        return true
+      }
     }
   },
   data: function() {
