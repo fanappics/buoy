@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 v-if="label">{{ label }}</h1>
+    <component :is=headerElement class="header" v-if="label">{{ label }}</component>
     <div>
       <slot></slot>
     </div>
@@ -13,13 +13,26 @@ export default {
   props: {
     label: {
       type: String    
+    },
+    level: {
+      type: [String, Number],
+      default: 1,
+      validator: function(value) {
+        value = Number(value)
+        return !!value && (value >= 0 && value <= 6)
+    }
+    }
+  },
+  data: function() {
+    return {
+      headerElement: `h${this.level}`
     }
   }
 }
 </script>
 
 <style scoped>
-  h1 {
+  .header {
     margin: 2px 5px;
   }
   div {

@@ -2,7 +2,7 @@
 
 exports[`BContainer renders correctly 1`] = `
 <section>
-    <h1>hello world</h1>
+    <h1 class="header">hello world</h1>
     <div></div>
 </section>
 `;
