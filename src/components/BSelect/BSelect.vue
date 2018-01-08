@@ -199,10 +199,14 @@ export default {
     border-radius: 0;
     border-style: none none solid none;
     border-width: thin;
+
+  }  
+
+  .li-opened[aria-selected] {
+    font-weight: 600;
   }
 
   .li-opened:hover:not(:first-child) {
-    font-weight: 600;
     background-color: #f2f2f2;
   }
 
