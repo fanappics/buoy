@@ -1,6 +1,6 @@
 <template>
   <button
-    :aria-label="'aria-label'"
+    :aria-label="ariaLabel"
     :disabled="disabled"
     :style="computedStyle"
     :class="computedClass"
@@ -13,7 +13,7 @@
 export default {
   name: 'b-button',
   props: {
-    'aria-label': {
+    'ariaLabel': {
       type: String,
       required: false
     },
