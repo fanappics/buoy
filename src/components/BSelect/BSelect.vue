@@ -7,11 +7,12 @@
       :aria-expanded="opened"
       :aria-owns="id"
       :aria-label="selectLabel"
+      :aria-required="isRequired"
       role="combobox"
       tabindex="0"
       v-model="selectLabel"
       :id="'dropdown' + id"
-      @keyup.32="openList"
+      @keyup="keyUpHandler(selectedOption)"
     >
       <ul
         :class="ulClass"
@@ -21,7 +22,6 @@
         <li 
           :class="dropdownClass" 
           @click="openList"
-          role="option"
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
@@ -32,10 +32,11 @@
           :key="'selectOption' + option.id"
           :id="'option' + option.id"
           :value=option.id
+          :aria-selected="selectedOption && selectedOption.id === option.id"
           @click="selectOption(option)"
           role="option"
           :ref="'option' + option.id"
-          @keyup="keyPressHandler"
+          @keyup="keyUpHandler(option)"
           tabindex='-1'
         > {{ option.text }}
         </li>
@@ -92,7 +93,6 @@ export default {
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
-      console.log(this.selectLabel)
       document.querySelector(`#dropdown${this.id}`).focus()
     },
     setFocus () {
@@ -104,8 +104,9 @@ export default {
         line.focus()  
       }
     },
-    keyPressHandler () {
+    keyUpHandler (option) {
       const target = event.target;
+      event.stopPropagation();
       if(event.keyCode === 40) {
         event.preventDefault();
         if(target.nextElementSibling) {
@@ -124,6 +125,14 @@ export default {
             target.setAttribute("tabindex", "-1");
             next.focus();
           }
+        }
+      } else if ( event.keyCode === 32 && !this.opened) {
+        event.preventDefault();
+        this.openList()
+      } else if (event.keyCode === 32 || event.keyCode === 13) {
+        if (this.opened) {
+          event.preventDefault();
+          this.selectOption(option)
         }
       }
     }
