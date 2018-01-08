@@ -33,13 +33,13 @@ export default {
 
 <style scoped>
   .header {
-    margin: 2px 5px;
+    margin: 0.125rem 0.3125rem;
   }
   div {
     border:1px solid rgb(217,217,217);
-    border-radius: 3px;
-    margin: 2px 5px;
-    padding: 10px;
+    border-radius: 0.1875rem;
+    margin: 0.125rem 0.3125rem;
+    padding: 0.625rem;
   }
   section {
     display: flex;
