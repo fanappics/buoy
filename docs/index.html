@@ -10,29 +10,30 @@
   <script src="js/buoy.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Buoy Documentation</h1>
-  </header>
-  <section>
-    <nav>
-      <strong>Components</strong>
-    </nav>
-    <main>
-      <div id="app">
-          <b-button :text=message></b-button>
-          <b-container label="BContainer" level="3">
-            <b-button text="button 1"></b-button>
-            <b-button text="button 2"></b-button>
-            <b-button text="button 3"></b-button>
-          </b-container>
-      </div>
-    </main>
-    <aside></aside>
-  </section>
-  <footer>
-    &copy; Fanatics
-  </footer>
-  
+  <div id="app">
+        <b-header>
+          Buoy Documentation
+        </b-header>
+        <section>
+          <nav>
+            <strong>Components</strong>
+          </nav>
+          <main>
+            <div>
+                <b-button :text=message></b-button>
+                <b-container label="BContainer" level="3">
+                  <b-button text="button 1"></b-button>
+                  <b-button text="button 2"></b-button>
+                  <b-button text="button 3"></b-button>
+                </b-container>
+            </div>
+          </main>
+          <aside></aside>
+        </section>
+        <footer>
+          &copy; Fanatics
+        </footer>
+  </div>
   <script>
     Vue.use(buoy)
     var app = new Vue({
