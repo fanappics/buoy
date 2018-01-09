@@ -24,7 +24,7 @@
     "prepush": "npm run lint && npm test",
     "prepublish": "npm run build",
     "styleguide": "vue-styleguidist server --config ./build/styleguide.config.js --verbose",
-    "styleguide:build": "vue-styleguidist build --config ./build/styleguide.config.js --verbose"
+    "styleguide:build": "vue-styleguidist build --config ./build/styleguide.config.js && mv -f ./build/styleguide ./docs"
   },
   "repository": {
     "type": "git",
