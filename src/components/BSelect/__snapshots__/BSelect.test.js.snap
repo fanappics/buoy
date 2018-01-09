@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BSelect rendors a default select list 1`] = `
+<div>
+    <div>
+        <label>test
+            <!---->
+        </label>
+    </div>
+    <div aria-label="test" aria-owns="testId" id="dropdowntestId" role="combobox" tabindex="0">
+        <ul id="testId" role="listbox" class="">
+            <li class="options unselected">Choose Option
+                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li>
+            <!---->
+        </ul>
+    </div>
+</div>
+`;
+
+exports[`BSelect rendors a select list with a placeholder 1`] = `
+<div>
+    <div>
+        <label>test
+            <!---->
+        </label>
+    </div>
+    <div aria-label="test" aria-owns="testId" id="dropdowntestId" role="combobox" tabindex="0">
+        <ul id="testId" role="listbox" class="">
+            <li class="options unselected">test placeholder
+                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li>
+            <!---->
+        </ul>
+    </div>
+</div>
+`;
+
+exports[`BSelect rendors a select list with an initial value 1`] = `
+<div>
+    <div>
+        <label>test
+            <!---->
+        </label>
+    </div>
+    <div aria-label="test" aria-owns="testId" id="dropdowntestId" role="combobox" tabindex="0">
+        <ul id="testId" role="listbox" class="">
+            <li class="options selected">test
+                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li>
+            <!---->
+        </ul>
+    </div>
+</div>
+`;

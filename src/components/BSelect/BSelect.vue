@@ -5,19 +5,19 @@
     </div>
     <div 
       :aria-expanded="opened"
-      :aria-owns="id"
       :aria-label="selectLabel"
+      :aria-owns="id"
       :aria-required="isRequired"
+      :id="'dropdown' + id"
+      @keyup="keyUpHandler(selectedOption)"
       role="combobox"
       tabindex="0"
       v-model="selectLabel"
-      :id="'dropdown' + id"
-      @keyup="keyUpHandler(selectedOption)"
     >
       <ul
         :class="ulClass"
-        role="listbox"
         :id="id"
+        role="listbox"
       >
         <li 
           :class="dropdownClass" 
@@ -28,15 +28,14 @@
         <li
           v-if=opened
           v-for="option in options"
-          class="li-opened options"
-          :key="'selectOption' + option.id"
-          :id="'option' + option.id"
-          :value=option.id
           :aria-selected="selectedOption && selectedOption.id === option.id"
+          :id="'option' + option.id"
+          :key="'selectOption' + option.id"
+          :value=option.id
           @click="selectOption(option)"
-          role="option"
-          :ref="'option' + option.id"
           @keyup="keyUpHandler(option)"
+          class="li-opened options"
+          role="option"
           tabindex='-1'
         > {{ option.text }}
         </li>
