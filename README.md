@@ -14,12 +14,14 @@ https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a ref
 
 ## Live Style Guide and Documentation
 
+This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ style guide.
+
 This project uses [Vue Styleguiedist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living styleguide
 
 ### Updating the style guide
 
 1. When adding/updating a component you have [several options](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md)
-   - JDoc as demonstrated in [b-button](./src/components/BHeader/BHeader.vue)
+   - JDoc as demonstrated in [b-header](./src/components/BHeader/BHeader.vue)
    - A [Readme.md](src/components/BButton/Readme.md) referenced in the `.vue` file
 1. Run `npm run styleguide`
 1. See the thing live at `localhost:6060`
