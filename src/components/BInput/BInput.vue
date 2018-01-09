@@ -9,7 +9,7 @@
     </span>
     <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate="validations" :class="{ invalid: errors.any() }" />
     <template v-if="errors.any()">
-      <span :id="'error-' + id" class="error">
+      <span :id="`error-${id}`" class="error">
         <div v-for="error in errors.all()">
           {{ error }}
         </div>
