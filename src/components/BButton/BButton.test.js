@@ -38,5 +38,6 @@ describe('BButton', () => {
     })
 
     expect(wrapper.props()['aria-label']).toBe('submit button')
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

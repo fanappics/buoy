@@ -45,10 +45,11 @@ export default {
   },
   computed: {
     computedClass () {
-      // if any classes are passed through, provided them to the component as an array of strings
-      const classArray = this.class ? this.class.split(' ') : [];
       const classObj = {}
 
+      // get current classes and check if abstracted classes are already present
+      // don't copy them if so, otherwise, put them in classObj
+      const classArray = this.class ? this.class.split(' ') : [];
       if (this.color && !classArray.includes(this.color)) {
         classObj[this.color] = this.color
       }
