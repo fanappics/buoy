@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <label v-if="!hideLabel" :for="id">
+    <label :for="id">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
     <textarea
@@ -34,7 +34,6 @@ export default {
       default: 5
     },
     placeholder: String,
-    hideLabel: Boolean,
     label: {
       type: String,
       required: true
@@ -70,7 +69,6 @@ export default {
         placeholder: this.placeholder,
         required: this.required,
         disabled: this.disabled,
-        hideLabel: this.hideLabel
       }
     }
   }
