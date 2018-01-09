@@ -25,6 +25,8 @@
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
+        <i v-show="selectErrors.has('selectedOption')" class="fa fa-warning"></i>
+        <span v-show="selectErrors.has('selectedOption')" class="error" data-vv-as="selectLabel">{{ selectErrors.first('selectedOption') }}</span>
         <li
           v-if=opened
           v-for="option in options"
@@ -49,10 +51,13 @@
 
 <script>
 
+import { Validator } from 'vee-validate'
+
 const options = []
 
 export default {
   name: 'b-select',
+  validator: null,
   props: {
 
     id: {
@@ -94,6 +99,9 @@ export default {
           this.setFocus()
         })
       } else {
+        if (this.isRequired) {
+          this.validate()
+        }
         document.querySelector(`#dropdown${this.id}`).focus()
       }
     },
@@ -106,7 +114,18 @@ export default {
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
+      if (this.isRequired) {
+        this.validate()
+      }
       document.querySelector(`#dropdown${this.id}`).focus()
+    },
+
+    /**
+     * Handles validation if required.
+     */
+
+    validate () {
+      this.validator.validate('selectedOption', this.selectedOption)
     },
 
     /**
@@ -152,6 +171,10 @@ export default {
         target.setAttribute("tabindex", "-1");
         next.focus();
       }
+    }, 
+
+    clearErrors() {
+      this.errors.clear();
     }
   },
 
@@ -159,7 +182,8 @@ export default {
     return {
       options: this.selectOptions,
       opened: false,
-      selectedOption: this.initialValue
+      selectedOption: this.initialValue, 
+      selectErrors: null
     }
   },
 
@@ -174,9 +198,20 @@ export default {
         'li-opened': this.opened,
         'options': true,
         'selected': this.selectedOption,
-        'unselected': !this.selectedOption
+        'unselected': !this.selectedOption,
+        'invalid': this.selectErrors.items.length > 0
       }
     }
+  },
+
+  created() {
+    this.validator = new Validator()
+    this.validator.attach({
+      name: 'selectedOption',
+      rules: 'required',
+      alias: this.selectLabel
+    });
+    this.$set(this, 'selectErrors', this.validator.errors);
   }
 }
 
@@ -237,5 +272,14 @@ export default {
   .unselected {
     color: #cccccc;
   }
+
+  .error {
+   font-family: SFUIDisplay;
+   font-size: .9rem;
+   color: #d0021b ;
+ }
+ .invalid {
+   border: solid thin #d0021b ;
+ }
 
 </style>
