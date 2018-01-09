@@ -1,9 +1,11 @@
 body {
+  margin: 0;
+}
+#app {
   display: flex;
   min-height: 100vh;
   margin: 0;
-  flex-direction: column;
-}
+  flex-direction: column;}
 
 header h1 {
   text-align: center
