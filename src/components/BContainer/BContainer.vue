@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="valid()">
     <component :is=headerElement class="header" v-if="label">{{ label }}</component>
     <div>
       <slot></slot>
@@ -16,20 +16,25 @@ export default {
     },
     level: {
       type: [String, Number],
-      default: 1,
       validator: function(value) {
         value = Number(value)
         if (isNaN(value) || value < 1 || value > 6) {
           throw new Error("Invalid header level")
         }
-
         return true
       }
     }
   },
   data: function() {
     return {
-      headerElement: `h${this.level}`
+      headerElement: `h${this.level}`,
+      valid: function () {
+        if (!this.label || this.level) {
+          return true
+        } else {
+          throw new Error("Property label requires a level property.")
+        }
+      }
     }
   }
 }
