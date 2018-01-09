@@ -28,17 +28,6 @@ describe('BTextarea', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('should have an aria-label if label is hidden', () => {
-    const wrapper = shallow(BTextarea, {
-      propsData: {
-        label: 'test',
-        hideLabel: true
-      }
-    })
-
-    expect(wrapper.html()).toMatchSnapshot()
-  })
-
   it('should add disabled class when the disabled prop is set', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
