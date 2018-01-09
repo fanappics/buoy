@@ -26,7 +26,6 @@
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
-        <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error' + id">{{ selectErrors.first('selectedOption') }}</span>
         <li
           v-if=opened
           v-for="option in selectOptions"
@@ -35,8 +34,8 @@
           :key="'selectOption' + option.id"
           :value=option.id
           @click="selectOption(option)"
-          @keyup.up.prevent="upHandler"
-          @keyup.down.prevent="downHandler"
+          @keyup.up.prevent="upHandler($event)"
+          @keyup.down.prevent="downHandler($event)"
           @keyup.enter.prevent="selectOption(option)"
           @keyup.space.prevent.stop="selectOption(option)"
           class="li-opened options"
@@ -45,6 +44,7 @@
         > {{ option.text }}
         </li>
       </ul>
+      <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error' + id">{{ selectErrors.first('selectedOption') }}</span>
     </div>
   </div>
 </template>
@@ -136,7 +136,7 @@ export default {
         const line = document.querySelector(`#${this.id} #option${this.selectedOption.id}`)
         line.focus()
       } else {
-        const line = document.querySelector(`#${this.id} #option${this.options[0].id}`)
+        const line = document.querySelector(`#${this.id} #option${this.selectOptions[0].id}`)
         line.focus()  
       }
     },
@@ -145,7 +145,7 @@ export default {
      * Handles the up arrow (38) key press event
      */
 
-    upHandler () {
+    upHandler (event) {
       const target = event.target;
       if(target.previousElementSibling) {
         const next = target.previousElementSibling;
@@ -162,7 +162,7 @@ export default {
      * Handles the down arrow (40) key press event
      */
 
-    downHandler () {
+    downHandler (event) {
       const target = event.target;
       if(target.nextElementSibling) {
         const next = target.nextElementSibling;
@@ -175,7 +175,6 @@ export default {
 
   data () {
     return {
-      options: this.selectOptions,
       opened: false,
       selectedOption: this.initialValue, 
       selectErrors: null
