@@ -31,7 +31,7 @@ running `npm i -g` will install the buoy CLI tool.
 
 | Command | Description |
 | --- | --- |
-| buoy i &#124; init | Create a new buoy.json file with default configureation |
+| buoy i &#124; init | Create a new buoy.json file with default configuration |
 | buoy m &#124; make [mame] | Scaffold a new component using the name parameter |
 
 ### Configuration
