@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Autofocused input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" autofocus="autofocus" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" type="text" class="" data-vv-id="9" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Currency input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label> <span class="currencyinput"><strong>$</strong> <input aria-describedby="" aria-label="My Input" data-vv-as="currency" data-vv-validate-on="input|blur" id="input-1" placeholder="0.00" type="number" data-vv-id="3" aria-required="false" aria-invalid="false"></span>
+    <!---->
+</div>
+`;
+
+exports[`Disabled input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="disabled">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" disabled="disabled" id="input-1" type="text" class="" data-vv-id="4" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Named input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" name="Name of Input" type="text" class="" data-vv-id="8" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Number input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" data-vv-as="number" data-vv-validate-on="input|blur" id="input-1" type="number" class="" data-vv-id="2" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Pattern input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" pattern="^([0-9]+)$" type="text" class="" data-vv-id="6" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Readonly input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" readonly="readonly" type="text" class="" data-vv-id="7" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Required input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input<span aria-label="Required">*</span></label>
+    <input aria-describedby="" aria-label="My Input" aria-required="true" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" required="required" type="text" class="" data-vv-id="5"
+        aria-invalid="false">
+    <!---->
+</div>
+`;
+
+exports[`Text input mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input
+        <!---->
+    </label>
+    <input aria-describedby="" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" type="text" class="" data-vv-id="1" aria-required="false" aria-invalid="false">
+    <!---->
+</div>
+`;
