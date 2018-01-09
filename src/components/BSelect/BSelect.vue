@@ -25,7 +25,6 @@
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
-        <i v-show="selectErrors.has('selectedOption')" class="fa fa-warning"></i>
         <span v-show="selectErrors.has('selectedOption')" class="error" data-vv-as="selectLabel">{{ selectErrors.first('selectedOption') }}</span>
         <li
           v-if=opened
