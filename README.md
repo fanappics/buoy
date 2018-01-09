@@ -12,16 +12,18 @@ https://pattern-library.dequelabs.com is a resource for an accessible UI library
 
 https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a reference for building components.
 
-This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ style guide.
-
 ## Live Style Guide and Documentation
 
-You can view the live style guide and documentation [Here](https://fanappics.github.io/buoy/)
+This project uses [Vue Styleguiedist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living styleguide
 
 ### Updating the style guide
 
-1. Run `npm run build:docs` to build the project and copy the files into the `docs` directory
-1. Make the appropriate changes in the `docs` directory.
+1. When adding/updating a component you have [several options](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md)
+   - JDoc as demonstrated in [b-button](./src/components/BHeader/BHeader.vue)
+   - A [Readme.md](src/components/BButton/Readme.md) referenced in the `.vue` file
+1. Run `npm run styleguide`
+1. See the thing live at `localhost:6060`
+
 ## CLI
 
 running `npm i -g` will install the buoy CLI tool.

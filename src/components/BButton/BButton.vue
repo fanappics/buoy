@@ -10,13 +10,9 @@
 </template>
 
 <script>
-  /**
-   * Buoy Button Component
-   */
-
 export default {
   /**
-   * Component is described here.
+   * Component example provided here.
    *
    * @example ./Readme.md
    */

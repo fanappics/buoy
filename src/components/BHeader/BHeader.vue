@@ -5,6 +5,9 @@
 </template>
 
 <script>
+  /**
+  * Buoy Header Component
+  */
 export default {
   name: 'b-header'
 }
