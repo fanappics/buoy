@@ -9,7 +9,7 @@
       :aria-owns="id"
       :aria-required="isRequired"
       :id="'dropdown' + id"
-      @keyup="keyUpHandler(selectedOption)"
+      @keyup.32.prevent.stop="toggleList"
       role="combobox"
       tabindex="0"
       v-model="selectLabel"
@@ -33,7 +33,10 @@
           :key="'selectOption' + option.id"
           :value=option.id
           @click="selectOption(option)"
-          @keyup="keyUpHandler(option)"
+          @keyup.38.prevent="upHandler"
+          @keyup.40.prevent="downHandler"
+          @keyup.13.prevent="selectOption(option)"
+          @keyup.32.prevent.stop="selectOption(option)"
           class="li-opened options"
           role="option"
           tabindex='-1'
@@ -121,41 +124,33 @@ export default {
     },
 
     /**
-     * @param {object} option
-     * Handles keypresses for keyboard navigation in the component.
-     * Up arrow (38), down arrow (40), space bar (32), and return (13) are supported.
+     * Handles the up arrow (38) key press event
      */
 
-    keyUpHandler (option) {
+    upHandler () {
       const target = event.target;
-      event.stopPropagation();
-      if(event.keyCode === 40) {
-        event.preventDefault();
-        if(target.nextElementSibling) {
-          const next = target.nextElementSibling;
+      if(target.previousElementSibling) {
+        const next = target.previousElementSibling;
+        const first = next.previousElementSibling;
+        if (first) {
           next.setAttribute("tabindex", "0");
           target.setAttribute("tabindex", "-1");
           next.focus();
         }
-      } else if(event.keyCode === 38) {
-        event.preventDefault();
-        if(target.previousElementSibling) {
-          const next = target.previousElementSibling;
-          const first = next.previousElementSibling;
-          if (first) {
-            next.setAttribute("tabindex", "0");
-            target.setAttribute("tabindex", "-1");
-            next.focus();
-          }
-        }
-      } else if ( event.keyCode === 32 && !this.opened) {
-        event.preventDefault();
-        this.toggleList()
-      } else if (event.keyCode === 32 || event.keyCode === 13) {
-        if (this.opened) {
-          event.preventDefault();
-          this.selectOption(option)
-        }
+      }
+    },
+
+    /**
+     * Handles the down arrow (40) key press event
+     */
+
+    downHandler () {
+      const target = event.target;
+      if(target.nextElementSibling) {
+        const next = target.nextElementSibling;
+        next.setAttribute("tabindex", "0");
+        target.setAttribute("tabindex", "-1");
+        next.focus();
       }
     }
   },
