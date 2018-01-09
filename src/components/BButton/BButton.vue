@@ -10,7 +10,16 @@
 </template>
 
 <script>
+  /**
+   * Buoy Button Component
+   */
+
 export default {
+  /**
+   * Component is described here.
+   *
+   * @example ./Readme.md
+   */
   name: 'b-button',
   props: {
     'ariaLabel': {

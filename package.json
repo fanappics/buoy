@@ -22,7 +22,8 @@
     "lint": "eslint --ext .js,.vue src",
     "precommit": "npm run lint && npm test",
     "prepush": "npm run lint && npm test",
-    "prepublish": "npm run build"
+		"prepublish": "npm run build",
+		"styleguide": "vue-styleguidist server --config ./build/styleguide.config.js --verbose"
   },
   "repository": {
     "type": "git",
@@ -99,6 +100,7 @@
     "vue-jest": "^1.2.0",
     "vue-loader": "^13.6.0",
     "vue-router": "^3.0.1",
+    "vue-styleguidist": "^1.4.4",
     "vue-template-compiler": "^2.5.9",
     "vue-test-utils": "^1.0.0-beta.7",
     "webpack": "^3.10.0",
