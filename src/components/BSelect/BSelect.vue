@@ -8,8 +8,9 @@
       :aria-label="selectLabel"
       :aria-owns="id"
       :aria-required="isRequired"
+      :aria-describedby="'error' + id"
       :id="'dropdown' + id"
-      @keyup.32.prevent.stop="toggleList"
+      @keyup.space.prevent.stop="toggleList"
       role="combobox"
       tabindex="0"
       v-model="selectLabel"
@@ -25,19 +26,19 @@
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
-        <span v-show="selectErrors.has('selectedOption')" class="error" data-vv-as="selectLabel">{{ selectErrors.first('selectedOption') }}</span>
+        <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error' + id">{{ selectErrors.first('selectedOption') }}</span>
         <li
           v-if=opened
-          v-for="option in options"
+          v-for="option in selectOptions"
           :aria-selected="selectedOption && selectedOption.id === option.id"
           :id="'option' + option.id"
           :key="'selectOption' + option.id"
           :value=option.id
           @click="selectOption(option)"
-          @keyup.38.prevent="upHandler"
-          @keyup.40.prevent="downHandler"
-          @keyup.13.prevent="selectOption(option)"
-          @keyup.32.prevent.stop="selectOption(option)"
+          @keyup.up.prevent="upHandler"
+          @keyup.down.prevent="downHandler"
+          @keyup.enter.prevent="selectOption(option)"
+          @keyup.space.prevent.stop="selectOption(option)"
           class="li-opened options"
           role="option"
           tabindex='-1'
@@ -58,7 +59,6 @@ export default {
   name: 'b-select',
   validator: null,
   props: {
-
     id: {
       type: String,
       required: true
@@ -171,10 +171,6 @@ export default {
         next.focus();
       }
     }, 
-
-    clearErrors() {
-      this.errors.clear();
-    }
   },
 
   data () {

@@ -7,10 +7,10 @@ exports[`BSelect rendors a default select list 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-label="test" aria-owns="testId" id="dropdowntestId" role="combobox" tabindex="0">
+    <div aria-label="test" aria-owns="testId" aria-describedby="errortestId" id="dropdowntestId" role="combobox" tabindex="0">
         <ul id="testId" role="listbox" class="">
             <li class="options unselected">Choose Option
-                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li> <span data-vv-as="selectLabel" class="error" style="display: none;"></span>
+                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li> <span id="errortestId" class="error" style="display: none;"></span>
             <!---->
         </ul>
     </div>
@@ -24,10 +24,10 @@ exports[`BSelect rendors a select list with a placeholder 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-label="test" aria-owns="testId" id="dropdowntestId" role="combobox" tabindex="0">
+    <div aria-label="test" aria-owns="testId" aria-describedby="errortestId" id="dropdowntestId" role="combobox" tabindex="0">
         <ul id="testId" role="listbox" class="">
             <li class="options unselected">test placeholder
-                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li> <span data-vv-as="selectLabel" class="error" style="display: none;"></span>
+                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li> <span id="errortestId" class="error" style="display: none;"></span>
             <!---->
         </ul>
     </div>
@@ -41,10 +41,10 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-label="test" aria-owns="testId" id="dropdowntestId" role="combobox" tabindex="0">
+    <div aria-label="test" aria-owns="testId" aria-describedby="errortestId" id="dropdowntestId" role="combobox" tabindex="0">
         <ul id="testId" role="listbox" class="">
             <li class="options selected">test
-                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li> <span data-vv-as="selectLabel" class="error" style="display: none;"></span>
+                <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></li> <span id="errortestId" class="error" style="display: none;"></span>
             <!---->
         </ul>
     </div>
