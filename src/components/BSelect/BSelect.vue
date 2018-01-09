@@ -1,13 +1,13 @@
 <template>
   <div>
     <div>
-      <label>{{ selectLabel }} <span v-if=isRequired aria-label='Required'>*</span></label>
+      <label>{{ selectLabel }} <span v-if=required aria-label='Required'>*</span></label>
     </div>
     <div 
       :aria-expanded="opened"
       :aria-label="selectLabel"
       :aria-owns="id"
-      :aria-required="isRequired"
+      :aria-required="required"
       :aria-describedby="'error' + id"
       :id="'dropdown' + id"
       @keyup.space.prevent.stop="toggleList"
@@ -66,7 +66,7 @@ export default {
     selectOptions: {
       type: Array
     },
-    isRequired: {
+    required: {
       type: Boolean,
       required: true
     },
@@ -98,7 +98,7 @@ export default {
           this.setFocus()
         })
       } else {
-        if (this.isRequired) {
+        if (this.required) {
           this.validate()
         }
         document.querySelector(`#dropdown${this.id}`).focus()
@@ -113,7 +113,7 @@ export default {
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
-      if (this.isRequired) {
+      if (this.required) {
         this.validate()
       }
       document.querySelector(`#dropdown${this.id}`).focus()

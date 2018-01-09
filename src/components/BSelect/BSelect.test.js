@@ -4,7 +4,7 @@ import BSelect from './BSelect'
 describe('BSelect', () => {
   const selectOptions = [{id: 1, text: 'test'}]
   const initialValue = {id: 1, text: 'test'}
-  const isRequired = false
+  const required = false
   const selectLabel = 'test'
   const id = 'testId'
   const placeholder = 'test placeholder'
@@ -14,7 +14,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel
       }
     })
@@ -26,7 +26,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel,
         initialValue: initialValue
       }
@@ -40,7 +40,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel,
         placeholder: placeholder
       }
@@ -54,7 +54,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel,
         placeholder: placeholder
       }
@@ -70,7 +70,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel
       }
     })
@@ -82,7 +82,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel,
         initialValue: initialValue
       }
@@ -95,7 +95,7 @@ describe('BSelect', () => {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        isRequired: isRequired,
+        required: required,
         selectLabel: selectLabel,
         placeholder: placeholder
       }
