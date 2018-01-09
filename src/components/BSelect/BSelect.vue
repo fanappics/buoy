@@ -21,14 +21,14 @@
       >
         <li 
           :class="dropdownClass" 
-          @click="openList"
+          @click="toggleList"
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
         <li
           v-if=opened
           v-for="option in options"
-          :class="liClass"
+          class="li-opened options"
           :key="'selectOption' + option.id"
           :id="'option' + option.id"
           :value=option.id
@@ -80,7 +80,12 @@ export default {
   },
 
   methods: {
-    openList () {
+
+    /**
+     * Shows and hides line options for the select list.
+     */
+
+    toggleList () {
       this.opened = !this.opened
       if (this.opened) {
         this.$nextTick( function () {
@@ -90,11 +95,22 @@ export default {
         document.querySelector(`#dropdown${this.id}`).focus()
       }
     },
+
+    /**
+     * @param {Object} option
+     * Handles the selection of a line and closed the list.
+     */
+
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
       document.querySelector(`#dropdown${this.id}`).focus()
     },
+
+    /**
+     * Handles the focus setting for accessibility purposes
+     */
+
     setFocus () {
       if (this.selectedOption) {
         const line = document.querySelector(`#${this.id} #option${this.selectedOption.id}`)
@@ -104,6 +120,13 @@ export default {
         line.focus()  
       }
     },
+
+    /**
+     * @param {object} option
+     * Handles keypresses for keyboard navigation in the component.
+     * Up arrow (38), down arrow (40), space bar (32), and return (13) are supported.
+     */
+
     keyUpHandler (option) {
       const target = event.target;
       event.stopPropagation();
@@ -128,7 +151,7 @@ export default {
         }
       } else if ( event.keyCode === 32 && !this.opened) {
         event.preventDefault();
-        this.openList()
+        this.toggleList()
       } else if (event.keyCode === 32 || event.keyCode === 13) {
         if (this.opened) {
           event.preventDefault();
@@ -150,12 +173,6 @@ export default {
     ulClass: function () {
       return {
         'ul-opened': this.opened
-      }
-    },
-    liClass: function () {
-      return {
-        'li-opened': this.opened,
-        'options': true,
       }
     },
     dropdownClass: function () {
