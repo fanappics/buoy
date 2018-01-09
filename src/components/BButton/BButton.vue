@@ -1,9 +1,9 @@
 <template>
   <button
     :aria-label="ariaLabel"
+    :class="computedClass"
     :disabled="disabled"
     :style="computedStyle"
-    :class="computedClass"
   >
     <slot></slot>
   </button>
