@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <label>{{ selectLabel }} <span v-if=required aria-label='Required'>*</span></label>
+      <label :id="'label-' + id">{{ selectLabel }} <span v-if=required aria-label='Required'>*</span></label>
     </div>
     <div 
       :aria-expanded="opened"
@@ -9,20 +9,21 @@
       :aria-owns="id"
       :aria-required="required"
       :aria-describedby="'error' + id"
+      :aria-labelledby="'label-' + id"
       :id="'dropdown' + id"
       @keyup.space.prevent.stop="toggleList"
-      role="combobox"
       tabindex="0"
       v-model="selectLabel"
+      role="listbox"
     >
       <ul
         :class="ulClass"
         :id="id"
-        role="listbox"
       >
         <li 
-          :class="dropdownClass" 
+          :class="dropdownClass"
           @click="toggleList"
+          aria-haspopup="listbox"
           >{{ selectedOption ? selectedOption.text : placeholder }}
           <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
         </li>
