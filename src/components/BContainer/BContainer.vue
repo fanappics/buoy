@@ -1,6 +1,6 @@
 <template>
-  <section v-if="valid()">
-    <component :is=headerElement class="header" v-if="label">{{ label }}</component>
+  <section role="contentinfo" :aria-label="label">
+    <component v-if=!hideLabel :is=headerElement() class="header">{{ label }}</component>
     <div>
       <slot></slot>
     </div>
@@ -12,27 +12,31 @@ export default {
   name: 'b-container',
   props: {
     label: {
-      type: String    
+      type: String,
+      required: true
     },
-    level: {
-      type: [String, Number],
-      validator: function(value) {
-        value = Number(value)
-        if (isNaN(value) || value < 1 || value > 6) {
-          throw new Error("Invalid header level")
-        }
-        return true
-      }
+    headerLevel: {
+      type: [String, Number]
+    },
+    hideLabel: {
+      type: Boolean
+    }
+  },
+  created: function() {
+    if (typeof this.headerLevel === "undefined") {
+      console.warn ('No headerLevel property set, defaulting to 2')
+    }
+    if (isNaN(this.headerLevel) || this.headerLevel < 1 || this.headerLevel > 6) {
+      console.error('Invalid headerLevel property set. Valid input are numbers 1-6.  Reverting to default level 2.')
     }
   },
   data: function() {
     return {
-      headerElement: `h${this.level}`,
-      valid: function () {
-        if (!this.label || this.level) {
-          return true
+      headerElement: () => {
+        if (isNaN(this.headerLevel) || this.headerLevel < 1 || this.headerLevel > 6) {
+          return `h2`
         } else {
-          throw new Error("Property label requires a level property.")
+          return `h${this.headerLevel}`
         }
       }
     }
@@ -45,6 +49,8 @@ export default {
     margin: 0.125rem 0.3125rem;
   }
   div {
+    display: flex;
+    flex-grow: 1;
     border:1px solid rgb(217,217,217);
     border-radius: 0.1875rem;
     margin: 0.125rem 0.3125rem;
