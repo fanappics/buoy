@@ -1,4 +1,4 @@
-import { mount, shallow } from 'vue-test-utils'
+import { mount } from 'vue-test-utils'
 import BBanner from './BBanner'
 
 describe('BBanner', () => {

@@ -1,9 +1,9 @@
-import { mount, shallow } from 'vue-test-utils'
+import { shallow } from 'vue-test-utils'
 import BNav from './BNav'
 
 describe('BNav', () => {
   it('renders a button', () => {
-    const wrapper = mount(BNav)
+    const wrapper = shallow(BNav)
 
     expect(wrapper.html()).toMatchSnapshot()
   })
