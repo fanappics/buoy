@@ -10,24 +10,25 @@
   <script src="js/buoy.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Buoy Documentation</h1>
-  </header>
-  <section>
-    <nav>
-      <strong>Components</strong>
-    </nav>
-    <main>
-      <div id="app">
-          <b-button :text=message></b-button>
-      </div>
-    </main>
-    <aside></aside>
-  </section>
-  <footer>
-    &copy; Fanatics
-  </footer>
-  
+  <div id="app">
+        <b-header>
+          Buoy Documentation
+        </b-header>
+        <section>
+          <nav>
+            <strong>Components</strong>
+          </nav>
+          <main>
+            <div>
+                <b-button :text=message></b-button>
+            </div>
+          </main>
+          <aside></aside>
+        </section>
+        <footer>
+          &copy; Fanatics
+        </footer>
+  </div>
   <script>
     Vue.use(buoy)
     var app = new Vue({
