@@ -16,7 +16,10 @@ exports[`Currency input mounted html should match snapshot 1`] = `
     <label for="input-1" class="">
         My Input
         <!---->
-    </label> <span class="currencyinput"><strong>$</strong> <input aria-describedby="" aria-label="My Input" data-vv-as="currency" data-vv-validate-on="input|blur" id="input-1" placeholder="0.00" type="number" data-vv-id="3" aria-required="false" aria-invalid="false"></span>
+    </label>
+    <div class="currency"><span style="font-weight: bold;">$</span>
+        <input aria-describedby="" aria-label="My Input" data-vv-as="currency" data-vv-validate-on="input|blur" id="input-1" placeholder="0.00" type="number" data-vv-id="3" aria-required="false" aria-invalid="false">
+    </div>
     <!---->
 </div>
 `;
@@ -76,11 +79,23 @@ exports[`Readonly input mounted html should match snapshot 1`] = `
 </div>
 `;
 
+exports[`Required input failing validation mounted html should match snapshot 1`] = `
+<div class="flex">
+    <label for="input-1" class="">
+        My Input<span aria-label="Required">*</span></label>
+    <input aria-describedby="error-input-1" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" required="required" type="text" class="invalid" data-vv-id="10"
+        aria-required="true" aria-invalid="true">
+    <div id="error-input-1" class="error"><span>
+      The text field is required.
+    </span></div>
+</div>
+`;
+
 exports[`Required input mounted html should match snapshot 1`] = `
 <div class="flex">
     <label for="input-1" class="">
         My Input<span aria-label="Required">*</span></label>
-    <input aria-describedby="" aria-label="My Input" aria-required="true" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" required="required" type="text" class="" data-vv-id="5"
+    <input aria-describedby="" aria-label="My Input" data-vv-as="text" data-vv-validate-on="input|blur" id="input-1" required="required" type="text" class="" data-vv-id="5" aria-required="true"
         aria-invalid="false">
     <!---->
 </div>

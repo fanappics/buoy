@@ -129,3 +129,25 @@ describe('Autofocused input', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
+
+describe('Required input failing validation', () => {
+  it('mounted html should match snapshot', async () => {
+    const wrapper = shallow(BInput, {
+      propsData: {
+        id: 'input-1',
+        label: 'My Input',
+        required: true
+      },
+      localVue
+    })
+
+    const input = wrapper.find('input')
+    input.trigger('focus')
+    await wrapper.vm.$nextTick()
+    input.element.value = ' '
+    input.trigger('input')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})

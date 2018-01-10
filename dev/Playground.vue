@@ -27,6 +27,8 @@
     <b-input id="input-13" v-model="formData.number" type="number" label="My Number Input" :min="1" :max="100" />
     <br />
     <b-input id="input-14" label="My Regex Input (Digits Only)" pattern="^([0-9]+)$" />
+    <br />
+    <b-input id="input-15" v-model="formData.innerData.email" label="My Email Input" type="email" />
   </div>
 </template>
 
@@ -42,7 +44,10 @@
         datetime: '1970-01-01T00:00',
         number: '50',
         password: '',
-        value: 'Fanatics'
+        value: 'Fanatics',
+        innerData: {
+          email: 'test@fanatics'
+        }
       }
     })
   }

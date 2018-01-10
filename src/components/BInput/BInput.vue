@@ -3,18 +3,16 @@
     <label :for="id" :class="{ disabled: disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <span v-if="type === 'currency'" :class="{ currencyinput: true, focus: hasFocus, disabled: disabled, invalid: errors.any() }" @click="$refs.input.focus()">
-      <strong>$</strong>
-      <input v-model="publicValue" v-bind="inputAttributes" v-validate="validations" @focus="hasFocus = true" @blur="hasFocus = false" ref="input" />
-    </span>
-    <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate="validations" :class="{ invalid: errors.any() }" />
-    <template v-if="errors.any()">
-      <span :id="`error-${id}`" class="error">
-        <div v-for="error in errors.all()">
-          {{ error }}
-        </div>
+    <div v-if="currency" :class="{ currency: true, focused: focused, disabled: disabled, invalid: invalid }" @click="$refs.input.focus()">
+      <span style="font-weight: bold;">$</span>
+      <input v-model="publicValue" v-bind="inputAttributes" v-validate="validations" @focus="focused = true" @blur="focused = false" ref="input" />
+    </div>
+    <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate="validations" :class="{ invalid: invalid }" />
+    <div v-if="invalid" :id="`error-${id}`" class="error">
+      <span v-for="error in errors.all()">
+        {{ error }}
       </span>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -58,15 +56,14 @@ export default {
   data () {
     return {
       privateValue: this.value ? this.value : '',
-      hasFocus: false
+      focused: false
     }
   },
   computed: {
     inputAttributes () {
       return {
-        'aria-describedby': this.errors.any() ? 'error-' + this.id : '',
+        'aria-describedby': this.invalid ? `error-${this.id}` : '',
         'aria-label': this.label,
-        'aria-required': this.required,
         'autofocus': this.autofocus,
         'data-vv-as': this.type,
         'data-vv-validate-on': 'input|blur',
@@ -74,11 +71,17 @@ export default {
         'id': this.id,
         'name': this.name,
         'pattern': this.pattern,
-        'placeholder': this.type === 'currency' && !this.placeholder ? '0.00' : this.placeholder,
+        'placeholder': this.currency && !this.placeholder ? '0.00' : this.placeholder,
         'readonly': this.readonly,
         'required': this.required,
-        'type': this.type === 'currency' ? 'number' : this.type
+        'type': this.currency ? 'number' : this.type
       }
+    },
+    currency () {
+      return this.type === 'currency'
+    },
+    invalid () {
+      return this.errors.any()
     },
     //Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
     publicValue: {
@@ -90,6 +93,7 @@ export default {
         this.$emit('input', this.privateValue)
       }
     },
+    //Creates an object that VeeValidate reads to apply certain rules
     validations () {
       let vals = {}
       if (this.max)
@@ -119,11 +123,6 @@ export default {
       }
       return vals
     }
-  },
-  methods: {
-    validate () {
-
-    }
   }
 }
 </script>
@@ -150,10 +149,10 @@ export default {
     display: block;
     font-family: SFUIDisplay;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: bold;
     padding-bottom: 6px;
   }
-  .currencyinput {
+  .currency {
     align-items: baseline;
     border: solid 1px #dededf;
     border-radius: 4px;
@@ -164,13 +163,13 @@ export default {
     font-size: 14px;
     padding: 12px;
   }
-  .currencyinput input {
+  .currency input {
     background-color: transparent;
     border: 0;
     flex-grow: 1;
     padding: 0 0 0 12px;
   }
-  .currencyinput input:focus {
+  .currency input:focus {
     outline: 0;
   }
   .disabled, input:disabled {
@@ -186,7 +185,7 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  .focus {
+  .focused {
     outline: -webkit-focus-ring-color auto 5px;
     outline-offset: -2px;
   }
