@@ -1,6 +1,7 @@
 <template>
-  <v-app>
-  </v-app>
+    <b-banner>
+
+    </b-banner>
 </template>
 
 <script>
