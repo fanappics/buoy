@@ -31,8 +31,8 @@ describe('BSelect', () => {
         initialValue: initialValue
       }
     })
-    const initialLine = wrapper.find('li')
-    expect(initialLine.text()).toBe('test')
+    const div = wrapper.find(`#dropdown-${id}`)
+    expect(div.text()).toBe('test')
   })
 
   it('display placeholder if no initial value', () => {
@@ -45,11 +45,11 @@ describe('BSelect', () => {
         placeholder: placeholder
       }
     })
-    const initialLine = wrapper.find('li')
-    expect(initialLine.text()).toBe('test placeholder')
+    const div = wrapper.find(`#dropdown-${id}`)
+    expect(div.text()).toBe('test placeholder')
   })
 
-  it('opens list when line is clicked', () => {
+  it('opens list when div is clicked', () => {
     const wrapper = mount(BSelect, {
       propsData: {
         id: id,
@@ -59,10 +59,27 @@ describe('BSelect', () => {
         placeholder: placeholder
       }
     })
-    const initialLine = wrapper.find('li')
-    expect(initialLine.hasClass('li-opened')).toBe(false)
-    initialLine.trigger('click')
-    expect(initialLine.hasClass('li-opened')).toBe(true)
+    const div = wrapper.find(`#dropdown-${id}`)
+    expect(wrapper.html()).toMatchSnapshot()
+    div.trigger('click')
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  xit('throws error if option not chosen when required', async () => {
+    const wrapper = mount(BSelect, {
+      propsData: {
+        id: id,
+        selectOptions: selectOptions,
+        required: required,
+        selectLabel: selectLabel
+      }
+    })
+    const div = wrapper.find(`#dropdown-${id}`)
+    await wrapper.vm.$nextTick()
+    div.trigger('click')
+    div.trigger('click')
+    console.log(wrapper.html())
+    expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('rendors a default select list', () => {

@@ -2,7 +2,7 @@
   <div style="width: 50%">
     <BSelect
             v-bind:selectOptions=options
-            v-bind:required=false
+            v-bind:required=true
             id="testId"
             v-bind:placeholder=placeholder
             selectLabel="Select Test"

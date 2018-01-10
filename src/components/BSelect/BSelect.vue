@@ -3,50 +3,46 @@
     <div>
       <label :id="'label-' + id">{{ selectLabel }} <span v-if=required aria-label='Required'>*</span></label>
     </div>
-    <div 
+    <div
+      :class="dropdownClass"
       :aria-expanded="opened"
-      :aria-label="selectLabel"
       :aria-owns="id"
       :aria-required="required"
       :aria-describedby="'error' + id"
       :aria-labelledby="'label-' + id"
-      :id="'dropdown' + id"
+      :id="'dropdown-' + id"
       @keyup.space.prevent.stop="toggleList"
+      @click="toggleList"
       tabindex="0"
       v-model="selectLabel"
+      aria-haspopup="listbox"
+      >{{ selectedOption ? selectedOption.text : placeholder }}
+      <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
+    </div>
+    <ul
+      :class="ulClass"
+      :id="id"
       role="listbox"
     >
-      <ul
-        :class="ulClass"
-        :id="id"
-      >
-        <li 
-          :class="dropdownClass"
-          @click="toggleList"
-          aria-haspopup="listbox"
-          >{{ selectedOption ? selectedOption.text : placeholder }}
-          <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-        </li>
-        <li
-          v-if=opened
-          v-for="option in selectOptions"
-          :aria-selected="selectedOption && selectedOption.id === option.id"
-          :id="'option' + option.id"
-          :key="'selectOption' + option.id"
-          :value=option.id
-          @click="selectOption(option)"
-          @keyup.up.prevent="upHandler($event)"
-          @keyup.down.prevent="downHandler($event)"
-          @keyup.enter.prevent="selectOption(option)"
-          @keyup.space.prevent.stop="selectOption(option)"
-          class="li-opened options"
-          role="option"
-          tabindex='-1'
-        > {{ option.text }}
-        </li>
-      </ul>
-      <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error' + id">{{ selectErrors.first('selectedOption') }}</span>
-    </div>
+      <li
+        v-if=opened
+        v-for="option in selectOptions"
+        :aria-selected="selectedOption && selectedOption.id === option.id"
+        :id="'option-' + option.id"
+        :key="'selectOption' + option.id"
+        :value=option.id
+        @click="selectOption(option)"
+        @keyup.up.prevent="upHandler($event)"
+        @keyup.down.prevent="downHandler($event)"
+        @keyup.enter.prevent="selectOption(option)"
+        @keyup.space.prevent.stop="selectOption(option)"
+        class="options"
+        role="option"
+        tabindex='-1'
+      > {{ option.text }}
+      </li>
+    </ul>
+    <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error-' + id">{{ selectErrors.first('selectedOption') }}</span>
   </div>
 </template>
 
@@ -102,7 +98,7 @@ export default {
         if (this.required) {
           this.validate()
         }
-        document.querySelector(`#dropdown${this.id}`).focus()
+        document.querySelector(`#dropdown-${this.id}`).focus()
       }
     },
 
@@ -117,7 +113,7 @@ export default {
       if (this.required) {
         this.validate()
       }
-      document.querySelector(`#dropdown${this.id}`).focus()
+      document.querySelector(`#dropdown-${this.id}`).focus()
     },
 
     /**
@@ -134,10 +130,10 @@ export default {
 
     setFocus () {
       if (this.selectedOption) {
-        const line = document.querySelector(`#${this.id} #option${this.selectedOption.id}`)
+        const line = document.querySelector(`#${this.id} #option-${this.selectedOption.id}`)
         line.focus()
       } else {
-        const line = document.querySelector(`#${this.id} #option${this.selectOptions[0].id}`)
+        const line = document.querySelector(`#${this.id} #option-${this.selectOptions[0].id}`)
         line.focus()  
       }
     },
@@ -151,11 +147,9 @@ export default {
       if(target.previousElementSibling) {
         const next = target.previousElementSibling;
         const first = next.previousElementSibling;
-        if (first) {
-          next.setAttribute("tabindex", "0");
-          target.setAttribute("tabindex", "-1");
-          next.focus();
-        }
+        next.setAttribute("tabindex", "0");
+        target.setAttribute("tabindex", "-1");
+        next.focus();
       }
     },
 
@@ -190,8 +184,8 @@ export default {
     },
     dropdownClass: function () {
       return {
-        'li-opened': this.opened,
-        'options': true,
+        'dropdown-opened': this.opened,
+        'dropdown': true,
         'selected': this.selectedOption,
         'unselected': !this.selectedOption,
         'invalid': this.selectErrors.items.length > 0
@@ -213,7 +207,8 @@ export default {
 </script>
 
 <style scoped>
-  .options {
+
+  .dropdown {
     width: 100%;
     padding: .5rem;
     border-style: solid;
@@ -222,36 +217,45 @@ export default {
     border-color: #cccccc;
   }
 
+  .dropdown-opened {
+    margin-bottom: 0;
+
+    border-radius: .25rem .25rem 0 0;
+  }
+
   ul {
     padding: 0 1rem 0 0;
     width: 100%;
     list-style: none;
+    margin-top: 0;
   }
 
   .ul-opened {
-    border-style: solid;
-    border-radius: .25rem;
+    border-style: none solid solid solid;
+    border-radius: 0 0 .25rem .25rem;
     border-width: thin;
     box-shadow:  .125rem .25rem .3rem #cccccc;
     border-color: #cccccc;
   }
 
-  .li-opened {
+  .options {
     border-radius: 0;
     border-style: none none solid none;
     border-width: thin;
-
+    width: 100%;
+    padding: .5rem;
+    border-color: #cccccc;
   }  
 
-  .li-opened[aria-selected] {
+  .options[aria-selected] {
     font-weight: 600;
   }
 
-  .li-opened:hover:not(:first-child) {
+  .options:hover {
     background-color: #f2f2f2;
   }
 
-  .li-opened:last-child {
+  .options:last-child {
     border-style: none;
   }
 
