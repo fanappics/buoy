@@ -1,24 +1,32 @@
 <template>
-  <div role="radiogroup" :aria-labelledby="groupId">
-    <label v-show="showGroupLabel" :id="groupId" :class="{ disabled: disabled }">
-      {{ groupLabel }}
+  <div role="radiogroup" :aria-labelledby="groupId" class="flex">
+    <label :id="groupId" :class="{ disabled: disabled }">
+      {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
     </label>
-    <template v-for="(radio, index) in radios">
-      <input type="radio" v-model="publicValue" 
-        :id="radio.id"
-        :name="groupId"
-        :value="radio.value"
-        :disabled="radio.disabled || disabled"
-        :aria-checked="radio.checked"
-        :aria-labelledby="groupId + ` label-${radio.id}`"
-        :aria-posinset="index"
-        :aria-setsize="radios.length"
-        @change="setCheckedRadio(radio)"
-      />
-      <label :id="`label-${radio.id}`" :for="radio.id">
-        {{ radio.value }}
-      </label>
-    </template>
+    <div>
+      <template v-for="(radio, index) in radios">
+        <input type="radio" v-model="publicValue" v-validate="index == 0 ? validations : {}"
+          :aria-checked="radio.checked"
+          :aria-describedby="errors.any() ? `error-${groupId}` : ''"
+          :aria-labelledby="`${groupId} label-${radio.id}`"
+          :aria-posinset="index"
+          :aria-setsize="radios.length"
+          :disabled="radio.disabled || disabled"
+          :id="radio.id"
+          :name="groupId"
+          :value="radio.value"
+          @change="setCheckedRadio(radio)" 
+        />
+        <label :id="`label-${radio.id}`" :for="radio.id">
+          {{ radio.value }}
+        </label>
+      </template>
+      <div v-if="errors.any()" :id="`error-${groupId}`" class="error">
+        <span v-for="error in errors.all()">
+          {{ error }}
+        </span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,6 +34,15 @@
 export default {
   name: 'b-radio',
   props: {
+    //Required props
+    groupId: {
+      type: String,
+      required: true
+    },
+    groupLabel: {
+      type: String,
+      required: true
+    },
     radios: {
       type: Array,
       required: true,
@@ -37,20 +54,9 @@ export default {
         return true
       }
     },
-    disabled: {
-      type: Boolean
-    },
-    groupId: {
-      type: String,
-      required: true
-    },
-    groupLabel: {
-      type: String,
-      required: true
-    },
-    showGroupLabel: {
-      type: Boolean
-    }
+    //Optional props
+    disabled: Boolean,
+    required: Boolean
   },
   created () {
     var defaultRadio = null
@@ -78,6 +84,12 @@ export default {
         this.value = value
         this.$emit('input', this.value)
       }
+    },
+    validations () {
+      let vals = {}
+      if (this.required)
+        vals.required = true
+      return vals
     }
   },
   methods: {
@@ -96,8 +108,24 @@ export default {
 </script>
 
 <style scoped>
+  label {
+    color: #333333;
+    font-family: SFUIDisplay;
+    font-size: 14px;
+    font-weight: 600;
+    padding-bottom: 6px;
+  }
   .disabled, input:disabled, input:disabled+label {
-    opacity: 0.50; 
-    cursor: not-allowed;
+    opacity: 0.50;
+  }
+  .error {
+    color: #d0021b;
+    font-family: SFUIDisplay;
+    font-size: 12px;
+    padding-top: 5px;
+  }
+  .flex {
+    display: flex;
+    flex-direction: column
   }
 </style>
