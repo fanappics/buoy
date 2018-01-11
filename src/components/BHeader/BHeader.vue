@@ -5,6 +5,9 @@
 </template>
 
 <script>
+  /**
+  * Buoy Header Component
+  */
 export default {
   name: 'b-header'
 }
@@ -21,3 +24,11 @@ header {
   padding: 0rem 2rem;
 }
 </style>
+<docs>
+Sample documentation usage within `.vue` file
+
+```js
+<b-header class="edit_me">I’m a header!</b-header>
+```
+
+</docs>

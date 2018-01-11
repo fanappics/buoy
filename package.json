@@ -12,7 +12,7 @@
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --open --hot",
     "build": "npm run build:dist && npm run build:es5",
     "build:dev": "cross-env NODE_ENV=production node build/webpack.dev.config.js",
-    "build:docs" : "npm run build:dist && cp ./dist/* ./docs/js",    
+    "build:docs": "npm run build:dist && cp ./dist/* ./docs/js",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:es5": "rimraf es5 && cross-env NODE_ENV=es5 babel src --out-dir es5",
     "debug-build": "node --inspect --debug-brk build/config.js",
@@ -22,7 +22,9 @@
     "lint": "eslint --ext .js,.vue src",
     "precommit": "npm run lint && npm test",
     "prepush": "npm run lint && npm test",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "styleguide": "vue-styleguidist server --config ./build/styleguide.config.js --verbose",
+    "styleguide:build": "vue-styleguidist build --config ./build/styleguide.config.js && mv -f ./build/styleguide ./docs"
   },
   "repository": {
     "type": "git",
@@ -99,8 +101,9 @@
     "vue-jest": "^1.2.0",
     "vue-loader": "^13.6.0",
     "vue-router": "^3.0.1",
+    "vue-styleguidist": "^1.4.4",
     "vue-template-compiler": "^2.5.9",
-    "vue-test-utils": "^1.0.0-beta.6",
+    "vue-test-utils": "^1.0.0-beta.7",
     "webpack": "^3.10.0",
     "webpack-bundle-analyzer": "^2.9.1",
     "webpack-bundle-size-analyzer": "^2.7.0",

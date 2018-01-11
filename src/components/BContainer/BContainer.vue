@@ -8,16 +8,28 @@
 </template>
 
 <script>
+  /**
+  * Buoy Container Component
+  */
 export default {
   name: 'b-container',
   props: {
+    /**
+    * Label text.  Will be used in display label and aria-label.
+    */
     label: {
       type: String,
       required: true
     },
+    /**
+    * Display label importance.  Valid values are 1-6.  Will generate h1-h6 elements.
+    */
     headerLevel: {
       type: [String, Number]
     },
+    /**
+    * Used to hide the display label.  Label prop will still be used for aria-label.
+    */
     hideLabel: {
       type: Boolean
     }
@@ -62,3 +74,12 @@ export default {
     flex-direction: column;
   }
 </style>
+<docs>
+```js
+<b-container class="edit_me" label="Container Header" headerLevel="3">
+  <b-button>Test</b-button>
+  <b-button>Test2</b-button> 
+</b-container>
+```
+
+</docs>
