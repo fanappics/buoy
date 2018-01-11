@@ -11,6 +11,11 @@
 
 <script>
 export default {
+  /**
+   * Component example provided here.
+   *
+   * @example ./Readme.md
+   */
   name: 'b-button',
   props: {
     'ariaLabel': {

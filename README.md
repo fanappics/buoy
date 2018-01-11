@@ -12,16 +12,23 @@ https://pattern-library.dequelabs.com is a resource for an accessible UI library
 
 https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a reference for building components.
 
-This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ style guide.
+This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ coding style guide.
 
 ## Live Style Guide and Documentation
 
+This project uses [Vue Styleguiedist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living styleguide
 You can view the live style guide and documentation [Here](https://fanappics.github.io/buoy/)
 
 ### Updating the style guide
 
-1. Run `npm run build:docs` to build the project and copy the files into the `docs` directory
-1. Make the appropriate changes in the `docs` directory.
+1. When adding/updating a component you have [several options](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md)
+   - JDoc as demonstrated in [b-header](./src/components/BHeader/BHeader.vue)
+   - A [Readme.md](src/components/BButton/Readme.md) referenced in the `.vue` file
+1. Run `npm run styleguide`
+1. See the changes live at `localhost:6060`
+
+To build and publish the new code the styleguide run `npm run styleguide:build`
+
 ## CLI
 
 running `npm i -g` will install the buoy CLI tool.
@@ -29,7 +36,7 @@ running `npm i -g` will install the buoy CLI tool.
 
 | Command | Description |
 | --- | --- |
-| buoy i &#124; init | Create a new buoy.json file with default configureation |
+| buoy i &#124; init | Create a new buoy.json file with default configuration |
 | buoy m &#124; make [mame] | Scaffold a new component using the name parameter |
 
 ### Configuration
