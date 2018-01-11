@@ -11,6 +11,7 @@
       :aria-describedby="'error' + id"
       :aria-labelledby="'label-' + id"
       :id="'dropdown-' + id"
+      :ref="'dropdown-' + id"
       @keyup.space.prevent.stop="toggleList"
       @click="toggleList"
       tabindex="0"
@@ -139,6 +140,7 @@ export default {
      * Handles the up arrow (38) keyup event
      */
     upHandler (event) {
+      console.log('i fired')
       const target = event.target;
       if(target.previousElementSibling) {
         const next = target.previousElementSibling;

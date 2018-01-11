@@ -1,9 +1,9 @@
-import { shallow, mount } from 'vue-test-utils'
+import { shallow } from 'vue-test-utils'
 import BSelect from './BSelect'
 
 describe('BSelect', () => {
-  const selectOptions = [{id: 1, text: 'test'}]
-  const initialValue = {id: 1, text: 'test'}
+  const selectOptions = [{id: 1, text: 'test-1'}, {id: 2, text: 'test-2'}]
+  const initialValue = {id: 1, text: 'test-1'}
   const required = false
   const selectLabel = 'test'
   const id = 'testId'
@@ -22,7 +22,7 @@ describe('BSelect', () => {
   })
 
   it('intializes selected value when passed', () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -32,11 +32,11 @@ describe('BSelect', () => {
       }
     })
     const div = wrapper.find(`#dropdown-${id}`)
-    expect(div.text()).toBe('test')
+    expect(div.text()).toBe(initialValue.text)
   })
 
   it('display placeholder if no initial value', () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -50,7 +50,7 @@ describe('BSelect', () => {
   })
 
   it('opens list when div is clicked', () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -61,12 +61,33 @@ describe('BSelect', () => {
     })
     const div = wrapper.find(`#dropdown-${id}`)
     expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.vm.opened).toBe(false)
     div.trigger('click')
     expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.vm.opened).toBe(true)
+  })
+
+  it('selects item when clicked', async () => {
+    const wrapper = shallow(BSelect, {
+      propsData: {
+        id: id,
+        selectOptions: selectOptions,
+        required: required,
+        selectLabel: selectLabel,
+        placeholder: placeholder
+      }
+    })
+    const div = wrapper.find(`#dropdown-${id}`)
+    div.trigger('click')
+    await wrapper.vm.$nextTick()
+    const line = wrapper.find('li')
+    line.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(wrapper.vm.selectedOption.id).toBe(selectOptions[0].id)
   })
 
   it('throws error if option not chosen when required', async () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -83,7 +104,7 @@ describe('BSelect', () => {
   })
 
   it('rendors a default select list', () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -95,7 +116,7 @@ describe('BSelect', () => {
   })
 
   it('rendors a select list with an initial value', () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -108,7 +129,7 @@ describe('BSelect', () => {
   })
 
   it('rendors a select list with a placeholder', () => {
-    const wrapper = mount(BSelect, {
+    const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
@@ -118,5 +139,27 @@ describe('BSelect', () => {
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('calls on handlers', async () => {
+    const wrapper = shallow(BSelect, {
+      propsData: {
+        id: id,
+        selectOptions: selectOptions,
+        required: required,
+        selectLabel: selectLabel,
+        placeholder: placeholder
+      }
+    })
+    const upHandler = jest.fn()
+    wrapper.vm.$on('upHandler', upHandler)
+    const div = wrapper.find(`#dropdown-${id}`)
+    div.trigger('click')
+    await wrapper.vm.$nextTick()
+    const line = wrapper.find('li')
+    line.trigger('keyup.down')
+    expect(line.html()).toMatchSnapshot()
+    line.trigger('keyup.up')
+    expect(line.html()).toMatchSnapshot()
   })
 })
