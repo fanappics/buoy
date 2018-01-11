@@ -13,6 +13,7 @@
       :id="'dropdown-' + id"
       :ref="'dropdown-' + id"
       @keyup.space.prevent.stop="toggleList"
+      @keyup.enter.prevent.stop="toggleList"
       @click="toggleList"
       tabindex="0"
       v-model="selectLabel"
