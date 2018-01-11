@@ -25,12 +25,12 @@
       role="listbox"
     >
       <li
-        v-if=opened
+        v-if="opened"
         v-for="option in selectOptions"
         :aria-selected="selectedOption && selectedOption.id === option.id"
         :id="'option-' + option.id"
         :key="'selectOption' + option.id"
-        :value=option.id
+        :value="option.id"
         :ref="'option-' + option.id"
         @click="selectOption(option)"
         @keyup.up.prevent="upHandler($event)"
@@ -39,7 +39,7 @@
         @keyup.space.prevent.stop="selectOption(option)"
         class="options"
         role="option"
-        tabindex='-1'
+        tabindex="-1"
       > {{ option.text }}
       </li>
     </ul>
