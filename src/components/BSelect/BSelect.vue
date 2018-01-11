@@ -17,11 +17,12 @@
       @click="toggleList"
       tabindex="0"
       v-model="selectLabel"
-      aria-description="Click to Toggle List"
+      aria-label="Click to Toggle List"
       aria-haspopup="listbox"
       >{{ selectedOption ? selectedOption.text : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
     </div>
+    <label hidden
     <ul
       :class="ulClass"
       :id="id"
