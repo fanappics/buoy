@@ -88,7 +88,6 @@ export default {
     /**
      * Shows and hides line options for the select list.
      */
-
     toggleList () {
       this.opened = !this.opened
       if (this.opened) {
@@ -107,7 +106,6 @@ export default {
      * @param {Object} option
      * Handles the selection of a line and closed the list.
      */
-
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
@@ -120,7 +118,6 @@ export default {
     /**
      * Handles validation if required.
      */
-
     validate () {
       this.validator.validate('selectedOption', this.selectedOption)
     },
@@ -128,7 +125,6 @@ export default {
     /**
      * Handles the focus setting for accessibility purposes
      */
-
     setFocus () {
       if (this.selectedOption) {
         const line = this.$refs[`option-${this.selectedOption.id}`][0]
@@ -140,9 +136,8 @@ export default {
     },
 
     /**
-     * Handles the up arrow (38) key press event
+     * Handles the up arrow (38) keyup event
      */
-
     upHandler (event) {
       const target = event.target;
       if(target.previousElementSibling) {
@@ -155,9 +150,8 @@ export default {
     },
 
     /**
-     * Handles the down arrow (40) key press event
+     * Handles the down arrow (40) keyup event
      */
-
     downHandler (event) {
       const target = event.target;
       if(target.nextElementSibling) {
