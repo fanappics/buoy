@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BContainer renders correctly 1`] = `
+<section role="contentinfo" aria-label="hello world">
+    <h1 class="header">hello world</h1>
+    <div></div>
+</section>
+`;
