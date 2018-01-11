@@ -34,9 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-  test:
-    override:
-      - npm test:
-        parallel: true
-        files:
-          - src/components/*/*.test.js
+      - run: npm run lint
+      - run: npm test
+      - run: npm run styleguide server & sleep 5; npm run test:accessibility
+      
