@@ -141,7 +141,6 @@ export default {
      * Handles the up arrow (38) keyup event
      */
     upHandler (event) {
-      console.log('i fired')
       const target = event.target;
       if(target.previousElementSibling) {
         const next = target.previousElementSibling;
