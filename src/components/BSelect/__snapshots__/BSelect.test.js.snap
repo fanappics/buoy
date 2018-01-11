@@ -17,8 +17,8 @@ exports[`BSelect opens list when div is clicked 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-label="Click to Toggle List" aria-haspopup="listbox" class="dropdown unselected">test placeholder
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
+    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown unselected">test placeholder
+        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
@@ -32,8 +32,8 @@ exports[`BSelect opens list when div is clicked 2`] = `
             <!---->
         </label>
     </div>
-    <div aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-label="Click to Toggle List" aria-haspopup="listbox" class="dropdown-opened dropdown unselected" aria-expanded="true">test placeholder
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
+    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown-opened dropdown unselected" aria-expanded="true">test placeholder
+        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="ul-opened">
         <li id="option-1" value="1" role="option" tabindex="-1" class="options"> test-1
         </li>
@@ -49,8 +49,8 @@ exports[`BSelect rendors a default select list 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-label="Click to Toggle List" aria-haspopup="listbox" class="dropdown unselected">Choose Option
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
+    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown unselected">Choose Option
+        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
@@ -64,8 +64,8 @@ exports[`BSelect rendors a select list with a placeholder 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-label="Click to Toggle List" aria-haspopup="listbox" class="dropdown unselected">test placeholder
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
+    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown unselected">test placeholder
+        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
@@ -79,8 +79,8 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
             <!---->
         </label>
     </div>
-    <div aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-label="Click to Toggle List" aria-haspopup="listbox" class="dropdown selected">test-1
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
+    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown selected">test-1
+        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
@@ -92,8 +92,8 @@ exports[`BSelect throws error if option not chosen when required 1`] = `
     <div>
         <label id="label-testId">test <span aria-label="Required">*</span></label>
     </div>
-    <div aria-owns="testId" aria-required="true" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-label="Click to Toggle List" aria-haspopup="listbox" class="dropdown unselected invalid">Choose Option
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
+    <button aria-owns="testId" aria-required="true" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown unselected invalid">Choose Option
+        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->

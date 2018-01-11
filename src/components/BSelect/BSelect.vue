@@ -3,7 +3,7 @@
     <div>
       <label :id="'label-' + id">{{ selectLabel }} <span v-if=required aria-label='Required'>*</span></label>
     </div>
-    <div
+    <button
       :class="dropdownClass"
       :aria-expanded="opened"
       :aria-owns="id"
@@ -17,11 +17,10 @@
       @click="toggleList"
       tabindex="0"
       v-model="selectLabel"
-      aria-label="Click to Toggle List"
       aria-haspopup="listbox"
       >{{ selectedOption ? selectedOption.text : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-    </div>
+    </button>
     <label hidden
     <ul
       :class="ulClass"
@@ -207,16 +206,18 @@ export default {
 
 <style scoped>
 
-  .dropdown {
+  button.dropdown {
     width: 100%;
     padding: .5rem;
     border-style: solid;
     border-radius: .25rem;
     border-width: thin;
     border-color: #cccccc;
+    font-size: 1rem;
+    text-align: left;
   }
 
-  .dropdown-opened {
+  button.dropdown-opened {
     margin-bottom: 0;
 
     border-radius: .25rem .25rem 0 0;
@@ -224,7 +225,6 @@ export default {
 
   ul {
     padding: 0 1rem 0 0;
-    width: 100%;
     list-style: none;
     margin-top: 0;
   }
