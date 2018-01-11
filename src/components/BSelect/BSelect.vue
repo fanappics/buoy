@@ -9,13 +9,14 @@
       :aria-owns="id"
       :aria-required="required"
       :aria-describedby="'error' + id"
-      :aria-labelledby="'label-' + id"
+      :aria-labelledby="'label-' + id + ' dropdown-' + id"
       :id="'dropdown-' + id"
       :ref="'dropdown-' + id"
       @keyup.space.prevent.stop="toggleList"
       @click="toggleList"
       tabindex="0"
       v-model="selectLabel"
+      aria-description="Click to Toggle List"
       aria-haspopup="listbox"
       >{{ selectedOption ? selectedOption.text : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
