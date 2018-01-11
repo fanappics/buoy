@@ -65,20 +65,20 @@ describe('BSelect', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  xit('throws error if option not chosen when required', async () => {
+  it('throws error if option not chosen when required', async () => {
     const wrapper = mount(BSelect, {
       propsData: {
         id: id,
         selectOptions: selectOptions,
-        required: required,
+        required: true,
         selectLabel: selectLabel
       }
     })
     const div = wrapper.find(`#dropdown-${id}`)
+    div.trigger('click')
     await wrapper.vm.$nextTick()
     div.trigger('click')
-    div.trigger('click')
-    console.log(wrapper.html())
+    await wrapper.vm.$nextTick()
     expect(wrapper.html()).toMatchSnapshot()
   })
 

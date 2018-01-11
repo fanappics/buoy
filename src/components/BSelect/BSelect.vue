@@ -31,6 +31,7 @@
         :id="'option-' + option.id"
         :key="'selectOption' + option.id"
         :value=option.id
+        :ref="'option-' + option.id"
         @click="selectOption(option)"
         @keyup.up.prevent="upHandler($event)"
         @keyup.down.prevent="downHandler($event)"
@@ -130,10 +131,10 @@ export default {
 
     setFocus () {
       if (this.selectedOption) {
-        const line = document.querySelector(`#${this.id} #option-${this.selectedOption.id}`)
+        const line = this.$refs[`option-${this.selectedOption.id}`][0]
         line.focus()
       } else {
-        const line = document.querySelector(`#${this.id} #option-${this.selectOptions[0].id}`)
+        const line = this.$refs[`option-${this.selectOptions[0].id}`][0]
         line.focus()  
       }
     },

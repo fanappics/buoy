@@ -74,13 +74,11 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
 exports[`BSelect throws error if option not chosen when required 1`] = `
 <div>
     <div>
-        <label id="label-testId">test
-            <!---->
-        </label>
+        <label id="label-testId">test <span aria-label="Required">*</span></label>
     </div>
-    <div aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown unselected">Choose Option
+    <div aria-owns="testId" aria-required="true" aria-describedby="errortestId" aria-labelledby="label-testId" id="dropdown-testId" tabindex="0" aria-haspopup="listbox" class="dropdown unselected invalid">Choose Option
         <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></div>
     <ul id="testId" role="listbox" class="">
         <!---->
-    </ul> <span id="error-testId" class="error" style="display: none;"></span></div>
+    </ul> <span id="error-testId" class="error" style="">The test field is required.</span></div>
 `;
