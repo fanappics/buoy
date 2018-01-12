@@ -1,10 +1,10 @@
 <template>
 
-  <div>
+  <div class="toggle-container">
     <label class="toggle">
       <input type="checkbox">
 
-      <span class="slider">{{this.label}}</span>
+      <span class="slider"><label>{{this.label}}</label></span>
     </label>
   </div>
   
@@ -39,11 +39,17 @@ export default {
 
 <style scoped>
 
+  .toggle-container {
+  }  
+
   .toggle {
+    border-style: solid;
+    border-width: thin;
+    border-radius: .25rem;
     position: relative;
     display: inline-block;
     cursor: pointer;
-    padding-left: 100px;
+    padding-left: 2.25rem;
     height: 40px;
     line-height: 40px;
     margin: 5px;
@@ -56,10 +62,10 @@ export default {
   .slider:after {
     content: '';
     position: absolute;
-    top: 50;
+    top: 35%;
     left: 0;
-    height: 1rem;
-    width: 1rem;
+    height: .75rem;
+    width: .75rem;
     background-color: #adadad;
     border-radius: 50%;
   }
@@ -67,17 +73,17 @@ export default {
   .slider:before {
     content: '';
     position: absolute;
-    top: 16px;
+    top: 1.15rem;
     left: 0;
-    width: 80px;
-    height: 8px;
+    width: 1.5rem;
+    height: .25rem;
     background-color: #adadad;
-    border-radius: 10px;
+    border-radius: 1rem;
   }
   
   input:checked + .slider:after {
     background-color: #419bf9;
-    transform: translateX(2.5rem);
+    transform: translateX(.75rem);
   }
   
   input:checked + .slider:before {

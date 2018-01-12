@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-toggle label="test toggle" id="test-id">
+    <b-toggle label="Test Toggle" id="test-id">
     </b-toggle>
   </div>
 </template>
