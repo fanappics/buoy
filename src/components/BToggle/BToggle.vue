@@ -58,10 +58,10 @@ export default {
     position: relative;
     display: inline-block;
     cursor: pointer;
-    padding-left: 2.25rem;
-    height: 40px;
-    line-height: 40px;
-    margin: 5px;
+    padding-left: 2rem;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    margin: .55rem;
   }
 
   .toggle input {
