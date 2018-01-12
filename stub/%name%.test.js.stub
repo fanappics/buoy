@@ -1,6 +1,12 @@
-import { shallow } from 'vue-test-utils'
+import { mount } from 'vue-test-utils'
 import %name% from './%name%'
 
 describe('%name%', () => {
- 
+  it('%name% renders correctly', () => {
+    const wrapper = mount(%name%, {
+      // Include Options Here - https://vue-test-utils.vuejs.org/en/api/options.html
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 })
+git 
