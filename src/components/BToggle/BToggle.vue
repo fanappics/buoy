@@ -2,9 +2,9 @@
 
   <div class="toggle-container">
     <label class="toggle">
-      <input type="checkbox">
+      <input type="checkbox" :disabled="disabled">
 
-      <span class="slider"><label>{{this.label}}</label></span>
+      <span class="slider"><label :class='labelClass'>{{this.label}}</label></span>
     </label>
   </div>
   
@@ -33,6 +33,14 @@ export default {
   },
   data () {
     return {}
+  },
+  computed: {
+    labelClass: function () {
+      return {
+        'disabled': this.disabled,
+        'text': true
+      }
+    }
   }
 }
 </script>
@@ -46,6 +54,7 @@ export default {
     border-style: solid;
     border-width: thin;
     border-radius: .25rem;
+    border-color: #dededf;
     position: relative;
     display: inline-block;
     cursor: pointer;
@@ -63,7 +72,7 @@ export default {
     content: '';
     position: absolute;
     top: 35%;
-    left: 0;
+    left: .5rem;
     height: .75rem;
     width: .75rem;
     background-color: #adadad;
@@ -74,25 +83,34 @@ export default {
     content: '';
     position: absolute;
     top: 1.15rem;
-    left: 0;
+    left: .5rem;
     width: 1.5rem;
     height: .25rem;
-    background-color: #adadad;
+    background-color: #dededf;
     border-radius: 1rem;
+  }
+
+  .slider {
+    margin: 1rem;
   }
   
   input:checked + .slider:after {
-    background-color: #419bf9;
+    background-color: #00aaed;
     transform: translateX(.75rem);
-  }
-  
-  input:checked + .slider:before {
-    background-color: #419bf9;
   }
   
   input:disabled + .slider:after,
   input:disabled + .slider:before {
     background-color: #e5e5e5;
+  }
+
+  label.text {
+    font-weight: 600;
+  }
+
+  label.disabled {
+    opacity: 0.4;
+    color: ##333333;
   }
 
 </style>
