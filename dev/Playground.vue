@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-toggle label="Test Toggle" id="test-id">
+    <b-toggle label="Test Toggle" id="test-id" :checked=true>
     </b-toggle>
   </div>
 </template>

@@ -2,7 +2,7 @@
 
   <div class="toggle-container">
     <label class="toggle">
-      <input type="checkbox" :disabled="disabled">
+      <input type="checkbox" :disabled="disabled" :checked="checked">
 
       <span class="slider"><label :class='labelClass'>{{this.label}}</label></span>
     </label>
@@ -27,6 +27,10 @@ export default {
       required: false
     },
     disabled:{
+      type: Boolean,
+      required: false
+    },
+    checked:{
       type: Boolean,
       required: false
     }
