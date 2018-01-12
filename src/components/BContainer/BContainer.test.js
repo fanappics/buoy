@@ -31,7 +31,7 @@ describe('BContainer', () => {
     const label = 'hello world'
     const wrapper = mount(BContainer, { propsData: { label } })
     expect(wrapper.html()).toMatchSnapshot()
-    expect(console.warn).toHaveBeenCalled()
+    expect(console.warn).toHaveBeenCalledWith(`No headerLevel property set, defaulting to 2`)
   })
   it(`Default to H2 if label is passed in with an invalid headerLevel property. Should log to console.error.`, () => {
     console.error = jest.fn()
@@ -39,6 +39,6 @@ describe('BContainer', () => {
     const headerLevel = 'The Greatest Importance'
     const wrapper = mount(BContainer, { propsData: { label, headerLevel } })
     expect(wrapper.html()).toMatchSnapshot()
-    expect(console.error).toHaveBeenCalled()
+    expect(console.error).toHaveBeenCalledWith(`Invalid headerLevel property set. Valid input are numbers 1-6.  Reverting to default level 2.`)
   })
 })
