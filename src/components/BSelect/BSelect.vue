@@ -14,10 +14,10 @@
       :ref="'dropdown-' + id"
       @keyup.space.prevent.stop="toggleList"
       @keyup.enter.prevent.stop="toggleList"
-      @keyup.esc.prevent.stop="toggleList"
-      @click="toggleList"
+      @mousedown.prevent.stop="toggleList"
       v-model="selectLabel"
       aria-haspopup="listbox"
+      type="button"
       >{{ selectedOption ? selectedOption.text : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
     </button>
@@ -34,10 +34,11 @@
         :key="'selectOption' + option.id"
         :value="option.id"
         :ref="'option-' + option.id"
-        @click="selectOption(option)"
+        @blur.prevent.stop="handleBlur($event)"
+        @mousedown.stop="selectOption(option)"
         @keyup.up.prevent="upHandler($event)"
         @keyup.down.prevent="downHandler($event)"
-        @keyup.enter.prevent="selectOption(option)"
+        @keyup.enter.prevent.stop="selectOption(option)"
         @keyup.space.prevent.stop="selectOption(option)"
         @keyup.esc.prevent.stop="toggleList"
         class="options"
@@ -103,6 +104,17 @@ export default {
         }
         document.querySelector(`#dropdown-${this.id}`).focus()
       }
+    },
+
+    /**
+     * Handles blur event.
+     */
+    handleBlur (event) {
+      this.$nextTick(function () {
+        if (document.activeElement.className !== event.target.className) {
+          this.opened = false
+        }
+      })
     },
 
     /**

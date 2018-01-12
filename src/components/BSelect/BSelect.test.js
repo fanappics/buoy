@@ -49,7 +49,7 @@ describe('BSelect', () => {
     expect(div.text()).toBe('test placeholder')
   })
 
-  it('opens list when div is clicked', () => {
+  it('opens list when div is mousedowned', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
@@ -62,12 +62,12 @@ describe('BSelect', () => {
     const div = wrapper.find(`#dropdown-${id}`)
     expect(wrapper.html()).toMatchSnapshot()
     expect(wrapper.vm.opened).toBe(false)
-    div.trigger('click')
+    div.trigger('mousedown')
     expect(wrapper.html()).toMatchSnapshot()
     expect(wrapper.vm.opened).toBe(true)
   })
 
-  it('selects item when clicked', async () => {
+  it('selects item when mousedowned', async () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
@@ -78,10 +78,10 @@ describe('BSelect', () => {
       }
     })
     const div = wrapper.find(`#dropdown-${id}`)
-    div.trigger('click')
+    div.trigger('mousedown')
     await wrapper.vm.$nextTick()
     const line = wrapper.find('li')
-    line.trigger('click')
+    line.trigger('mousedown')
     await wrapper.vm.$nextTick()
     expect(wrapper.vm.selectedOption.id).toBe(selectOptions[0].id)
   })
@@ -96,9 +96,9 @@ describe('BSelect', () => {
       }
     })
     const div = wrapper.find(`#dropdown-${id}`)
-    div.trigger('click')
+    div.trigger('mousedown')
     await wrapper.vm.$nextTick()
-    div.trigger('click')
+    div.trigger('mousedown')
     await wrapper.vm.$nextTick()
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -154,7 +154,7 @@ describe('BSelect', () => {
     const upHandler = jest.fn()
     wrapper.vm.$on('upHandler', upHandler)
     const div = wrapper.find(`#dropdown-${id}`)
-    div.trigger('click')
+    div.trigger('mousedown')
     await wrapper.vm.$nextTick()
     const line = wrapper.find('li')
     line.trigger('keyup.down')
