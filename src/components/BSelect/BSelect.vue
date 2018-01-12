@@ -14,14 +14,13 @@
       :ref="'dropdown-' + id"
       @keyup.space.prevent.stop="toggleList"
       @keyup.enter.prevent.stop="toggleList"
+      @keyup.esc.prevent.stop="toggleList"
       @click="toggleList"
-      tabindex="0"
       v-model="selectLabel"
       aria-haspopup="listbox"
       >{{ selectedOption ? selectedOption.text : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
     </button>
-    <label hidden
     <ul
       :class="ulClass"
       :id="id"
@@ -40,6 +39,7 @@
         @keyup.down.prevent="downHandler($event)"
         @keyup.enter.prevent="selectOption(option)"
         @keyup.space.prevent.stop="selectOption(option)"
+        @keyup.esc.prevent.stop="toggleList"
         class="options"
         role="option"
         tabindex="-1"
