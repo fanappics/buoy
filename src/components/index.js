@@ -1,3 +1,7 @@
 export { default as BButton } from './BButton'
 export { default as BContainer } from './BContainer'
 export { default as BHeader } from './BHeader'
+export { default as BBanner } from './BBanner'
+export { default as BBannerTitle } from './BBannerTitle'
+export { default as BNav } from './BNav'
+export { default as BNavItem } from './BNavItem'

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BNav should render a nav 1`] = `<nav class="b-nav b-horizontal-nav"></nav>`;

@@ -1,25 +1,18 @@
 <template>
   <div>
-    <b-container label="test-default-h2">
-        <button>Test</button>
-        <button>Test2</button> 
-    </b-container>
-    <b-container label="test-h3" headerLevel="3">
-        <button>Test</button>
-        <button>Test2</button> 
-    </b-container>
-    <b-container label="test-h3-hidelabel" headerLevel="3" hideLabel>
-        <button>Test</button>
-        <button>Test2</button> 
-    </b-container>
-    <b-container label="test-h3-hidelabel" headerLevel="6">
-        <button>Test</button>
-        <button>Test2</button> 
-    </b-container>
-    <b-container label="test-error" headerLevel="the greatest header">
-        <button>Test</button>
-        <button>Test2</button> 
-    </b-container>
+    <b-banner primary>
+      <b-banner-title>
+        <a href="#">Fanatics</a>
+      </b-banner-title>
+      <b-nav horizontal>
+        <b-nav-item href="#item-1">Item 1</b-nav-item>
+        <b-nav-item href="#item-2">Item 2</b-nav-item>
+      </b-nav>
+    </b-banner>
+    <b-nav vertical>
+      <b-nav-item href="#v-item-1">V Item 1</b-nav-item>
+      <b-nav-item href="#v-item-2">V Item 2</b-nav-item>
+    </b-nav>
   </div>
 </template>
 
