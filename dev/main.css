@@ -1,0 +1,67 @@
+
+header.b-banner {
+  width: 100%;
+  padding: 10px;
+}
+header.b-banner a {
+  text-decoration: none;
+  color: #fff;
+}
+header.b-banner span.b-banner-title a {
+  font-size: 36px;
+  font-weight: 600;
+}
+header.b-banner.primary {
+  background-color: #000;
+}
+header.b-banner.secondary {
+  background-color: #fff;
+}
+header.b-banner.secondary span.b-banner-title a {
+  color: #000;
+}
+header.b-banner.secondary nav.b-nav a.b-nav-item {
+  color: #000;
+}
+header.b-banner.tirtiary {
+  background-color: #ff6347;
+}
+
+nav[data-v-49f6a1ef] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+nav.b-horizontal-nav[data-v-49f6a1ef] {
+  display: inline-block;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+nav.b-vertical-nav[data-v-49f6a1ef] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+span.b-banner-title a[data-v-e6ceb2e2] {
+  text-decoration: none;
+  font-size: 36px;
+  font-weight: 600;
+  color: #fff;
+}
+span.b-banner-title.secondary a[data-v-e6ceb2e2] {
+  color: #000;
+}
+
+a.b-nav-item[data-v-e1cea762] {
+  padding: 5px;
+  border-radius: 2px;
+  text-decoration: none;
+  color: #ff6347;
+}
+a.b-nav-item[data-v-e1cea762]:hover {
+  background-color: rgba(133,133,133,0.2);
+}

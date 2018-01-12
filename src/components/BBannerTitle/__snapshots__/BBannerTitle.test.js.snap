@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BBannerTitle should render banner title 1`] = `<span class="b-banner-title"></span>`;
