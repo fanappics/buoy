@@ -111,6 +111,7 @@
     "write-file-webpack-plugin": "^4.2.0"
   },
   "dependencies": {
+    "vee-validate": "^2.0.1",
     "vue": "^2.5.9"
   },
   "peerDependencies": {
