@@ -35,13 +35,16 @@ export default {
     }
   },
   created: function() {
+    if (this.hideLabel) {
+      return
+    }
     if (typeof this.headerLevel === "undefined") {
       console.warn ('No headerLevel property set, defaulting to 2')
-    }
-    if (isNaN(this.headerLevel) || this.headerLevel < 1 || this.headerLevel > 6) {
+    } else if (isNaN(this.headerLevel) || this.headerLevel < 1 || this.headerLevel > 6) {
       console.error('Invalid headerLevel property set. Valid input are numbers 1-6.  Reverting to default level 2.')
     }
   },
+  
   data: function() {
     return {
       headerElement: () => {
