@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BButton has an aria-label if one is passed 1`] = `<button class=""></button>`;
+
+exports[`BButton is enabled when disabled prop is not passed 1`] = `<button class=""></button>`;
+
+exports[`BButton renders a button 1`] = `<button class="">hello world</button>`;
