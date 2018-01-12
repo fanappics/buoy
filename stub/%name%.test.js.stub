@@ -9,4 +9,3 @@ describe('%name%', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
-git 
