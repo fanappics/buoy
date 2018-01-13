@@ -1,5 +1,5 @@
 # buoy
-
+[![CircleCI](https://circleci.com/gh/fanappics/buoy/tree/master.svg?style=svg)](https://circleci.com/gh/fanappics/buoy/tree/master)
 ![Buoy logo](./buoylogo.png)
 
 Accessible Vue.js UI library
