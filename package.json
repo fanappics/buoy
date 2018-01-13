@@ -18,11 +18,11 @@
     "debug:test": "./node_modules/.bin/cross-env NODE_ENV=test node --inspect --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand --verbose",
     "test": "cross-env NODE_ENV=test jest",
     "test:coverage": "cross-env NODE_ENV=test jest -i --coverage",
-    "test:accessibility": "./node_modules/.bin/pa11y-ci",
+    "test:accessibility": "npm run styleguide server & sleep 5; ./node_modules/.bin/pa11y-ci",
     "lint": "eslint --ext .js,.vue src",
-    "precommit": "npm run lint && npm test",
+    "precommit": "npm run lint && npm test && npm run styleguide:build",
     "prepush": "npm run lint && npm test",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "styleguide": "vue-styleguidist server --config ./build/styleguide.config.js",
     "styleguide:build": "vue-styleguidist build --config ./build/styleguide.config.js"
   },
@@ -143,6 +143,7 @@
     "snapshotSerializers": [
       "<rootDir>/node_modules/jest-serializer-vue"
     ],
+    "bail": true,
     "mapCoverage": true
   }
 }
