@@ -16,9 +16,9 @@ The Buoy project will create a beautiful, functional UI library for Vue.js that 
 - https://pattern-library.dequelabs.com is a resource for an accessible UI library we can use for an example of accessibility techniques.
 - https://github.com/pa11y/pa11y is an accessibility-focused testing tool used in our CI process
 
-## Live Style Guide and Documentation
+## Living Style Guide and Documentation
 
-This project uses [Vue Styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living styleguide
+This project uses [Vue Styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living style guide
 You can view the living style guide and documentation [here](https://fanappics.github.io/buoy/)
 
 ### Updating the style guide
@@ -29,7 +29,7 @@ You can view the living style guide and documentation [here](https://fanappics.g
 1. Run `npm run styleguide`
 1. See the changes live at `localhost:6060`
 
-To build and publish the new code the styleguide run `npm run styleguide:build`
+To build and publish the new code the style guide run `npm run styleguide:build`
 
 ## CLI
 
