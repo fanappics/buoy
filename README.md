@@ -1,6 +1,6 @@
 # buoy
 [![CircleCI](https://circleci.com/gh/fanappics/buoy/tree/master.svg?style=svg)](https://circleci.com/gh/fanappics/buoy/tree/master)
-![Buoy logo](./buoylogo.png)
+<img src="https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png" alt="Buoy Logo" width="300" height="300">
 
 Accessible Vue.js UI library
 
