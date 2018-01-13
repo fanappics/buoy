@@ -22,7 +22,12 @@ module.exports = {
     'quotes': ['warn', 'single', { 'avoidEscape': true }],
     'max-len': [1, 80, 2, {'ignoreComments': true, 'ignoreStrings': true}],
     'comma-dangle': ['error', 'always-multiline'],
-    'semi': ['error', 'always']
+    'semi': ['error', 'always'],
+    'prefer-const': ['error', {'destructuring': 'any',}],
+    'no-undef': 'error',
+    'no-multi-assign': 'error',
+    'arrow-body-style': ['error', 'always'],
+    'no-confusing-arrow': ['error', {'allowParens': false}],
   },
   'globals': {},
 }
