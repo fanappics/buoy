@@ -2,9 +2,15 @@
 
   <div class="toggle-container">
     <label class="toggle">
-      <input type="checkbox" :disabled="disabled" :checked="checked">
-
-      <span class="slider"><label :class='labelClass'>{{this.label}}</label></span>
+      <input 
+        :disabled="disabled" 
+        :checked="checked"
+        :aria-pressed="checked"
+        type="checkbox" 
+      >
+      <span class="slider">
+        <label :class="labelClass">{{this.label}}</label>
+      </span>
     </label>
   </div>
   
@@ -12,7 +18,7 @@
 
 <script>
 export default {
-  name: 'b-toggle',
+  name: "b-toggle",
   props: {
     id:{
       type: String,
@@ -41,8 +47,8 @@ export default {
   computed: {
     labelClass: function () {
       return {
-        'disabled': this.disabled,
-        'text': true
+        "disabled": this.disabled,
+        "text": true
       }
     }
   }

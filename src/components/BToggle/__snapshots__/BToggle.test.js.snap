@@ -10,13 +10,13 @@ exports[`BToggle renders the toggle 1`] = `
 exports[`BToggle renders the toggle disabled 1`] = `
 <div class="toggle-container">
     <label class="toggle">
-        <input type="checkbox" disabled="disabled"> <span class="slider"><label class="disabled text">test</label></span></label>
+        <input disabled="disabled" type="checkbox"> <span class="slider"><label class="disabled text">test</label></span></label>
 </div>
 `;
 
 exports[`BToggle renders the toggle prechecked 1`] = `
 <div class="toggle-container">
     <label class="toggle">
-        <input type="checkbox"> <span class="slider"><label class="text">test</label></span></label>
+        <input aria-pressed="true" type="checkbox"> <span class="slider"><label class="text">test</label></span></label>
 </div>
 `;
