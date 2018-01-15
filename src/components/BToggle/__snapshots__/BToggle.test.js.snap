@@ -1,22 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BToggle renders the toggle 1`] = `
-<div class="toggle-container">
-    <label class="toggle">
-        <input type="checkbox"> <span class="slider"><label class="text">test</label></span></label>
-</div>
+<button type="button" class=""><span class="slider"></span> test
+</button>
 `;
 
 exports[`BToggle renders the toggle disabled 1`] = `
-<div class="toggle-container">
-    <label class="toggle">
-        <input disabled="disabled" type="checkbox"> <span class="slider"><label class="disabled text">test</label></span></label>
-</div>
+<button disabled="disabled" type="button" class=""><span class="slider"></span> test
+</button>
 `;
 
 exports[`BToggle renders the toggle prechecked 1`] = `
-<div class="toggle-container">
-    <label class="toggle">
-        <input aria-pressed="true" type="checkbox"> <span class="slider"><label class="text">test</label></span></label>
-</div>
+<button type="button" class=""><span class="slider"></span> test
+</button>
 `;
