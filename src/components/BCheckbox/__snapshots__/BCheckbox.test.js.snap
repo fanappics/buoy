@@ -1,57 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Multiple checkbox mounted html should match snapshot 1`] = `
-<div>
-    <input type="checkbox" id="checkbox-1" aria-checked="true" aria-labelledby="label-checkbox-1">
-    <label id="label-checkbox-1" for="checkbox-1">
-        Checkbox
-    </label>
-    <input type="checkbox" id="checkbox-2" disabled="disabled" aria-labelledby="label-checkbox-2">
-    <label id="label-checkbox-2" for="checkbox-2">
-        Checkbox2
-    </label>
-</div>
-`;
-
 exports[`Multiple checkbox with group label mounted html should match snapshot 1`] = `
 <div role="group" aria-labelledby="checkbox-group">
-    <label id="checkbox-group" class="">
+    <label id="checkbox-group" class="bold">
         Checkbox Group
+        <!---->
     </label>
-    <input type="checkbox" id="checkbox-1" disabled="disabled" aria-checked="true" aria-labelledby="checkbox-group label-checkbox-1">
+    <input type="checkbox" aria-describedby="" aria-labelledby="checkbox-group label-checkbox-1" disabled="disabled" id="checkbox-1" data-vv-name="checkbox-group" data-vv-validate-on="input" data-vv-id="4" aria-required="false" aria-invalid="false">
     <label id="label-checkbox-1" for="checkbox-1">
         Checkbox
     </label>
-    <input type="checkbox" id="checkbox-2" aria-labelledby="checkbox-group label-checkbox-2">
+    <input type="checkbox" aria-checked="true" aria-describedby="" aria-labelledby="checkbox-group label-checkbox-2" id="checkbox-2" data-vv-name="checkbox-group" data-vv-validate-on="input" data-vv-id="5" aria-required="false" aria-invalid="false">
     <label id="label-checkbox-2" for="checkbox-2">
         Checkbox2
     </label>
+    <!---->
 </div>
 `;
 
 exports[`Single checkbox mounted html should match snapshot 1`] = `
 <div>
-    <input type="checkbox" id="checkbox" aria-labelledby="label-checkbox">
-    <label id="label-checkbox" for="checkbox">
+    <input type="checkbox" aria-describedby="" aria-labelledby="label-checkbox" id="checkbox" data-vv-name="checkbox" data-vv-validate-on="input" data-vv-id="1" aria-required="false" aria-invalid="false">
+    <label id="label-checkbox" for="checkbox" class="bold">
         Checkbox
+        <!---->
     </label>
+    <!---->
 </div>
 `;
 
 exports[`Single checked checkbox mounted html should match snapshot 1`] = `
 <div>
-    <input type="checkbox" id="checkbox" aria-checked="true" aria-labelledby="label-checkbox">
-    <label id="label-checkbox" for="checkbox">
+    <input type="checkbox" aria-checked="true" aria-describedby="" aria-labelledby="label-checkbox" id="checkbox" data-vv-name="checkbox" data-vv-validate-on="input" data-vv-id="3" aria-required="false" aria-invalid="false">
+    <label id="label-checkbox" for="checkbox" class="bold">
         Checkbox
+        <!---->
     </label>
+    <!---->
 </div>
 `;
 
 exports[`Single disabled checkbox mounted html should match snapshot 1`] = `
 <div>
-    <input type="checkbox" id="checkbox" disabled="disabled" aria-labelledby="label-checkbox">
-    <label id="label-checkbox" for="checkbox">
+    <input type="checkbox" aria-describedby="" aria-labelledby="label-checkbox" disabled="disabled" id="checkbox" data-vv-name="checkbox" data-vv-validate-on="input" data-vv-id="2" aria-required="false" aria-invalid="false">
+    <label id="label-checkbox" for="checkbox" class="bold">
         Checkbox
+        <!---->
     </label>
+    <!---->
 </div>
 `;
