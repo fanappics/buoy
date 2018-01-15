@@ -108,7 +108,7 @@ export default {
 
   :disabled {
     opacity: 0.4;
-    color: ##333333;
+    color: #333333;
   }
 
 </style>
