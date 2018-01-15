@@ -29,14 +29,28 @@
     <b-input id="input-14" label="My Regex Input (Digits Only)" pattern="^([0-9]+)$" />
     <br />
     <b-input id="input-15" v-model="formData.innerData.email" label="My Email Input" type="email" />
+    <br />
+    <BSelect
+            v-bind:selectOptions=options
+            v-bind:required=true
+            id="testId"
+            v-bind:placeholder=placeholder
+            selectLabel="Select Test"
+        />
   </div>
 </template>
 
 <script>
   import BInput from '../src/components/BInput'
+  import BSelect from '../src/components/BSelect/BSelect.vue'
+  
+  const options = [{id: 1, text: 'I'}, {id: 2, text: 'Love'}, {id: 3, text: 'css'}]
+  const placeholder = "Placeholder Test"
+  
   export default {
     components: {
-      BInput
+      BInput,
+      BSelect
     },
     data: () => ({
       formData: {
@@ -48,7 +62,9 @@
         innerData: {
           email: 'test@fanatics'
         }
-      }
+      },
+      options: options,
+      placeholder: placeholder
     })
   }
 </script>
