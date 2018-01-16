@@ -15,8 +15,6 @@ jobs:
       # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
-
-    dependencies:
       - checkout
 
       # Download and cache dependencies
@@ -34,7 +32,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
-    test:
       - run: npm run lint
       - run: npm test
       = run:
