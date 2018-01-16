@@ -1,7 +1,5 @@
 <template>
   <div>
-    <b-toggle label="Test Toggle" id="test-id" v-model="toggleValue">
-    </b-toggle>
   </div>
 </template>
 
@@ -11,7 +9,6 @@
     },
     data () {
       return {
-        toggleValue: false
       }
     }
   }
