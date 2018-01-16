@@ -18,7 +18,7 @@
       v-model="selectLabel"
       aria-haspopup="listbox"
       type="button"
-      >{{ selectedOption ? selectedOption.text : placeholder }}
+      >{{ selectedOption ? selectedOption.displayName : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
     </button>
     <ul
@@ -44,7 +44,7 @@
         class="options"
         role="option"
         tabindex="-1"
-      > {{ option.text }}
+      > {{ option.displayName }}
       </li>
     </ul>
     <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error-' + id">{{ selectErrors.first('selectedOption') }}</span>
@@ -61,25 +61,43 @@ export default {
   name: 'b-select',
   validator: null,
   props: {
+    /**
+    * Component Id
+    */
     id: {
       type: String,
       required: true
     },
+    /**
+    * Array of objects {id: number, displayName: string} to be displayed as options.
+    */
     selectOptions: {
       type: Array
     },
+    /**
+    * Use to turn on validation and to indicate field is required.
+    */
     required: {
       type: Boolean,
       required: true
     },
+    /**
+    * Label of component.
+    */
     selectLabel: {
       type: String,
       required: true
     },
+    /**
+    * If included, this object will be pre-selected.
+    */
     initialValue: {
       type: Object,
       required: false
     },
+    /**
+    * If no preselection, this is the placeholder text for the component.
+    */
     placeholder: {
       type: String,
       required: false,
