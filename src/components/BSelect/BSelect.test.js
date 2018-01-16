@@ -28,7 +28,7 @@ describe('BSelect', () => {
         selectOptions: selectOptions,
         required: required,
         selectLabel: selectLabel,
-        initialValue: initialValue
+        value: initialValue
       }
     })
     const div = wrapper.find(`#dropdown-${id}`)
@@ -122,7 +122,7 @@ describe('BSelect', () => {
         selectOptions: selectOptions,
         required: required,
         selectLabel: selectLabel,
-        initialValue: initialValue
+        value: initialValue
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
