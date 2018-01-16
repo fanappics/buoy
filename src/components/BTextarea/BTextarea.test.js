@@ -3,16 +3,24 @@ import BTextarea from './BTextarea';
 
 describe('BTextarea', () => {
   it('should render component', () => {
-    const wrapper = shallow(BTextarea);
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    const wrapper = shallow(BTextarea, {
+      propsData: {
+        label: 'test',
+        id: 'test',
+        name: 'test'
+      }
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('should render component with a label', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
         label: 'test',
-      },
-    });
+        id: 'test',
+        name: 'test'
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot();
   });
@@ -22,8 +30,10 @@ describe('BTextarea', () => {
       propsData: {
         label: 'test',
         required: true,
-      },
-    });
+        id: 'test',
+        name: 'test'
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot();
   });
@@ -32,8 +42,11 @@ describe('BTextarea', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
         disabled: true,
-      },
-    });
+        id: 'test',
+        name: 'test',
+        label: 'test'
+      }
+    })
 
     expect(wrapper.html()).toMatchSnapshot();
   });
