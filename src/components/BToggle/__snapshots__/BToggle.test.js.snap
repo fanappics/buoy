@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BToggle renders the toggle 1`] = `
+<button type="button" class=""><span class="slider"></span> test
+</button>
+`;
+
+exports[`BToggle renders the toggle disabled 1`] = `
+<button disabled="disabled" type="button" class=""><span class="slider"></span> test
+</button>
+`;
+
+exports[`BToggle renders the toggle prechecked 1`] = `
+<button type="button" class=""><span class="slider"></span> test
+</button>
+`;
