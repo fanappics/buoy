@@ -20,14 +20,14 @@ module.exports = {
   // add your custom rules here
   'rules': {
     'quotes': ['warn', 'single', { 'avoidEscape': true }],
-    'max-len': [1, 80, 2, {'ignoreComments': true, 'ignoreStrings': true}],
-    'comma-dangle': ['error', 'always-multiline'],
-    'semi': ['error', 'always'],
-    'prefer-const': ['error', {'destructuring': 'any',}],
+    'max-len': [1, 120, 2, {'ignoreStrings': true}],
+    'prefer-const': ['error', {'destructuring': 'any' }],
     'no-undef': 'error',
     'no-multi-assign': 'error',
-    'arrow-body-style': ['error', 'always'],
-    'no-confusing-arrow': ['error', {'allowParens': false}],
+    'arrow-body-style': ['error', 'as-needed'],
+    'object-curly-spacing': ['error', 'always'],
+    'space-in-parens': ['error', 'never'],
+    'array-bracket-spacing': ['error', 'never']
   },
   'globals': {},
 }

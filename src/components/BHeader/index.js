@@ -1,8 +1,8 @@
-import BHeader from './BHeader.vue';
+import BHeader from './BHeader.vue'
 
 /* istanbul ignore next */
 BHeader.install = function install (Vue) {
-  Vue.component(BHeader.name, BHeader);
-};
+  Vue.component(BHeader.name, BHeader)
+}
 
-export default BHeader;
+export default BHeader

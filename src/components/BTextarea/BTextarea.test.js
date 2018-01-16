@@ -1,5 +1,5 @@
-import { shallow } from 'vue-test-utils';
-import BTextarea from './BTextarea';
+import { shallow } from 'vue-test-utils'
+import BTextarea from './BTextarea'
 
 describe('BTextarea', () => {
   it('should render component', () => {
@@ -22,8 +22,8 @@ describe('BTextarea', () => {
       }
     })
 
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('should render component with label and asterisk', () => {
     const wrapper = shallow(BTextarea, {
@@ -35,8 +35,8 @@ describe('BTextarea', () => {
       }
     })
 
-    expect(wrapper.html()).toMatchSnapshot();
-  });
+    expect(wrapper.html()).toMatchSnapshot()
+  })
 
   it('should add disabled class when the disabled prop is set', () => {
     const wrapper = shallow(BTextarea, {
@@ -48,6 +48,6 @@ describe('BTextarea', () => {
       }
     })
 
-    expect(wrapper.html()).toMatchSnapshot();
-  });
-});
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})

@@ -16,7 +16,7 @@ jobs:
 
     working_directory: ~/repo
 
-    steps:
+    dependencies:
       - checkout
 
       # Download and cache dependencies
@@ -34,7 +34,13 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
         
       # run tests!
+    test:
       - run: npm run lint
       - run: npm test
-      - run: npm run test:accessibility
+      = run:
+        name: boot style guide server
+        command: npm run styleguide
+        background: true
+      - run: sleep 10
+      - run: npm run test:accessibility-ci;
       

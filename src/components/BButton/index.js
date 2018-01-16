@@ -1,8 +1,8 @@
-import BButton from './BButton.vue';
+import BButton from './BButton.vue'
 
 /* istanbul ignore next */
 BButton.install = function install (Vue) {
-  Vue.component(BButton.name, BButton);
-};
+  Vue.component(BButton.name, BButton)
+}
 
-export default BButton;
+export default BButton
