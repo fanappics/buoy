@@ -36,4 +36,5 @@ jobs:
       # run tests!
       - run: npm run lint
       - run: npm test
+      - run: npm run styleguide server & sleep 5; npm run test:accessibility
       
