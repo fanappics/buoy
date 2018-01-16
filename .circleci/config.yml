@@ -41,5 +41,5 @@ jobs:
           command: npm run styleguide
           background: true
       - run: sleep 10
-      - run: npm run test:accessibility-ci;
+      - run: npm run test:accessibility
       
