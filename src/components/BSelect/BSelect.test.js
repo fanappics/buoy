@@ -2,8 +2,8 @@ import { shallow } from 'vue-test-utils'
 import BSelect from './BSelect'
 
 describe('BSelect', () => {
-  const selectOptions = [{ id: 1, text: 'test-1' }, { id: 2, text: 'test-2' }]
-  const initialValue = { id: 1, text: 'test-1' }
+  const selectOptions = [{ id: 1, displayName: 'test-1' }, { id: 2, displayName: 'test-2' }]
+  const initialValue = { id: 1, displayName: 'test-1' }
   const required = false
   const selectLabel = 'test'
   const id = 'testId'
@@ -32,7 +32,7 @@ describe('BSelect', () => {
       }
     })
     const div = wrapper.find(`#dropdown-${id}`)
-    expect(div.text()).toBe(initialValue.text)
+    expect(div.text()).toBe(initialValue.displayName)
   })
 
   it('display placeholder if no initial value', () => {

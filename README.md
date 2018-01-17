@@ -9,17 +9,17 @@ Accessible Vue.js UI component library
 
 The Buoy project will create a beautiful, functional UI library for Vue.js that will make it easy for developers to follow the [Web Content Accessibility Guidelines guidelines](https://www.w3.org/WAI/intro/wcag).
 
-## Principles
+## Inspirations
 
 - https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a reference for building components.
-- https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ are two coding standards recommended for Vue.js code
+- https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ are two coding standards recommended for Vue.js code.
 - https://pattern-library.dequelabs.com is a resource for an accessible UI library we can use for an example of accessibility techniques.
-- https://github.com/pa11y/pa11y is an accessibility-focused testing tool used in our CI process
+- https://www.w3.org/TR/WCAG20/#guidelines are the accessibility guidelines enforced by [pa11y](https://github.com/pa11y/pa11y) in our development process.
 
 ## Living Style Guide and Documentation
 
-This project uses [Vue Styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living style guide
-You can view the living style guide and documentation [here](https://fanappics.github.io/buoy/)
+This project uses [Vue Styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living style guide.
+You can view the living style guide and documentation [here](https://fanappics.github.io/buoy/).
 
 ### Updating the style guide
 
@@ -29,7 +29,7 @@ You can view the living style guide and documentation [here](https://fanappics.g
 1. Run `npm run styleguide`
 1. See the changes live at `localhost:6060`
 
-To build and publish the new code the style guide run `npm run styleguide:build`
+To build and publish the new code the style guide run `npm run styleguide:build`.
 
 ## CLI
 
