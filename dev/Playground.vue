@@ -12,13 +12,11 @@
 </template>
         
 <script>
-  import BSelect from '../src/components/BSelect/BSelect.vue'
 
   const selected = 3
 
   export default {
     components: {
-      BSelect
     },
     data () {
       return {
