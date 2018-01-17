@@ -1,7 +1,7 @@
 ```js
 
 const options = [{id: 1, displayName: 'This'}, {id: 2, displayName: 'Is'}, {id: 3, displayName: 'An Example'}]
-const selected = {id: 3, displayName: 'An Example'}
+const selected = 3
 
 <div>
   <div style="width: 50%">

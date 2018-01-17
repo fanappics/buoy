@@ -88,10 +88,10 @@ export default {
       required: true
     },
     /**
-    * The value of the selected option.
+    * The id of the selected option.
     */
     value: {
-      type: Object,
+      type: Number,
       required: false
     },
     /**
@@ -145,7 +145,7 @@ export default {
       if (this.required) {
         this.validate()
       }
-      this.$emit("input", this.selectedOption)
+      this.$emit("input", this.selectedOption.id)
       document.querySelector(`#dropdown-${this.id}`).focus()
     },
 
@@ -200,7 +200,7 @@ export default {
   data () {
     return {
       opened: false,
-      selectedOption: this.value, 
+      selectedOption: this.value ? this.selectOptions[this.selectOptions.map(function(option) { return option.id }).indexOf(this.value)] : null,
       selectErrors: null
     }
   },
