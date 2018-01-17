@@ -79,7 +79,6 @@ export default {
     */
     required: {
       type: Boolean,
-      required: true
     },
     /**
     * Label of component.
@@ -89,13 +88,14 @@ export default {
       required: true
     },
     /**
-    * If included, this object will be pre-selected.
+    * The id of the selected option.
     */
-    initialValue: {
-      type: Object,
+    value: {
+      type: Number,
       required: false
     },
     /**
+    * The Placeholder text for the component.
     * If no preselection, this is the placeholder text for the component.
     */
     placeholder: {
@@ -145,6 +145,7 @@ export default {
       if (this.required) {
         this.validate()
       }
+      this.$emit("input", this.selectedOption.id)
       document.querySelector(`#dropdown-${this.id}`).focus()
     },
 
@@ -199,7 +200,7 @@ export default {
   data () {
     return {
       opened: false,
-      selectedOption: this.initialValue, 
+      selectedOption: this.value ? this.selectOptions[this.selectOptions.map(function(option) { return option.id }).indexOf(this.value)] : null,
       selectErrors: null
     }
   },
