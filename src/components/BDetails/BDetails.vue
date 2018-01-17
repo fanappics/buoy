@@ -1,7 +1,7 @@
 <template>
 <details>
   <summary>
-    <strong>{{summary}}</strong>
+    <span class="title">{{summary}}</span>
     <div class="icon">
       <slot name="icon"></slot>
     </div>
@@ -25,6 +25,9 @@ export default {
 <style>
 .icon {
   float: right;
+}
+.title {
+  font-weight: bold;
 }
 details[open] summary ~ * {
   animation: fadein 1s;

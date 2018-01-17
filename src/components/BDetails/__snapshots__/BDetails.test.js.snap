@@ -2,7 +2,7 @@
 
 exports[`BDetails renders correctly 1`] = `
 <details>
-    <summary><strong>hello world</strong>
+    <summary><span class="title">hello world</span>
         <div class="icon"></div>
     </summary>
 </details>
