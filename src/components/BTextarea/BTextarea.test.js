@@ -3,14 +3,22 @@ import BTextarea from './BTextarea'
 
 describe('BTextarea', () => {
   it('should render component', () => {
-    const wrapper = shallow(BTextarea)
+    const wrapper = shallow(BTextarea, {
+      propsData: {
+        label: 'test',
+        id: 'test',
+        name: 'test'
+      }
+    })
     expect(wrapper.html()).toMatchSnapshot()
   })
 
   it('should render component with a label', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
-        label: 'test'
+        label: 'test',
+        id: 'test',
+        name: 'test'
       }
     })
 
@@ -21,7 +29,9 @@ describe('BTextarea', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
         label: 'test',
-        required: true
+        required: true,
+        id: 'test',
+        name: 'test'
       }
     })
 
@@ -31,7 +41,10 @@ describe('BTextarea', () => {
   it('should add disabled class when the disabled prop is set', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
-        disabled: true
+        disabled: true,
+        id: 'test',
+        name: 'test',
+        label: 'test'
       }
     })
 
