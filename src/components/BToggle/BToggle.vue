@@ -15,18 +15,30 @@
 export default {
   name: "b-toggle",
   props: {
+    /**
+    * The toggle ID.
+    */
     id:{
       type: String,
       required: true
     },
+    /**
+    * Label to be used on the toggle.
+    */
     label:{
       type: String,
       required: true
     },
+    /**
+    * Turns on and off Toggle.
+    */
     disabled:{
       type: Boolean,
       required: false
     },
+    /**
+    * The state/value of the toggle.
+    */
     value:{
       type: Boolean,
       required: false,
