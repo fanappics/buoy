@@ -1,10 +1,10 @@
 import { mount } from 'vue-test-utils'
-import BContainer from './BDetails'
+import BDetails from './BDetails'
 
-describe('BContainer', () => {
+describe('BDetails', () => {
   it('renders correctly', () => {
     const summary = 'hello world'
-    const wrapper = mount(BContainer, {
+    const wrapper = mount(BDetails, {
       propsData: { summary }
     })
     expect(wrapper.html()).toMatchSnapshot()
