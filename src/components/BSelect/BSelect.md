@@ -1,11 +1,11 @@
 ```js
 
 const options = [{id: 1, displayName: 'This'}, {id: 2, displayName: 'Is'}, {id: 3, displayName: 'An Example'}]
+const selected = 3
 
 <div>
   <div style="width: 50%">
     <b-select
-      :required=false
       :selectOptions="options"
       id="example-id"
       placeholder="Placeholder Example"
@@ -15,20 +15,20 @@ const options = [{id: 1, displayName: 'This'}, {id: 2, displayName: 'Is'}, {id: 
 
   <div style="width: 50%">
     <b-select
-      :required=true
       :selectOptions="options"
       id="example-id-2"
       placeholder="Placeholder Example"
+      required
       selectLabel="Required Select Example"
     />
   </div>
 
   <div style="width: 50%">
     <b-select
-      :initialValue="{id: 3, displayName: 'An Example'}"
-      :required=true
       :selectOptions="options"
+      v-model="selected"
       id="example-id-3"
+      required
       selectLabel="Pre Selected Example"
     />
   </div>
