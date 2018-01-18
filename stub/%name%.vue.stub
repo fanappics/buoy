@@ -18,16 +18,9 @@ export default {
 
   name: 'b-',
   props: {
-    valie: String
   },
   data() {
     return {
-      privateValue: this.value || '';
-      touched: false;
-      validationAttributes: {
-        'data-vv-name': 'my-component-name' // Specifies a name for the field, used in components validation and as a fallback name for inputs.
-        'data-vv-validate-on': 'input|blur' // Used to specify a list of event names separated by pipes, the default varies by the type of the input
-      }
     }
   },
   computed() {

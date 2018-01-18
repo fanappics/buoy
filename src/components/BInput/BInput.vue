@@ -5,9 +5,9 @@
     </label>
     <div v-if="currency" :class="{ currency: true, focused: focused, disabled: disabled, invalid: invalid }" @click="$refs.input.focus()">
       <span style="font-weight: bold;">$</span>
-      <input v-model="publicValue" v-bind="inputAttributes" v-validate.initial="validations" @focus="focused = true" @blur="focused = false" ref="input" @change="touched = true" />
+      <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false" ref="input" @change="touched = true" />
     </div>
-    <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate.initial="validations" :class="{ invalid: invalid }" @change="touched = true" />
+    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ invalid: invalid }" @change="touched = true" />
     <div v-if="invalid" :id="`error-${id}`" class="error">
       <span v-for="(error,index) in errors.all()" :key='index'>
         {{ error }}
@@ -17,10 +17,13 @@
 </template>
 
 <script>
-import events from '../../event-bus'
+import validationMixIn from '../../mixins/validation'
 
 export default {
   name: 'b-input',
+  mixins: [validationMixIn({
+    validateOn: 'blur|input'
+  })],
   props: {
     //Required props
     id: {
@@ -52,25 +55,11 @@ export default {
           throw new TypeError(`${value} is not a valid type for b-input`)
         return true
       }
-    },
-    value: String
-  },
-  inject: {
-    parentScope: {
-      default: null
     }
-  },
-  created () {
-    events.$on('validate', this.onValidate)
-  },
-  beforeDestroy () {
-    events.$off('validate', this.onValidate)
   },
   data () {
     return {
-      privateValue: this.value ? this.value : '',
       focused: false,
-      touched: false
     }
   },
   computed: {
@@ -79,8 +68,6 @@ export default {
         'aria-describedby': this.invalid ? `error-${this.id}` : '',
         'aria-label': this.label,
         'autofocus': this.autofocus,
-        'data-vv-name': this.label,
-        'data-vv-validate-on': 'input|blur',
         'disabled': this.disabled,
         'id': this.id,
         'name': this.name,
@@ -93,19 +80,6 @@ export default {
     },
     currency () {
       return this.type === 'currency'
-    },
-    invalid () {
-      return this.touched && this.errors.any()
-    },
-    //Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
-    publicValue: {
-      get () {
-        return this.privateValue
-      },
-      set (value) {
-        this.privateValue = value
-        this.$emit('input', this.privateValue)
-      }
     },
     //Creates an object that VeeValidate reads to apply certain rules
     validations () {
@@ -136,20 +110,6 @@ export default {
           vals.url = true
       }
       return vals
-    }
-  },
-  watch: {
-    'errors.items': {
-      handler: function(errors) {
-        events.$emit('errorsChanged', errors, this.label, this.parentScope)
-      }
-    }
-  },
-  methods: {
-    onValidate (scope) {
-      if (!this.parentScope || this.parentScope === scope) {
-        this.$validator.validateAll(scope)
-      }
     }
   }
 }
