@@ -5,11 +5,11 @@
     </label>
     <div v-if="currency" :class="{ currency: true, focused: focused, disabled: disabled, invalid: invalid }" @click="$refs.input.focus()">
       <span style="font-weight: bold;">$</span>
-      <input v-model="publicValue" v-bind="inputAttributes" v-validate="validations" @focus="focused = true" @blur="focused = false" ref="input" />
+      <input v-model="publicValue" v-bind="inputAttributes" v-validate.initial="validations" @focus="focused = true" @blur="focused = false" ref="input" @change="touched = true" />
     </div>
-    <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate="validations" :class="{ invalid: invalid }" />
+    <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate.initial="validations" :class="{ invalid: invalid }" @change="touched = true" />
     <div v-if="invalid" :id="`error-${id}`" class="error">
-      <span v-for="error in errors.all()">
+      <span v-for="(error,index) in errors.all()" :key='index'>
         {{ error }}
       </span>
     </div>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import events from '../../event-bus'
+
 export default {
   name: 'b-input',
   props: {
@@ -53,10 +55,22 @@ export default {
     },
     value: String
   },
+  inject: {
+    parentScope: {
+      default: null
+    }
+  },
+  created () {
+    events.$on('validate', this.onValidate)
+  },
+  beforeDestroy () {
+    events.$off('validate', this.onValidate)
+  },
   data () {
     return {
       privateValue: this.value ? this.value : '',
-      focused: false
+      focused: false,
+      touched: false
     }
   },
   computed: {
@@ -65,7 +79,7 @@ export default {
         'aria-describedby': this.invalid ? `error-${this.id}` : '',
         'aria-label': this.label,
         'autofocus': this.autofocus,
-        'data-vv-as': this.type,
+        'data-vv-name': this.label,
         'data-vv-validate-on': 'input|blur',
         'disabled': this.disabled,
         'id': this.id,
@@ -81,7 +95,7 @@ export default {
       return this.type === 'currency'
     },
     invalid () {
-      return this.errors.any()
+      return this.touched && this.errors.any()
     },
     //Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
     publicValue: {
@@ -122,6 +136,20 @@ export default {
           vals.url = true
       }
       return vals
+    }
+  },
+  watch: {
+    'errors.items': {
+      handler: function(errors) {
+        events.$emit('errorsChanged', errors, this.label, this.parentScope)
+      }
+    }
+  },
+  methods: {
+    onValidate (scope) {
+      if (!this.parentScope || this.parentScope === scope) {
+        this.$validator.validateAll(scope)
+      }
     }
   }
 }
