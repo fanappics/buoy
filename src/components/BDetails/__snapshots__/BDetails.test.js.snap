@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`BDetails renders correctly 1`] = `
-<details>
-    <summary><span class="title">hello world</span>
-        <div class="icon"></div>
-    </summary>
-</details>
-`;
