@@ -3,17 +3,23 @@
 exports[`BShuttle BShuttle renders correctly 1`] = `
 <div class="shuttle">
     <div class="available">
-        <ul></ul>
+        <ul>
+            <!---->
+        </ul>
     </div>
     <div class="buttons">
-        <button type="button"></button>
+        <button type="button">All
+            <i aria-hidden="true" class="fa fa-arrow-right"></i>
+        </button>
         <button type="button">
             <i aria-hidden="true" class="fa fa-arrow-right"></i>
         </button>
         <button type="button">
             <i aria-hidden="true" class="fa fa-arrow-left"></i>
         </button>
-        <button type="button"></button>
+        <button type="button">All
+            <i aria-hidden="true" class="fa fa-arrow-left"></i>
+        </button>
     </div>
     <div class="chosen">
         <ul></ul>
