@@ -6,7 +6,7 @@ exports[`BContainer Default to H2 if label is passed in with an invalid headerLe
         <!---->
         <h2 class="header">hello world</h2>
     </div>
-    <div class="bordered" name="fade"></div>
+    <!---->
 </section>
 `;
 
@@ -16,7 +16,7 @@ exports[`BContainer Default to H2 if label is passed in without a headerLevel pr
         <!---->
         <h2 class="header">hello world</h2>
     </div>
-    <div class="bordered" name="fade"></div>
+    <!---->
 </section>
 `;
 
@@ -26,7 +26,7 @@ exports[`BContainer renders an element with no h element if hideLabel is passed 
         <!---->
         <!---->
     </div>
-    <div class="bordered" name="fade"></div>
+    <!---->
 </section>
 `;
 
@@ -36,7 +36,7 @@ exports[`BContainer renders correctly 1`] = `
         <!---->
         <h1 class="header">hello world</h1>
     </div>
-    <div class="bordered" name="fade"></div>
+    <!---->
 </section>
 `;
 
@@ -46,6 +46,6 @@ exports[`BContainer renders props.label in header element when passed.  Can spec
         <!---->
         <h6 class="header">hello world</h6>
     </div>
-    <div class="bordered" name="fade"></div>
+    <!---->
 </section>
 `;

@@ -4,7 +4,7 @@
       <span
         :class="{ 'caret': true, 'caret-down': expanded}"
         v-if="expandable"
-        @click="toggleCaret"
+        @click="toggleExpansion"
       >
       </span>
       <component v-if=!hideLabel :is=headerElement() class="header">{{ label }}</component>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import events from '../../event-bus'
   /**
   * Buoy Container Component
   */
@@ -44,11 +45,14 @@ export default {
     hideLabel: {
       type: Boolean
     },
+    /**
+     * Used to control expandability. If true, component will show arrow and able to collapse/expand.
+     */
     expandable: {
       type: Boolean
     }
   },
-  created: function() {
+  created () {
     if (this.hideLabel) {
       return
     }
@@ -57,6 +61,13 @@ export default {
     } else if (isNaN(this.headerLevel) || this.headerLevel < 1 || this.headerLevel > 6) {
       console.error('Invalid headerLevel property set. Valid input are numbers 1-6.  Reverting to default level 2.')
     }
+    events.$on('collapse', this.collapse)
+    events.$on('expand', this.expand)
+  },
+
+  beforeDestroy () {
+    events.$off('collapse', this.collapse)
+    events.$off('expand', this.expand)
   },
   
   data: function() {
@@ -68,14 +79,25 @@ export default {
           return `h${this.headerLevel}`
         }
       },
-      expanded: true
+      expandedData: true
     }
   },
 
   methods: {
-    toggleCaret () {
-      this.caretToggle = !this.caretToggle
+    toggleExpansion () {
       this.expanded = !this.expanded
+    },
+    collapse () {
+      this.expanded = false
+    },
+    expand () {
+      this.expanded = true
+    }
+  },
+
+  inject: {
+    parentScope: {
+      default: null
     }
   }
 }
@@ -95,7 +117,6 @@ export default {
     border-top: .4rem solid transparent;
     border-bottom: .4rem solid transparent;
     border-left: .4rem solid blue;
-    margin-left: .4rem;
     margin-right: .5rem;
     margin-bottom: .2rem;
     transition: all .3s;
