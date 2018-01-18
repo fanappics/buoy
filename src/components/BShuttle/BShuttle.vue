@@ -5,19 +5,19 @@
   		<ul>
   			<li
   				v-if="placeholder && availableOptions.length === 0 && chosenOptions.length === 0"
-  				class="placeholder"
+  				class='placeholder'
   			>
-  			{{placeholder}}
+  			{{ placeholder }}
   			</li>
   			<li
   				v-for="option in availableOptions"
   				:key="'available-option' + option.id"
   				:id="'available-option' + option.id"
-  				class="options"
-  				role="option"
-  				tabindex="-1"
+  				class='options'
+  				role='option'
+  				tabindex='-1'
   			>
-  			{{option.displayText}}
+  			{{ option.displayText }}
   			</li>
   		</ul>
   	</div>
