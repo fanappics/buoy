@@ -1,18 +1,105 @@
 <template>
+<!-- Validation Example
+
+  <input v-validate.initial="validations" v-bind="validationAttributes" @change="touched = true"/>
+  <div v-if="invalid" :id="`error-${id}`" class="error">
+    <span v-for="(error,index) in errors.all()" :key='index'>
+      {{ error }}
+    </span>
+  </div> 
+
+-->
   
 </template>
 
 <script>
 export default {
-  name: '',
-  props: [
-    ''
-  ],
-  data () {
-    return {}
+  import events from '../../event-bus'
+
+  name: 'b-',
+  props: {
+    valie: String
+  },
+  data() {
+    return {
+      privateValue: this.value || '';
+      touched: false;
+      validationAttributes: {
+        'data-vv-name': 'my-component-name' // Specifies a name for the field, used in components validation and as a fallback name for inputs.
+        'data-vv-validate-on': 'input|blur' // Used to specify a list of event names separated by pipes, the default varies by the type of the input
+      }
+    }
+  },
+  computed() {
+    invalid () {
+      return this.touched && this.errors.any()
+    },
+    //Creates an object that VeeValidate reads to apply certain rules
+    validations () {
+      let vals = {}
+      // if (this.max)
+      //   vals.max_value = this.max
+      // if (this.maxlength)
+      //   vals.max = this.maxlength
+      // if (this.min)
+      //   vals.min_value = this.min
+      // if (this.minlength)
+      //   vals.min = this.minlength
+      // if (this.pattern)
+      //   vals.regex = this.pattern
+      // if (this.required)
+      //   vals.required = true
+      return vals
+    },
+    //Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
+    publicValue: {
+      get () {
+        return this.privateValue
+      },
+      set (value) {
+        this.privateValue = value
+        this.$emit('input', this.privateValue)
+      }
+    },
+  },
+  methods: {
+    onValidate (scope) {
+      if (!this.parentScope || this.parentScope === scope) {
+        this.$validator.validateAll(scope)
+      }
+    }
+  },
+  inject: {
+    parentScope: {
+      default: null
+    }
+  },
+  // Emits errors that propagate to parent validation objects
+  watch: {
+    'errors.items': {
+      handler: function(errors) {
+        //Change field name to a identifier for the component in invalid state.  Should be the same as data-vv-name
+        events.$emit('errorsChanged', errors, --fieldname--, this.parentScope)
+      }
+    }
+  },
+  created() {
+    events.$on('validate', this.onValidate)
+  },
+  beforeDestroy () {
+    events.$off('validate', this.onValidate)
   }
+
 }
 </script>
 
 <style scoped>
+
+  .error {
+    color: #d0021b;
+    font-family: SFUIDisplay;
+    font-size: 12px;
+    padding-top: 5px;
+  }
+
 </style>
