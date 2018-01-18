@@ -88,7 +88,9 @@ export default {
       this.expanded = !this.expanded
     },
     collapse () {
-      this.expanded = false
+      if (this.expandable) {
+        this.expanded = false
+      }
     },
     expand () {
       this.expanded = true
