@@ -79,7 +79,7 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
             <!---->
         </label>
     </div>
-    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown selected">test-1
+    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown selected">test-2
         <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
