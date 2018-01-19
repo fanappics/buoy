@@ -4,7 +4,8 @@
     :aria-label="label"
     tabindex="0"
     @keyup.enter.prevent="toggleExpansion"
-    @keyup.space="toggleExpansion"
+    @keyup.space.prevent="toggleExpansion"
+    @keydown.space.prevent
   >
     <div>
       <span
