@@ -10,7 +10,8 @@ describe('Text input', () => {
     const wrapper = shallow(BInput, {
       propsData: {
         id: 'input-1',
-        label: 'My Input'
+        label: 'My Input',
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -24,7 +25,8 @@ describe('Number input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        type: 'number'
+        type: 'number',
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -38,7 +40,8 @@ describe('Currency input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        type: 'currency'
+        type: 'currency',
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -52,7 +55,8 @@ describe('Disabled input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        disabled: true
+        disabled: true,
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -66,7 +70,8 @@ describe('Required input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        required: true
+        required: true,
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -80,7 +85,8 @@ describe('Pattern input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        pattern: '^([0-9]+)$'
+        pattern: '^([0-9]+)$',
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -94,7 +100,8 @@ describe('Readonly input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        readonly: true
+        readonly: true,
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -108,7 +115,8 @@ describe('Named input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        name: 'Name of Input'
+        name: 'Name of Input',
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -122,7 +130,8 @@ describe('Autofocused input', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        autofocus: true
+        autofocus: true,
+        validationId: 'testValidationId'
       },
       localVue
     })
@@ -136,7 +145,8 @@ describe('Required input failing validation', () => {
       propsData: {
         id: 'input-1',
         label: 'My Input',
-        required: true
+        required: true,
+        validationId: 'testValidationId'
       },
       localVue
     })
