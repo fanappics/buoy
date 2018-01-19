@@ -8,33 +8,38 @@ export default function Validation (eventTypes = 'input|blur') {
       }
     },
     props: {
-      validationId: {
+      validationName: {
         type: String,
-        required: true
+        default: ''
       }
     },
     data () {
       return {
-        validationAttributes: {
-          'data-vv-name': this.validationId, // Specifies a name for the field, used in components validation and as a fallback name for inputs.
-          'data-vv-validate-on': eventTypes // Used to specify a list of event names separated by pipes, the default varies by the type of the input
-        }
+        validationId: null
       }
     },
     computed: {
       invalid () {
-        return (this.touched || typeof this.touched === 'undefined') && this.errors.any()
+        return this.errors.any()
+      },
+      validationAttributes () {
+        return {
+          'data-vv-as': this.validationName,
+          'data-vv-name': this.validationId, // Specifies a name for the field, used in components validation and as a fallback name for inputs.
+          'data-vv-validate-on': eventTypes // Used to specify a list of event names separated by pipes, the default varies by the type of the input
+        }
       }
     },
     // Emits errors that propagate to parent validation objects
     watch: {
       'errors.items': {
         handler: function (errors) {
-          events.$emit('errorsChanged', errors, this.validationId, this.parentScope)
+          events.$emit('errorsChanged', errors, this.validationId.toString(), this.parentScope)
         }
       }
     },
     created () {
+      this.validationId = this._uid
       events.$on('validate', this.onValidate)
     },
     beforeDestroy () {
