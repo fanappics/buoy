@@ -20,7 +20,7 @@
     "test": "cross-env NODE_ENV=test jest",
     "test:accessibility": "./node_modules/.bin/pa11y-ci",
     "test:coverage": "cross-env NODE_ENV=test jest -i --coverage",
-    "precommit": "./precommit.sh; npm run lint; npm run test",
+    "precommit": "./precommit.sh && npm run lint && npm run test",
     "prepare": "npm run build",
     "prepush": "npm run lint && npm test",
     "styleguide": "vue-styleguidist server --config ./build/styleguide.config.js",
