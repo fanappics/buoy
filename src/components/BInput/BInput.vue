@@ -21,9 +21,7 @@ import validationMixIn from '../../mixins/validation'
 
 export default {
   name: 'b-input',
-  mixins: [validationMixIn({
-    validateOn: 'blur|input'
-  })],
+  mixins: [validationMixIn('blur|input')],
   props: {
     //Required props
     id: {
@@ -55,11 +53,15 @@ export default {
           throw new TypeError(`${value} is not a valid type for b-input`)
         return true
       }
-    }
+    },
+    value: String
+
   },
   data () {
     return {
       focused: false,
+      privateValue: this.value || '',
+      touched: false,
     }
   },
   computed: {
@@ -80,6 +82,16 @@ export default {
     },
     currency () {
       return this.type === 'currency'
+    },
+    // Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
+    publicValue: {
+      get () {
+        return this.privateValue
+      },
+      set (value) {
+        this.privateValue = value
+        this.$emit('input', this.privateValue)
+      }
     },
     //Creates an object that VeeValidate reads to apply certain rules
     validations () {

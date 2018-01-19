@@ -9,25 +9,38 @@
   </div> 
 
 -->
-  
+  <div></div>
 </template>
 
 <script>
 export default {
-  import events from '../../event-bus'
+  import validationMixIn from '../../mixins/validation'
 
   name: 'b-',
+  // Optional parameter is pipe separated list of DOM Events to validate on.  
+  // Defaults to 'blur|input' 
+  mixins: [validationMixIn()],
   props: {
+    //Required props
+    id: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    //Optional props
+    value: String
   },
-  data() {
+  data () {
     return {
+      touched: false // Optional - will be used by validation plugin.
     }
   },
-  computed() {
-    invalid () {
-      return this.touched && this.errors.any()
-    },
-    //Creates an object that VeeValidate reads to apply certain rules
+  computed: {
+    // Creates an object that VeeValidate reads to apply certain rules
+    // See http://vee-validate.logaretm.com/rules.html#syntax
     validations () {
       let vals = {}
       // if (this.max)
@@ -43,46 +56,8 @@ export default {
       // if (this.required)
       //   vals.required = true
       return vals
-    },
-    //Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
-    publicValue: {
-      get () {
-        return this.privateValue
-      },
-      set (value) {
-        this.privateValue = value
-        this.$emit('input', this.privateValue)
-      }
-    },
-  },
-  methods: {
-    onValidate (scope) {
-      if (!this.parentScope || this.parentScope === scope) {
-        this.$validator.validateAll(scope)
-      }
     }
-  },
-  inject: {
-    parentScope: {
-      default: null
-    }
-  },
-  // Emits errors that propagate to parent validation objects
-  watch: {
-    'errors.items': {
-      handler: function(errors) {
-        //Change field name to a identifier for the component in invalid state.  Should be the same as data-vv-name
-        events.$emit('errorsChanged', errors, --fieldname--, this.parentScope)
-      }
-    }
-  },
-  created() {
-    events.$on('validate', this.onValidate)
-  },
-  beforeDestroy () {
-    events.$off('validate', this.onValidate)
   }
-
 }
 </script>
 
