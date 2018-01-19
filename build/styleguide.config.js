@@ -17,6 +17,9 @@ module.exports = {
       ]
     }
   },
+  mixins: [
+    '../src/mixins/styleguide/styleguidedist.js'
+  ],
   showUsage: true,
   showCode: true,
   defaultExample: true,
