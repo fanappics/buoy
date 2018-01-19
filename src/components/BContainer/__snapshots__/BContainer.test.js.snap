@@ -1,51 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BContainer Default to H2 if label is passed in with an invalid headerLevel property. Should log to console.error. 1`] = `
-<section role="contentinfo" aria-label="hello world">
+<section role="contentinfo" aria-label="hello world" tabindex="0">
     <div>
         <!---->
         <h2 class="header">hello world</h2>
     </div>
-    <!---->
+    <div id="_uid" class="bordered" name="fade"></div>
 </section>
 `;
 
 exports[`BContainer Default to H2 if label is passed in without a headerLevel property. 1`] = `
-<section role="contentinfo" aria-label="hello world">
+<section role="contentinfo" aria-label="hello world" tabindex="0">
     <div>
         <!---->
         <h2 class="header">hello world</h2>
     </div>
-    <!---->
+    <div id="_uid" class="bordered" name="fade"></div>
 </section>
 `;
 
 exports[`BContainer renders an element with no h element if hideLabel is passed 1`] = `
-<section role="contentinfo" aria-label="hello world">
+<section role="contentinfo" aria-label="hello world" tabindex="0">
     <div>
         <!---->
         <!---->
     </div>
-    <!---->
+    <div id="_uid" class="bordered" name="fade"></div>
 </section>
 `;
 
 exports[`BContainer renders correctly 1`] = `
-<section role="contentinfo" aria-label="hello world">
+<section role="contentinfo" aria-label="hello world" tabindex="0">
     <div>
         <!---->
         <h1 class="header">hello world</h1>
     </div>
-    <!---->
+    <div id="_uid" class="bordered" name="fade"></div>
 </section>
 `;
 
 exports[`BContainer renders props.label in header element when passed.  Can specify header level with prop 1`] = `
-<section role="contentinfo" aria-label="hello world">
+<section role="contentinfo" aria-label="hello world" tabindex="0">
     <div>
         <!---->
         <h6 class="header">hello world</h6>
     </div>
-    <!---->
+    <div id="_uid" class="bordered" name="fade"></div>
 </section>
 `;

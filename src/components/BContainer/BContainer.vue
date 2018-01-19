@@ -1,17 +1,33 @@
 <template>
-  <section role="contentinfo" :aria-label="label">
+  <section
+    role="contentinfo"
+    :aria-label="label"
+    tabindex="0"
+    @keyup.enter.prevent="toggleExpansion"
+    @keyup.space="toggleExpansion"
+  >
     <div>
       <span
         :class="{ 'caret': true, 'caret-down': expanded}"
         v-if="expandable"
         @click="toggleExpansion"
+        role="button"
+        aria-controls="_uid"
       >
       </span>
       <component v-if=!hideLabel :is=headerElement() class="header">{{ label }}</component>
-      <slot name="icon" class="icon"></slot>
+      <slot
+        name="icon"
+        class="icon"
+      >
+      </slot>
     </div>
     <transition name="fade">
-      <div class="bordered" v-if="expanded">
+      <div
+        class="bordered"
+        v-if="expanded"
+        id="_uid"
+      >
         <slot></slot>
       </div>
     </transition>
@@ -79,7 +95,7 @@ export default {
           return `h${this.headerLevel}`
         }
       },
-      expandedData: true
+      expanded: true
     }
   },
 
@@ -149,7 +165,12 @@ export default {
 </style>
 <docs>
 ```js
-<b-container class="edit_me" label="Container Header" headerLevel="3" expandable>
+<b-container
+  class="edit_me"
+  label="Container Header"
+  headerLevel="3"
+  expandable
+>
   <span slot="icon">&#10004;</span>
   <b-button>Test</b-button>
   <b-button>Test2</b-button> 
