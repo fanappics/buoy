@@ -127,12 +127,6 @@ export default {
       }
       return vals
     }
-  },
-  methods: {
-    touch() {
-      console.log(this.touched)
-      this.touched = true;
-    }
   }
 }
 </script>
