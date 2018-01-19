@@ -4,7 +4,7 @@
   	<div class='available'>
   		<ul>
   			<li
-  				v-if="placeholder && availableOptions.length === 0 && chosenOptions.length === 0"
+  				v-if="placeholder && options.length === 0"
   				class='placeholder'
   			>
   			{{ placeholder }}
@@ -13,7 +13,8 @@
   				v-for="option in availableOptions"
   				:key="'available-option' + option.id"
   				:id="'available-option' + option.id"
-  				class='options'
+  				:class="optionsClass(option, 'available')"
+  				@click="onOptionClick(option, 'available', 'chosen')"
   				role='option'
   				tabindex='-1'
   			>
@@ -24,13 +25,29 @@
 
   	<div class='buttons'>
 	  	<button type='button'>All <i class='fa fa-arrow-right' aria-hidden='true'></i></button>
-	  	<button type='button'><i class='fa fa-arrow-right' aria-hidden='true'></i></button>
+	  	<button 
+	  		@click="onMoveSelectedToChosenClick"
+	  		type='button'
+	  		>
+	  		<i class='fa fa-arrow-right' aria-hidden='true'></i>
+	  	</button>
 	  	<button type='button'><i class='fa fa-arrow-left' aria-hidden='true'></i></button>
 	  	<button type='button'>All <i class='fa fa-arrow-left' aria-hidden='true'></i></button>
   	</div>
 
   	<div class='chosen'>
   		<ul>
+	  		<li
+  				v-for="option in chosenOptions"
+  				:key="'chosen-option' + option.id"
+  				:id="'chosen-option' + option.id"
+  				:class="optionsClass(option, 'chosen')"
+  				@click="onOptionClick(option, 'chosen', 'available')"
+  				role='option'
+  				tabindex='-1'
+  			>
+  				{{ option.displayText }}
+  			</li>
   		</ul>
   	</div>
 
@@ -45,16 +62,9 @@ export default {
   		/**
   		* The available options for the shuttle.
   		*/
-  	availableOptions: {
+  	options: {
   		type: Array,
-  		default: []
-  	},
-  		/**
-  		* The chosen options for the shuttle.
-  		*/
-  	chosenOptions: {
-  		type: Array,
-  		default: []
+  		required: false
   	},
   		/**
   		* Placeholder to display if shuttle is dependent on other component.
@@ -62,12 +72,72 @@ export default {
   	placeholder: {
   		type: String,
   		required: false
-  	}
+  	},
+    /**
+    * The id of the selected option.
+    */
+    value: {
+      type: Array,
+      required: false,
+      default: function () { return [] }
+    }
   },
+
+  data () {
+    return {
+    	availableOptions: this.options ? this.setAvailableOptions(this.options, this.value) : new Array,
+    	selectedOptions: {'available': new Array, 'chosen': new Array},
+    	chosenOptions: this.value ? this.value : new Array
+    }
+  },
+
   computed: {
   },
-  data () {
-    return {}
+
+  methods: {
+  	setAvailableOptions: function (options, selected) {
+  		const availableOptions = new Array
+  		options.forEach(function (option) {
+  			console.log(selected === null)
+  			if (selected === null) {
+  				console.log('oh hai')
+  				availableOptions.push(option)
+  			} else if (selected.indexOf(option.id) === -1) {
+  				availableOptions.push(option)
+  			}
+  		})
+  		console.log(availableOptions)
+      return availableOptions
+    },
+  	optionsClass: function (option, optionType) {
+      return {
+        'options': true,
+        'selected': this.selectedOptions[optionType].indexOf(option.id) > -1
+      }
+    },
+  	onOptionClick (option, optionType, otherOptionType) {
+  		const index = this.selectedOptions[optionType].indexOf(option.id)
+  		if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
+  		this.selectOption(index, option, optionType)
+  	},
+
+  	onMoveSelectedToChosenClick () {
+  		this.availableOptions.forEach( function (option) {
+  			const index = this.selectedOptions['available'].indexOf(option.id) > -1
+  			if (index > -1) {
+  				this.chosenOptions.push(option.id)
+  				this.availableOptions.spice(this.availableOptions.indexOf(option.id), 1)
+  			}
+  			this.selectedOptions['available'] = new Array
+  		})
+  	},
+  	selectOption (index, option, optionType) {
+  		if (index > -1) {
+  			this.selectedOptions[optionType].splice(index, 1)
+  		} else {
+  			this.selectedOptions[optionType].push(option.id)
+  		}
+  	}
   }
 }
 </script>
@@ -126,6 +196,11 @@ export default {
 
 	li.options:hover {
 		cursor: pointer;
+	}
+
+	li.selected {
+		background-color: #00aaed;
+		color: #ffffff;
 	}
 
 </style>

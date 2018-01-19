@@ -1,7 +1,7 @@
 <template>
     <div>
       <b-shuttle 
-      :availableOptions="availableOptions"
+      :options="options"
       v-model="shuttle"
       placeholder="Placeholder Text"
       />
@@ -12,7 +12,7 @@
 <script>
 
   const selected = null
-  const availableOptions = [{id: 1, displayText: "Ralph"}, {id: 2, displayText: "Bob"}, ]
+  const options = [{id: 1, displayText: "Ralph"}, {id: 2, displayText: "Bob"}, ]
 
   export default {
     components: {
@@ -20,7 +20,7 @@
     data () {
       return {
         shuttle: null,
-        availableOptions: availableOptions
+        options: options
       }
     }
   }
