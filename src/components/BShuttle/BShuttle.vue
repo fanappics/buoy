@@ -26,7 +26,7 @@
   	<div class='buttons'>
 	  	<button type='button'>All <i class='fa fa-arrow-right' aria-hidden='true'></i></button>
 	  	<button 
-	  		@click="onMoveSelectedToChosenClick"
+	  		@click="onMoveSelectedToChosenClick(selectedOptions)"
 	  		type='button'
 	  		>
 	  		<i class='fa fa-arrow-right' aria-hidden='true'></i>
@@ -98,15 +98,12 @@ export default {
   	setAvailableOptions: function (options, selected) {
   		const availableOptions = new Array
   		options.forEach(function (option) {
-  			console.log(selected === null)
   			if (selected === null) {
-  				console.log('oh hai')
   				availableOptions.push(option)
   			} else if (selected.indexOf(option.id) === -1) {
   				availableOptions.push(option)
   			}
   		})
-  		console.log(availableOptions)
       return availableOptions
     },
   	optionsClass: function (option, optionType) {
@@ -119,17 +116,26 @@ export default {
   		const index = this.selectedOptions[optionType].indexOf(option.id)
   		if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
   		this.selectOption(index, option, optionType)
+  		console.log(this.selectedOptions)
   	},
 
-  	onMoveSelectedToChosenClick () {
+  	onMoveSelectedToChosenClick (options) {
+  		const selectedOptions = this.selectedOptions
+  		const availableOptions = this.availableOptions
+  		const chosenOptions = this.chosenOptions
+  		const leftOverOptions = new Array
+  		console.log(this.selectedOptions)
   		this.availableOptions.forEach( function (option) {
-  			const index = this.selectedOptions['available'].indexOf(option.id) > -1
+  			const index = selectedOptions['available'].indexOf(option.id) > -1
   			if (index > -1) {
-  				this.chosenOptions.push(option.id)
-  				this.availableOptions.spice(this.availableOptions.indexOf(option.id), 1)
+  				chosenOptions.push(option)
+  			} else {
+  				leftOverOptions.push(option)
   			}
-  			this.selectedOptions['available'] = new Array
   		})
+  		this.availableOptions = leftOverOptions
+  		this.chosenOptions = chosenOptions
+  		this.selectedOptions = {'available': new Array, 'chosen': new Array}
   	},
   	selectOption (index, option, optionType) {
   		if (index > -1) {
