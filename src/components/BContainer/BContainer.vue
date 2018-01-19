@@ -136,7 +136,7 @@ export default {
     height: 0; 
     border-top: .4rem solid transparent;
     border-bottom: .4rem solid transparent;
-    border-left: .4rem solid blue;
+    border-left: .5rem solid black;
     margin-right: .5rem;
     margin-bottom: .2rem;
     transition: all .3s;
@@ -173,7 +173,12 @@ export default {
   headerLevel="3"
   expandable
 >
-  <span slot="icon">&#10004;</span>
+  <span
+    slot="icon"
+    style="border-radius:50%;width:1.5rem;height:1.5rem;background-color:#00aaed;text-align:center;"
+  >
+    &#10004;
+  </span>
   <b-button>Test</b-button>
   <b-button>Test2</b-button> 
 </b-container>
