@@ -20,6 +20,16 @@ exports[`BContainer Default to H2 if label is passed in without a headerLevel pr
 </section>
 `;
 
+exports[`BContainer does not show arrow if expandable prop is not passed 1`] = `
+<section role="contentinfo" aria-label="hello world" tabindex="0">
+    <div>
+        <!---->
+        <h3 class="header">hello world</h3>
+    </div>
+    <div id="_uid" class="bordered" name="fade"></div>
+</section>
+`;
+
 exports[`BContainer renders an element with no h element if hideLabel is passed 1`] = `
 <section role="contentinfo" aria-label="hello world" tabindex="0">
     <div>
@@ -45,6 +55,15 @@ exports[`BContainer renders props.label in header element when passed.  Can spec
     <div>
         <!---->
         <h6 class="header">hello world</h6>
+    </div>
+    <div id="_uid" class="bordered" name="fade"></div>
+</section>
+`;
+
+exports[`BContainer shows an arrow if expandable prop is passed 1`] = `
+<section role="contentinfo" aria-label="hello world" tabindex="0">
+    <div><span role="button" aria-controls="_uid" class="caret caret-down"></span>
+        <h3 class="header">hello world</h3>
     </div>
     <div id="_uid" class="bordered" name="fade"></div>
 </section>
