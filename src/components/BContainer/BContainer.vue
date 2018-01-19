@@ -2,6 +2,7 @@
   <section
     role="contentinfo"
     :aria-label="label"
+    :aria-expanded="expanded"
     tabindex="0"
     @keyup.enter.prevent="toggleExpansion"
     @keyup.space.prevent="toggleExpansion"

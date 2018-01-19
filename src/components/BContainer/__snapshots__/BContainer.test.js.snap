@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BContainer Default to H2 if label is passed in with an invalid headerLevel property. Should log to console.error. 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div>
         <!---->
         <h2 class="header">hello world</h2>
@@ -11,7 +11,7 @@ exports[`BContainer Default to H2 if label is passed in with an invalid headerLe
 `;
 
 exports[`BContainer Default to H2 if label is passed in without a headerLevel property. 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div>
         <!---->
         <h2 class="header">hello world</h2>
@@ -21,7 +21,7 @@ exports[`BContainer Default to H2 if label is passed in without a headerLevel pr
 `;
 
 exports[`BContainer does not show arrow if expandable prop is not passed 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div>
         <!---->
         <h3 class="header">hello world</h3>
@@ -31,7 +31,7 @@ exports[`BContainer does not show arrow if expandable prop is not passed 1`] = `
 `;
 
 exports[`BContainer renders an element with no h element if hideLabel is passed 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div>
         <!---->
         <!---->
@@ -41,7 +41,7 @@ exports[`BContainer renders an element with no h element if hideLabel is passed 
 `;
 
 exports[`BContainer renders correctly 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div>
         <!---->
         <h1 class="header">hello world</h1>
@@ -51,7 +51,7 @@ exports[`BContainer renders correctly 1`] = `
 `;
 
 exports[`BContainer renders props.label in header element when passed.  Can specify header level with prop 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div>
         <!---->
         <h6 class="header">hello world</h6>
@@ -61,7 +61,7 @@ exports[`BContainer renders props.label in header element when passed.  Can spec
 `;
 
 exports[`BContainer shows an arrow if expandable prop is passed 1`] = `
-<section role="contentinfo" aria-label="hello world" tabindex="0">
+<section role="contentinfo" aria-label="hello world" aria-expanded="true" tabindex="0">
     <div><span role="button" aria-controls="_uid" class="caret caret-down"></span>
         <h3 class="header">hello world</h3>
     </div>
