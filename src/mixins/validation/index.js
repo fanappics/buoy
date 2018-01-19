@@ -30,8 +30,6 @@ export default function Validation (eventTypes = 'input|blur') {
     watch: {
       'errors.items': {
         handler: function (errors) {
-          console.log(errors.length, this.validationId, this.parentScope)
-          // Change field name to a identifier for the component in invalid state.  Should be the same as data-vv-name
           events.$emit('errorsChanged', errors, this.validationId, this.parentScope)
         }
       }
