@@ -2,8 +2,11 @@
   <div class='shuttle'>
 
   	<div class='available'>
-  		<label>{{ availableLabel }}</label>
-  		<ul>
+  		<label id='available-label'>{{ availableLabel }}</label>
+  		<ul
+  			:aria-labeledby='available-label'
+  			role='selectbox'
+  		>
   			<li
   				v-if="placeholder && options.length === 0"
   				class='placeholder'
@@ -18,6 +21,8 @@
   				@click="onOptionClick(option, 'available', 'chosen', $event)"
   				@keyup.down.prevent="onKeyupDown($event)"
   				@keyup.up.prevent="onKeyupUp($event)"
+  				@keydown.up.prevent
+  				@keydown.down.prevent
   				role='option'
   				tabindex='0'
   			>
@@ -53,8 +58,11 @@
   	</div>
 
   	<div class='chosen'>
-  		<label>{{ chosenLabel }}</label>
-  		<ul>
+  		<label id='chosen-label'>{{ chosenLabel }}</label>
+  		<ul
+  			:aria-labeledby='chosen-label'
+  			role='selectbox'
+  		>
 	  		<li
   				v-for="option in chosenOptions"
   				:key="'chosen-option' + option.id"
