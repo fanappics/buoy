@@ -24,15 +24,29 @@
   	</div>
 
   	<div class='buttons'>
-	  	<button type='button'>All <i class='fa fa-arrow-right' aria-hidden='true'></i></button>
 	  	<button 
-	  		@click="onMoveSelectedToChosenClick(selectedOptions)"
+	  		@click="onMoveAllOptions('chosen')"
+	  		type='button'
+	  		>
+	  		All <i class='fa fa-arrow-right' aria-hidden='true'></i>
+	  	</button>
+	  	<button 
+	  		@click="onMoveSelectedClick(selectedOptions, 'available')"
 	  		type='button'
 	  		>
 	  		<i class='fa fa-arrow-right' aria-hidden='true'></i>
 	  	</button>
-	  	<button type='button'><i class='fa fa-arrow-left' aria-hidden='true'></i></button>
-	  	<button type='button'>All <i class='fa fa-arrow-left' aria-hidden='true'></i></button>
+	  	<button
+	  		@click="onMoveSelectedClick(selectedOptions, 'chosen')"
+	  		type='button'>
+	  		<i class='fa fa-arrow-left' aria-hidden='true'></i>
+	  	</button>
+	  	<button 
+	  		@click="onMoveAllOptions('available')"
+	  		type='button'
+	  		>
+	  		All <i class='fa fa-arrow-left' aria-hidden='true'></i>
+	  	</button>
   	</div>
 
   	<div class='chosen'>
@@ -116,26 +130,38 @@ export default {
   		const index = this.selectedOptions[optionType].indexOf(option.id)
   		if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
   		this.selectOption(index, option, optionType)
-  		console.log(this.selectedOptions)
   	},
-
-  	onMoveSelectedToChosenClick (options) {
-  		const selectedOptions = this.selectedOptions
-  		const availableOptions = this.availableOptions
-  		const chosenOptions = this.chosenOptions
-  		const leftOverOptions = new Array
-  		console.log(this.selectedOptions)
-  		this.availableOptions.forEach( function (option) {
-  			const index = selectedOptions['available'].indexOf(option.id) > -1
+  	onMoveSelectedClick (options, type) {
+  		const loopOptions = (type === 'available') ? this.availableOptions : this.chosenOptions
+  		const availableOptions = new Array
+  		const chosenOptions = new Array
+  		loopOptions.forEach((option) => {
+  			const index = this.selectedOptions[type].indexOf(option.id)
   			if (index > -1) {
-  				chosenOptions.push(option)
+  				(type === 'available') ? chosenOptions.push(option) : availableOptions.push(option)
   			} else {
-  				leftOverOptions.push(option)
+  				(type === 'available') ? availableOptions.push(option) : chosenOptions.push(option)
   			}
   		})
-  		this.availableOptions = leftOverOptions
-  		this.chosenOptions = chosenOptions
+  		if (type === 'available') {
+  			this.availableOptions = availableOptions
+  			this.chosenOptions.push.apply(this.chosenOptions, chosenOptions)
+  		} else {
+  			this.availableOptions.push.apply(this.availableOptions, availableOptions)
+  			this.chosenOptions = chosenOptions
+  		}
   		this.selectedOptions = {'available': new Array, 'chosen': new Array}
+  	},
+  	onMoveAllOptions (type) {
+  		if (type === 'chosen') {
+  			this.chosenOptions = this.options
+  			this.availableOptions = new Array
+  		} else if (type === 'available') {
+  			this.chosenOptions = new Array
+  			this.availableOptions = this.options
+  		}
+  		this.selectedOptions = {'available': new Array, 'chosen': new Array}
+
   	},
   	selectOption (index, option, optionType) {
   		if (index > -1) {
