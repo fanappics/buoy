@@ -2,7 +2,7 @@ import * as components from './components'
 import { peerDependencies, version } from '../package.json'
 import Semver from 'semver'
 import VeeValidate from 'vee-validate'
-import validationConfig from './validationConfig'
+import validationConfig from './validation-config'
 
 const Installer = {
   install (Vue, options = {}) {
