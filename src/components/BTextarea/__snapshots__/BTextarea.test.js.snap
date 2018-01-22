@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BTextarea should add disabled class when the disabled prop is set 1`] = `
+<div class="b-input-group b-input-group--disabled">
+    <label for="test">
+        test
+        <!---->
+    </label>
+    <textarea id="test" name="test" cols="30" rows="5" disabled="disabled"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
+
+exports[`BTextarea should render component 1`] = `
+<div class="b-input-group">
+    <label for="test">
+        test
+        <!---->
+    </label>
+    <textarea id="test" name="test" cols="30" rows="5"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
+
+exports[`BTextarea should render component with a label 1`] = `
+<div class="b-input-group">
+    <label for="test">
+        test
+        <!---->
+    </label>
+    <textarea id="test" name="test" cols="30" rows="5"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
+
+exports[`BTextarea should render component with label and asterisk 1`] = `
+<div class="b-input-group">
+    <label for="test">
+        test<span aria-label="Required">*</span></label>
+    <textarea id="test" name="test" cols="30" rows="5" required="required"></textarea>
+    <div class="b-input-group--error"><span></span></div>
+</div>
+`;
