@@ -5,6 +5,12 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
     <div class="available">
         <ul>
             <!---->
+            <li id="available-option1" role="option" tabindex="-1" class="options">
+
+            </li>
+            <li id="available-option2" role="option" tabindex="-1" class="options">
+
+            </li>
         </ul>
     </div>
     <div class="buttons">

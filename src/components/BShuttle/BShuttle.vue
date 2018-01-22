@@ -99,9 +99,9 @@ export default {
 
   data () {
     return {
-    	availableOptions: this.options ? this.setAvailableOptions(this.options, this.value) : new Array,
+    	availableOptions: this.options ? this.setOptions(this.options, this.value, 'available') : new Array,
     	selectedOptions: {'available': new Array, 'chosen': new Array},
-    	chosenOptions: this.value ? this.value : new Array
+    	chosenOptions: this.value ? this.setOptions(this.options, this.value, 'chosen') : new Array
     }
   },
 
@@ -109,16 +109,23 @@ export default {
   },
 
   methods: {
-  	setAvailableOptions: function (options, selected) {
+  	setOptions: function (options, selected, type) {
   		const availableOptions = new Array
+  		const chosenOptions = new Array
   		options.forEach(function (option) {
   			if (selected === null) {
   				availableOptions.push(option)
   			} else if (selected.indexOf(option.id) === -1) {
   				availableOptions.push(option)
+  			} else {
+  				chosenOptions.push(option)
   			}
   		})
-      return availableOptions
+  		if (type === 'available') {
+	      return this.sortById(availableOptions)
+  		} else if (type === 'chosen') {
+	      return this.sortById(chosenOptions)  	
+  		}
     },
   	optionsClass: function (option, optionType) {
       return {
@@ -144,24 +151,27 @@ export default {
   			}
   		})
   		if (type === 'available') {
-  			this.availableOptions = availableOptions
+  			this.availableOptions = this.sortById(availableOptions)
   			this.chosenOptions.push.apply(this.chosenOptions, chosenOptions)
+  			this.sortById(this.chosenOptions)
   		} else {
   			this.availableOptions.push.apply(this.availableOptions, availableOptions)
-  			this.chosenOptions = chosenOptions
+  			this.sortById(this.availableOptions)
+  			this.chosenOptions = this.sortById(chosenOptions)
   		}
   		this.selectedOptions = {'available': new Array, 'chosen': new Array}
+  		this.$emit("input",Array.from(this.chosenOptions, option => option.id));
   	},
   	onMoveAllOptions (type) {
   		if (type === 'chosen') {
-  			this.chosenOptions = this.options
+  			this.chosenOptions = this.sortById(this.options)
   			this.availableOptions = new Array
   		} else if (type === 'available') {
   			this.chosenOptions = new Array
-  			this.availableOptions = this.options
+  			this.availableOptions = this.sortById(this.options)
   		}
   		this.selectedOptions = {'available': new Array, 'chosen': new Array}
-
+  		this.$emit("input",Array.from(this.chosenOptions, option => option.id));
   	},
   	selectOption (index, option, optionType) {
   		if (index > -1) {
@@ -169,6 +179,12 @@ export default {
   		} else {
   			this.selectedOptions[optionType].push(option.id)
   		}
+  	},
+  	sortById (options) {
+  		options.sort(function (itemOne, itemTwo) {
+  			return itemOne.id - itemTwo.id
+  		})
+      return options 
   	}
   }
 }
