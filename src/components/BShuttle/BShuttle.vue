@@ -2,6 +2,7 @@
   <div class='shuttle'>
 
   	<div class='available'>
+  		<label>{{ availableLabel }}</label>
   		<ul>
   			<li
   				v-if="placeholder && options.length === 0"
@@ -14,9 +15,11 @@
   				:key="'available-option' + option.id"
   				:id="'available-option' + option.id"
   				:class="optionsClass(option, 'available')"
-  				@click="onOptionClick(option, 'available', 'chosen')"
+  				@click="onOptionClick(option, 'available', 'chosen', $event)"
+  				@keyup.down.prevent="onKeyupDown($event)"
+  				@keyup.up.prevent="onKeyupUp($event)"
   				role='option'
-  				tabindex='-1'
+  				tabindex='0'
   			>
   			{{ option.displayText }}
   			</li>
@@ -50,15 +53,18 @@
   	</div>
 
   	<div class='chosen'>
+  		<label>{{ chosenLabel }}</label>
   		<ul>
 	  		<li
   				v-for="option in chosenOptions"
   				:key="'chosen-option' + option.id"
   				:id="'chosen-option' + option.id"
   				:class="optionsClass(option, 'chosen')"
-  				@click="onOptionClick(option, 'chosen', 'available')"
+  				@click="onOptionClick(option, 'chosen', 'available', $event)"
+  				@keyup.down.prevent="onKeyupDown($event)"
+  				@keyup.up.prevent="onKeyupUp($event)"
   				role='option'
-  				tabindex='-1'
+  				tabindex='0'
   			>
   				{{ option.displayText }}
   			</li>
@@ -87,6 +93,20 @@ export default {
   		type: String,
   		required: false
   	},
+  		/**
+  		* Label to display above available options.
+  		*/
+  	availableLabel: {
+  		type: String,
+  		required: true
+  	},
+  		/**
+  		* Label to display above chosen options.
+  		*/
+  	chosenLabel: {
+  		type: String,
+  		required: true
+  	},
     /**
     * The id of the selected option.
     */
@@ -101,7 +121,8 @@ export default {
     return {
     	availableOptions: this.options ? this.setOptions(this.options, this.value, 'available') : new Array,
     	selectedOptions: {'available': new Array, 'chosen': new Array},
-    	chosenOptions: this.value ? this.setOptions(this.options, this.value, 'chosen') : new Array
+    	chosenOptions: this.value ? this.setOptions(this.options, this.value, 'chosen') : new Array,
+    	lastClick: 0
     }
   },
 
@@ -133,10 +154,13 @@ export default {
         'selected': this.selectedOptions[optionType].indexOf(option.id) > -1
       }
     },
-  	onOptionClick (option, optionType, otherOptionType) {
-  		const index = this.selectedOptions[optionType].indexOf(option.id)
+  	onOptionClick (option, optionType, otherOptionType, event) {
   		if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
-  		this.selectOption(index, option, optionType)
+  		if (event.shiftKey && (this.lastClick > 0)) {
+  			this.multipleSelect(option, optionType)
+  		}
+  		const index = this.selectedOptions[optionType].indexOf(option.id)
+  		this.selectOption(index, option.id, optionType)
   	},
   	onMoveSelectedClick (options, type) {
   		const loopOptions = (type === 'available') ? this.availableOptions : this.chosenOptions
@@ -173,12 +197,49 @@ export default {
   		this.selectedOptions = {'available': new Array, 'chosen': new Array}
   		this.$emit("input",Array.from(this.chosenOptions, option => option.id));
   	},
-  	selectOption (index, option, optionType) {
+     /**
+     * Handles the down arrow (40) keyup event
+     */
+    onKeyupDown (event) {
+      const target = event.target;
+      if(target.nextElementSibling) {
+        const next = target.nextElementSibling;
+        next.focus();
+      }
+    },
+    /**
+     * Handles the up arrow (38) keyup event
+     */
+    onKeyupUp (event) {
+      const target = event.target;
+      if(target.previousElementSibling) {
+        const next = target.previousElementSibling;
+        next.focus();
+      }
+    }, 
+  	selectOption (index, id, optionType) {
   		if (index > -1) {
   			this.selectedOptions[optionType].splice(index, 1)
   		} else {
-  			this.selectedOptions[optionType].push(option.id)
+  			this.selectedOptions[optionType].push(id)
   		}
+  		this.lastClick = id
+  	},
+  	/**
+  	 * Expected behavior here is that a preselected item that is hit with a multi-select
+  	 * will flip its state accordingly.
+  	 */
+  	multipleSelect (option, optionType) {
+  		const high = option.id > this.lastClick ? option.id : this.lastClick
+  		const low = option.id > this.lastClick ? this.lastClick : option.id
+  		const multipleOptions = this.options
+  			.filter(item => (item.id > low && item.id < high))
+  			.map(function(obj){return obj.id})
+  		
+  		multipleOptions.forEach( (optionId) => {
+  			const index = this.selectedOptions[optionType].indexOf(optionId)
+  			this.selectOption(index, optionId, optionType)
+  		})
   	},
   	sortById (options) {
   		options.sort(function (itemOne, itemTwo) {
@@ -200,15 +261,17 @@ export default {
 		height: 10rem;
 		padding: 0;
 		margin: 0;
+		overflow: scroll;
+    overflow-x: hidden;
 	}
 
 	div.available {
-		width: 40%;
+		flex: 1;
 		margin-right: 1rem;
 	}
 
 	div.chosen {
-		width: 40%;
+		flex: 1;
 		margin-left: 1rem;
 	}
 

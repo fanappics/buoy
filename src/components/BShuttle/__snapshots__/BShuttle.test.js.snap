@@ -3,12 +3,13 @@
 exports[`BShuttle BShuttle renders correctly 1`] = `
 <div class="shuttle">
     <div class="available">
+        <label>test available label</label>
         <ul>
             <!---->
-            <li id="available-option1" role="option" tabindex="-1" class="options">
+            <li id="available-option1" role="option" tabindex="0" class="options">
 
             </li>
-            <li id="available-option2" role="option" tabindex="-1" class="options">
+            <li id="available-option2" role="option" tabindex="0" class="options">
 
             </li>
         </ul>
@@ -30,6 +31,7 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
         </button>
     </div>
     <div class="chosen">
+        <label>test chosen label</label>
         <ul></ul>
     </div>
 </div>

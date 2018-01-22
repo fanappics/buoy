@@ -7,7 +7,9 @@ describe('BShuttle', () => {
   it('BShuttle renders correctly', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
-        options: shuttleOptions
+        options: shuttleOptions,
+        availableLabel: 'test available label',
+        chosenLabel: 'test chosen label'
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
