@@ -1,5 +1,5 @@
 <template>
-  <section :id="_uid">
+  <section :id="id">
     <button
       :id="`${_uid}-heading`"
       class="header"
@@ -45,6 +45,9 @@ import events from '../../event-bus'
 export default {
   name: 'b-accordion',
   props: {
+    id: {
+      type: String
+    },
     label: {
       type: String,
       required: true
@@ -52,13 +55,17 @@ export default {
   },
 
   created () {
+    events.$on(`collaps-${this.id}`, this.collapse)
     events.$on('collapse', this.collapse)
     events.$on('expand', this.expand)
+    events.$on(`expand-${this.id}`, this.expand)
   },
 
   beforeDestroy () {
+    events.$off(`collaps-${this.id}`, this.collapse)
     events.$off('collapse', this.collapse)
     events.$off('expand', this.expand)
+    events.$off(`expand-${this.id}`, this.expand)
   },
 
   data: function() {
