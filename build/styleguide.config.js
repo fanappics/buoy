@@ -5,7 +5,6 @@ module.exports = {
         // Vue loader
         {
           test: /\.vue$/,
-          exclude: /node_modules/,
           loader: 'vue-loader'
         },
         // Babel loader, will use your project’s .babelrc
