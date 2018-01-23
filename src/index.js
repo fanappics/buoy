@@ -4,6 +4,8 @@ import Semver from 'semver'
 import VeeValidate from 'vee-validate'
 import validationConfig from './validation-config'
 
+import './main.styl'
+
 const Installer = {
   install (Vue, options = {}) {
     if (this.installed) return
