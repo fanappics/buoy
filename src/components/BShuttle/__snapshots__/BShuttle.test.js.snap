@@ -4,7 +4,7 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
 <div class="shuttle">
     <div class="available">
         <label id="available-label">test available label</label>
-        <ul aria-labeledby="NaN" role="selectbox">
+        <ul aria-labeledby="available-label" role="selectbox">
             <!---->
             <li id="available-option1" role="option" tabindex="0" class="options">
 
@@ -32,7 +32,7 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
     </div>
     <div class="chosen">
         <label id="chosen-label">test chosen label</label>
-        <ul aria-labeledby="NaN" role="selectbox"></ul>
+        <ul aria-labeledby="chosen-label" role="selectbox"></ul>
     </div>
 </div>
 `;

@@ -4,7 +4,7 @@
   	<div class='available'>
   		<label id='available-label'>{{ availableLabel }}</label>
   		<ul
-  			:aria-labeledby='available-label'
+  			aria-labeledby='available-label'
   			role='selectbox'
   		>
   			<li
@@ -19,8 +19,9 @@
   				:id="'available-option' + option.id"
   				:class="optionsClass(option, 'available')"
   				@click="onOptionClick(option, 'available', 'chosen', $event)"
-  				@keyup.down.prevent="onKeyupDown($event)"
-  				@keyup.up.prevent="onKeyupUp($event)"
+  				@keyup.down.prevent="onKeyupDown($event, option, 'available', 'chosen')"
+  				@keyup.up.prevent="onKeyupUp($event, option, 'available', 'chosen')"
+  				@keyup.16.prevent="onOptionClick(option, 'available', 'chosen', $event)"
   				@keydown.up.prevent
   				@keydown.down.prevent
   				role='option'
@@ -60,7 +61,7 @@
   	<div class='chosen'>
   		<label id='chosen-label'>{{ chosenLabel }}</label>
   		<ul
-  			:aria-labeledby='chosen-label'
+  			aria-labeledby='chosen-label'
   			role='selectbox'
   		>
 	  		<li
@@ -69,8 +70,9 @@
   				:id="'chosen-option' + option.id"
   				:class="optionsClass(option, 'chosen')"
   				@click="onOptionClick(option, 'chosen', 'available', $event)"
-  				@keyup.down.prevent="onKeyupDown($event)"
-  				@keyup.up.prevent="onKeyupUp($event)"
+  				@keyup.down.prevent="onKeyupDown($event, option, 'chosen', 'available')"
+  				@keyup.up.prevent="onKeyupUp($event, option, 'chosen', 'available')"
+  				@keyup.16.prevent="onOptionClick(option, 'chosen', 'available', $event)"
   				role='option'
   				tabindex='0'
   			>
@@ -167,8 +169,7 @@ export default {
   		if (event.shiftKey && (this.lastClick > 0)) {
   			this.multipleSelect(option, optionType)
   		}
-  		const index = this.selectedOptions[optionType].indexOf(option.id)
-  		this.selectOption(index, option.id, optionType)
+  		this.selectOption(option.id, optionType)
   	},
   	onMoveSelectedClick (options, type) {
   		const loopOptions = (type === 'available') ? this.availableOptions : this.chosenOptions
@@ -208,24 +209,32 @@ export default {
      /**
      * Handles the down arrow (40) keyup event
      */
-    onKeyupDown (event) {
+    onKeyupDown (event, option, optionType, otherOptionType) {
       const target = event.target;
       if(target.nextElementSibling) {
         const next = target.nextElementSibling;
         next.focus();
+  			if (event.shiftKey) {
+        	if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
+  				this.selectOption(option.id, optionType)
+  			}
       }
     },
     /**
      * Handles the up arrow (38) keyup event
      */
-    onKeyupUp (event) {
+    onKeyupUp (event, option, optionType, otherOptionType) {
       const target = event.target;
       if(target.previousElementSibling) {
         const next = target.previousElementSibling;
         next.focus();
-      }
+  			if (event.shiftKey) {
+        	if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
+  				this.selectOption(option.id, optionType)
+  			}      }
     }, 
-  	selectOption (index, id, optionType) {
+  	selectOption (id, optionType) {
+  		const index = this.selectedOptions[optionType].indexOf(id)
   		if (index > -1) {
   			this.selectedOptions[optionType].splice(index, 1)
   		} else {
@@ -246,7 +255,7 @@ export default {
   		
   		multipleOptions.forEach( (optionId) => {
   			const index = this.selectedOptions[optionType].indexOf(optionId)
-  			this.selectOption(index, optionId, optionType)
+  			this.selectOption(optionId, optionType)
   		})
   	},
   	sortById (options) {
