@@ -9,6 +9,7 @@
   		>
   			<li
   				v-if="placeholder && options.length === 0"
+  				:aria-label="placeholder"
   				class='placeholder'
   			>
   			{{ placeholder }}
@@ -19,11 +20,15 @@
   				:id="'available-option' + option.id"
   				:class="optionsClass(option, 'available')"
   				@click="onOptionClick(option, 'available', 'chosen', $event)"
-  				@keyup.down.prevent="onKeyupDown($event, option, 'available', 'chosen')"
-  				@keyup.up.prevent="onKeyupUp($event, option, 'available', 'chosen')"
-  				@keyup.16.prevent="onOptionClick(option, 'available', 'chosen', $event)"
-  				@keydown.up.prevent
-  				@keydown.down.prevent
+  				@keyup.space.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
+  				@keyup.down.prevent.stop="onKeyupDown($event, option, 'available', 'chosen')"
+  				@keyup.up.prevent.stop="onKeyupUp($event, option, 'available', 'chosen')"
+  				@keyup.16.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
+  				@keyup.right.prevent.stop="onMoveSelectedClick(selectedOptions, 'available')"
+  				@keyup.enter.prevent.stop="onMoveSelectedClick(selectedOptions, 'available')"
+  				@keydown.up.prevent.stop
+  				@keydown.down.prevent.stop
+  				@keydown.space.prevent.stop
   				role='option'
   				tabindex='0'
   			>
@@ -34,7 +39,7 @@
 
   	<div class='buttons'>
 	  	<button 
-	  		@click="onMoveAllOptions('chosen')"
+	  		@click="onMoveAllOptions('available')"
 	  		type='button'
 	  		>
 	  		All <i class='fa fa-arrow-right' aria-hidden='true'></i>
@@ -51,7 +56,7 @@
 	  		<i class='fa fa-arrow-left' aria-hidden='true'></i>
 	  	</button>
 	  	<button 
-	  		@click="onMoveAllOptions('available')"
+	  		@click="onMoveAllOptions('chosen')"
 	  		type='button'
 	  		>
 	  		All <i class='fa fa-arrow-left' aria-hidden='true'></i>
@@ -70,9 +75,15 @@
   				:id="'chosen-option' + option.id"
   				:class="optionsClass(option, 'chosen')"
   				@click="onOptionClick(option, 'chosen', 'available', $event)"
-  				@keyup.down.prevent="onKeyupDown($event, option, 'chosen', 'available')"
-  				@keyup.up.prevent="onKeyupUp($event, option, 'chosen', 'available')"
-  				@keyup.16.prevent="onOptionClick(option, 'chosen', 'available', $event)"
+  				@keyup.space.stop.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
+  				@keyup.down.prevent.stop="onKeyupDown($event, option, 'chosen', 'available')"
+  				@keyup.up.prevent.stop="onKeyupUp($event, option, 'chosen', 'available')"
+  				@keyup.16.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
+  				@keyup.left.prevent.stop="onMoveSelectedClick(selectedOptions, 'chosen')"
+  				@keyup.enter.prevent.stop="onMoveSelectedClick(selectedOptions, 'chosen')"
+  				@keydown.up.prevent.stop
+  				@keydown.down.prevent.stop
+  				@keydown.space.prevent.stop
   				role='option'
   				tabindex='0'
   			>
@@ -196,10 +207,10 @@ export default {
   		this.$emit("input",Array.from(this.chosenOptions, option => option.id));
   	},
   	onMoveAllOptions (type) {
-  		if (type === 'chosen') {
+  		if (type === 'available') {
   			this.chosenOptions = this.sortById(this.options)
   			this.availableOptions = new Array
-  		} else if (type === 'available') {
+  		} else if (type === 'chosen') {
   			this.chosenOptions = new Array
   			this.availableOptions = this.sortById(this.options)
   		}
