@@ -8,7 +8,7 @@
   			role='selectbox'
   		>
   			<li
-  				v-if="placeholder && options.length === 0"
+  				v-if="placeholder && (!options || options.length === 0)"
   				:aria-label="placeholder"
   				class='placeholder'
   			>
@@ -140,9 +140,9 @@ export default {
 
   data () {
     return {
-    	availableOptions: this.options ? this.setOptions(this.options, this.value, 'available') : new Array,
+    	availableOptions: (this.options && this.options.length > 0) ? this.setOptions(this.options, this.value, 'available') : new Array,
     	selectedOptions: {'available': new Array, 'chosen': new Array},
-    	chosenOptions: this.value ? this.setOptions(this.options, this.value, 'chosen') : new Array,
+    	chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : new Array,
     	lastClick: 0
     }
   },

@@ -35,7 +35,7 @@
     },
     data () {
       return {
-        shuttle: null,
+        shuttle: [350, 100],
         options: options
       }
     }
