@@ -54,4 +54,62 @@ describe('BShuttle', () => {
     expect(wrapper.vm.chosenOptions.length).toBe(1)
     expect(wrapper.vm.chosenOptions[0].id).toBe(1)
   })
+
+  it('highlights row when clicked', async () => {
+    const wrapper = shallow(BShuttle, {
+      propsData: {
+        options: shuttleOptions,
+        availableLabel: availableLabel,
+        chosenLabel: chosenLabel
+      }
+    })
+    const line = wrapper.find(`#available-option-${shuttleOptions[0].id}`)
+    expect(line.classes()).not.toContain('selected')
+    line.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(line.classes()).toContain('selected')
+  })
+
+  it('moves row when chosen arrow clicked', async () => {
+    const wrapper = shallow(BShuttle, {
+      propsData: {
+        options: shuttleOptions,
+        availableLabel: availableLabel,
+        chosenLabel: chosenLabel
+      }
+    })
+    const line = wrapper.find(`#available-option-${shuttleOptions[0].id}`)
+    const button = wrapper.find(`#selected-to-chosen`)
+    line.trigger('click')
+    await wrapper.vm.$nextTick()
+    button.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(wrapper.vm.chosenOptions.length).toBe(1)
+    expect(wrapper.vm.chosenOptions[0].id).toBe(1)
+  })
+
+  it('moves row when available arrow clicked', async () => {
+    const wrapper = shallow(BShuttle, {
+      propsData: {
+        options: shuttleOptions,
+        availableLabel: availableLabel,
+        chosenLabel: chosenLabel
+      }
+    })
+    const line = wrapper.find(`#available-option-${shuttleOptions[0].id}`)
+    const button = wrapper.find(`#selected-to-chosen`)
+    line.trigger('click')
+    await wrapper.vm.$nextTick()
+    button.trigger('click')
+    await wrapper.vm.$nextTick()
+    const chosenLine = wrapper.find(`#chosen-option-${shuttleOptions[0].id}`)
+    const chosenButton = wrapper.find(`#selected-to-available`)
+    chosenLine.trigger('click')
+    await wrapper.vm.$nextTick()
+    chosenButton.trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(wrapper.vm.chosenOptions.length).toBe(0)
+    expect(wrapper.vm.availableOptions.length).toBe(2)
+    expect(wrapper.vm.availableOptions[0].id).toBe(1)
+  })
 })

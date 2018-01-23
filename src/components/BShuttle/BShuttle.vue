@@ -16,8 +16,8 @@
   			</li>
   			<li
   				v-for="option in availableOptions"
-  				:key="'available-option' + option.id"
-  				:id="'available-option' + option.id"
+  				:key="'available-option-' + option.id"
+  				:id="'available-option-' + option.id"
   				:class="optionsClass(option, 'available')"
   				@click="onOptionClick(option, 'available', 'chosen', $event)"
   				@keyup.space.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
@@ -40,23 +40,27 @@
   	<div class='buttons'>
 	  	<button 
 	  		@click="onMoveAllOptions('available')"
+	  		id='all-to-chosen'
 	  		type='button'
 	  		>
 	  		All <i class='fa fa-arrow-right' aria-hidden='true'></i>
 	  	</button>
 	  	<button 
 	  		@click="onMoveSelectedClick(selectedOptions, 'available')"
+	  		id='selected-to-chosen'
 	  		type='button'
 	  		>
 	  		<i class='fa fa-arrow-right' aria-hidden='true'></i>
 	  	</button>
 	  	<button
 	  		@click="onMoveSelectedClick(selectedOptions, 'chosen')"
+	  		id='selected-to-available'
 	  		type='button'>
 	  		<i class='fa fa-arrow-left' aria-hidden='true'></i>
 	  	</button>
 	  	<button 
 	  		@click="onMoveAllOptions('chosen')"
+	  		id='all-to-available'
 	  		type='button'
 	  		>
 	  		All <i class='fa fa-arrow-left' aria-hidden='true'></i>
@@ -71,8 +75,8 @@
   		>
 	  		<li
   				v-for="option in chosenOptions"
-  				:key="'chosen-option' + option.id"
-  				:id="'chosen-option' + option.id"
+  				:key="'chosen-option-' + option.id"
+  				:id="'chosen-option-' + option.id"
   				:class="optionsClass(option, 'chosen')"
   				@click="onOptionClick(option, 'chosen', 'available', $event)"
   				@keyup.space.stop.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"

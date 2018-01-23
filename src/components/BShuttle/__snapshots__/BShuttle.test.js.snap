@@ -6,26 +6,26 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
         <label id="available-label">test available label</label>
         <ul aria-labeledby="available-label" role="selectbox">
             <!---->
-            <li id="available-option1" role="option" tabindex="0" class="options">
+            <li id="available-option-1" role="option" tabindex="0" class="options">
 
             </li>
-            <li id="available-option2" role="option" tabindex="0" class="options">
+            <li id="available-option-2" role="option" tabindex="0" class="options">
 
             </li>
         </ul>
     </div>
     <div class="buttons">
-        <button type="button">
+        <button id="all-to-chosen" type="button">
             All
             <i aria-hidden="true" class="fa fa-arrow-right"></i>
         </button>
-        <button type="button">
+        <button id="selected-to-chosen" type="button">
             <i aria-hidden="true" class="fa fa-arrow-right"></i>
         </button>
-        <button type="button">
+        <button id="selected-to-available" type="button">
             <i aria-hidden="true" class="fa fa-arrow-left"></i>
         </button>
-        <button type="button">
+        <button id="all-to-available" type="button">
             All
             <i aria-hidden="true" class="fa fa-arrow-left"></i>
         </button>
