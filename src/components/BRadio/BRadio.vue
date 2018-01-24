@@ -5,29 +5,26 @@
       {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
       </label>
       <div class="button-group" role="radiogroup">
-        <template v-for="(radio, index) in radios">
-          <div class="button" :key="index">
-            <input type="radio" 
-              v-model="publicValue" 
-              v-validate.initial="index === 0 ? validations : {}"
-              v-bind="index === 0 ? validationAttributes : {}"
-              :aria-checked="radio.checked"
-              :aria-describedby="errors.any() ? `error-${groupId}` : ''"
-              :aria-labelledby="`${groupId} label-${radio.id}`"
-              :aria-posinset="index"
-              :aria-setsize="radios.length"
-              :disabled="radio.disabled || disabled"
-              :id="radio.id"
-              :name="groupId"
-              :value="radio.value"
-              @change="setCheckedRadio(radio)" 
-              :key="index"
-            />
-            <label :id="`label-${radio.id}`" :for="radio.id" :key="index">
-              {{ radio.value }}
-            </label>
-          </div>
-        </template>    
+        <div v-for="(radio, index) in radios" class="button" :key="index">
+          <input type="radio" 
+            v-model="publicValue" 
+            v-validate.initial="index === 0 ? validations : {}"
+            v-bind="index === 0 ? validationAttributes : {}"
+            :aria-checked="radio.checked"
+            :aria-describedby="errors.any() ? `error-${groupId}` : ''"
+            :aria-labelledby="`${groupId} label-${radio.id}`"
+            :aria-posinset="index"
+            :aria-setsize="radios.length"
+            :disabled="radio.disabled || disabled"
+            :id="radio.id"
+            :name="groupId"
+            :value="radio.value"
+            @change="setCheckedRadio(radio)" 
+          />
+          <label :id="`label-${radio.id}`" :for="radio.id">
+            {{ radio.value }}
+          </label>
+        </div>
         <div v-if="errors.any() && showErrors" :id="`error-${groupId}`" class="error">
           <span v-for="(error,index) in errors.all()" :key="index">
             {{ error }}
