@@ -1,12 +1,14 @@
 <template>
-  <section :id="id">
+  <section
+    :id="id"
+    role="heading"
+  >
     <button
       :id="`${_uid}-heading`"
       class="header"
       :aria-expanded="expanded"
       :aria-controls="`${_uid}-content`"
-      aria-disabled="true"
-      role="heading"
+      aria-disabled="false"
       type="button"
       tabindex="0"
       @click="toggleExpansion"
