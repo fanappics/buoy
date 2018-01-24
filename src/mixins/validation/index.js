@@ -1,3 +1,6 @@
+/**
+ * @mixin
+ */
 import events from '../../event-bus'
 
 export default function Validation (eventTypes = 'input|blur') {
