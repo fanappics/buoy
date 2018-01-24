@@ -3,12 +3,12 @@
     <label :for="id" :class="{ disabled: disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <div v-if="currency" :class="{ currency: true, focused: focused, disabled: disabled, invalid: showErrors }" @click="$refs.input.focus()">
+    <div v-if="currency" :class="{ input: true, currency: true, focus: focused, disabled: disabled, 'error-border': showErrors }" @click="$refs.input.focus()">
       <span style="font-weight: bold;">$</span>
-      <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false" ref="input" />
+      <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false; touched = true" ref="input" />
     </div>
-    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ invalid: showErrors }" />
-    <div v-if="showErrors" :id="`error-${id}`" class="error">
+    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'error-border': showErrors }" @blur="touched = true" />
+    <div v-if="showErrors" :id="`error-${id}`" class="error-text">
       <span v-for="(error,index) in errors.all()" :key='index'>
         {{ error }}
       </span>
@@ -132,38 +132,10 @@ export default {
 </script>
 
 <style scoped>
-  input {
-    border: solid 1px #dededf;
-    border-radius: 4px;
-    color: #333333;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    padding: 12px;
-    -webkit-appearance: none;
-    -moz-appearance: textfield;
-    margin: 0;
-  }
-  input::placeholder {
-    color: #c1c1c1;
-  }
-  label {
-    color: #333333;
-    display: block;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    font-weight: bold;
-    padding-bottom: 6px;
-  }
   .currency {
     align-items: baseline;
-    border: solid 1px #dededf;
-    border-radius: 4px;
-    color: #333333;
     cursor: text;
     display: flex;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    padding: 12px;
   }
   .currency input {
     background-color: transparent;
@@ -172,26 +144,13 @@ export default {
     padding: 0 0 0 12px;
   }
   .currency input:focus {
-    outline: 0;
+    box-shadow: none;
   }
-  .disabled, input:disabled {
-    opacity: 0.50;
-  }
-  .error {
-    color: #d0021b;
-    font-family: SFUIDisplay;
-    font-size: 12px;
-    padding-top: 5px;
+  .disabled {
+    cursor: not-allowed;
   }
   .flex {
     display: flex;
     flex-direction: column;
-  }
-  .focused {
-    outline: auto 5px -webkit-focus-ring-color ;
-    outline-offset: -2px;
-  }
-  .invalid {
-    border: solid 1px #d0021b;
   }
 </style>

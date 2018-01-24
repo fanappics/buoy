@@ -17,7 +17,7 @@ exports[`Currency input mounted html should match snapshot 1`] = `
         My Input
         <!---->
     </label>
-    <div class="currency"><span style="font-weight: bold;">$</span>
+    <div class="input currency"><span style="font-weight: bold;">$</span>
         <input aria-describedby="" aria-label="My Input" id="input-1" placeholder="0.00" type="number" data-vv-as="" data-vv-name="3" data-vv-validate-on="blur|input" data-vv-id="3" aria-required="false" aria-invalid="false">
     </div>
     <!---->
@@ -83,9 +83,9 @@ exports[`Required input failing validation mounted html should match snapshot 1`
 <div class="flex">
     <label for="input-1" class="">
         My Input<span aria-label="Required">*</span></label>
-    <input aria-describedby="error-input-1" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as="" data-vv-name="10" data-vv-validate-on="blur|input" class="invalid" data-vv-id="10"
-        aria-required="true" aria-invalid="true">
-    <div id="error-input-1" class="error"><span>
+    <input aria-describedby="error-input-1" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as="" data-vv-name="10" data-vv-validate-on="blur|input" class="error-border"
+        data-vv-id="10" aria-required="true" aria-invalid="true">
+    <div id="error-input-1" class="error-text"><span>
       The 10 field is required.
     </span></div>
 </div>
