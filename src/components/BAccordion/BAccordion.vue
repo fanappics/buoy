@@ -118,9 +118,7 @@ export default {
   }
   .header {
     padding: 0;
-    flex-grow: 1
-  }
-  button {
+    flex-grow: 1;
     border-width: 0px;
     font-size: 1rem;
     line-height: 20px;

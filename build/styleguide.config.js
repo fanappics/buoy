@@ -1,3 +1,13 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const extractPlugin = ExtractTextPlugin.extract({
+  use: [
+    { loader: 'css-loader', options: { sourceMap: true } },
+    { loader: 'postcss-loader', options: { sourceMap: true } },
+    { loader: 'stylus-loader', options: { sourceMap: true } }
+  ]
+})
+
 module.exports = {
   webpackConfig: {
     module: {
@@ -12,6 +22,12 @@ module.exports = {
           test: /\.js?$/,
           exclude: /node_modules/,
           loader: 'babel-loader'
+        },
+        // Stylus loader
+        {
+          test: /\.styl$/,
+          loaders: extractPlugin,
+          exclude: /node_modules/
         }
       ]
     }
