@@ -9,29 +9,7 @@ const extractPlugin = ExtractTextPlugin.extract({
 })
 
 module.exports = {
-  webpackConfig: {
-    module: {
-      rules: [
-        // Vue loader
-        {
-          test: /\.vue$/,
-          loader: 'vue-loader'
-        },
-        // Babel loader, will use your project’s .babelrc
-        {
-          test: /\.js?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
-        },
-        // Stylus loader
-        {
-          test: /\.styl$/,
-          loaders: extractPlugin,
-          exclude: /node_modules/
-        }
-      ]
-    }
-  },
+  webpackConfig: require('./webpack.prod.config.js'),
   mixins: [
     '../src/mixins/styleguide/styleguidedist.js'
   ],
