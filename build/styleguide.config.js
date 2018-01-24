@@ -9,7 +9,7 @@ const extractPlugin = ExtractTextPlugin.extract({
 })
 
 module.exports = {
-  webpackConfig: require('./webpack.prod.config.js'),
+  webpackConfig: require('./webpack.dev.config.js'),
   mixins: [
     '../src/mixins/styleguide/styleguidedist.js'
   ],
