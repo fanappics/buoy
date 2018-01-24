@@ -2,7 +2,7 @@ import { shallow } from 'vue-test-utils'
 import BShuttle from './BShuttle'
 
 describe('BShuttle', () => {
-  const shuttleOptions = [{id: 1, displayName: 'test-1'}, {id: 2, displayName: 'test-2'}]
+  const shuttleOptions = [{ id: 1, displayName: 'test-1' }, { id: 2, displayName: 'test-2' }]
   const placeholder = 'Testing Placeholder'
   const availableLabel = 'test available label'
   const chosenLabel = 'test chosen label'
