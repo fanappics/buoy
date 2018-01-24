@@ -19,7 +19,7 @@ const radios = [
   {id: 3, value:"Disabled", disabled: true }
 ]
 
-<b-radio groupId="1" groupLabel="Radio Options" :radios="radios" />
+<b-radio group-id="1" group-label="Radio Options" :radios="radios" />
 
 ```
 
@@ -33,7 +33,7 @@ const radios2 = [
   {id: 3, value:"Disabled", disabled: true }
 ]
 
-<b-radio disabled groupId="2" groupLabel="Radio Options" :radios="radios2" />
+<b-radio disabled group-id="2" group-label="Radio Options" :radios="radios2" />
 
 ```
 
@@ -47,7 +47,7 @@ const radios3 = [
   {id: 3, value:"Disabled", disabled: true }
 ]
 
-<b-radio groupId="3" groupLabel="This is an example of a really long group label." :radios="radios3" />
+<b-radio group-id="3" group-label="This is an example of a really long group label." :radios="radios3" />
 
 ```
 
@@ -62,7 +62,7 @@ const radios4 = [
 let isValidRadioGroup = false;
 
 <b-validator v-model="isValidRadioGroup" scope="radio-group-4">
-  <b-radio groupId="4" groupLabel="Select to enable button" :radios="radios4" validationName="radio" required />
+  <b-radio group-id="4" group-label="Select to enable button" :radios="radios4" validation-name="radio" required />
   <b-button :disabled="!isValidRadioGroup">Submit</b-button>
 </b-validator>
 
