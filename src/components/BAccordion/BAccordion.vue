@@ -1,32 +1,32 @@
 <template>
-  <section
-    :id="id"
-    role="heading"
-  >
-    <button
-      :id="`${_uid}-heading`"
-      class="header"
-      :aria-expanded="expanded"
-      :aria-controls="`${_uid}-content`"
-      aria-disabled="false"
-      type="button"
-      tabindex="0"
-      @click="toggleExpansion"
-      @keydown.enter.prevent
-      @keyup.enter.prevent="toggleExpansion"
-      @keydown.space.prevent
-      @keyup.space.prevent="toggleExpansion"
-    >
-      {{ label }}
-      <span
-        :class="{
-          chevron: true,
-          'ion-chevron-down': expanded,
-          'ion-chevron-up': !expanded
-        }"
+  <section :id="id">
+    <div role="heading">
+      <button
+        :id="`${_uid}-heading`"
+        class="header"
+        :aria-expanded="expanded"
+        :aria-controls="`${_uid}-content`"
+        aria-disabled="false"
+        type="button"
+        tabindex="0"
+        @click="toggleExpansion"
+        @keydown.enter.prevent
+        @keyup.enter.prevent="toggleExpansion"
+        @keydown.space.prevent
+        @keyup.space.prevent="toggleExpansion"
       >
-      </span>
-    </button>
+    
+        {{ label }}
+        <span
+          :class="{
+            chevron: true,
+            'ion-chevron-down': expanded,
+            'ion-chevron-up': !expanded
+          }"
+        >
+        </span>
+      </button>
+    </div>
     <transition name="fade">
       <div
         v-if="expanded"
