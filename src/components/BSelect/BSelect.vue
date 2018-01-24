@@ -18,7 +18,7 @@
       v-model="selectLabel"
       aria-haspopup="listbox"
       type="button"
-      >{{ selectedOption ? selectedOption.displayName : placeholder }}
+      >{{ selectedOption ? selectedOption.displayText : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
     </button>
     <ul
@@ -44,7 +44,7 @@
         class="options"
         role="option"
         tabindex="-1"
-      > {{ option.displayName }}
+      > {{ option.displayText }}
       </li>
     </ul>
     <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error-' + id">{{ selectErrors.first('selectedOption') }}</span>
@@ -69,7 +69,7 @@ export default {
       required: true
     },
     /**
-    * Array of objects {id: number, displayName: string} to be displayed as options.
+    * Array of objects {id: number, displayText: string} to be displayed as options.
     */
     selectOptions: {
       type: Array

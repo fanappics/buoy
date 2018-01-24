@@ -133,7 +133,7 @@ export default {
   		required: true
   	},
     /**
-    * The id of the selected option.
+    * The id(s) of the selected option(s).
     */
     value: {
       type: Array,
@@ -155,6 +155,13 @@ export default {
   },
 
   methods: {
+
+  	/**
+  	 * @param {Array<Object>} options
+  	 * @param {Array<Number>} selected
+  	 * @param {String} type
+  	 * this method sets up the initial state of the options
+  	 */
   	setOptions: function (options, selected, type) {
   		const availableOptions = new Array
   		const chosenOptions = new Array
@@ -173,12 +180,28 @@ export default {
 	      return this.sortById(chosenOptions)  	
   		}
     },
+
+    /**
+  	 * @param {Object} option
+  	 * @param {String} optionType
+  	 * this determines if an option has been highlighted and
+  	 * sets the correct class.
+  	 */
   	optionsClass: function (option, optionType) {
       return {
         'options': true,
         'selected': this.selectedOptions[optionType].indexOf(option.id) > -1
       }
     },
+
+    /**
+  	 * @param {Object} option
+  	 * @param {String} optionType
+  	 * @param {String} otherOptionType
+  	 * @param {Object} event
+  	 * this is fired when a line is clicked and updates
+  	 * selectedOptions accordingly.
+  	 */
   	onOptionClick (option, optionType, otherOptionType, event) {
   		if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
   		if (event.shiftKey && (this.lastClick > 0)) {
@@ -186,6 +209,13 @@ export default {
   		}
   		this.selectOption(option.id, optionType)
   	},
+
+  	/**
+  	 * @param {Array<Object>} options
+  	 * @param {String} type
+  	 * this moves all selected options from available to 
+  	 * chosen, or back depending on type.
+  	 */
   	onMoveSelectedClick (options, type) {
   		const loopOptions = (type === 'available') ? this.availableOptions : this.chosenOptions
   		const availableOptions = new Array
@@ -210,6 +240,12 @@ export default {
   		this.selectedOptions = {'available': new Array, 'chosen': new Array}
   		this.$emit("input",Array.from(this.chosenOptions, option => option.id));
   	},
+
+  	/**
+  	 * @param {String} type
+  	 * This will move all options to chosen or available
+  	 * depending on tyep
+  	 */
   	onMoveAllOptions (type) {
   		if (type === 'available') {
   			this.chosenOptions = this.sortById(this.options)
@@ -221,9 +257,10 @@ export default {
   		this.selectedOptions = {'available': new Array, 'chosen': new Array}
   		this.$emit("input",Array.from(this.chosenOptions, option => option.id));
   	},
-     /**
-     * Handles the down arrow (40) keyup event
-     */
+
+	  /**
+	   * Handles the down arrow (40) keyup event
+	   */
     onKeyupDown (event, option, optionType, otherOptionType) {
       const target = event.target;
       if(target.nextElementSibling) {
@@ -235,6 +272,7 @@ export default {
   			}
       }
     },
+
     /**
      * Handles the up arrow (38) keyup event
      */
@@ -248,6 +286,13 @@ export default {
   				this.selectOption(option.id, optionType)
   			}      }
     }, 
+
+    /**
+  	 * @param {Number} id
+  	 * @param {String} optionType
+  	 * This is a helper function that determins the state of
+  	 * an option, and sets lastClick, which assists in multiselect.
+  	 */
   	selectOption (id, optionType) {
   		const index = this.selectedOptions[optionType].indexOf(id)
   		if (index > -1) {
@@ -257,9 +302,13 @@ export default {
   		}
   		this.lastClick = id
   	},
+
   	/**
-  	 * Expected behavior here is that a preselected item that is hit with a multi-select
-  	 * will flip its state accordingly.
+  	 * @param {Object} option
+  	 * @param {String} optionType
+  	 * Expected behavior here is that a preselected item
+  	 * that is hit with a multi-select will flip its state
+  	 * accordingly.
   	 */
   	multipleSelect (option, optionType) {
   		const high = option.id > this.lastClick ? option.id : this.lastClick
@@ -273,6 +322,12 @@ export default {
   			this.selectOption(optionId, optionType)
   		})
   	},
+
+  	/**
+  	 * @param {Array<Object>} options
+  	 * @returns {Array<Object>}
+  	 * Sorts the options by id
+  	 */
   	sortById (options) {
   		options.sort(function (itemOne, itemTwo) {
   			return itemOne.id - itemTwo.id
