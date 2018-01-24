@@ -58,7 +58,7 @@ export default {
       required: true
     },
     /**
-    * Object containing all buttons included in radio group.
+    * Array of Objects containing all buttons included in radio group.
     */
     radios: {
       type: Array,
