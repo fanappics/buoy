@@ -6,6 +6,7 @@
 - [ ] New Feature
 - [ ] Refactor
 - [ ] Project Build
+- [ ] Project Configuration
 
 ## Submission Checklist
 
