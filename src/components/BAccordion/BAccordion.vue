@@ -128,6 +128,7 @@ export default {
     display: flex;
     flex: 1;
     flex-direction: column;
+    margin-bottom: 1rem;
   }
   .acc-header {
     padding: 0;
@@ -140,15 +141,3 @@ export default {
     margin-bottom: .5rem;
   }
 </style>
-
-<docs>
-```js
-<b-accordion
-  class="edit_me"
-  label="Accordion Header"
->
-  <p>Whatever content you want to put in</p>
-</b-accordion>
-```
-
-</docs>
