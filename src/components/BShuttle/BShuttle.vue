@@ -95,6 +95,9 @@
         </li>
       </ul>
       <span v-show="shuttleErrors.has('chosenOptions')" class="error-text" :id="'error-' + id">{{ shuttleErrors.first('chosenOptions') }}</span>
+
+      {{ errors }}
+
     </div>
 
   </div>
@@ -105,8 +108,11 @@
 
 import { Validator } from 'vee-validate'
 
+import validationMixIn from '../../mixins/validation'
+
 export default {
   name: 'b-shuttle',
+  mixins: [validationMixIn()],
   props: {
     /**
     * Component Id
@@ -184,6 +190,14 @@ export default {
       alias: this.chosenLabel
     });
     this.$set(this, 'shuttleErrors', this.validator.errors);
+  },
+
+  watch: {
+    "shuttleErrors": function() {
+      this.errors.clear()
+      console.log('fired')
+      this.errors.add(this.validator.errors)
+    }
   },
 
   methods: {

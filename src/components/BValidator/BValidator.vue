@@ -1,6 +1,7 @@
 <template>
   <div>
     <slot></slot>
+    {{ errors }}
   </div>
 </template>
 
