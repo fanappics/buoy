@@ -1,23 +1,25 @@
 # buoy
+Accessible Vue.js UI component library
 
-![Buoy logo](./buoylogo.png)
+[![CircleCI](https://circleci.com/gh/fanappics/buoy/tree/master.svg?style=svg)](https://circleci.com/gh/fanappics/buoy/tree/master)
 
-Accessible Vue.js UI library
+<img src="https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png" alt="Buoy Logo" width="300" height="300">
 
-## Goals
+## Goal
 
-The goal of the Buoy project is to create a beautiful, functional UI library for Vue.js that makes it easy for developers to follow the [Web Content Accessibility Guidelines guidelines](https://www.w3.org/WAI/intro/wcag).
+The Buoy project will create a beautiful, functional UI library for Vue.js that will make it easy for developers to follow the [Web Content Accessibility Guidelines guidelines](https://www.w3.org/WAI/intro/wcag).
 
-https://pattern-library.dequelabs.com is a resource for an accessible UI library we can use for an example of accessibility techniques.
+## Inspirations
 
-https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a reference for building components.
+- https://vuetifyjs.com/ is an extremely well-built Vue UI library to use as a reference for building components.
+- https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ are two coding standards recommended for Vue.js code.
+- https://pattern-library.dequelabs.com is a resource for an accessible UI library we can use for an example of accessibility techniques.
+- https://www.w3.org/TR/WCAG20/#guidelines are the accessibility guidelines enforced by [pa11y](https://github.com/pa11y/pa11y) in our development process.
 
-This project follows the Vue style guide: https://vuejs.org/v2/style-guide/ and the https://standardjs.com/ coding style guide.
+## Living Style Guide and Documentation
 
-## Live Style Guide and Documentation
-
-This project uses [Vue Styleguiedist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living styleguide
-You can view the live style guide and documentation [Here](https://fanappics.github.io/buoy/)
+This project uses [Vue Styleguidist](https://github.com/vue-styleguidist/vue-styleguidist) to maintain a living style guide.
+You can view the living style guide and documentation [here](https://fanappics.github.io/buoy/).
 
 ### Updating the style guide
 
@@ -27,7 +29,7 @@ You can view the live style guide and documentation [Here](https://fanappics.git
 1. Run `npm run styleguide`
 1. See the changes live at `localhost:6060`
 
-To build and publish the new code the styleguide run `npm run styleguide:build`
+To build and publish the new code the style guide run `npm run styleguide:build`.
 
 ## CLI
 
@@ -35,9 +37,9 @@ running `npm i -g` will install the buoy CLI tool.
 ### Commands
 
 | Command | Description |
-| --- | --- |
-| buoy i &#124; init | Create a new buoy.json file with default configuration |
-| buoy m &#124; make [mame] | Scaffold a new component using the name parameter |
+|:---:|:---:|
+| <code>buoy i &#124; init</code> | Create a new buoy.json file with default configuration |
+| <code>buoy m &#124; make [name]</code> | Scaffold a new component using the `name` parameter |
 
 ### Configuration
 

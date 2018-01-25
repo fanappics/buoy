@@ -1,6 +1,10 @@
 import * as components from './components'
 import { peerDependencies, version } from '../package.json'
 import Semver from 'semver'
+import VeeValidate from 'vee-validate'
+import validationConfig from './validation-config'
+
+import './main.styl'
 
 const Installer = {
   install (Vue, options = {}) {
@@ -15,6 +19,8 @@ const Installer = {
     for (const key in components) {
       Vue.use(components[key])
     }
+
+    Vue.use(VeeValidate, validationConfig)
   }
 }
 
