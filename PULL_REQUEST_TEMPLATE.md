@@ -10,7 +10,7 @@
 
 ## Submission Checklist
 
-- [ ] Have you followed the guidelines in our Contributing document?
+- [ ] Have you followed the guidelines in our [Contributing document](https://github.com/fanappics/buoy/blob/master/CONTRIBUTING.md)?
 - [ ] Did you create appropriate tests?
 
 ## Description
