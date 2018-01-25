@@ -1,9 +1,15 @@
 <template>
-  <section :id="id">
-    <div role="heading">
+  <section
+    :id="id"
+    class="acc-flex-column"
+  >
+    <div
+      role="heading"
+      class="acc-flex-center"
+    >
       <button
         :id="`${_uid}-heading`"
-        class="header"
+        class="acc-header"
         :aria-expanded="expanded"
         :aria-controls="`${_uid}-content`"
         aria-disabled="false"
@@ -19,7 +25,7 @@
         {{ label }}
         <span
           :class="{
-            chevron: true,
+            'acc-chevron': true,
             'ion-chevron-down': expanded,
             'ion-chevron-up': !expanded
           }"
@@ -31,7 +37,7 @@
       <div
         v-if="expanded"
         :id="`${_uid}-content`"
-        class="bordered"
+        class="acc-bordered acc-flex-center"
         role="region"
         :aria-labelledby="`${_uid}-heading`"
       >
@@ -99,18 +105,14 @@ export default {
 </script>
 
 <style scoped>
-  .chevron {
-    float: right;
-  }
-  .bordered {
+  .acc-bordered {
     flex-grow: 1;
     border:1px solid rgb(217,217,217);
     border-radius: 0.1875rem;
     padding: 0.625rem;
   }
-  .button-surround {
-    border-width: 1px;
-    border-color: gray;
+  .acc-chevron {
+    float: right;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
@@ -118,7 +120,16 @@ export default {
   .fade-enter, .fade-leave-to {
     opacity: 0;
   }
-  .header {
+  .acc-flex-center {
+    display: flex;
+    align-items: center
+  }
+  .acc-flex-column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  .acc-header {
     padding: 0;
     flex-grow: 1;
     border-width: 0px;
@@ -127,15 +138,6 @@ export default {
     text-align: left;
     background-color: white;
     margin-bottom: .5rem;
-  }
-  div {
-    display: flex;
-    align-items: center
-  }
-  section {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
   }
 </style>
 
