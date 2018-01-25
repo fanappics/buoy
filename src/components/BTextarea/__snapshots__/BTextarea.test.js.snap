@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BTextarea should add disabled class when the disabled prop is set 1`] = `
+<div class="flex">
+    <label for="test" class="disabled">
+        test
+        <!---->
+    </label>
+    <textarea id="test" name="test" disabled="disabled" class="fixed-size"></textarea>
+</div>
+`;
+
+exports[`BTextarea should render component 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test
+        <!---->
+    </label>
+    <textarea id="test" name="test" class="fixed-size"></textarea>
+</div>
+`;
+
+exports[`BTextarea should render component with a label 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test
+        <!---->
+    </label>
+    <textarea id="test" name="test" class="fixed-size"></textarea>
+</div>
+`;
+
+exports[`BTextarea should render component with label and asterisk 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test<span aria-label="Required">*</span></label>
+    <textarea id="test" name="test" required="required" class="fixed-size"></textarea>
+</div>
+`;

@@ -1,18 +1,74 @@
 <template>
-  
+<!-- Validation Example
+
+  <input v-validate.initial="validations" v-bind="validationAttributes" @change="touched = true"/>
+  <div v-if="invalid" :id="`error-${id}`" class="error">
+    <span v-for="(error,index) in errors.all()" :key='index'>
+      {{ error }}
+    </span>
+  </div> 
+
+-->
+  <div></div>
 </template>
 
 <script>
 export default {
-  name: '',
-  props: [
-    ''
-  ],
+  import validationMixIn from '../../mixins/validation'
+
+  name: 'b-',
+  // Optional parameter is pipe separated list of DOM Events to validate on.  
+  // Defaults to 'blur|input' 
+  mixins: [validationMixIn()],
+  props: {
+    //Required props
+    id: {
+      type: String,
+      required: true
+    },
+    label: {
+      type: String,
+      required: true
+    },
+    //Optional props
+    value: String
+  },
   data () {
-    return {}
+    return {
+      touched: false // Optional - will be used by validation plugin.
+    }
+  },
+  computed: {
+    // Creates an object that VeeValidate reads to apply certain rules
+    // See http://vee-validate.logaretm.com/rules.html#syntax
+    validations () {
+      let vals = {}
+      // if (this.max)
+      //   vals.max_value = this.max
+      // if (this.maxlength)
+      //   vals.max = this.maxlength
+      // if (this.min)
+      //   vals.min_value = this.min
+      // if (this.minlength)
+      //   vals.min = this.minlength
+      // if (this.pattern)
+      //   vals.regex = this.pattern
+      // if (this.required)
+      //   vals.required = true
+      return vals
+    }
   }
+
 }
 </script>
 
 <style scoped>
+
+  .error {
+    color: #d0021b;
+    font-family: SFUIDisplay;
+    font-size: 12px;
+    padding-top: 5px;
+  }
+
 </style>

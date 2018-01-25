@@ -61,3 +61,6 @@ es5/
 dist/
 
 .DS_Store
+Playground.vue
+
+.vscode

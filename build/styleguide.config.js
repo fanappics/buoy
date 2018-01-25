@@ -17,8 +17,14 @@ module.exports = {
       ]
     }
   },
+  mixins: [
+    '../src/mixins/styleguide/styleguidedist.js'
+  ],
   showUsage: true,
   showCode: true,
   defaultExample: true,
+  title: "Fanatics, Inc.: Buoy Living Styleguide",
+  styleguideDir: "../docs",
+  template: "../src/styleguide.html",
   components: '../src/components/**/[A-Z]*.vue'
 };

@@ -1,0 +1,78 @@
+button {
+  background-color: #fff;
+  border: solid 1px #dededf;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: SFUIDisplay;
+  font-size: 100%;
+  padding: 0.857rem;
+}
+input,
+textarea,
+.input {
+  border: solid 1px #dededf;
+  border-radius: 4px;
+  color: #333;
+  font-family: SFUIDisplay;
+  font-size: 100%;
+  padding: 0.857rem;
+}
+input::-webkit-inner-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}
+label,
+.label {
+  color: #333;
+  display: block;
+  font-family: SFUIDisplay;
+  font-size: 100%;
+  font-weight: bold;
+  padding-bottom: 0.429rem;
+}
+:focus,
+.focus {
+  -webkit-box-shadow: 0 0 2px 2px #4d90fe;
+          box-shadow: 0 0 2px 2px #4d90fe;
+  outline: 0;
+}
+::-webkit-input-placeholder,
+.placeholder {
+  color: #c1c1c1;
+}
+:-ms-input-placeholder,
+.placeholder {
+  color: #c1c1c1;
+}
+::-ms-input-placeholder,
+.placeholder {
+  color: #c1c1c1;
+}
+::placeholder,
+.placeholder {
+  color: #c1c1c1;
+}
+.error-border {
+  border: solid 1px #d0021b;
+}
+.error-text {
+  color: #d0021b;
+  display: inline-block;
+  font-family: SFUIDisplay;
+  font-size: 85.7%;
+  padding-top: 0.357rem;
+}
+:disabled,
+.disabled {
+  background-color: #fff;
+  color: #333;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+button:active {
+  border-style: inset;
+}
+/*# sourceMappingURL=src/main.css.map */
