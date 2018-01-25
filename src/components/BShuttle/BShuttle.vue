@@ -94,6 +94,7 @@
           {{ option.displayText }}
         </li>
       </ul>
+      <span v-show="shuttleErrors.has('chosenOptions')" class="error-text" :id="'error-' + id">{{ shuttleErrors.first('chosenOptions') }}</span>
     </div>
 
   </div>
@@ -101,36 +102,52 @@
 </template>
 
 <script>
+
+import { Validator } from 'vee-validate'
+
 export default {
   name: 'b-shuttle',
   props: {
-      /**
-      * The available options for the shuttle.
-      */
+    /**
+    * Component Id
+    */
+    id: {
+      type: String,
+      required: true
+    },
+    /**
+    * The available options for the shuttle.
+    */
     options: {
       type: Array,
       required: false
     },
-      /**
-      * Placeholder to display if shuttle is dependent on other component.
-      */
+    /**
+    * Placeholder to display if shuttle is dependent on other component.
+    */
     placeholder: {
       type: String,
       required: false
     },
-      /**
-      * Label to display above available options.
-      */
+    /**
+    * Label to display above available options.
+    */
     availableLabel: {
       type: String,
       required: true
     },
-      /**
-      * Label to display above chosen options.
-      */
+    /**
+    * Label to display above chosen options.
+    */
     chosenLabel: {
       type: String,
       required: true
+    },
+    /**
+    * Use to turn on validation
+    */
+    required: {
+      type: Boolean,
     },
     /**
     * The id(s) of the selected option(s).
@@ -147,11 +164,26 @@ export default {
       availableOptions: (this.options && this.options.length > 0) ? this.setOptions(this.options, this.value, 'available') : new Array,
       selectedOptions: {'available': new Array, 'chosen': new Array},
       chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : new Array,
-      lastClick: 0
+      lastClick: 0,
+      shuttleErrors: null
     }
   },
 
   computed: {
+  },
+
+  created() {
+    Validator.extend('notEmpty', {
+      getMessage: field => 'The ' + field + ' input is required.',
+      validate: value => value.length > 0
+    });
+    this.validator = new Validator()
+    this.validator.attach({
+      name: 'chosenOptions',
+      rules: 'notEmpty',
+      alias: this.chosenLabel
+    });
+    this.$set(this, 'shuttleErrors', this.validator.errors);
   },
 
   methods: {
@@ -238,6 +270,9 @@ export default {
         this.chosenOptions = this.sortById(chosenOptions)
       }
       this.selectedOptions = {'available': new Array, 'chosen': new Array}
+      if (this.required) {
+        this.validate()
+      }
       this.$emit("input",Array.from(this.chosenOptions, option => option.id));
     },
 
@@ -255,6 +290,9 @@ export default {
         this.availableOptions = this.sortById(this.options)
       }
       this.selectedOptions = {'available': new Array, 'chosen': new Array}
+      if (this.required) {
+        this.validate()
+      }
       this.$emit("input",Array.from(this.chosenOptions, option => option.id));
     },
 
@@ -301,6 +339,9 @@ export default {
         this.selectedOptions[optionType].push(id)
       }
       this.lastClick = id
+      if (this.required) {
+        this.validate()
+      }
     },
 
     /**
@@ -333,6 +374,13 @@ export default {
         return itemOne.id - itemTwo.id
       })
       return options 
+    },
+
+    /**
+     * Handles validation if required.
+     */
+    validate () {
+      this.validator.validate('chosenOptions', this.chosenOptions)
     }
   }
 }

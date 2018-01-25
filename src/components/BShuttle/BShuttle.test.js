@@ -7,10 +7,12 @@ describe('BShuttle', () => {
   const availableLabel = 'test available label'
   const chosenLabel = 'test chosen label'
   const prechosen = [1]
+  const id = 'shuttle-test'
 
   it('BShuttle renders correctly', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
@@ -22,6 +24,7 @@ describe('BShuttle', () => {
   it('creates options when passed', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
@@ -33,6 +36,7 @@ describe('BShuttle', () => {
   it('displays placeholder if no initial options', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel,
         placeholder: placeholder
@@ -45,6 +49,7 @@ describe('BShuttle', () => {
   it('intializes chosen value when passed', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel,
@@ -55,9 +60,10 @@ describe('BShuttle', () => {
     expect(wrapper.vm.chosenOptions[0].id).toBe(1)
   })
 
-  it('highlights row when clicked', () => {
+  it('highlights row when clicked', async () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
@@ -72,6 +78,7 @@ describe('BShuttle', () => {
   it('moves row when chosen arrow clicked', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
@@ -88,6 +95,7 @@ describe('BShuttle', () => {
   it('moves row when available arrow clicked', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
@@ -109,6 +117,7 @@ describe('BShuttle', () => {
   it('moves all rows to chosen when button clicked', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
@@ -123,6 +132,7 @@ describe('BShuttle', () => {
   it('moves all rows to available when button clicked', () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
+        id: id,
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel

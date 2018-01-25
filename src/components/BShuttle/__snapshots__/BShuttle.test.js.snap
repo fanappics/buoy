@@ -32,7 +32,6 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
     </div>
     <div class="chosen">
         <label id="chosen-label">test chosen label</label>
-        <ul aria-labeledby="chosen-label" role="selectbox"></ul>
-    </div>
+        <ul aria-labeledby="chosen-label" role="selectbox"></ul> <span id="error-shuttle-test" class="error-text" style="display: none;"></span></div>
 </div>
 `;
