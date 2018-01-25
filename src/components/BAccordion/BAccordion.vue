@@ -12,7 +12,6 @@
         class="acc-header"
         :aria-expanded="expanded"
         :aria-controls="`${_uid}-content`"
-        aria-disabled="false"
         type="button"
         tabindex="0"
         @click="toggleExpansion"
