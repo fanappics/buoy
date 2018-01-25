@@ -91,12 +91,11 @@
           role='option'
           tabindex='0'
         >
-          {{ option.displayText }}
+          {{ option.displayText }} 
+
         </li>
       </ul>
-      <span v-show="shuttleErrors.has('chosenOptions')" class="error-text" :id="'error-' + id">{{ shuttleErrors.first('chosenOptions') }}</span>
-
-      {{ errors }}
+      <span v-show="errors.has(validationId)" class="error-text" :id="'error-' + id">{{ errors.first(validationId) }}</span>
 
     </div>
 
@@ -105,8 +104,6 @@
 </template>
 
 <script>
-
-import { Validator } from 'vee-validate'
 
 import validationMixIn from '../../mixins/validation'
 
@@ -171,7 +168,6 @@ export default {
       selectedOptions: {'available': new Array, 'chosen': new Array},
       chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : new Array,
       lastClick: 0,
-      shuttleErrors: null
     }
   },
 
@@ -179,25 +175,16 @@ export default {
   },
 
   created() {
-    Validator.extend('notEmpty', {
+    this.$validator.extend('notEmpty', {
       getMessage: field => 'The ' + field + ' input is required.',
       validate: value => value.length > 0
     });
-    this.validator = new Validator()
-    this.validator.attach({
-      name: 'chosenOptions',
+    this.$validator.attach({
+      name: this.validationId,
       rules: 'notEmpty',
       alias: this.chosenLabel
     });
-    this.$set(this, 'shuttleErrors', this.validator.errors);
-  },
 
-  watch: {
-    "shuttleErrors": function() {
-      this.errors.clear()
-      console.log('fired')
-      this.errors.add(this.validator.errors)
-    }
   },
 
   methods: {
@@ -394,7 +381,7 @@ export default {
      * Handles validation if required.
      */
     validate () {
-      this.validator.validate('chosenOptions', this.chosenOptions)
+      this.$validator.validate(this.validationId, this.chosenOptions)
     }
   }
 }

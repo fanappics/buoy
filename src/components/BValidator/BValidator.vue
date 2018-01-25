@@ -1,7 +1,6 @@
 <template>
   <div>
     <slot></slot>
-    {{ errors }}
   </div>
 </template>
 
@@ -38,6 +37,9 @@ export default {
     return {
       valid: false
     }
+  },
+  mounted () {
+    this.publicValid = !this.errors.any()
   },
   computed: {
     //Wrapper around valid so it is propegated through v-model, or 'public' as I've dubbed it

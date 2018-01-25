@@ -1,5 +1,9 @@
-import { shallow } from 'vue-test-utils'
+import { createLocalVue, shallow } from 'vue-test-utils'
 import BShuttle from './BShuttle'
+
+import VeeValidate from 'vee-validate'
+const localVue = createLocalVue()
+localVue.use(VeeValidate)
 
 describe('BShuttle', () => {
   const shuttleOptions = [{ id: 1, displayName: 'test-1' }, { id: 2, displayName: 'test-2' }]
@@ -16,7 +20,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -28,7 +33,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     expect(wrapper.props().options.length).toBe(shuttleOptions.length)
   })
@@ -40,7 +46,8 @@ describe('BShuttle', () => {
         availableLabel: availableLabel,
         chosenLabel: chosenLabel,
         placeholder: placeholder
-      }
+      },
+      localVue
     })
     const div = wrapper.find('li')
     expect(div.text()).toBe(placeholder)
@@ -54,7 +61,8 @@ describe('BShuttle', () => {
         availableLabel: availableLabel,
         chosenLabel: chosenLabel,
         value: prechosen
-      }
+      },
+      localVue
     })
     expect(wrapper.vm.chosenOptions.length).toBe(1)
     expect(wrapper.vm.chosenOptions[0].id).toBe(1)
@@ -67,7 +75,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     const line = wrapper.find(`#available-option-${shuttleOptions[0].id}`)
     expect(line.classes()).not.toContain('selected')
@@ -82,7 +91,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     const line = wrapper.find(`#available-option-${shuttleOptions[0].id}`)
     const button = wrapper.find('#selected-to-chosen')
@@ -99,7 +109,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     const line = wrapper.find(`#available-option-${shuttleOptions[0].id}`)
     const button = wrapper.find('#selected-to-chosen')
@@ -121,7 +132,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     const button = wrapper.find('#all-to-chosen')
     expect(wrapper.vm.chosenOptions.length).toBe(0)
@@ -136,7 +148,8 @@ describe('BShuttle', () => {
         options: shuttleOptions,
         availableLabel: availableLabel,
         chosenLabel: chosenLabel
-      }
+      },
+      localVue
     })
     const chosenButton = wrapper.find('#all-to-chosen')
     const availableButton = wrapper.find('#all-to-available')
