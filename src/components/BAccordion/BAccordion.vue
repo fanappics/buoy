@@ -1,0 +1,142 @@
+<template>
+  <section
+    :id="id"
+    class="acc-flex-column"
+  >
+    <div
+      role="heading"
+      class="acc-flex-center"
+    >
+      <button
+        :id="`${_uid}-heading`"
+        class="acc-header"
+        :aria-expanded="expanded"
+        :aria-controls="`${_uid}-content`"
+        type="button"
+        tabindex="0"
+        @click="toggleExpansion"
+        @keydown.enter.prevent
+        @keyup.enter.prevent="toggleExpansion"
+        @keydown.space.prevent
+        @keyup.space.prevent="toggleExpansion"
+      >
+    
+        {{ label }}
+        <span
+          :class="{
+            'acc-chevron': true,
+            'ion-chevron-down': expanded,
+            'ion-chevron-up': !expanded
+          }"
+        >
+        </span>
+      </button>
+    </div>
+    <transition name="fade">
+      <div
+        v-if="expanded"
+        :id="`${_uid}-content`"
+        class="acc-bordered acc-flex-center"
+        role="region"
+        :aria-labelledby="`${_uid}-heading`"
+      >
+        <slot></slot>
+      </div>
+    </transition>
+  </section>
+</template>
+
+<script>
+import events from '../../event-bus'
+
+export default {
+  name: 'b-accordion',
+  props: {
+    id: {
+      type: String
+    },
+    label: {
+      type: String,
+      required: true
+    }
+  },
+
+  created () {
+    events.$on(`collaps-${this.id}`, this.collapse)
+    events.$on('collapse', this.collapse)
+    events.$on('expand', this.expand)
+    events.$on(`expand-${this.id}`, this.expand)
+  },
+
+  beforeDestroy () {
+    events.$off(`collaps-${this.id}`, this.collapse)
+    events.$off('collapse', this.collapse)
+    events.$off('expand', this.expand)
+    events.$off(`expand-${this.id}`, this.expand)
+  },
+
+  data: function() {
+    return {
+      expanded: true
+    }
+  },
+
+  methods: {
+    toggleExpansion () {
+      this.expanded = !this.expanded
+    },
+    collapse () {
+      if (this.expandable) {
+        this.expanded = false
+      }
+    },
+    expand () {
+      this.expanded = true
+    }
+  },
+
+  inject: {
+    parentScope: {
+      default: null
+    }
+  }
+}
+</script>
+
+<style scoped>
+  .acc-bordered {
+    flex-grow: 1;
+    border:1px solid rgb(217,217,217);
+    border-radius: 0.1875rem;
+    padding: 0.625rem;
+  }
+  .acc-chevron {
+    float: right;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .3s;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+  .acc-flex-center {
+    display: flex;
+    align-items: center
+  }
+  .acc-flex-column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
+  .acc-header {
+    padding: 0;
+    flex-grow: 1;
+    border-width: 0px;
+    font-size: 1rem;
+    line-height: 20px;
+    text-align: left;
+    background-color: white;
+    margin-bottom: .5rem;
+  }
+</style>
