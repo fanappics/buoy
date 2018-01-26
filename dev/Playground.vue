@@ -11,7 +11,6 @@
         required
         />
       </b-validator>
-      {{ valid }}
     </div>
 
 

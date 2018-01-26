@@ -2,10 +2,11 @@
   <div class='shuttle'>
 
     <div class='available'>
-      <label id='available-label'>{{ availableLabel }}</label>
+      <label :id="'available-label-' + id">{{ availableLabel }}</label>
       <ul
         aria-labeledby='available-label'
         role='selectbox'
+        tabindex='0'
       >
         <li
           v-if="placeholder && (!options || options.length === 0)"
@@ -16,14 +17,13 @@
         </li>
         <li
           v-for="option in availableOptions"
-          :key="'available-option-' + option.id"
-          :id="'available-option-' + option.id"
+          :key="'available-option-' + id + '-' + option.id"
+          :id="'available-option-' + id + '-' + option.id"
           :class="optionsClass(option, 'available')"
           @click="onOptionClick(option, 'available', 'chosen', $event)"
           @keyup.space.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
           @keyup.down.prevent.stop="onKeyupDown($event, option, 'available', 'chosen')"
           @keyup.up.prevent.stop="onKeyupUp($event, option, 'available', 'chosen')"
-          @keyup.16.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
           @keyup.right.prevent.stop="onMoveSelectedClick(selectedOptions, 'available')"
           @keyup.enter.prevent.stop="onMoveSelectedClick(selectedOptions, 'available')"
           @keydown.up.prevent.stop
@@ -75,14 +75,13 @@
       >
         <li
           v-for="option in chosenOptions"
-          :key="'chosen-option-' + option.id"
-          :id="'chosen-option-' + option.id"
+          :key="'chosen-option-' + id + '-' + option.id"
+          :id="'chosen-option-' + id + '-' + option.id"
           :class="optionsClass(option, 'chosen')"
           @click="onOptionClick(option, 'chosen', 'available', $event)"
           @keyup.space.stop.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
           @keyup.down.prevent.stop="onKeyupDown($event, option, 'chosen', 'available')"
           @keyup.up.prevent.stop="onKeyupUp($event, option, 'chosen', 'available')"
-          @keyup.16.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
           @keyup.left.prevent.stop="onMoveSelectedClick(selectedOptions, 'chosen')"
           @keyup.enter.prevent.stop="onMoveSelectedClick(selectedOptions, 'chosen')"
           @keydown.up.prevent.stop
@@ -111,13 +110,6 @@ export default {
   name: 'b-shuttle',
   mixins: [validationMixIn()],
   props: {
-    /**
-    * Component Id
-    */
-    id: {
-      type: String,
-      required: true
-    },
     /**
     * The available options for the shuttle.
     */
@@ -168,6 +160,7 @@ export default {
       selectedOptions: {'available': new Array, 'chosen': new Array},
       chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : new Array,
       lastClick: 0,
+      id: null,
     }
   },
 
@@ -185,6 +178,10 @@ export default {
       alias: this.chosenLabel
     });
 
+  },
+
+  mounted() {
+    this.id = this._uid
   },
 
   methods: {
@@ -323,7 +320,8 @@ export default {
         if (event.shiftKey) {
           if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
           this.selectOption(option.id, optionType)
-        }      }
+        } 
+      }
     }, 
 
     /**

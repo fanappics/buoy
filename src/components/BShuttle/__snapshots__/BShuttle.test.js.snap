@@ -3,13 +3,13 @@
 exports[`BShuttle BShuttle renders correctly 1`] = `
 <div class="shuttle">
     <div class="available">
-        <label id="available-label">test available label</label>
-        <ul aria-labeledby="available-label" role="selectbox">
+        <label id="available-label-null">test available label</label>
+        <ul aria-labeledby="available-label" role="selectbox" tabindex="0">
             <!---->
-            <li id="available-option-1" role="option" tabindex="0" class="options">
+            <li id="available-option-null-1" role="option" tabindex="0" class="options">
 
             </li>
-            <li id="available-option-2" role="option" tabindex="0" class="options">
+            <li id="available-option-null-2" role="option" tabindex="0" class="options">
 
             </li>
         </ul>
@@ -32,6 +32,6 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
     </div>
     <div class="chosen">
         <label id="chosen-label">test chosen label</label>
-        <ul aria-labeledby="chosen-label" role="selectbox"></ul> <span id="error-shuttle-test" class="error-text" style="display: none;"></span></div>
+        <ul aria-labeledby="chosen-label" role="selectbox"></ul> <span id="error-null" class="error-text" style="display: none;"></span></div>
 </div>
 `;
