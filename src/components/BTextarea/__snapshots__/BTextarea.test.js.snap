@@ -6,7 +6,8 @@ exports[`BTextarea should add disabled class when the disabled prop is set 1`] =
         test
         <!---->
     </label>
-    <textarea id="test" name="test" disabled="disabled" class="fixed-size"></textarea>
+    <textarea data-vv-as="" data-vv-name="4" data-vv-validate-on="input|blur" id="test" name="test" disabled="disabled" class="fixed-size" data-vv-id="4" aria-required="false" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;
 
@@ -16,7 +17,8 @@ exports[`BTextarea should render component 1`] = `
         test
         <!---->
     </label>
-    <textarea id="test" name="test" class="fixed-size"></textarea>
+    <textarea data-vv-as="" data-vv-name="1" data-vv-validate-on="input|blur" id="test" name="test" class="fixed-size" data-vv-id="1" aria-required="false" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;
 
@@ -26,7 +28,8 @@ exports[`BTextarea should render component with a label 1`] = `
         test
         <!---->
     </label>
-    <textarea id="test" name="test" class="fixed-size"></textarea>
+    <textarea data-vv-as="" data-vv-name="2" data-vv-validate-on="input|blur" id="test" name="test" class="fixed-size" data-vv-id="2" aria-required="false" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;
 
@@ -34,6 +37,7 @@ exports[`BTextarea should render component with label and asterisk 1`] = `
 <div class="flex">
     <label for="test" class="">
         test<span aria-label="Required">*</span></label>
-    <textarea id="test" name="test" required="required" class="fixed-size"></textarea>
+    <textarea data-vv-as="" data-vv-name="3" data-vv-validate-on="input|blur" id="test" name="test" required="required" class="fixed-size" data-vv-id="3" aria-required="true" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;

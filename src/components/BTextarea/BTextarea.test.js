@@ -1,5 +1,9 @@
-import { shallow } from 'vue-test-utils'
+import { createLocalVue, shallow } from 'vue-test-utils'
+import VeeValidate from 'vee-validate'
 import BTextarea from './BTextarea'
+
+const localVue = createLocalVue()
+localVue.use(VeeValidate)
 
 describe('BTextarea', () => {
   it('should render component', () => {
@@ -8,7 +12,8 @@ describe('BTextarea', () => {
         label: 'test',
         id: 'test',
         name: 'test'
-      }
+      },
+      localVue
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -19,7 +24,8 @@ describe('BTextarea', () => {
         label: 'test',
         id: 'test',
         name: 'test'
-      }
+      },
+      localVue
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -32,7 +38,8 @@ describe('BTextarea', () => {
         required: true,
         id: 'test',
         name: 'test'
-      }
+      },
+      localVue
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -45,7 +52,8 @@ describe('BTextarea', () => {
         id: 'test',
         name: 'test',
         label: 'test'
-      }
+      },
+      localVue
     })
 
     expect(wrapper.html()).toMatchSnapshot()
