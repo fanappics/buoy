@@ -59,6 +59,11 @@ module.exports = {
         test: /\.styl$/,
         loaders: extractPlugin,
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader?name=img/[name].[ext]?[hash]',
+        exclude: /node_modules/
       }
     ]
   },

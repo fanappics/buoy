@@ -43,27 +43,27 @@
         id='all-to-chosen'
         type='button'
         >
-        All <i class='fa fa-arrow-right' aria-hidden='true'></i>
+        <img class="icon" :src="allToChosen" />
       </button>
       <button 
         @click="onMoveSelectedClick(selectedOptions, 'available')"
         id='selected-to-chosen'
         type='button'
         >
-        <i class='fa fa-arrow-right' aria-hidden='true'></i>
+        <i class='icon ion-arrow-right-c' aria-hidden='true'></i>
       </button>
       <button
         @click="onMoveSelectedClick(selectedOptions, 'chosen')"
         id='selected-to-available'
         type='button'>
-        <i class='fa fa-arrow-left' aria-hidden='true'></i>
+        <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
       </button>
       <button 
         @click="onMoveAllOptions('chosen')"
         id='all-to-available'
         type='button'
         >
-        All <i class='fa fa-arrow-left' aria-hidden='true'></i>
+        <img class="icon" :src="allToAvailable" />
       </button>
     </div>
 
@@ -93,8 +93,8 @@
           {{ option.displayText }} 
 
         </li>
-      </ul>
       <span v-show="errors.has(validationId)" class="error-text" :id="'error-' + id">{{ errors.first(validationId) }}</span>
+      </ul>
 
     </div>
 
@@ -161,6 +161,8 @@ export default {
       chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : new Array,
       lastClick: 0,
       id: null,
+      allToChosen: require('../../../static/doubleArrow.svg'),
+      allToAvailable: require('../../../static/doubleArrow-left.svg')
     }
   },
 
@@ -410,7 +412,12 @@ export default {
   }
 
   div.buttons {
-    margin-top: 1.2rem
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 1.4rem;
   }
 
   button {
@@ -421,6 +428,7 @@ export default {
     background: none;
     border-radius: .25rem;
     width: 3rem;
+    height: 2rem;
   }
 
   button:hover {
@@ -446,6 +454,23 @@ export default {
   li.selected {
     background-color: #00aaed;
     color: #ffffff;
+  }
+
+  svg {
+    color: red;
+  }
+
+  .icon {
+    width: 75%;
+    padding-top: .3rem
+  }
+
+  .ion-arrow-right-c {
+    font-size: 1.5rem;
+  }
+ 
+  .ion-arrow-left-c {
+    font-size: 1.5rem;
   }
 
 </style>
