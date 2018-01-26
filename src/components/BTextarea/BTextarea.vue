@@ -5,7 +5,7 @@
     </label>
     <textarea
       v-validate="validations"
-      v-bind="Object.assign(validationAttributes,{id, name, autocomplete, disabled, maxlength, minlength, placeholder, required, resizable, rows})"
+      v-bind="Object.assign(validationAttributes,{id, name, autocomplete, disabled, maxLength, minLength, placeholder, required, resizable, rows})"
       :class="{ 'fixed-size': !resizable, 'invalid': invalid }"
     />
     <div v-if="invalid" :id="`error-${id}`" class="error-text">
@@ -57,13 +57,13 @@ export default {
     /**
     * Maximum length of text to pass validation.
     */  
-    maxlength: {
+    maxLength: {
       type: [String, Number]
     },        
     /**
     * Minimum length of text to pass validation.
     */
-    minlength: {
+    minLength: {
       type: [String, Number]
     },
     /**
@@ -94,12 +94,10 @@ export default {
     },
     validations () {
       let vals = {}
-      if (this.maxlength)
-        vals.max = this.maxlength
-      if (this.min)
-        vals.min_value = this.min
-      if (this.minlength)
-        vals.min = this.minlength
+      if (this.maxLength)
+        vals.max = this.maxLength
+      if (this.minLength)
+        vals.min = this.minLength
       if (this.required)
         vals.required = true
       return vals

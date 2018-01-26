@@ -75,7 +75,7 @@
       label="Default Label 1"
       placeholder="Default Placeholder 1"
       validation-name="textarea1"
-      maxlength="5">
+      max-length="5">
         First Required Textarea
     </b-textarea>
 
@@ -85,7 +85,7 @@
       label="Default Label 2"
       placeholder="Default Placeholder 2"
       validation-name="textarea2"
-      minlength="5"
+      min-length="5"
       required>
         Second Required Textarea
     </b-textarea>

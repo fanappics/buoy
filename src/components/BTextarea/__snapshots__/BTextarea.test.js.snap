@@ -11,6 +11,32 @@ exports[`BTextarea should add disabled class when the disabled prop is set 1`] =
 </div>
 `;
 
+exports[`BTextarea should fail validation if input exceeds maxLength 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test
+        <!---->
+    </label>
+    <textarea data-vv-as="maxLength" data-vv-name="5" data-vv-validate-on="input|blur" id="test" name="test" maxlength="1" class="fixed-size invalid" data-vv-id="5" aria-required="false" aria-invalid="true">12</textarea>
+    <div id="error-test" class="error-text"><span>
+      The maxLength field may not be greater than 1 characters.
+    </span></div>
+</div>
+`;
+
+exports[`BTextarea should fail validation if input is less than minLength 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test
+        <!---->
+    </label>
+    <textarea data-vv-as="minLength" data-vv-name="6" data-vv-validate-on="input|blur" id="test" name="test" minlength="5" class="fixed-size invalid" data-vv-id="6" aria-required="false" aria-invalid="true">12</textarea>
+    <div id="error-test" class="error-text"><span>
+      The minLength field must be at least 5 characters.
+    </span></div>
+</div>
+`;
+
 exports[`BTextarea should render component 1`] = `
 <div class="flex">
     <label for="test" class="">
