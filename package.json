@@ -116,7 +116,8 @@
   },
   "dependencies": {
     "vee-validate": "^2.0.1",
-    "vue": "^2.5.9"
+    "vue": "^2.5.9",
+    "vue-ionicons": "^1.0.4"
   },
   "peerDependencies": {
     "vue": "^2.5.0"
