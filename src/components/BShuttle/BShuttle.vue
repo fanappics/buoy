@@ -4,9 +4,9 @@
     <div class='b-shuttle-available'>
       <label :id="`available-label-${id}`">{{ availableLabel }}</label>
       <ul
-        :aria-labeledby="`available-label-${id}`"
+        :aria-labelledby="`available-label-${id}`"
+        :tabindex="(placeholder && (!options || options.length === 0)) ? 0 : -1"
         role='selectbox'
-        tabindex='0'
         class='input'
       >
         <li
@@ -297,7 +297,7 @@ export default {
       if (this.required) {
         this.validate()
       }
-      this.$emit("input",Array.from(this.chosenOptions, option => option.id));
+      this.$emit('input',Array.from(this.chosenOptions, option => option.id));
     },
 
     /**
@@ -317,7 +317,7 @@ export default {
       if (this.required) {
         this.validate()
       }
-      this.$emit("input",Array.from(this.chosenOptions, option => option.id));
+      this.$emit('input',Array.from(this.chosenOptions, option => option.id));
     },
 
     /**
