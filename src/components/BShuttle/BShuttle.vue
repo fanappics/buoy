@@ -1,7 +1,7 @@
 <template>
   <div class='shuttle'>
 
-    <div class='available'>
+    <div class='b-shuttle-available'>
       <label :id="'available-label-' + id">{{ availableLabel }}</label>
       <ul
         aria-labeledby='available-label'
@@ -17,8 +17,8 @@
         </li>
         <li
           v-for="option in availableOptions"
-          :key="'available-option-' + id + '-' + option.id"
-          :id="'available-option-' + id + '-' + option.id"
+          :key="`available-option-${id}-${option.id}`"
+          :id="`available-option-${id}-${option.id}`"
           :class="optionsClass(option, 'available')"
           @click="onOptionClick(option, 'available', 'chosen', $event)"
           @keyup.space.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
@@ -37,7 +37,7 @@
       </ul>
     </div>
 
-    <div class='buttons'>
+    <div class='b-shuttle-buttons'>
       <button 
         @click="onMoveAllOptions('available')"
         id='all-to-chosen'
@@ -67,7 +67,7 @@
       </button>
     </div>
 
-    <div class='chosen'>
+    <div class='b-shuttle-chosen'>
       <label id='chosen-label'>{{ chosenLabel }}</label>
       <ul
         aria-labeledby='chosen-label'
@@ -75,8 +75,8 @@
       >
         <li
           v-for="option in chosenOptions"
-          :key="'chosen-option-' + id + '-' + option.id"
-          :id="'chosen-option-' + id + '-' + option.id"
+          :key="`chosen-option-${id}-${option.id}`"
+          :id="`chosen-option-${id}-${option.id}`"
           :class="optionsClass(option, 'chosen')"
           @click="onOptionClick(option, 'chosen', 'available', $event)"
           @keyup.space.stop.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
@@ -156,9 +156,9 @@ export default {
 
   data () {
     return {
-      availableOptions: (this.options && this.options.length > 0) ? this.setOptions(this.options, this.value, 'available') : new Array,
-      selectedOptions: {'available': new Array, 'chosen': new Array},
-      chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : new Array,
+      availableOptions: (this.options && this.options.length > 0) ? this.setOptions(this.options, this.value, 'available') : [],
+      selectedOptions: {'available': [], 'chosen': []},
+      chosenOptions: (this.value && this.options) ? this.setOptions(this.options, this.value, 'chosen') : [],
       lastClick: 0,
       id: null,
       allToChosen: require('../../../static/doubleArrow.svg'),
@@ -166,12 +166,9 @@ export default {
     }
   },
 
-  computed: {
-  },
-
   created() {
     this.$validator.extend('notEmpty', {
-      getMessage: field => 'The ' + field + ' input is required.',
+      getMessage: field => `The ${field} input is required.`,
       validate: value => value.length > 0
     });
     this.$validator.attach({
@@ -195,12 +192,10 @@ export default {
      * this method sets up the initial state of the options
      */
     setOptions: function (options, selected, type) {
-      const availableOptions = new Array
-      const chosenOptions = new Array
+      const availableOptions = []
+      const chosenOptions = []
       options.forEach(function (option) {
-        if (selected === null) {
-          availableOptions.push(option)
-        } else if (selected.indexOf(option.id) === -1) {
+        if ((selected === null) || (selected.indexOf(option.id) === -1)) {
           availableOptions.push(option)
         } else {
           chosenOptions.push(option)
@@ -221,7 +216,7 @@ export default {
      */
     optionsClass: function (option, optionType) {
       return {
-        'options': true,
+        'b-shuttle-options': true,
         'selected': this.selectedOptions[optionType].indexOf(option.id) > -1
       }
     },
@@ -235,11 +230,11 @@ export default {
      * selectedOptions accordingly.
      */
     onOptionClick (option, optionType, otherOptionType, event) {
-      if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
+      if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = [] }
       if (event.shiftKey && (this.lastClick > 0)) {
         this.multipleSelect(option, optionType)
       } else if (event.altKey) {
-        this.selectedOptions[otherOptionType] = new Array
+        this.selectedOptions[otherOptionType] = []
         this.selectedOptions[optionType] = [option.id]
         this.onMoveSelectedClick(optionType)
       }
@@ -254,8 +249,8 @@ export default {
      */
     onMoveSelectedClick (type) {
       const loopOptions = (type === 'available') ? this.availableOptions : this.chosenOptions
-      const availableOptions = new Array
-      const chosenOptions = new Array
+      const availableOptions = []
+      const chosenOptions = []
       loopOptions.forEach((option) => {
         const index = this.selectedOptions[type].indexOf(option.id)
         if (index > -1) {
@@ -273,7 +268,7 @@ export default {
         this.sortById(this.availableOptions)
         this.chosenOptions = this.sortById(chosenOptions)
       }
-      this.selectedOptions = {'available': new Array, 'chosen': new Array}
+      this.selectedOptions = {'available': [], 'chosen': []}
       if (this.required) {
         this.validate()
       }
@@ -288,12 +283,12 @@ export default {
     onMoveAllOptions (type) {
       if (type === 'available') {
         this.chosenOptions = this.sortById(this.options)
-        this.availableOptions = new Array
+        this.availableOptions = []
       } else if (type === 'chosen') {
-        this.chosenOptions = new Array
+        this.chosenOptions = []
         this.availableOptions = this.sortById(this.options)
       }
-      this.selectedOptions = {'available': new Array, 'chosen': new Array}
+      this.selectedOptions = {'available': [], 'chosen': []}
       if (this.required) {
         this.validate()
       }
@@ -309,7 +304,7 @@ export default {
         const next = target.nextElementSibling;
         next.focus();
         if (event.shiftKey) {
-          if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
+          if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = [] }
           this.selectOption(option.id, optionType)
         }
       }
@@ -324,7 +319,7 @@ export default {
         const next = target.previousElementSibling;
         next.focus();
         if (event.shiftKey) {
-          if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = new Array }
+          if (this.selectedOptions[otherOptionType].length > 0) { this.selectedOptions[otherOptionType] = [] }
           this.selectOption(option.id, optionType)
         } 
       }
@@ -405,17 +400,17 @@ export default {
     overflow-x: hidden;
   }
 
-  div.available {
+  div.b-shuttle-available {
     flex: 1;
     margin-right: 1rem;
   }
 
-  div.chosen {
+  div.b-shuttle-chosen {
     flex: 1;
     margin-left: 1rem;
   }
 
-  div.buttons {
+  div.b-shuttle-buttons {
     display: flex;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -451,17 +446,13 @@ export default {
     color: #dededf;
   }
 
-  li.options:hover {
+  li.b-shuttle-options:hover {
     cursor: pointer;
   }
 
   li.selected {
     background-color: #00aaed;
     color: #ffffff;
-  }
-
-  svg {
-    color: red;
   }
 
   .icon {

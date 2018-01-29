@@ -2,19 +2,19 @@
 
 exports[`BShuttle BShuttle renders correctly 1`] = `
 <div class="shuttle">
-    <div class="available">
+    <div class="b-shuttle-available">
         <label id="available-label-null">test available label</label>
         <ul aria-labeledby="available-label" role="selectbox" tabindex="0">
             <!---->
-            <li id="available-option-null-1" role="option" tabindex="0" class="options">
+            <li id="available-option-null-1" role="option" tabindex="0" class="b-shuttle-options">
 
             </li>
-            <li id="available-option-null-2" role="option" tabindex="0" class="options">
+            <li id="available-option-null-2" role="option" tabindex="0" class="b-shuttle-options">
 
             </li>
         </ul>
     </div>
-    <div class="buttons">
+    <div class="b-shuttle-buttons">
         <button id="all-to-chosen" type="button">
             <img src="[object Object]" class="icon">
         </button>
@@ -28,7 +28,7 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
             <img src="[object Object]" class="icon">
         </button>
     </div>
-    <div class="chosen">
+    <div class="b-shuttle-chosen">
         <label id="chosen-label">test chosen label</label>
         <ul aria-labeledby="chosen-label" role="selectbox"> <span id="error-null" class="error-text" style="display: none;"></span></ul>
     </div>
