@@ -2,9 +2,9 @@
   <div class='shuttle'>
 
     <div class='b-shuttle-available'>
-      <label :id="'available-label-' + id">{{ availableLabel }}</label>
+      <label :id="`available-label-${id}`">{{ availableLabel }}</label>
       <ul
-        aria-labeledby='available-label'
+        :aria-labeledby="`available-label-${id}`"
         role='selectbox'
         tabindex='0'
         class='input'
@@ -41,6 +41,7 @@
     <div class='b-shuttle-buttons'>
       <button 
         @click="onMoveAllOptions('available')"
+        aria-label="Move All To Chosen"
         id='all-to-chosen'
         type='button'
         >
@@ -48,6 +49,7 @@
       </button>
       <button 
         @click="onMoveSelectedClick(availableOptions, 'available')"
+        aria-label="Move Selected To Chosen"
         id='selected-to-chosen'
         type='button'
         >
@@ -55,12 +57,14 @@
       </button>
       <button
         @click="onMoveSelectedClick(chosenOptions, 'chosen')"
+        aria-label="Move Selected To Available"
         id='selected-to-available'
         type='button'>
         <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
       </button>
       <button 
         @click="onMoveAllOptions('chosen')"
+        aria-label="Move All To Available"
         id='all-to-available'
         type='button'
         >

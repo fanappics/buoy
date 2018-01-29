@@ -4,7 +4,7 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
 <div class="shuttle">
     <div class="b-shuttle-available">
         <label id="available-label-null">test available label</label>
-        <ul aria-labeledby="available-label" role="selectbox" tabindex="0" class="input">
+        <ul aria-labeledby="available-label-null" role="selectbox" tabindex="0" class="input">
             <!---->
             <li id="available-option-null-1" role="option" tabindex="0" class="b-shuttle-options">
 
@@ -15,16 +15,16 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
         </ul>
     </div>
     <div class="b-shuttle-buttons">
-        <button id="all-to-chosen" type="button">
+        <button aria-label="Move All To Chosen" id="all-to-chosen" type="button">
             <img src="[object Object]" class="icon">
         </button>
-        <button id="selected-to-chosen" type="button">
+        <button aria-label="Move Selected To Chosen" id="selected-to-chosen" type="button">
             <i aria-hidden="true" class="icon ion-arrow-right-c"></i>
         </button>
-        <button id="selected-to-available" type="button">
+        <button aria-label="Move Selected To Available" id="selected-to-available" type="button">
             <i aria-hidden="true" class="icon ion-arrow-left-c"></i>
         </button>
-        <button id="all-to-available" type="button">
+        <button aria-label="Move All To Available" id="all-to-available" type="button">
             <img src="[object Object]" class="icon">
         </button>
     </div>
