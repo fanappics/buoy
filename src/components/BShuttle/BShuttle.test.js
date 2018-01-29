@@ -90,7 +90,7 @@ describe('BShuttle', () => {
     })
     await wrapper.vm.$nextTick()
     const line = wrapper.find(`#available-option-${wrapper.vm.id}-${shuttleOptions[0].id}`)
-    const button = wrapper.find('#selected-to-chosen')
+    const button = wrapper.find(`#selected-to-chosen-${wrapper.vm.id}`)
     line.trigger('click')
     button.trigger('click')
     expect(wrapper.vm.chosenOptions.length).toBe(1)
@@ -108,11 +108,12 @@ describe('BShuttle', () => {
     })
     await wrapper.vm.$nextTick()
     const line = wrapper.find(`#available-option-${wrapper.vm.id}-${shuttleOptions[0].id}`)
-    const button = wrapper.find('#selected-to-chosen')
+    const button = wrapper.find(`#selected-to-chosen-${wrapper.vm.id}`)
     line.trigger('click')
     button.trigger('click')
+    await wrapper.vm.$nextTick()
     const chosenLine = wrapper.find(`#chosen-option-${wrapper.vm.id}-${shuttleOptions[0].id}`)
-    const chosenButton = wrapper.find('#selected-to-available')
+    const chosenButton = wrapper.find(`#selected-to-available-${wrapper.vm.id}`)
     chosenLine.trigger('click')
     chosenButton.trigger('click')
     expect(wrapper.vm.chosenOptions.length).toBe(0)
@@ -120,7 +121,7 @@ describe('BShuttle', () => {
     expect(wrapper.vm.availableOptions[0].id).toBe(1)
   })
 
-  it('moves all rows to chosen when button clicked', () => {
+  it('moves all rows to chosen when button clicked', async () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
         options: shuttleOptions,
@@ -129,13 +130,14 @@ describe('BShuttle', () => {
       },
       localVue
     })
-    const button = wrapper.find('#all-to-chosen')
+    await wrapper.vm.$nextTick()
+    const button = wrapper.find(`#all-to-chosen-${wrapper.vm.id}`)
     expect(wrapper.vm.chosenOptions.length).toBe(0)
     button.trigger('click')
     expect(wrapper.vm.chosenOptions.length).toBe(2)
   })
 
-  it('moves all rows to available when button clicked', () => {
+  it('moves all rows to available when button clicked', async () => {
     const wrapper = shallow(BShuttle, {
       propsData: {
         options: shuttleOptions,
@@ -144,8 +146,9 @@ describe('BShuttle', () => {
       },
       localVue
     })
-    const chosenButton = wrapper.find('#all-to-chosen')
-    const availableButton = wrapper.find('#all-to-available')
+    await wrapper.vm.$nextTick()
+    const chosenButton = wrapper.find(`#all-to-chosen-${wrapper.vm.id}`)
+    const availableButton = wrapper.find(`#all-to-available-${wrapper.vm.id}`)
     expect(wrapper.vm.chosenOptions.length).toBe(0)
     chosenButton.trigger('click')
     expect(wrapper.vm.chosenOptions.length).toBe(2)

@@ -43,31 +43,31 @@
     <div class='b-shuttle-buttons'>
       <button 
         @click="onMoveAllOptions('available')"
+        :id="`all-to-chosen-${id}`"
         title="Move All To Chosen"
-        id='all-to-chosen'
         type='button'
         >
         <img class="icon" :src="allToChosen" />
       </button>
       <button 
         @click="onMoveSelectedClick(availableOptions, 'available')"
+        :id="`selected-to-chosen-${id}`"
         title="Move Selected To Chosen"
-        id='selected-to-chosen'
         type='button'
         >
         <i class='icon ion-arrow-right-c' aria-hidden='true'></i>
       </button>
       <button
         @click="onMoveSelectedClick(chosenOptions, 'chosen')"
+        :id="`selected-to-available-${id}`"
         title="Move Selected To Available"
-        id='selected-to-available'
         type='button'>
         <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
       </button>
       <button 
         @click="onMoveAllOptions('chosen')"
+        :id="`all-to-available-${id}`"
         title="Move All To Available"
-        id='all-to-available'
         type='button'
         >
         <img class="icon" :src="allToAvailable" />
@@ -411,6 +411,7 @@ export default {
     margin: 0;
     overflow: scroll;
     overflow-x: hidden;
+    border-radius: 2px;
   }
 
   div.b-shuttle-available {
@@ -434,14 +435,16 @@ export default {
   }
 
   button {
-    display: block;
+    display: flex;
     border-color: #dededf;
-    padding: .25rem .50rem .25rem .50rem;
+    padding: .25rem .50rem;
     margin: .3rem 0 .3rem 0;
     background: none;
     border-radius: .25rem;
     width: 3rem;
     height: 2rem;
+    justify-content: center;
+    align-items: center
   }
 
   button:hover {
@@ -454,6 +457,7 @@ export default {
 
   i {
     color: #00aaed;
+    margin-top: -.165rem;
   }
 
   li.b-shuttle-options:hover {
@@ -467,7 +471,6 @@ export default {
 
   .icon {
     width: 75%;
-    padding-top: .3rem
   }
 
   .ion-arrow-right-c {

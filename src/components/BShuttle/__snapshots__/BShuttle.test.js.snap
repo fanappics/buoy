@@ -15,16 +15,16 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
         </ul>
     </div>
     <div class="b-shuttle-buttons">
-        <button title="Move All To Chosen" id="all-to-chosen" type="button">
+        <button id="all-to-chosen-null" title="Move All To Chosen" type="button">
             <img src="[object Object]" class="icon">
         </button>
-        <button title="Move Selected To Chosen" id="selected-to-chosen" type="button">
+        <button id="selected-to-chosen-null" title="Move Selected To Chosen" type="button">
             <i aria-hidden="true" class="icon ion-arrow-right-c"></i>
         </button>
-        <button title="Move Selected To Available" id="selected-to-available" type="button">
+        <button id="selected-to-available-null" title="Move Selected To Available" type="button">
             <i aria-hidden="true" class="icon ion-arrow-left-c"></i>
         </button>
-        <button title="Move All To Available" id="all-to-available" type="button">
+        <button id="all-to-available-null" title="Move All To Available" type="button">
             <img src="[object Object]" class="icon">
         </button>
     </div>
