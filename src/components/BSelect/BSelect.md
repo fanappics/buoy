@@ -1,6 +1,6 @@
 ```js
 
-const options = [{id: 1, displayText: 'This'}, {id: 2, displayText: 'Is'}, {id: 3, displayText: 'An Example'}]
+const options = [{id: 1, displayName: 'This'}, {id: 2, displayName: 'Is'}, {id: 3, displayName: 'An Example'}]
 const selected1 = null
 const selected2 = null
 const selected3 = 3
