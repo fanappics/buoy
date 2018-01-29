@@ -5,12 +5,14 @@
       <label :id="`available-label-${id}`">{{ availableLabel }}</label>
       <ul
         :aria-labelledby="`available-label-${id}`"
+        :aria-describedby="`placeholder-${id}`"
         :tabindex="(placeholder && (!options || options.length === 0)) ? 0 : -1"
         role='listbox'
         class='input'
       >
         <li
           v-if="placeholder && (!options || options.length === 0)"
+          :id="`placeholder-${id}`"
           :aria-label="placeholder"
           class='placeholder'
         >
