@@ -21,6 +21,6 @@ module.exports = {
     new FriendlyErrorsWebpackPlugin({
       clearConsole: true
     })
-  ],
+  ]
 }
 

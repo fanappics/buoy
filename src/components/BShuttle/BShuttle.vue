@@ -7,6 +7,7 @@
         aria-labeledby='available-label'
         role='selectbox'
         tabindex='0'
+        class='input'
       >
         <li
           v-if="placeholder && (!options || options.length === 0)"
@@ -24,8 +25,8 @@
           @keyup.space.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
           @keyup.down.prevent.stop="onKeyupDown($event, option, 'available', 'chosen')"
           @keyup.up.prevent.stop="onKeyupUp($event, option, 'available', 'chosen')"
-          @keyup.right.prevent.stop="onMoveSelectedClick(availableOptions)"
-          @keyup.enter.prevent.stop="onMoveSelectedClick(availableOptions)"
+          @keyup.right.prevent.stop="onMoveSelectedClick(availableOptions,'available')"
+          @keyup.enter.prevent.stop="onMoveSelectedClick(availableOptions,'available')"
           @keydown.up.prevent.stop
           @keydown.down.prevent.stop
           @keydown.space.prevent.stop
@@ -46,14 +47,14 @@
         <img class="icon" :src="allToChosen" />
       </button>
       <button 
-        @click="onMoveSelectedClick(availableOptions)"
+        @click="onMoveSelectedClick(availableOptions, 'available')"
         id='selected-to-chosen'
         type='button'
         >
         <i class='icon ion-arrow-right-c' aria-hidden='true'></i>
       </button>
       <button
-        @click="onMoveSelectedClick(chosenOptions)"
+        @click="onMoveSelectedClick(chosenOptions, 'chosen')"
         id='selected-to-available'
         type='button'>
         <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
@@ -72,6 +73,7 @@
       <ul
         aria-labeledby='chosen-label'
         role='selectbox'
+        class='input'
       >
         <li
           v-for="option in chosenOptions"
@@ -82,8 +84,8 @@
           @keyup.space.stop.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
           @keyup.down.prevent.stop="onKeyupDown($event, option, 'chosen', 'available')"
           @keyup.up.prevent.stop="onKeyupUp($event, option, 'chosen', 'available')"
-          @keyup.left.prevent.stop="onMoveSelectedClick(chosenOptions)"
-          @keyup.enter.prevent.stop="onMoveSelectedClick(chosenOptions)"
+          @keyup.left.prevent.stop="onMoveSelectedClick(chosenOptions, 'chosen')"
+          @keyup.enter.prevent.stop="onMoveSelectedClick(chosenOptions, 'chosen')"
           @keydown.up.prevent.stop
           @keydown.down.prevent.stop
           @keydown.space.prevent.stop
@@ -93,8 +95,8 @@
           {{ option.displayText }} 
 
         </li>
-      <span v-show="errors.has(validationId)" class="error-text" :id="'error-' + id">{{ errors.first(validationId) }}</span>
       </ul>
+      <span v-show="errors.has(validationId)" class="error-text" :id="'error-' + id">{{ errors.first(validationId) }}</span>
 
     </div>
 
@@ -234,9 +236,17 @@ export default {
       if (event.shiftKey && (this.lastClick > 0)) {
         this.multipleSelect(option, optionType)
       } else if (event.altKey) {
-        this.selectedOptions[otherOptionType] = []
-        this.selectedOptions[optionType] = [option.id]
-        optionType === 'available' ? this.onMoveSelectedClick(this.availableOptions) : this.onMoveSelectedClick(this.chosenOptions)
+        if (optionType === 'available') {
+          const index = this.availableOptions.findIndex(item => item.id === option.id)
+          const optionToMove = this.availableOptions[index]
+          this.availableOptions.splice(index, 1)
+          this.moveItems(this.availableOptions, [optionToMove], optionType)
+        } else {
+          const index = this.chosenOptions.findIndex(item => item.id === option.id)
+          const optionToMove = this.chosenOptions[index]
+          this.chosenOptions.splice(index, 1)
+          this.moveItems(this.chosenOptions, [optionToMove], optionType)
+        }
       }
       this.selectOption(option.id, optionType)
     },
@@ -247,25 +257,37 @@ export default {
      * this moves all selected options from available to 
      * chosen, or back depending on type.
      */
-    onMoveSelectedClick (options) {
+    onMoveSelectedClick (options, optionType) {
       const availableOptions = []
       const chosenOptions = []
       options.forEach((option) => {
-        const index = this.selectedOptions[type].indexOf(option.id)
+        const index = this.selectedOptions[optionType].indexOf(option.id)
         if (index > -1) {
-          (type === 'available') ? chosenOptions.push(option) : availableOptions.push(option)
+          (optionType === 'available') ? chosenOptions.push(option) : availableOptions.push(option)
         } else {
-          (type === 'available') ? availableOptions.push(option) : chosenOptions.push(option)
+          (optionType === 'available') ? availableOptions.push(option) : chosenOptions.push(option)
         }
       })
-      if (type === 'available') {
-        this.availableOptions = this.sortById(availableOptions)
-        this.chosenOptions.push.apply(this.chosenOptions, chosenOptions)
+      optionType === 'available' ? this.moveItems(availableOptions, chosenOptions, optionType) : this.moveItems(chosenOptions, availableOptions, optionType)
+
+    },
+
+    /**
+     * @param {Array<Object>} moveFrom 
+     * @param {Array<Object>} moveTo 
+     * @param {String} optionType 
+     * help frunction for moving items
+     */
+
+    moveItems (moveFrom, moveTo, optionType) {
+      if (optionType === 'available') {
+        this.availableOptions = this.sortById(moveFrom)
+        this.chosenOptions.push.apply(this.chosenOptions, moveTo)
         this.sortById(this.chosenOptions)
       } else {
-        this.availableOptions.push.apply(this.availableOptions, availableOptions)
+        this.availableOptions.push.apply(this.availableOptions, moveTo)
         this.sortById(this.availableOptions)
-        this.chosenOptions = this.sortById(chosenOptions)
+        this.chosenOptions = this.sortById(moveFrom)
       }
       this.selectedOptions = {'available': [], 'chosen': []}
       if (this.required) {
@@ -281,11 +303,11 @@ export default {
      */
     onMoveAllOptions (type) {
       if (type === 'available') {
-        this.chosenOptions = this.sortById(this.options)
+        this.chosenOptions = this.sortById(this.options.slice(0))
         this.availableOptions = []
       } else if (type === 'chosen') {
         this.chosenOptions = []
-        this.availableOptions = this.sortById(this.options)
+        this.availableOptions = this.sortById(this.options.slice(0))
       }
       this.selectedOptions = {'available': [], 'chosen': []}
       if (this.required) {
@@ -380,7 +402,7 @@ export default {
      */
     validate () {
       this.$validator.validate(this.validationId, this.chosenOptions)
-    }
+    },
   }
 }
 </script>
@@ -389,9 +411,6 @@ export default {
 
   ul {
     list-style: none;
-    border-style: solid;
-    border-width: thin;
-    border-color: #dededf;
     height: 10rem;
     padding: 0;
     margin: 0;
@@ -416,6 +435,7 @@ export default {
     justify-content: center;
     flex-direction: column;
     padding-top: 1.4rem;
+    height: 10rem;
   }
 
   button {
@@ -439,10 +459,6 @@ export default {
 
   i {
     color: #00aaed;
-  }
-
-  li.placeholder {
-    color: #dededf;
   }
 
   li.b-shuttle-options:hover {

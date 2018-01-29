@@ -17,6 +17,11 @@ textarea,
   font-size: 100%;
   padding: 0.857rem;
 }
+li {
+  color: #333;
+  font-family: SFUIDisplay;
+  font-size: 100%;
+}
 input::-webkit-inner-spin-button {
   margin: 0;
   -webkit-appearance: none;
