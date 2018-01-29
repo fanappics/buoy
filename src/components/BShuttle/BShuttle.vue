@@ -6,7 +6,7 @@
       <ul
         :aria-labelledby="`available-label-${id}`"
         :tabindex="(placeholder && (!options || options.length === 0)) ? 0 : -1"
-        role='selectbox'
+        role='listbox'
         class='input'
       >
         <li
@@ -73,10 +73,10 @@
     </div>
 
     <div class='b-shuttle-chosen'>
-      <label id='chosen-label'>{{ chosenLabel }}</label>
+      <label :id="`chosen-label-${id}`">{{ chosenLabel }}</label>
       <ul
-        aria-labeledby='chosen-label'
-        role='selectbox'
+        :aria-labelledby="`chosen-label-${id}`"
+        role='listbox'
         class='input'
       >
         <li
