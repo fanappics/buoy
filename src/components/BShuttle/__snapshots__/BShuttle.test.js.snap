@@ -16,22 +16,21 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
     </div>
     <div class="buttons">
         <button id="all-to-chosen" type="button">
-            All
-            <i aria-hidden="true" class="fa fa-arrow-right"></i>
+            <img src="[object Object]" class="icon">
         </button>
         <button id="selected-to-chosen" type="button">
-            <i aria-hidden="true" class="fa fa-arrow-right"></i>
+            <i aria-hidden="true" class="icon ion-arrow-right-c"></i>
         </button>
         <button id="selected-to-available" type="button">
-            <i aria-hidden="true" class="fa fa-arrow-left"></i>
+            <i aria-hidden="true" class="icon ion-arrow-left-c"></i>
         </button>
         <button id="all-to-available" type="button">
-            All
-            <i aria-hidden="true" class="fa fa-arrow-left"></i>
+            <img src="[object Object]" class="icon">
         </button>
     </div>
     <div class="chosen">
         <label id="chosen-label">test chosen label</label>
-        <ul aria-labeledby="chosen-label" role="selectbox"></ul> <span id="error-null" class="error-text" style="display: none;"></span></div>
+        <ul aria-labeledby="chosen-label" role="selectbox"> <span id="error-null" class="error-text" style="display: none;"></span></ul>
+    </div>
 </div>
 `;
