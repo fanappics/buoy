@@ -41,7 +41,7 @@
     <div class='b-shuttle-buttons'>
       <button 
         @click="onMoveAllOptions('available')"
-        aria-label="Move All To Chosen"
+        title="Move All To Chosen"
         id='all-to-chosen'
         type='button'
         >
@@ -49,7 +49,7 @@
       </button>
       <button 
         @click="onMoveSelectedClick(availableOptions, 'available')"
-        aria-label="Move Selected To Chosen"
+        title="Move Selected To Chosen"
         id='selected-to-chosen'
         type='button'
         >
@@ -57,14 +57,14 @@
       </button>
       <button
         @click="onMoveSelectedClick(chosenOptions, 'chosen')"
-        aria-label="Move Selected To Available"
+        title="Move Selected To Available"
         id='selected-to-available'
         type='button'>
         <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
       </button>
       <button 
         @click="onMoveAllOptions('chosen')"
-        aria-label="Move All To Available"
+        title="Move All To Available"
         id='all-to-available'
         type='button'
         >
@@ -305,19 +305,8 @@ export default {
      * This will move all options to chosen or available
      * depending on tyep
      */
-    onMoveAllOptions (type) {
-      if (type === 'available') {
-        this.chosenOptions = this.sortById(this.options.slice(0))
-        this.availableOptions = []
-      } else if (type === 'chosen') {
-        this.chosenOptions = []
-        this.availableOptions = this.sortById(this.options.slice(0))
-      }
-      this.selectedOptions = {'available': [], 'chosen': []}
-      if (this.required) {
-        this.validate()
-      }
-      this.$emit('input',Array.from(this.chosenOptions, option => option.id));
+    onMoveAllOptions (optionType) {
+        this.moveItems([], this.options.slice(0), optionType)
     },
 
     /**
