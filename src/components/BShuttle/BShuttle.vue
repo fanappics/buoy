@@ -24,8 +24,8 @@
           @keyup.space.prevent.stop="onOptionClick(option, 'available', 'chosen', $event)"
           @keyup.down.prevent.stop="onKeyupDown($event, option, 'available', 'chosen')"
           @keyup.up.prevent.stop="onKeyupUp($event, option, 'available', 'chosen')"
-          @keyup.right.prevent.stop="onMoveSelectedClick('available')"
-          @keyup.enter.prevent.stop="onMoveSelectedClick('available')"
+          @keyup.right.prevent.stop="onMoveSelectedClick(availableOptions)"
+          @keyup.enter.prevent.stop="onMoveSelectedClick(availableOptions)"
           @keydown.up.prevent.stop
           @keydown.down.prevent.stop
           @keydown.space.prevent.stop
@@ -46,14 +46,14 @@
         <img class="icon" :src="allToChosen" />
       </button>
       <button 
-        @click="onMoveSelectedClick('available')"
+        @click="onMoveSelectedClick(availableOptions)"
         id='selected-to-chosen'
         type='button'
         >
         <i class='icon ion-arrow-right-c' aria-hidden='true'></i>
       </button>
       <button
-        @click="onMoveSelectedClick('chosen')"
+        @click="onMoveSelectedClick(chosenOptions)"
         id='selected-to-available'
         type='button'>
         <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
@@ -82,8 +82,8 @@
           @keyup.space.stop.prevent.stop="onOptionClick(option, 'chosen', 'available', $event)"
           @keyup.down.prevent.stop="onKeyupDown($event, option, 'chosen', 'available')"
           @keyup.up.prevent.stop="onKeyupUp($event, option, 'chosen', 'available')"
-          @keyup.left.prevent.stop="onMoveSelectedClick('chosen')"
-          @keyup.enter.prevent.stop="onMoveSelectedClick('chosen')"
+          @keyup.left.prevent.stop="onMoveSelectedClick(chosenOptions)"
+          @keyup.enter.prevent.stop="onMoveSelectedClick(chosenOptions)"
           @keydown.up.prevent.stop
           @keydown.down.prevent.stop
           @keydown.space.prevent.stop
@@ -236,7 +236,7 @@ export default {
       } else if (event.altKey) {
         this.selectedOptions[otherOptionType] = []
         this.selectedOptions[optionType] = [option.id]
-        this.onMoveSelectedClick(optionType)
+        optionType === 'available' ? this.onMoveSelectedClick(this.availableOptions) : this.onMoveSelectedClick(this.chosenOptions)
       }
       this.selectOption(option.id, optionType)
     },
@@ -247,11 +247,10 @@ export default {
      * this moves all selected options from available to 
      * chosen, or back depending on type.
      */
-    onMoveSelectedClick (type) {
-      const loopOptions = (type === 'available') ? this.availableOptions : this.chosenOptions
+    onMoveSelectedClick (options) {
       const availableOptions = []
       const chosenOptions = []
-      loopOptions.forEach((option) => {
+      options.forEach((option) => {
         const index = this.selectedOptions[type].indexOf(option.id)
         if (index > -1) {
           (type === 'available') ? chosenOptions.push(option) : availableOptions.push(option)
