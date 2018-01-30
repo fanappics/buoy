@@ -50,6 +50,11 @@ module.exports = merge(baseWebpackConfig, {
         test: /\.styl$/,
         use: extractPlugin,
         exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader?name=img/[name].[ext]?[hash]',
+        exclude: /node_modules/
       }
     ]
   },

@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     <b-validator scope="root" v-model="rootValid">
       <b-validator scope="scope" v-model="valid">
@@ -20,6 +21,9 @@
       <button :disabled="!rootValid">Submit</button>
     </b-validator>
   </div>
+=======
+
+>>>>>>> 70950c8349400174d9a9c5fb032878c895b54672
 </template>
         
 <script>
@@ -31,6 +35,7 @@
       BCheckbox,
       BValidator
     },
+<<<<<<< HEAD
     data: () => ({
       checkbox: {
         checkboxes: [{id: 'checkbox-1', value: 'Sign up now'}]
@@ -52,5 +57,11 @@
       valid2: false,
       rootValid: false
     })
+=======
+    data () {
+      return {
+      }
+    }
+>>>>>>> 70950c8349400174d9a9c5fb032878c895b54672
   }
 </script>

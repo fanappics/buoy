@@ -34,12 +34,12 @@ export default function Validation (eventTypes = 'input|blur') {
     watch: {
       'errors.items': {
         handler: function (errors) {
-          events.$emit('errorsChanged', errors, this.validationId.toString(), this.parentScope)
+          events.$emit('errorsChanged', errors, this.validationId, this.parentScope)
         }
       }
     },
     created () {
-      this.validationId = this._uid
+      this.validationId = this._uid.toString()
       events.$on('validate', this.onValidate)
     },
     beforeDestroy () {

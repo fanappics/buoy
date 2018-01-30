@@ -1,10 +1,12 @@
+body {
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
 button {
   background-color: #fff;
   border: solid 1px #dededf;
   border-radius: 4px;
   cursor: pointer;
-  font-family: SFUIDisplay;
-  font-size: 100%;
   padding: 0.857rem;
 }
 input,
@@ -13,9 +15,10 @@ textarea,
   border: solid 1px #dededf;
   border-radius: 4px;
   color: #333;
-  font-family: SFUIDisplay;
-  font-size: 100%;
   padding: 0.857rem;
+}
+li {
+  color: #333;
 }
 input::-webkit-inner-spin-button {
   margin: 0;
@@ -28,9 +31,7 @@ label,
 .label {
   color: #333;
   display: block;
-  font-family: SFUIDisplay;
-  font-size: 100%;
-  font-weight: bold;
+  font-weight: 400;
   padding-bottom: 0.429rem;
 }
 :focus,
@@ -61,7 +62,6 @@ label,
 .error-text {
   color: #d0021b;
   display: inline-block;
-  font-family: SFUIDisplay;
   font-size: 85.7%;
   padding-top: 0.357rem;
 }
