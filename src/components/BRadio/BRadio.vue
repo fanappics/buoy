@@ -10,7 +10,7 @@
             v-model="publicValue" 
             v-validate.initial="index === 0 ? validations : {}"
             v-bind="index === 0 ? validationAttributes : {}"
-            :aria-checked="radio.checked"
+            :aria-checked="publicValue == radio.id"
             :aria-describedby="errors.any() ? `error-${groupId}` : ''"
             :aria-labelledby="`${groupId} label-${radio.id}`"
             :aria-posinset="index"
@@ -18,8 +18,7 @@
             :disabled="radio.disabled || disabled"
             :id="radio.id"
             :name="groupId"
-            :value="radio.value"
-            @change="setCheckedRadio(radio)" 
+            :value="radio.id"
           />
           <label :id="`label-${radio.id}`" :for="radio.id">
             {{ radio.value }}
@@ -79,34 +78,26 @@ export default {
     /**
     * Requires a selection to pass validatin. 
     */
-    required: Boolean
+    required: Boolean,
+    value: {
+      type: [String,Number]
+    }
   },
-  created () {
-    var defaultRadio = null
-    this.radios.forEach((radio) => {
-      if (radio.checked) {
-        //Set the default checked radio button
-        this.publicValue = radio.value
-        defaultRadio = radio
-      }
-    })
-    this.setCheckedRadio(defaultRadio)
-  }, 
   data () {
     return {
       showErrors: false,
-      value: ''
+      checked: this.value || ''
     }
   },
   computed: {
     //Wrapper around value so it is propegated through v-model, or 'public' as I've dubbed it
     publicValue: {
       get () {
-        return this.value
+        return this.checked
       },
       set (value) {
-        this.value = value
-        this.$emit('input', this.value)
+        this.checked = value
+        this.$emit('input', this.checked)
       }
     },
     validations () {
@@ -121,16 +112,6 @@ export default {
       if (!this.parentScope || this.parentScope === scope) {
         this.showErrors = true
       }
-    },
-    setCheckedRadio (checkedRadio) {
-      this.radios.forEach((radio) => {
-        //Radio is checked, so set aria-checked
-        if (radio == checkedRadio)
-          radio.checked = true
-        //Radio not checked, so unset aria-checked
-        else
-          radio.checked = false
-      })
     }
   }
 }

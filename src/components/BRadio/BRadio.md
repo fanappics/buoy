@@ -15,11 +15,13 @@ Radio Button Options
 
 const radios = [
   {id: 1, value:"Option" },
-  {id: 2, value:"Selected", checked: true },
+  {id: 2, value:"Selected" },
   {id: 3, value:"Disabled", disabled: true }
 ]
 
-<b-radio group-id="1" group-label="Radio Options" :radios="radios" />
+const radioCheckedId1 = 2
+
+<b-radio group-id="1" group-label="Radio Options" :radios="radios" v-model="radioCheckedId1"/>
 
 ```
 
@@ -29,11 +31,13 @@ Disabled Radio Group
 
 const radios2 = [
   {id: 1, value:"Option" },
-  {id: 2, value:"Selected", checked: true },
+  {id: 2, value:"Selected" },
   {id: 3, value:"Disabled", disabled: true }
 ]
 
-<b-radio disabled group-id="2" group-label="Radio Options" :radios="radios2" />
+const radioCheckedId2 = 2
+
+<b-radio disabled group-id="2" group-label="Radio Options" :radios="radios2" v-model="radioCheckedId2"/>
 
 ```
 
@@ -43,11 +47,13 @@ Longer Label Name
 
 const radios3 = [
   {id: 1, value:"Option" },
-  {id: 2, value:"Selected", checked: true },
+  {id: 2, value:"Selected" },
   {id: 3, value:"Disabled", disabled: true }
 ]
 
-<b-radio group-id="3" group-label="This is an example of a really long group label." :radios="radios3" />
+const radioCheckedId3 = 2
+
+<b-radio group-id="3" group-label="This is an example of a really long group label." :radios="radios3" v-model="radioCheckedId3"/>
 
 ```
 
