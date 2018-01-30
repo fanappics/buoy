@@ -1,0 +1,60 @@
+Buoy Checkbox Component
+
+### Single
+
+```js
+  const checkbox1 = {
+    checkboxes:[{ id: 'checkbox-1', value: 'Sign up now' }]
+  }
+  <b-checkbox v-bind="checkbox1" />
+```
+
+### Multiple
+
+```js
+  const checkbox2 = {
+    checkboxes:[
+      { id: 'checkbox-2', value: 'Option #1' },
+      { id: 'checkbox-3', value: 'Option #2' }
+    ],
+    groupId: 'checkbox-group-1',
+    groupLabel: 'You must choose:'
+  }
+  <b-checkbox v-bind="checkbox2" />
+```
+
+### Required
+
+```js
+  const checkbox3 = {
+    checkboxes:[
+      { id: 'checkbox-4', value: 'Option #1' },
+      { id: 'checkbox-5', value: 'Option #2' }
+    ],
+    groupId: 'checkbox-group-2',
+    groupLabel: 'You must choose:'
+  }
+  <b-checkbox v-bind="checkbox3" required />
+```
+
+### Validation with BValidator
+
+```js
+  let checkboxGroupsValid = false;
+  const checkbox4 = {
+    checkboxes:[
+      { id: 'checkbox-6', value: 'Winter' },
+      { id: 'checkbox-7', value: 'Spring' },
+      { id: 'checkbox-8', value: 'Summer' },
+      { id: 'checkbox-9', value: 'Fall' }
+
+    ],
+    groupId: 'checkbox-group-3',
+    groupLabel: 'I Love:'
+  }
+
+  <b-validator scope="textarea-validator" v-model="checkboxGroupsValid" >
+    <b-checkbox v-bind="checkbox4" required />
+    <b-button :disabled="!checkboxGroupsValid">Submit</b-button>
+  </b-validator>
+```
