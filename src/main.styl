@@ -1,4 +1,4 @@
-$font-family = SFUIDisplay
+$font-family = 'Open Sans', sans-serif
 
 $cornflower-blue = #4D90FE 
 $night-rider = #333333
@@ -7,27 +7,25 @@ $silver = #C1C1C1
 $venetian-red = #D0021B
 $white = #FFFFFF
 
+body
+  font-size 14px
+  font-family $font-family
+
 button
   background-color $white
   border solid 1px $quartz
   border-radius 4px
   cursor pointer
-  font-family $font-family
-  font-size 100%
   padding 0.857rem
 
 input, textarea, .input
   border solid 1px $quartz
   border-radius 4px
   color $night-rider
-  font-family $font-family
-  font-size 100%
   padding 0.857rem
   
 li
   color $night-rider
-  font-family $font-family
-  font-size 100%
 
 input::-webkit-inner-spin-button
   margin 0
@@ -39,9 +37,7 @@ input[type=number]
 label, .label
   color $night-rider
   display block
-  font-family $font-family
-  font-size 100%
-  font-weight bold
+  font-weight 400
   padding-bottom 0.429rem
 
 :focus, .focus
@@ -57,7 +53,6 @@ label, .label
 .error-text
   color $venetian-red
   display inline-block
-  font-family $font-family
   font-size 85.7%
   padding-top 0.357rem
 

@@ -406,7 +406,7 @@ export default {
 
   ul {
     list-style: none;
-    height: 10rem;
+    height: 12.5rem;
     padding: 0;
     margin: 0;
     overflow: scroll;
@@ -430,18 +430,18 @@ export default {
     -ms-flex-align: center;
     justify-content: center;
     flex-direction: column;
-    padding-top: 1.4rem;
+    padding-top: 3.25rem;
     height: 10rem;
   }
 
   button {
     display: flex;
     border-color: #dededf;
-    padding: .25rem .50rem;
+    padding: .25rem .25rem;
     margin: .3rem 0 .3rem 0;
     background: none;
     border-radius: .25rem;
-    width: 3rem;
+    width: 2rem;
     height: 2rem;
     justify-content: center;
     align-items: center
@@ -457,7 +457,13 @@ export default {
 
   i {
     color: #00aaed;
-    margin-top: -.165rem;
+    margin-top: -.075rem;
+  }
+
+  li.b-shuttle-options {
+    padding: .4rem 0rem .4rem .75rem;
+    font-size: 14px;
+    font-weight: 200;
   }
 
   li.b-shuttle-options:hover {
@@ -470,15 +476,15 @@ export default {
   }
 
   .icon {
-    width: 75%;
+    width: 90%;
   }
 
   .ion-arrow-right-c {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
  
   .ion-arrow-left-c {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
 </style>
