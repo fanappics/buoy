@@ -10,7 +10,7 @@
             v-model="publicValue" 
             v-validate.initial="index === 0 ? validations : {}"
             v-bind="index === 0 ? validationAttributes : {}"
-            :aria-checked="publicValue == radio.id"
+            :aria-checked="publicValue === radio.id"
             :aria-describedby="errors.any() ? `error-${groupId}` : ''"
             :aria-labelledby="`${groupId} label-${radio.id}`"
             :aria-posinset="index"
@@ -79,9 +79,7 @@ export default {
     * Requires a selection to pass validatin. 
     */
     required: Boolean,
-    value: {
-      type: [String,Number]
-    }
+    value: String
   },
   data () {
     return {
@@ -96,7 +94,7 @@ export default {
         return this.checked
       },
       set (value) {
-        this.checked = value
+        this.checked = value.toString()
         this.$emit('input', this.checked)
       }
     },
