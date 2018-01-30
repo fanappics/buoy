@@ -1,5 +1,9 @@
-import { shallow } from 'vue-test-utils'
+import { createLocalVue, shallow } from 'vue-test-utils'
+import VeeValidate from 'vee-validate'
 import BTextarea from './BTextarea'
+
+const localVue = createLocalVue()
+localVue.use(VeeValidate)
 
 describe('BTextarea', () => {
   it('should render component', () => {
@@ -8,7 +12,8 @@ describe('BTextarea', () => {
         label: 'test',
         id: 'test',
         name: 'test'
-      }
+      },
+      localVue
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -19,7 +24,8 @@ describe('BTextarea', () => {
         label: 'test',
         id: 'test',
         name: 'test'
-      }
+      },
+      localVue
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -32,7 +38,8 @@ describe('BTextarea', () => {
         required: true,
         id: 'test',
         name: 'test'
-      }
+      },
+      localVue
     })
 
     expect(wrapper.html()).toMatchSnapshot()
@@ -45,9 +52,56 @@ describe('BTextarea', () => {
         id: 'test',
         name: 'test',
         label: 'test'
-      }
+      },
+      localVue
     })
 
     expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('should fail validation if input exceeds maxLength', async () => {
+    const wrapper = shallow(BTextarea, {
+      propsData: {
+        validationName: 'maxLength',
+        maxLength: 1,
+        id: 'test',
+        name: 'test',
+        label: 'test'
+      },
+      localVue
+    })
+
+    const textarea = wrapper.find('textarea')
+    textarea.trigger('focus')
+    await wrapper.vm.$nextTick()
+    textarea.element.innerHTML = '12'
+    textarea.trigger('blur')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.vm.invalid).toBe(true)
+  })
+
+  it('should fail validation if input is less than minLength', async () => {
+    const wrapper = shallow(BTextarea, {
+      propsData: {
+        validationName: 'minLength',
+        minLength: 5,
+        id: 'test',
+        name: 'test',
+        label: 'test'
+      },
+      localVue
+    })
+
+    const textarea = wrapper.find('textarea')
+    textarea.trigger('focus')
+    await wrapper.vm.$nextTick()
+    textarea.element.innerHTML = '12'
+    textarea.trigger('blur')
+    await wrapper.vm.$nextTick()
+
+    expect(wrapper.html()).toMatchSnapshot()
+    expect(wrapper.vm.invalid).toBe(true)
   })
 })

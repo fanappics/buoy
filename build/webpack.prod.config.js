@@ -55,5 +55,11 @@ module.exports = merge(baseWebpackConfig, {
   },
   performance: {
     hints: false
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin({
+      filename: '[name].css',
+      allChunks: true
+    })
+  ]
 })

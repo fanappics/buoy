@@ -1,30 +1,31 @@
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const resolve = file => require('path').resolve(__dirname, file)
+const extractPlugin = ExtractTextPlugin.extract({
+  use: [
+    { loader: 'css-loader', options: { sourceMap: true } },
+    { loader: 'postcss-loader', options: { sourceMap: true } },
+    { loader: 'stylus-loader', options: { sourceMap: true } }
+  ]
+})
+
 module.exports = {
-  webpackConfig: {
-    module: {
-      rules: [
-        // Vue loader
-        {
-          test: /\.vue$/,
-          exclude: /node_modules/,
-          loader: 'vue-loader'
-        },
-        // Babel loader, will use your project’s .babelrc
-        {
-          test: /\.js?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader'
-        }
-      ]
-    }
-  },
-  mixins: [
-    '../src/mixins/styleguide/styleguidedist.js'
-  ],
-  showUsage: true,
-  showCode: true,
-  defaultExample: true,
-  title: "Fanatics, Inc.: Buoy Living Styleguide",
-  styleguideDir: "../docs",
-  template: "../src/styleguide.html",
-  components: '../src/components/**/[A-Z]*.vue'
+  webpackConfig: Object.assign(
+    {},
+    require('./webpack.dev.config.js'),{
+      devServer: {
+	contentBase: resolve('../docs'),
+	publicPath: '/dev/',
+	disableHostCheck: true
+      }
+    }),
+    mixins: [
+      '../src/mixins/styleguide/styleguidedist.js'
+    ],
+    showUsage: true,
+    showCode: true,
+    defaultExample: true,
+    title: "Fanatics, Inc.: Buoy Living Styleguide",
+    styleguideDir: "../docs",
+    template: "../src/styleguide.html",
+    components: '../src/components/**/[A-Z]*.vue'
 };
