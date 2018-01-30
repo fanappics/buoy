@@ -4,8 +4,8 @@ Radios prop is an array of Radio Objects.
 
 | Key      | Required/Optional | Default | Description                              |
 | -------- | ----------------- | ------- | ---------------------------------------- |
-| id       | Required          |         | Needs to be unique in the radio group.   |
-| value    | Required          |         | Value that gets returned if button is selected. |
+| id       | Required          |         | Needs to be unique in the radio group. Returned if radio button is selected.  |
+| value    | Required          |         | Label for radio button. |
 | disabled | Optional          | false   | Disables radio button.                   |
 
 Radio Button Options
