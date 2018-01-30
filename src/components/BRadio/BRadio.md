@@ -6,7 +6,6 @@ Radios prop is an array of Radio Objects.
 | -------- | ----------------- | ------- | ---------------------------------------- |
 | id       | Required          |         | Needs to be unique in the radio group.   |
 | value    | Required          |         | Value that gets returned if button is selected. |
-| checked  | Optional          | false   | Initial state for radio button is selected. |
 | disabled | Optional          | false   | Disables radio button.                   |
 
 Radio Button Options
