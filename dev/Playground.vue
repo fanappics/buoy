@@ -21,7 +21,7 @@
     </b-validator>
   </div>
 </template>
-
+        
 <script>
   import BCheckbox from '../src/components/BCheckbox'
   import BValidator from '../src/components/BValidator'

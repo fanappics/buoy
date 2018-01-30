@@ -9,7 +9,7 @@ describe('Single checkbox', () => {
   it('mounted html should match snapshot', () => {
     const wrapper = shallow(BCheckbox, {
       propsData: {
-        checkboxes: [{id: 'checkbox', value: 'Checkbox'}]
+        checkboxes: [{ id: 'checkbox', value: 'Checkbox' }]
       },
       localVue
     })
@@ -21,7 +21,7 @@ describe('Single disabled checkbox', () => {
   it('mounted html should match snapshot', () => {
     const wrapper = shallow(BCheckbox, {
       propsData: {
-        checkboxes: [{id: 'checkbox', value: 'Checkbox', disabled: true}]
+        checkboxes: [{ id: 'checkbox', value: 'Checkbox', disabled: true }]
       },
       localVue
     })
@@ -33,7 +33,7 @@ describe('Single checked checkbox', () => {
   it('mounted html should match snapshot', () => {
     const wrapper = shallow(BCheckbox, {
       propsData: {
-        checkboxes: [{id: 'checkbox', value: 'Checkbox'}],
+        checkboxes: [{ id: 'checkbox', value: 'Checkbox' }],
         value: ['checkbox']
       },
       localVue
@@ -46,7 +46,7 @@ describe('Multiple checkbox with group label', () => {
   it('mounted html should match snapshot', () => {
     const wrapper = shallow(BCheckbox, {
       propsData: {
-        checkboxes: [{id: 'checkbox-1', value: 'Checkbox', disabled: true}, {id: 'checkbox-2', value: 'Checkbox2'}],
+        checkboxes: [{ id: 'checkbox-1', value: 'Checkbox', disabled: true }, { id: 'checkbox-2', value: 'Checkbox2' }],
         groupId: 'checkbox-group',
         groupLabel: 'Checkbox Group',
         showGroupLabel: true,

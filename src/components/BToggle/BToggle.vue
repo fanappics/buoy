@@ -7,7 +7,7 @@
     type="button" 
   >
     <span class="slider"></span>
-      {{this.label}}
+    {{ this.label }}
   </button>
 </template>
 
@@ -15,19 +15,28 @@
 export default {
   name: "b-toggle",
   props: {
-    id:{
+    /**
+    * The toggle ID.
+    */
+    id: {
       type: String,
       required: true
     },
-    label:{
+    /**
+    * Label to be used on the toggle.
+    */
+    label: {
       type: String,
       required: true
     },
-    disabled:{
-      type: Boolean,
-      required: false
-    },
-    value:{
+    /**
+    * Turns on and off Toggle.
+    */
+    disabled: Boolean,
+    /**
+    * The state/value of the toggle.
+    */
+    value: {
       type: Boolean,
       required: false,
       default: false
@@ -39,7 +48,6 @@ export default {
     }
   },
   methods: {
-
   /**
    * toggles the checked prop.
    */
@@ -51,30 +59,18 @@ export default {
 }
 </script>
 
-<style scoped>
-  
+<style scoped>  
   button {
-    border-style: solid;
-    border-width: thin;
-    border-radius: .25rem;
-    border-color: #dededf;
-    font-size: .8rem;
     font-weight: 600;
     position: relative;
-    display: inline-block;
-    cursor: pointer;
-    padding-left: 2rem;
-    padding-right: 1.25rem;
-    height: 2.5rem;
-    line-height: 2.5rem;
-    margin: .55rem;
+    padding-left: 2.15rem;
   }
 
   .slider:after {
     content: '';
     position: absolute;
-    top: .90rem;
-    left: .5rem;
+    top: 1.05rem;
+    left: .65rem;
     height: .75rem;
     width: .75rem;
     background-color: #adadad;
@@ -84,8 +80,8 @@ export default {
   .slider:before {
     content: '';
     position: absolute;
-    top: 1.15rem;
-    left: .625rem;
+    top: 1.30rem;
+    left: .755rem;
     width: 1.5rem;
     height: .25rem;
     background-color: #dededf;
@@ -100,15 +96,4 @@ export default {
     background-color: #00aaed;
     transform: translateX(.85rem);
   }
-  
-  button:disabled .slider:after,
-  button:disabled .slider:before {
-    background-color: #e5e5e5;
-  }
-
-  :disabled {
-    opacity: 0.4;
-    color: #333333;
-  }
-
 </style>

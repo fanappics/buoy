@@ -1,43 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BTextarea should add disabled class when the disabled prop is set 1`] = `
-<div class="b-input-group b-input-group--disabled">
-    <label for="test">
+<div class="flex">
+    <label for="test" class="disabled">
         test
         <!---->
     </label>
-    <textarea id="test" name="test" cols="30" rows="5" disabled="disabled"></textarea>
-    <div class="b-input-group--error"><span></span></div>
+    <textarea data-vv-as="" data-vv-name="4" data-vv-validate-on="input|blur" id="test" name="test" disabled="disabled" class="fixed-size" data-vv-id="4" aria-required="false" aria-invalid="false"></textarea>
+    <!---->
+</div>
+`;
+
+exports[`BTextarea should fail validation if input exceeds maxLength 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test
+        <!---->
+    </label>
+    <textarea data-vv-as="maxLength" data-vv-name="5" data-vv-validate-on="input|blur" id="test" name="test" maxlength="1" class="fixed-size invalid" data-vv-id="5" aria-required="false" aria-invalid="true">12</textarea>
+    <div id="error-test" class="error-text"><span>
+      The maxLength field may not be greater than 1 characters.
+    </span></div>
+</div>
+`;
+
+exports[`BTextarea should fail validation if input is less than minLength 1`] = `
+<div class="flex">
+    <label for="test" class="">
+        test
+        <!---->
+    </label>
+    <textarea data-vv-as="minLength" data-vv-name="6" data-vv-validate-on="input|blur" id="test" name="test" minlength="5" class="fixed-size invalid" data-vv-id="6" aria-required="false" aria-invalid="true">12</textarea>
+    <div id="error-test" class="error-text"><span>
+      The minLength field must be at least 5 characters.
+    </span></div>
 </div>
 `;
 
 exports[`BTextarea should render component 1`] = `
-<div class="b-input-group">
-    <label for="test">
+<div class="flex">
+    <label for="test" class="">
         test
         <!---->
     </label>
-    <textarea id="test" name="test" cols="30" rows="5"></textarea>
-    <div class="b-input-group--error"><span></span></div>
+    <textarea data-vv-as="" data-vv-name="1" data-vv-validate-on="input|blur" id="test" name="test" class="fixed-size" data-vv-id="1" aria-required="false" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;
 
 exports[`BTextarea should render component with a label 1`] = `
-<div class="b-input-group">
-    <label for="test">
+<div class="flex">
+    <label for="test" class="">
         test
         <!---->
     </label>
-    <textarea id="test" name="test" cols="30" rows="5"></textarea>
-    <div class="b-input-group--error"><span></span></div>
+    <textarea data-vv-as="" data-vv-name="2" data-vv-validate-on="input|blur" id="test" name="test" class="fixed-size" data-vv-id="2" aria-required="false" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;
 
 exports[`BTextarea should render component with label and asterisk 1`] = `
-<div class="b-input-group">
-    <label for="test">
+<div class="flex">
+    <label for="test" class="">
         test<span aria-label="Required">*</span></label>
-    <textarea id="test" name="test" cols="30" rows="5" required="required"></textarea>
-    <div class="b-input-group--error"><span></span></div>
+    <textarea data-vv-as="" data-vv-name="3" data-vv-validate-on="input|blur" id="test" name="test" required="required" class="fixed-size" data-vv-id="3" aria-required="true" aria-invalid="false"></textarea>
+    <!---->
 </div>
 `;

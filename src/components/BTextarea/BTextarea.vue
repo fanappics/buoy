@@ -1,98 +1,122 @@
 <template>
-  <div :class="classes">
-    <label :for="id">
+  <div class="flex">
+    <label :for="id" :class="{ disabled: disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
     <textarea
-      v-model="inputValue"
-      v-bind="{id, name, cols, rows, placeholder, required, disabled}"
+      v-validate="validations"
+      v-bind="Object.assign(validationAttributes,{id, name, autocomplete, disabled, maxLength, minLength, placeholder, required, resizable, rows})"
+      :class="{ 'fixed-size': !resizable, 'invalid': invalid }"
     />
-    <div class="b-input-group--error">
-      <span></span>
+    <div v-if="invalid" :id="`error-${id}`" class="error-text">
+      <span v-for="(error,index) in errors.all()" :key='index'>
+        {{ error }}
+      </span>
     </div>
   </div> 
 </template>
 
 <script>
+import validationMixIn from '../../mixins/validation'
+
 export default {
   name: 'b-textarea',
+  mixins: [validationMixIn()],
   props: {
+    // Required Props
+    /** 
+    * Component Id.  Needs to be unique. 
+    */
     id: {
       type: String,
       required: true
     },
-    name: {
-      type: String,
-      required: true
-    },
-    cols: {
-      type: Number,
-      default: 30
-    },
-    rows: {
-      type: Number,
-      default: 5
-    },
-    placeholder: String,
+    /**
+    * Descriptive text shown above textarea.
+    */
     label: {
       type: String,
       required: true
     },
-    required: {
-      type: Boolean,
-      default: false
+    /**
+    * Name given to component.  This can be different than the id.
+    */
+    name: {
+      type: String,
+      required: true
     },
-    disabled: {
-      type: Boolean,
-      default: false
+    // Optional Props
+    /** 
+    * Allows the value to be autocompleted by the browser. 
+    */
+    autocomplete: Boolean,
+    /**
+    * Disables the component.
+    */  
+    disabled: Boolean,
+    /**
+    * Maximum length of text to pass validation.
+    */  
+    maxLength: {
+      type: [String, Number]
+    },        
+    /**
+    * Minimum length of text to pass validation.
+    */
+    minLength: {
+      type: [String, Number]
+    },
+    /**
+    * Placeholder text of textarea.
+    */
+    placeholder: String,
+    /**
+     * Requires text to be input to pass validation.
+    */  
+    required: Boolean,
+    /**
+     * Allows the component to be resized in the browser.
+    */  
+    resizable: Boolean,
+    /**
+    * How many text rows will be shown by default.
+    */   
+    rows: {
+      type: [String, Number]
     }
   },
   computed: {
-    classes () {
-      return {
-        'b-input-group': true,
-        'b-input-group--disabled': this.disabled
-      }
-    },
     inputValue: {
       get () {},
       set (value) {
         this.$emit('input', value)
       }
+    },
+    validations () {
+      let vals = {}
+      if (this.maxLength)
+        vals.max = this.maxLength
+      if (this.minLength)
+        vals.min = this.minLength
+      if (this.required)
+        vals.required = true
+      return vals
     }
   }
 }
 </script>
 
-<style lang="stylus" scoped>
-  .b-input-group
-    label
-      color #333
-      display block
-      font-size 0.825rem
-      font-weight bold
-      padding 0.6rem 0 0.4rem
-    &.b-input-group--disabled
-      label
-        color #999
+<style scoped>
+  textarea:not(.invalid) {
+    box-shadow: none;
+  }
 
-  .b-input-group
-    textarea
-      border 1px solid rgba(138, 138, 138, 0.6)
-      border-radius .25rem
-      font-size .87rem
-      padding .7rem
-    ::placeholder
-      font-size 0.8rem
-    &.b-input-group--disabled
-      textarea
-        border-color rgba(138, 138, 138, 0.3)
-        &:hover
-          cursor not-allowed
-      ::placeholder
-        color #BBB
+  .flex {
+    display: flex;
+    flex-direction: column;
+  }
 
-  .b-error
-    textarea
-      border 1px solid red
+  .fixed-size {
+    resize: none;
+}
 </style>

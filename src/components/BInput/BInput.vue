@@ -3,13 +3,13 @@
     <label :for="id" :class="{ disabled: disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <div v-if="currency" :class="{ currency: true, focused: focused, disabled: disabled, invalid: invalid }" @click="$refs.input.focus()">
+    <div v-if="currency" :class="{ input: true, currency: true, focus: focused, disabled: disabled, 'error-border': showErrors }" @click="$refs.input.focus()">
       <span style="font-weight: bold;">$</span>
-      <input v-model="publicValue" v-bind="inputAttributes" v-validate="validations" @focus="focused = true" @blur="focused = false" ref="input" />
+      <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false; touched = true" ref="input" />
     </div>
-    <input v-else v-model="publicValue" v-bind="inputAttributes" v-validate="validations" :class="{ invalid: invalid }" />
-    <div v-if="invalid" :id="`error-${id}`" class="error">
-      <span v-for="error in errors.all()">
+    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'error-border': showErrors }" @blur="touched = true" />
+    <div v-if="showErrors" :id="`error-${id}`" class="error-text">
+      <span v-for="(error,index) in errors.all()" :key='index'>
         {{ error }}
       </span>
     </div>
@@ -17,8 +17,11 @@
 </template>
 
 <script>
+import validationMixIn from '../../mixins/validation'
+
 export default {
   name: 'b-input',
+  mixins: [validationMixIn('blur|input')],
   props: {
     //Required props
     id: {
@@ -52,11 +55,13 @@ export default {
       }
     },
     value: String
+
   },
   data () {
     return {
-      privateValue: this.value ? this.value : '',
-      focused: false
+      focused: false,
+      privateValue: this.value || '',
+      touched: false
     }
   },
   computed: {
@@ -65,8 +70,6 @@ export default {
         'aria-describedby': this.invalid ? `error-${this.id}` : '',
         'aria-label': this.label,
         'autofocus': this.autofocus,
-        'data-vv-as': this.type,
-        'data-vv-validate-on': 'input|blur',
         'disabled': this.disabled,
         'id': this.id,
         'name': this.name,
@@ -80,18 +83,19 @@ export default {
     currency () {
       return this.type === 'currency'
     },
-    invalid () {
-      return this.errors.any()
-    },
-    //Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
+    // Wrapper around privateValue so it is propegated through v-model, or 'public' as I've dubbed it
     publicValue: {
       get () {
         return this.privateValue
       },
       set (value) {
         this.privateValue = value
+        this.touched = true
         this.$emit('input', this.privateValue)
       }
+    },
+    showErrors () {
+      return this.touched && this.invalid
     },
     //Creates an object that VeeValidate reads to apply certain rules
     validations () {
@@ -128,40 +132,10 @@ export default {
 </script>
 
 <style scoped>
-  input {
-    border: solid 1px #dededf;
-    border-radius: 4px;
-    color: #333333;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    padding: 12px;
-  }
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    margin: 0;
-  }
-  input::placeholder {
-    color: #c1c1c1;
-  }
-  label {
-    color: #333333;
-    display: block;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    font-weight: bold;
-    padding-bottom: 6px;
-  }
   .currency {
     align-items: baseline;
-    border: solid 1px #dededf;
-    border-radius: 4px;
-    color: #333333;
     cursor: text;
     display: flex;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    padding: 12px;
   }
   .currency input {
     background-color: transparent;
@@ -170,26 +144,13 @@ export default {
     padding: 0 0 0 12px;
   }
   .currency input:focus {
-    outline: 0;
+    box-shadow: none;
   }
-  .disabled, input:disabled {
-    opacity: 0.50;
-  }
-  .error {
-    color: #d0021b;
-    font-family: SFUIDisplay;
-    font-size: 12px;
-    padding-top: 5px;
+  .disabled {
+    cursor: not-allowed;
   }
   .flex {
     display: flex;
     flex-direction: column;
-  }
-  .focused {
-    outline: -webkit-focus-ring-color auto 5px;
-    outline-offset: -2px;
-  }
-  .invalid {
-    border: solid 1px #d0021b;
   }
 </style>

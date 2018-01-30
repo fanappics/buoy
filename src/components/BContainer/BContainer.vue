@@ -77,6 +77,7 @@ export default {
     flex-direction: column;
   }
 </style>
+
 <docs>
 ```js
 <b-container class="edit_me" label="Container Header" headerLevel="3">

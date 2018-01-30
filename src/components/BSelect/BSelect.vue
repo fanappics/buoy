@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <label :id="'label-' + id">{{ selectLabel }} <span v-if=required aria-label='Required'>*</span></label>
+      <label :id="'label-' + id">{{ selectLabel }}<span v-if=required aria-label='Required'>*</span></label>
     </div>
     <button
       :class="dropdownClass"
@@ -18,7 +18,8 @@
       v-model="selectLabel"
       aria-haspopup="listbox"
       type="button"
-      >{{ selectedOption ? selectedOption.text : placeholder }}
+      >
+      {{ selectedOption ? selectedOption.displayText : placeholder }}
       <span class="dropdown-arrow"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
     </button>
     <ul
@@ -44,10 +45,11 @@
         class="options"
         role="option"
         tabindex="-1"
-      > {{ option.text }}
+      > 
+        {{ option.displayText }}
       </li>
     </ul>
-    <span v-show="selectErrors.has('selectedOption')" class="error" :id="'error-' + id">{{ selectErrors.first('selectedOption') }}</span>
+    <span v-show="selectErrors.has('selectedOption')" class="error-text" :id="'error-' + id">{{ selectErrors.first('selectedOption') }}</span>
   </div>
 </template>
 
@@ -61,25 +63,43 @@ export default {
   name: 'b-select',
   validator: null,
   props: {
+    /**
+    * Component Id
+    */
     id: {
       type: String,
       required: true
     },
+    /**
+    * Array of objects {id: number, displayText: string} to be displayed as options.
+    */
     selectOptions: {
       type: Array
     },
+    /**
+    * Use to turn on validation and to indicate field is required.
+    */
     required: {
       type: Boolean,
-      required: true
     },
+    /**
+    * Label of component.
+    */
     selectLabel: {
       type: String,
       required: true
     },
-    initialValue: {
-      type: Object,
+    /**
+    * The id of the selected option.
+    */
+    value: {
+      type: Number,
       required: false
     },
+    /**
+    * The Placeholder text for the component.
+    * If no preselection, this is the placeholder text for the component.
+    */
     placeholder: {
       type: String,
       required: false,
@@ -127,6 +147,7 @@ export default {
       if (this.required) {
         this.validate()
       }
+      this.$emit("input", this.selectedOption.id)
       document.querySelector(`#dropdown-${this.id}`).focus()
     },
 
@@ -181,7 +202,7 @@ export default {
   data () {
     return {
       opened: false,
-      selectedOption: this.initialValue, 
+      selectedOption: this.value ? this.selectOptions[this.selectOptions.map(function(option) { return option.id }).indexOf(this.value)] : null,
       selectErrors: null
     }
   },
@@ -196,9 +217,8 @@ export default {
       return {
         'dropdown-opened': this.opened,
         'dropdown': true,
-        'selected': this.selectedOption,
-        'unselected': !this.selectedOption,
-        'invalid': this.selectErrors.items.length > 0
+        'placeholder': !this.selectedOption,
+        'error-border': this.selectErrors.items.length > 0
       }
     }
   },
@@ -220,25 +240,18 @@ export default {
 
   button.dropdown {
     width: 100%;
-    padding: .5rem;
-    border-style: solid;
-    border-radius: .25rem;
-    border-width: thin;
-    border-color: #cccccc;
-    font-size: 1rem;
     text-align: left;
   }
 
   button.dropdown-opened {
     margin-bottom: 0;
-
     border-radius: .25rem .25rem 0 0;
   }
 
   ul {
     padding: 0 1rem 0 0;
     list-style: none;
-    margin-top: 0;
+    margin: 0;
   }
 
   .ul-opened {
@@ -274,22 +287,5 @@ export default {
     float: right;
     color: #000000
   }
-
-  .selected {
-    color: #000000;
-  }
-
-  .unselected {
-    color: #cccccc;
-  }
-
-  .error {
-   font-family: SFUIDisplay;
-   font-size: .9rem;
-   color: #d0021b ;
- }
- .invalid {
-   border: solid thin #d0021b ;
- }
 
 </style>
