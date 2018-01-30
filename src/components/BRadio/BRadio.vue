@@ -4,7 +4,7 @@
       <label :id="groupId" class="description">
       {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
       </label>
-      <div class="button-group" role="radiogroup">
+      <div class="button-group input" role="radiogroup">
         <div v-for="(radio, index) in radios" class="button" :key="index">
           <input type="radio" 
             v-model="publicValue" 
@@ -24,7 +24,7 @@
             {{ radio.value }}
           </label>
         </div>
-        <div v-if="errors.any() && showErrors" :id="`error-${groupId}`" class="error">
+        <div v-if="errors.any() && showErrors" :id="`error-${groupId}`" class="error-text">
           <span v-for="(error,index) in errors.all()" :key="index">
             {{ error }}
           </span>
@@ -117,14 +117,12 @@ export default {
 
 <style scoped>
   label {
-    color: #333333;
-    font-family: SFUIDisplay;
-    font-size: 14px;
-    padding-bottom: 6px;
     flex-grow: 0;
   }
 
   .button {
+    display: flex;
+    align-items: baseline;
     padding: .5rem;
   }
 
@@ -137,33 +135,19 @@ export default {
   }
 
   .button-group {
-    display:flex;
+    display: flex;
     flex-direction: column;
-    flex:1;
-    padding: .5rem;
-    border: .05rem solid black;
+    flex: 1;
   }
 
   .container {
     display: flex;
     flex-direction: column;
-    align-items:flex-start;
+    align-items: flex-start;
   }
-
 
   .description {
     font-weight: 600;
-  }
-
-  .disabled, input:disabled, input:disabled+label {
-    opacity: 0.50;
-  }
-
-  .error {
-    color: #d0021b;
-    font-family: SFUIDisplay;
-    font-size: 12px;
-    padding-top: 5px;
   }
 
 </style>
