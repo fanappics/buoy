@@ -20,7 +20,6 @@
       type="button"
       >
       {{ selectedOption ? selectedOption.value : placeholder }}
-
       <span class="dropdown-arrow"><i class='icon ion-arrow-down-b' aria-hidden='true'></i></span>
     </button>
     <ul

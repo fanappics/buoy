@@ -21,7 +21,6 @@ exports[`BSelect opens list when div is mousedowned 1`] = `
     </div>
     <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         test placeholder
-
         <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
@@ -40,7 +39,6 @@ exports[`BSelect opens list when div is mousedowned 2`] = `
     </div>
     <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown-opened dropdown placeholder" aria-expanded="true">
         test placeholder
-
         <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="ul-opened">
         <li id="option-1" value="1" role="option" tabindex="-1" class="options">
@@ -63,7 +61,6 @@ exports[`BSelect rendors a default select list 1`] = `
     </div>
     <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         Choose Option
-
         <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
@@ -82,7 +79,6 @@ exports[`BSelect rendors a select list with a placeholder 1`] = `
     </div>
     <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         test placeholder
-
         <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
@@ -101,7 +97,6 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
     </div>
     <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown">
         test-2
-
         <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
@@ -118,7 +113,6 @@ exports[`BSelect throws error if option not chosen when required 1`] = `
     </div>
     <button aria-owns="testId" aria-required="true" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         Choose Option
-
         <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
