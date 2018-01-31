@@ -105,6 +105,15 @@ export default {
       return vals
     }
   },
+  created: function() {
+    const duplicateId = false;
+    
+    for (let i = 0; i < this.radios.length; i++) {
+      if (this.groupId == this.radios[i].id) {
+        throw new Error(`Radio option id ${this.radios[i].id} cannot match GroupId`)
+      } 
+    }
+  },
   methods: {
     onValidate (scope) {
       if (!this.parentScope || this.parentScope === scope) {

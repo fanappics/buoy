@@ -36,7 +36,7 @@ const radios2 = [
 
 const radioCheckedId2 = 2
 
-<b-radio disabled group-id="2" group-label="Radio Options" :radios="radios2" v-model="radioCheckedId2"/>
+<b-radio disabled group-id="r2" group-label="Radio Options" :radios="radios2" v-model="radioCheckedId2"/>
 
 ```
 
@@ -52,7 +52,7 @@ const radios3 = [
 
 const radioCheckedId3 = 2
 
-<b-radio group-id="3" group-label="This is an example of a really long group label." :radios="radios3" v-model="radioCheckedId3"/>
+<b-radio group-id="r3" group-label="This is an example of a really long group label." :radios="radios3" v-model="radioCheckedId3"/>
 
 ```
 
@@ -67,7 +67,7 @@ const radios4 = [
 let isValidRadioGroup = false;
 
 <b-validator v-model="isValidRadioGroup" scope="radio-group-4">
-  <b-radio group-id="4" group-label="Select to enable button" :radios="radios4" validation-name="radio" required />
+  <b-radio group-id="r4" group-label="Select to enable button" :radios="radios4" validation-name="radio" required />
   <b-button :disabled="!isValidRadioGroup">Submit</b-button>
 </b-validator>
 
