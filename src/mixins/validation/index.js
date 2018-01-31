@@ -23,6 +23,9 @@ export default function Validation (eventTypes = 'input|blur') {
     },
     computed: {
       invalid () {
+        if (typeof this.touched !== 'undefined') {
+          return this.touched && this.errors.any()
+        }
         return this.errors.any()
       },
       validationAttributes () {
