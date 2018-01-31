@@ -63,6 +63,9 @@ export default {
   mixins: [validationMixIn()],
   props: {
     //Required props
+    /**
+    * Array of checkbox objects.
+    */   
     checkboxes: {
       type: Array,
       required: true,
@@ -78,11 +81,26 @@ export default {
       }
     },
     //Optional props
+    /**
+    * Disables control
+    */   
     disabled: Boolean,
+    /**
+    * Id to identify checkbox group.  Needs to be unique.
+    */   
     groupId: String,
+    /** 
+    * Display text of label 
+    */
     groupLabel: String,
-    name: String,
+    /** 
+    * Requires at least one checkbox be checked for group to be valid.
+    */    
     required: Boolean,
+    /** 
+    * @ignore
+    * Value prop is here for v-model.
+    */
     value: Array
   },
   created () {
@@ -97,9 +115,6 @@ export default {
     }
   },
   computed: {
-    field () {
-      return this.name || this.groupId || this.checkboxes[0].id
-    },
     //Wrapper around values so it is propegated through v-model, or 'public' as I've dubbed it
     publicValues: {
       get () {

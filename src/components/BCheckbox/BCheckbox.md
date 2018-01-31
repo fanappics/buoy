@@ -53,8 +53,13 @@ Buoy Checkbox Component
     groupLabel: 'I Love:'
   }
 
-  <b-validator scope="textarea-validator" v-model="checkboxGroupsValid" >
-    <b-checkbox v-bind="checkbox4" required />
-    <b-button :disabled="!checkboxGroupsValid">Submit</b-button>
-  </b-validator>
+  let checked = ['checkbox-6'];
+  <div>
+    <b-validator scope="checkbox-group-validator" v-model="checkboxGroupsValid" >
+      <b-checkbox v-bind="checkbox4" v-model="checked" required />
+      <b-button :disabled="!checkboxGroupsValid">Submit</b-button>
+    </b-validator>
+
+   checked {{ checked }}
+  </div>
 ```
