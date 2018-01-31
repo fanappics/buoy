@@ -2,7 +2,7 @@
   <!-- Group checkboxes: requires group id and label -->
   <div v-if="groupId && groupLabel" class="column">
     <div role="group" :aria-labelledby="groupId" class="flex">
-      <label :id="groupId" :class="{ bold: true, disabled: disabled }">
+      <label :id="`group-${groupId}`" :class="{ bold: true, disabled: disabled }">
         {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
       </label>
       <div class="flex wrap">
@@ -13,7 +13,7 @@
             v-bind="validationAttributes"
             :aria-checked="values.indexOf(checkbox.id) > -1"
             :aria-describedby="invalid ? `error-${groupId}` : ''"
-            :aria-labelledby="`${groupId} label-${checkbox.id}`"
+            :aria-labelledby="`group-${groupId} label-${checkbox.id}`"
             :disabled="checkbox.disabled || disabled"
             :id="checkbox.id"
             :value="checkbox.id"
@@ -102,11 +102,6 @@ export default {
     * Value prop is here for v-model.
     */
     value: Array
-  },
-  created () {
-    //Can't enforce this in the checkboxes validator so this is the earliest we can throw an error
-    if (this.checkboxes.length > 1 && (!this.groupId || !this.groupLabel))
-      throw new TypeError('Must define group-id and group-label for multiple checkboxes')
   },
   data () {
     return {

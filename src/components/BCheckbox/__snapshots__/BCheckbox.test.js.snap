@@ -3,20 +3,20 @@
 exports[`Multiple checkbox with group label mounted html should match snapshot 1`] = `
 <div class="column">
     <div role="group" aria-labelledby="checkbox-group" class="flex">
-        <label id="checkbox-group" class="bold">
+        <label id="group-checkbox-group" class="bold">
             Checkbox Group
             <!---->
         </label>
         <div class="flex wrap">
             <div class="flex baseline">
-                <input type="checkbox" aria-describedby="" aria-labelledby="checkbox-group label-checkbox-1" disabled="disabled" id="checkbox-1" data-vv-as=" " data-vv-name="4" data-vv-scope="4" data-vv-validate-on="input|blur" data-vv-id="4" aria-required="false"
+                <input type="checkbox" aria-describedby="" aria-labelledby="group-checkbox-group label-checkbox-1" disabled="disabled" id="checkbox-1" data-vv-as=" " data-vv-name="4" data-vv-scope="4" data-vv-validate-on="input|blur" data-vv-id="4" aria-required="false"
                     aria-invalid="false">
                 <label id="label-checkbox-1" for="checkbox-1">
                     Checkbox
                 </label>
             </div>
             <div class="flex baseline">
-                <input type="checkbox" aria-checked="true" aria-describedby="" aria-labelledby="checkbox-group label-checkbox-2" id="checkbox-2" data-vv-as=" " data-vv-name="4" data-vv-scope="4" data-vv-validate-on="input|blur" data-vv-id="5" aria-required="false"
+                <input type="checkbox" aria-checked="true" aria-describedby="" aria-labelledby="group-checkbox-group label-checkbox-2" id="checkbox-2" data-vv-as=" " data-vv-name="4" data-vv-scope="4" data-vv-validate-on="input|blur" data-vv-id="5" aria-required="false"
                     aria-invalid="false">
                 <label id="label-checkbox-2" for="checkbox-2">
                     Checkbox2
