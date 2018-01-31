@@ -19,13 +19,15 @@ exports[`BSelect opens list when div is mousedowned 1`] = `
             <!---->
         </label>
     </div>
-    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown placeholder">
+    <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         test placeholder
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
+        <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
-    </ul> <span id="error-testId" class="error-text" style="display: none;"></span></div>
+    </ul>
+    <!---->
+</div>
 `;
 
 exports[`BSelect opens list when div is mousedowned 2`] = `
@@ -35,9 +37,9 @@ exports[`BSelect opens list when div is mousedowned 2`] = `
             <!---->
         </label>
     </div>
-    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown-opened dropdown placeholder" aria-expanded="true">
+    <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown-opened dropdown placeholder" aria-expanded="true">
         test placeholder
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
+        <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="ul-opened">
         <li id="option-1" value="1" role="option" tabindex="-1" class="options">
             test-1
@@ -45,7 +47,9 @@ exports[`BSelect opens list when div is mousedowned 2`] = `
         <li id="option-2" value="2" role="option" tabindex="-1" class="options">
             test-2
         </li>
-    </ul> <span id="error-testId" class="error-text" style="display: none;"></span></div>
+    </ul>
+    <!---->
+</div>
 `;
 
 exports[`BSelect rendors a default select list 1`] = `
@@ -55,13 +59,15 @@ exports[`BSelect rendors a default select list 1`] = `
             <!---->
         </label>
     </div>
-    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown placeholder">
+    <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         Choose Option
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
+        <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
-    </ul> <span id="error-testId" class="error-text" style="display: none;"></span></div>
+    </ul>
+    <!---->
+</div>
 `;
 
 exports[`BSelect rendors a select list with a placeholder 1`] = `
@@ -71,13 +77,15 @@ exports[`BSelect rendors a select list with a placeholder 1`] = `
             <!---->
         </label>
     </div>
-    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown placeholder">
+    <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         test placeholder
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
+        <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
-    </ul> <span id="error-testId" class="error-text" style="display: none;"></span></div>
+    </ul>
+    <!---->
+</div>
 `;
 
 exports[`BSelect rendors a select list with an initial value 1`] = `
@@ -87,13 +95,15 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
             <!---->
         </label>
     </div>
-    <button aria-owns="testId" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown">
+    <button aria-owns="testId" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown">
         test-2
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
+        <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
-    </ul> <span id="error-testId" class="error-text" style="display: none;"></span></div>
+    </ul>
+    <!---->
+</div>
 `;
 
 exports[`BSelect throws error if option not chosen when required 1`] = `
@@ -101,11 +111,13 @@ exports[`BSelect throws error if option not chosen when required 1`] = `
     <div>
         <label id="label-testId">test<span aria-label="Required">*</span></label>
     </div>
-    <button aria-owns="testId" aria-required="true" aria-describedby="errortestId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" aria-haspopup="listbox" type="button" class="dropdown placeholder error-border">
+    <button aria-owns="testId" aria-required="true" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         Choose Option
-        <span class="dropdown-arrow"><i aria-hidden="true" class="fa fa-caret-down"></i></span></button>
+        <span class="dropdown-arrow"><i aria-hidden="true" class="icon ion-arrow-down-b"></i></span></button>
     <ul id="testId" role="listbox" class="">
         <!---->
         <!---->
-    </ul> <span id="error-testId" class="error-text" style="">The test field is required.</span></div>
+    </ul>
+    <!---->
+</div>
 `;
