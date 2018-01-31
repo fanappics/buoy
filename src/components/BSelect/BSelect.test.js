@@ -1,11 +1,15 @@
-import { shallow } from 'vue-test-utils'
+import { shallow, createLocalVue } from 'vue-test-utils'
+import VeeValidate from 'vee-validate'
 import BSelect from './BSelect'
 
+const localVue = createLocalVue()
+localVue.use(VeeValidate)
+
 describe('BSelect', () => {
-  const selectOptions = [{ id: 1, displayText: 'test-1' }, { id: 2, displayText: 'test-2' }]
+  const options = [{ id: 1, value: 'test-1' }, { id: 2, value: 'test-2' }]
   const initialValue = 2
   const required = false
-  const selectLabel = 'test'
+  const label = 'test'
   const id = 'testId'
   const placeholder = 'test placeholder'
 
@@ -13,38 +17,41 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel
-      }
+        label: label
+      },
+      localVue
     })
-    expect(wrapper.props().selectOptions.length).toBe(selectOptions.length)
+    expect(wrapper.props().options.length).toBe(options.length)
   })
 
   it('intializes selected value when passed', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         value: initialValue
-      }
+      },
+      localVue
     })
     const div = wrapper.find(`#dropdown-${id}`)
     expect(div.text())
-      .toBe(selectOptions[selectOptions.map(function (option) { return option.id }).indexOf(initialValue)].displayText)
+      .toBe(options[options.map(function (option) { return option.id }).indexOf(initialValue)].value)
   })
 
   it('display placeholder if no initial value', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         placeholder: placeholder
-      }
+      },
+      localVue
     })
     const div = wrapper.find(`#dropdown-${id}`)
     expect(div.text()).toBe('test placeholder')
@@ -54,11 +61,12 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         placeholder: placeholder
-      }
+      },
+      localVue
     })
     const div = wrapper.find(`#dropdown-${id}`)
     expect(wrapper.html()).toMatchSnapshot()
@@ -72,11 +80,12 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         placeholder: placeholder
-      }
+      },
+      localVue
     })
     const div = wrapper.find(`#dropdown-${id}`)
     div.trigger('mousedown')
@@ -84,17 +93,18 @@ describe('BSelect', () => {
     const line = wrapper.find('li')
     line.trigger('mousedown')
     await wrapper.vm.$nextTick()
-    expect(wrapper.vm.selectedOption.id).toBe(selectOptions[0].id)
+    expect(wrapper.vm.selectedOption.id).toBe(options[0].id)
   })
 
   it('throws error if option not chosen when required', async () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: true,
-        selectLabel: selectLabel
-      }
+        label: label
+      },
+      localVue
     })
     const div = wrapper.find(`#dropdown-${id}`)
     div.trigger('mousedown')
@@ -108,10 +118,11 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel
-      }
+        label: label
+      },
+      localVue
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -120,11 +131,12 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         value: initialValue
-      }
+      },
+      localVue
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -133,11 +145,12 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         placeholder: placeholder
-      }
+      },
+      localVue
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
@@ -146,11 +159,12 @@ describe('BSelect', () => {
     const wrapper = shallow(BSelect, {
       propsData: {
         id: id,
-        selectOptions: selectOptions,
+        options: options,
         required: required,
-        selectLabel: selectLabel,
+        label: label,
         placeholder: placeholder
-      }
+      },
+      localVue
     })
     const upHandler = jest.fn()
     wrapper.vm.$on('upHandler', upHandler)
