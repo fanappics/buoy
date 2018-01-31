@@ -20,7 +20,7 @@ const radios = [
 
 const radioCheckedId1 = 2
 
-<b-radio group-id="1" group-label="Radio Options" :radios="radios" v-model="radioCheckedId1"/>
+<b-radio group-id="r1" group-label="Radio Options" :radios="radios" v-model="radioCheckedId1"/>
 
 ```
 
