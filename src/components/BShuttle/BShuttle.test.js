@@ -6,7 +6,7 @@ const localVue = createLocalVue()
 localVue.use(VeeValidate)
 
 describe('BShuttle', () => {
-  const shuttleOptions = [{ id: 1, displayName: 'test-1' }, { id: 2, displayName: 'test-2' }]
+  const shuttleOptions = [{ id: 1, value: 'test-1' }, { id: 2, value: 'test-2' }]
   const placeholder = 'Testing Placeholder'
   const availableLabel = 'test available label'
   const chosenLabel = 'test chosen label'

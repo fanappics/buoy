@@ -7,10 +7,10 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
         <ul aria-labelledby="available-label-null" aria-describedby="placeholder-null" role="listbox" class="input">
             <!---->
             <li id="available-option-null-1" role="option" tabindex="0" class="b-shuttle-options">
-
+                test-1
             </li>
             <li id="available-option-null-2" role="option" tabindex="0" class="b-shuttle-options">
-
+                test-2
             </li>
         </ul>
     </div>
@@ -30,6 +30,8 @@ exports[`BShuttle BShuttle renders correctly 1`] = `
     </div>
     <div class="b-shuttle-chosen">
         <label id="chosen-label-null">test chosen label</label>
-        <ul aria-labelledby="chosen-label-null" role="listbox" class="input"></ul> <span id="error-null" class="error-text" style="display: none;"></span></div>
+        <ul aria-labelledby="chosen-label-null" role="listbox" class="input"></ul>
+        <!---->
+    </div>
 </div>
 `;
