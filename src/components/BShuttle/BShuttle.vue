@@ -14,7 +14,7 @@
           v-if="placeholder && (!options || options.length === 0)"
           :id="`placeholder-${id}`"
           :aria-label="placeholder"
-          class="laceholder b-shuttle-options"
+          class="placeholder b-shuttle-options"
         >
           {{ placeholder }}
         </li>
