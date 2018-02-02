@@ -1,4 +1,4 @@
-external b-button documentation:
+Sample BButton example:
 
 ```js
 <b-button>Buoy Button</b-button>
