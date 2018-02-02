@@ -21,12 +21,12 @@ module.exports = {
       }
     }),
     mixins: [
-	glob.sync('../src/mixins/*/*.*')
+	'../src/mixins/styleguide/styleguidist.js'
     ],
     showUsage: true,
     showCode: true,
-    title: "Fanatics, Inc.: Buoy Living Styleguide",
-    styleguideDir: "../docs",
-    template: "../src/styleguide.html",
+    title: 'Fanatics, Inc.: Buoy Living Styleguide',
+    styleguideDir: '../docs',
+    template: '../src/styleguide.html',
     components: '../src/components/**/[A-Z]*.vue'
 };
