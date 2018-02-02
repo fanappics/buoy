@@ -22,7 +22,7 @@
     "test:coverage": "cross-env NODE_ENV=test jest -i --coverage",
     "precommit": "./precommit.sh && npm run lint && npm run test",
     "prepare": "npm run build",
-    "prepush": "echo 'Please fill out the PR template.' && npm run lint && npm test",
+    "prepush": "./prepush.sh",
     "styleguide": "vue-styleguidist server --config ./build/styleguide.config.js",
     "styleguide:build": "vue-styleguidist build --config ./build/styleguide.config.js",
     "watch": "cross-env TARGET=development webpack --config build/config.js --progress --hide-modules --watch"

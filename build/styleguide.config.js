@@ -1,6 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const resolve = file => require('path').resolve(__dirname, file)
-const glob = require("glob")
 
 const extractPlugin = ExtractTextPlugin.extract({
   use: [
