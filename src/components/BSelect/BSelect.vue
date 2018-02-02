@@ -23,12 +23,12 @@
       <span class="dropdown-arrow"><i class='icon ion-arrow-down-b' aria-hidden='true'></i></span>
     </button>
     <ul
+      v-show="opened"
       :class="ulClass"
       :id="id"
       role="listbox"
     >
       <li
-        v-if="opened"
         v-for="option in options"
         :aria-selected="selectedOption && selectedOption.id === option.id"
         :id="`option-${option.id}`"
@@ -253,7 +253,7 @@ export default {
     border-width: 1px;
     box-shadow:  .125rem .25rem .3rem #cccccc;
     border-color: #cccccc;
-    display: block;
+    z-index: 10;
   }
 
   .options {
