@@ -25,7 +25,6 @@ module.exports = {
     ],
     showUsage: true,
     showCode: true,
-    defaultExample: true,
     title: "Fanatics, Inc.: Buoy Living Styleguide",
     styleguideDir: "../docs",
     template: "../src/styleguide.html",
