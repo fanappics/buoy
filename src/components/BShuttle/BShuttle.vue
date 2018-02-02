@@ -465,7 +465,6 @@ export default {
 
   li.b-shuttle-options {
     padding: .4rem 0rem .4rem .75rem;
-    font-size: 85.7%;
     font-weight: 200;
   }
 
