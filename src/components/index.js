@@ -1,5 +1,6 @@
 export { default as BAccordion } from './BAccordion'
 export { default as BButton } from './BButton'
+export { default as BCheckbox } from './BCheckbox'
 export { default as BContainer } from './BContainer'
 export { default as BHeader } from './BHeader'
 export { default as BInput } from './BInput'
