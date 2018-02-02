@@ -11,10 +11,10 @@ const extractPlugin = ExtractTextPlugin.extract({
 module.exports = {
   webpackConfig: Object.assign(
     {},
-    require('./webpack.dev.config.js'),{
+    require('./webpack.prod.config.js'),{
       devServer: {
 	contentBase: resolve('../docs'),
-	publicPath: '/dev/',
+	publicPath: '/docs/',
 	disableHostCheck: true
       }
     }),
