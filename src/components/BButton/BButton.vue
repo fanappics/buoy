@@ -81,5 +81,6 @@ button {
   background-color: #00AAED;
   border-color: #00AAED;
   color: #FFFFFF;
+  margin: .25rem;
 }
 </style>
