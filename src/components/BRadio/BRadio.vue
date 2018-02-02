@@ -4,7 +4,7 @@
       <label :id="groupId" class="description">
       {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
       </label>
-      <div class="button-group input" role="radiogroup">
+      <div class="button-group" :class="{ column: column }" role="radiogroup">
         <div v-for="(radio, index) in radios" class="button" :key="index">
           <input type="radio" 
             v-model="publicValue" 
@@ -72,6 +72,10 @@ export default {
     },
     //Optional props
     /**
+    * Diplay the radio buttons in a column
+    */
+    column: Boolean,
+    /**
     * Disables the entire radio group.
     */
     disabled: Boolean,
@@ -132,7 +136,6 @@ export default {
   .button {
     display: flex;
     align-items: baseline;
-    padding: .5rem;
   }
 
   .button > input {
@@ -143,10 +146,17 @@ export default {
     font-weight: 600;  
   }
 
+  input+label {
+    padding-right: .5rem;
+  }
+
   .button-group {
     display: flex;
-    flex-direction: column;
     flex: 1;
+  }
+
+  .column {
+    flex-direction: column;
   }
 
   .container {

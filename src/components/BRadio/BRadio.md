@@ -12,7 +12,7 @@ Radio Button Options
 
 ```js
 
-const radios = [
+const radios1 = [
   {id: 1, value:"Option" },
   {id: 2, value:"Selected" },
   {id: 3, value:"Disabled", disabled: true }
@@ -20,7 +20,23 @@ const radios = [
 
 const radioCheckedId1 = 2
 
-<b-radio group-id="r1" group-label="Radio Options" :radios="radios" v-model="radioCheckedId1"/>
+<b-radio group-id="r1" group-label="Radio Options" :radios="radios1" v-model="radioCheckedId1"/>
+
+```
+
+Radio Button Options
+
+```js
+
+const radios5 = [
+  {id: 1, value:"Option" },
+  {id: 2, value:"Selected" },
+  {id: 3, value:"Disabled", disabled: true }
+]
+
+const radioCheckedId5 = 2
+
+<b-radio group-id="r5" group-label="Radio Options Columm" :radios="radios5" v-model="radioCheckedId5" column/>
 
 ```
 

@@ -90,3 +90,18 @@ describe('Multiple radio with required', () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 })
+
+describe('Multiple radio in column display format', () => {
+  it('mounted html should match snapshot', () => {
+    const wrapper = shallow(BRadio, {
+      propsData: {
+        radios: [{ id: 'radio-1', value: 'Radio' }, { id: 'radio-2', value: 'Radio2' }],
+        groupId: 'radio-group',
+        groupLabel: 'Radio Group',
+        column: true
+      },
+      localVue
+    })
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+})
