@@ -1,6 +1,6 @@
 ```js
 
-const options = [{id: 1, displayText: 'This'}, {id: 2, displayText: 'Is'}, {id: 3, displayText: 'An Example'}]
+const options = [{id: 1, value: 'This'}, {id: 2, value: 'Is'}, {id: 3, value: 'An Example'}]
 const selected1 = []
 const selected2 = [1]
 const placeholder = 'You need to do something first'
