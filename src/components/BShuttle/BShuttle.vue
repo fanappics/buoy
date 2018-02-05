@@ -1,22 +1,22 @@
 <template>
-  <div class='shuttle'>
+  <div class="shuttle">
 
-    <div class='b-shuttle-available'>
+    <div class="b-shuttle-available">
       <label :id="`available-label-${id}`">{{ availableLabel }}</label>
       <ul
         :aria-labelledby="`available-label-${id}`"
         :aria-describedby="`placeholder-${id}`"
-        :tabindex="(placeholder && (!options || options.length === 0)) ? 0 : -1"
-        role='listbox'
-        class='input'
+        :tabindex="(placeholder && (!options || options.length === 0)) ? 0 : null"
+        role="listbox"
+        class="input"
       >
         <li
           v-if="placeholder && (!options || options.length === 0)"
           :id="`placeholder-${id}`"
           :aria-label="placeholder"
-          class='placeholder'
+          class="placeholder b-shuttle-options"
         >
-        {{ placeholder }}
+          {{ placeholder }}
         </li>
         <li
           v-for="option in availableOptions"
@@ -32,54 +32,59 @@
           @keydown.up.prevent.stop
           @keydown.down.prevent.stop
           @keydown.space.prevent.stop
-          role='option'
-          tabindex='0'
+          role="option"
+          tabindex="0"
         >
-        {{ option.displayText }}
+          {{ option.value }}
         </li>
       </ul>
     </div>
 
-    <div class='b-shuttle-buttons'>
+    <div class="b-shuttle-buttons">
       <button 
         @click="onMoveAllOptions('available')"
         :id="`all-to-chosen-${id}`"
+        :disabled="availableOptions.length == 0"
         title="Move All To Chosen"
-        type='button'
-        >
+        type="button"
+      >
         <img class="icon" :src="allToChosen" />
       </button>
       <button 
         @click="onMoveSelectedClick(availableOptions, 'available')"
         :id="`selected-to-chosen-${id}`"
+        :disabled="availableOptions.length == 0"
         title="Move Selected To Chosen"
-        type='button'
-        >
+        type="button"
+      >
         <i class='icon ion-arrow-right-c' aria-hidden='true'></i>
       </button>
       <button
         @click="onMoveSelectedClick(chosenOptions, 'chosen')"
         :id="`selected-to-available-${id}`"
+        :disabled="chosenOptions.length == 0"
         title="Move Selected To Available"
-        type='button'>
+        type="button"
+      >
         <i class='icon ion-arrow-left-c' aria-hidden='true'></i>
       </button>
       <button 
         @click="onMoveAllOptions('chosen')"
         :id="`all-to-available-${id}`"
+        :disabled="chosenOptions.length == 0"
         title="Move All To Available"
-        type='button'
-        >
+        type="button"
+      >
         <img class="icon" :src="allToAvailable" />
       </button>
     </div>
 
-    <div class='b-shuttle-chosen'>
+    <div class="b-shuttle-chosen">
       <label :id="`chosen-label-${id}`">{{ chosenLabel }}</label>
       <ul
         :aria-labelledby="`chosen-label-${id}`"
-        role='listbox'
-        class='input'
+        role="listbox"
+        class="input"
       >
         <li
           v-for="option in chosenOptions"
@@ -95,14 +100,14 @@
           @keydown.up.prevent.stop
           @keydown.down.prevent.stop
           @keydown.space.prevent.stop
-          role='option'
-          tabindex='0'
+          role="option"
+          tabindex="0"
         >
-          {{ option.displayText }} 
+          {{ option.value }} 
 
         </li>
       </ul>
-      <span v-show="errors.has(validationId)" class="error-text" :id="'error-' + id">{{ errors.first(validationId) }}</span>
+      <span v-if="invalid" :id="`error-${id}`" class="error-text">{{ errors.first(validationId) }}</span>
 
     </div>
 
@@ -299,16 +304,19 @@ export default {
       if (this.required) {
         this.validate()
       }
-      this.$emit('input',Array.from(this.chosenOptions, option => option.id));
+      this.$emit('input', Array.from(this.chosenOptions, option => option.id));
     },
 
     /**
      * @param {String} type
      * This will move all options to chosen or available
-     * depending on tyep
+     * depending on type
      */
     onMoveAllOptions (optionType) {
-        this.moveItems([], this.options.slice(0), optionType)
+      if (optionType === 'available')
+        this.moveItems([], this.availableOptions.slice(0), optionType)
+      else
+        this.moveItems([], this.chosenOptions.slice(0), optionType)
     },
 
     /**
@@ -436,7 +444,6 @@ export default {
 
   button {
     display: flex;
-    border-color: #dededf;
     padding: .25rem .25rem;
     margin: .3rem 0 .3rem 0;
     background: none;
@@ -445,10 +452,6 @@ export default {
     height: 2rem;
     justify-content: center;
     align-items: center
-  }
-
-  button:hover {
-    cursor: pointer;
   }
 
   .shuttle {
@@ -462,7 +465,6 @@ export default {
 
   li.b-shuttle-options {
     padding: .4rem 0rem .4rem .75rem;
-    font-size: 14px;
     font-weight: 200;
   }
 
@@ -482,7 +484,7 @@ export default {
   .ion-arrow-right-c {
     font-size: 1.25rem;
   }
- 
+
   .ion-arrow-left-c {
     font-size: 1.25rem;
   }
