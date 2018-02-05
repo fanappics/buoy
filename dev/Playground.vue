@@ -1,15 +1,15 @@
 <template>
-
+  <div>
+å
+  </div>
 </template>
         
 <script>
-
   export default {
     components: {
     },
-    data () {
-      return {
-      }
-    }
+    data: () => (
+      {}
+    )
   }
 </script>
