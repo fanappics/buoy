@@ -1,5 +1,5 @@
 body {
-  font-size: 14px;
+  font-size: 85.7%;
   font-family: 'Open Sans', sans-serif;
 }
 button {
@@ -36,9 +36,7 @@ label,
 }
 :focus,
 .focus {
-  -webkit-box-shadow: 0 0 2px 2px #4d90fe;
-          box-shadow: 0 0 2px 2px #4d90fe;
-  outline: 0;
+  outline: #4d90fe solid 2px;
 }
 ::-webkit-input-placeholder,
 .placeholder {
