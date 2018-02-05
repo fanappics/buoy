@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="b-select">
     <div>
       <label :id="`label-${id}`">{{ label }}<span v-if="required" aria-label='Required'>*</span></label>
     </div>
@@ -23,12 +23,12 @@
       <span class="dropdown-arrow"><i class='icon ion-arrow-down-b' aria-hidden='true'></i></span>
     </button>
     <ul
+      v-show="opened"
       :class="ulClass"
       :id="id"
       role="listbox"
     >
       <li
-        v-if="opened"
         v-for="option in options"
         :aria-selected="selectedOption && selectedOption.id === option.id"
         :id="`option-${option.id}`"
@@ -145,7 +145,7 @@ export default {
       if(target.nextElementSibling) {
         const next = target.nextElementSibling;
         next.setAttribute("tabindex", "0");
-        target.setAttribute("tabindex", "-1");
+        target.setAttribute("tabindex", "-1")
         next.focus();
       }
     }, 
@@ -168,9 +168,7 @@ export default {
     selectOption (option) {
       this.selectedOption = option
       this.opened = !this.opened
-      if (this.required) {
-        this.validate()
-      }
+      this.validate()
       this.$emit("input", this.selectedOption.id)
       document.querySelector(`#dropdown-${this.id}`).focus()
     },
@@ -196,9 +194,7 @@ export default {
           this.setFocus()
         })
       } else {
-        if (this.required) {
-          this.validate()
-        }
+        this.validate()
         document.querySelector(`#dropdown-${this.id}`).focus()
       }
     },
@@ -211,15 +207,16 @@ export default {
         const next = target.previousElementSibling;
         const first = next.previousElementSibling;
         next.setAttribute("tabindex", "0");
-        target.setAttribute("tabindex", "-1");
-        next.focus();
+        target.setAttribute("tabindex", "-1")
+        next.focus()
       }
     },
     /**
      * Handles validation if required.
      */
     validate () {
-      this.$validator.validate(this.validationId, this.selectedOption)
+      if (this.required)
+        this.$validator.validate(this.validationId, this.selectedOption)
     }
   }
 }
@@ -227,6 +224,10 @@ export default {
 </script>
 
 <style scoped>
+
+  .b-select {
+    position: relative;
+  }
 
   button.dropdown {
     width: 100%;
@@ -239,26 +240,29 @@ export default {
   }
 
   ul {
-    padding: 0 1rem 0 0;
+    padding: 0;
     list-style: none;
     margin: 0;
+    position: absolute;
+    width: calc(100% - 2px);
   }
 
   .ul-opened {
     border-style: none solid solid solid;
     border-radius: 0 0 .25rem .25rem;
-    border-width: thin;
+    border-width: 1px;
     box-shadow:  .125rem .25rem .3rem #cccccc;
     border-color: #cccccc;
+    z-index: 10;
   }
 
   .options {
+    background-color: #ffffff;
+    border-color: #cccccc;
     border-radius: 0;
     border-style: none none solid none;
-    border-width: thin;
-    width: 100%;
+    border-width: 1px;
     padding: .5rem;
-    border-color: #cccccc;
   }  
 
   .options[aria-selected] {
@@ -275,7 +279,7 @@ export default {
 
   .dropdown-arrow {
     float: right;
-    color: #000000
+    color: #000000;
   }
 
 </style>
