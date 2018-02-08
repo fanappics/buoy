@@ -1,14 +1,14 @@
 import { mount } from 'vue-test-utils'
-import BContainer from './BAccordion'
+import BAccordion from './BAccordion'
 
-describe('BContainer', () => {
+describe('BAccordion', () => {
   it('triggers toggleExpansion when header button is clicked', () => {
     const spy = jest.fn()
-    const label = 'hello world'
-    const wrapper = mount(BContainer,
+    const wrapper = mount(BAccordion,
       {
         propsData: {
-          label
+          id: 'accordion-1',
+          label: 'hello world'
         },
         methods: { toggleExpansion: spy }
       }
@@ -18,11 +18,11 @@ describe('BContainer', () => {
   })
   it('triggers toggleExpansion when focus is on header and enter is pressed', () => {
     const spy = jest.fn()
-    const label = 'hello world'
-    const wrapper = mount(BContainer,
+    const wrapper = mount(BAccordion,
       {
         propsData: {
-          label
+          id: 'accordion-1',
+          label: 'hello world'
         },
         methods: { toggleExpansion: spy }
       }
@@ -32,11 +32,11 @@ describe('BContainer', () => {
   })
   it('triggers toggleExpansion when focus is on header and spacebar is pressed', () => {
     const spy = jest.fn()
-    const label = 'hello world'
-    const wrapper = mount(BContainer,
+    const wrapper = mount(BAccordion,
       {
         propsData: {
-          label
+          id: 'accordion-1',
+          label: 'hello world'
         },
         methods: { toggleExpansion: spy }
       }

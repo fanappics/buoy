@@ -1,5 +1,6 @@
 <template>
-  <button 
+  <button
+    :id="id"
     :aria-pressed="state"
     :disabled="disabled" 
     :class="{'checked': state}"
