@@ -3,7 +3,6 @@
 ```js
 <b-textarea
   id="bta1"
-  name="Default Name"
   label="Default Label"
   placeholder="Default Placeholder">
     Default Example Usage
@@ -15,7 +14,6 @@
 ```js
 <b-textarea
   id="bta2"
-  name="Default Name"
   label="Default Label"
   placeholder="Default Placeholder"
   resizable>
@@ -28,7 +26,6 @@
 ```js
 <b-textarea
   id="bta3"
-  name="Default Name"
   label="Default Label"
   placeholder="Default Placeholder"
   resizable
@@ -42,7 +39,6 @@
 ```js
 <b-textarea
   id="bta4"
-  name="Default Name"
   label="Default Label"
   placeholder="Default Placeholder">
     Default Example Usage
@@ -54,7 +50,6 @@
 ```js
 <b-textarea
   id="bta5"
-  name="Default Name"
   label="Default Label"
   placeholder="Default Placeholder"
   validation-name="text area"
@@ -71,7 +66,6 @@
   <b-validator scope="textarea-validator" v-model="textAreasValid">
     <b-textarea
       id="bta6"
-      name="Default Name 1"
       label="Default Label 1"
       placeholder="Default Placeholder 1"
       validation-name="textarea1"
@@ -81,7 +75,6 @@
 
     <b-textarea
       id="bta7"
-      name="Default Name 2"
       label="Default Label 2"
       placeholder="Default Placeholder 2"
       validation-name="textarea2"

@@ -4,9 +4,11 @@
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
     <textarea
-      v-validate="validations"
-      v-bind="Object.assign(validationAttributes,{id, name, autocomplete, disabled, maxLength, minLength, placeholder, required, resizable, rows})"
-      :class="{ 'fixed-size': !resizable, 'invalid': invalid }"
+      v-model="publicValue"
+      v-validate.initial="validations"
+      v-bind="Object.assign(validationAttributes,{id, autocomplete, disabled, maxLength, minLength, placeholder, required, resizable, rows})"
+      :class="{ 'fixed-size': !resizable, 'error-border': invalid }"
+      @blur="touched = true"
     />
     <div v-if="invalid" :id="`error-${id}`" class="error-text">
       <span v-for="(error,index) in errors.all()" :key='index'>
@@ -35,13 +37,6 @@ export default {
     * Descriptive text shown above textarea.
     */
     label: {
-      type: String,
-      required: true
-    },
-    /**
-    * Name given to component.  This can be different than the id.
-    */
-    name: {
       type: String,
       required: true
     },
@@ -83,13 +78,28 @@ export default {
     */   
     rows: {
       type: [String, Number]
+    },
+    /**
+    * @ignore
+    * Value prop is here for v-model.
+    */
+    value: String
+  },
+  data () {
+    return {
+      privateValue: this.value || '',
+      touched: false // Will be used by validation plugin.
     }
   },
   computed: {
-    inputValue: {
-      get () {},
+    publicValue: {
+      get () {
+        return this.privateValue
+      },
       set (value) {
-        this.$emit('input', value)
+        this.privateValue = value
+        this.touched = true
+        this.$emit('input', this.privateValue)
       }
     },
     validations () {
@@ -107,7 +117,7 @@ export default {
 </script>
 
 <style scoped>
-  textarea:not(.invalid) {
+  textarea:not(.error-border) {
     box-shadow: none;
   }
 

@@ -10,8 +10,7 @@ describe('BTextarea', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
         label: 'test',
-        id: 'test',
-        name: 'test'
+        id: 'test'
       },
       localVue
     })
@@ -22,8 +21,7 @@ describe('BTextarea', () => {
     const wrapper = shallow(BTextarea, {
       propsData: {
         label: 'test',
-        id: 'test',
-        name: 'test'
+        id: 'test'
       },
       localVue
     })
@@ -36,8 +34,7 @@ describe('BTextarea', () => {
       propsData: {
         label: 'test',
         required: true,
-        id: 'test',
-        name: 'test'
+        id: 'test'
       },
       localVue
     })
@@ -50,7 +47,6 @@ describe('BTextarea', () => {
       propsData: {
         disabled: true,
         id: 'test',
-        name: 'test',
         label: 'test'
       },
       localVue
@@ -65,7 +61,6 @@ describe('BTextarea', () => {
         validationName: 'maxLength',
         maxLength: 1,
         id: 'test',
-        name: 'test',
         label: 'test'
       },
       localVue
@@ -88,7 +83,6 @@ describe('BTextarea', () => {
         validationName: 'minLength',
         minLength: 5,
         id: 'test',
-        name: 'test',
         label: 'test'
       },
       localVue
