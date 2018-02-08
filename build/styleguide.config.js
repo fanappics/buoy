@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const resolve = file => require('path').resolve(__dirname, file)
+
 const extractPlugin = ExtractTextPlugin.extract({
   use: [
     { loader: 'css-loader', options: { sourceMap: true } },
@@ -11,21 +12,20 @@ const extractPlugin = ExtractTextPlugin.extract({
 module.exports = {
   webpackConfig: Object.assign(
     {},
-    require('./webpack.dev.config.js'),{
+    require('./webpack.prod.config.js'),{
       devServer: {
 	contentBase: resolve('../docs'),
-	publicPath: '/dev/',
+	publicPath: '/docs/',
 	disableHostCheck: true
       }
     }),
     mixins: [
-      '../src/mixins/styleguide/styleguidedist.js'
+	'../src/mixins/styleguide/styleguidist.js'
     ],
     showUsage: true,
     showCode: true,
-    defaultExample: true,
-    title: "Fanatics, Inc.: Buoy Living Styleguide",
-    styleguideDir: "../docs",
-    template: "../src/styleguide.html",
+    title: 'Fanatics, Inc.: Buoy Living Styleguide',
+    styleguideDir: '../docs',
+    template: '../src/styleguide.html',
     components: '../src/components/**/[A-Z]*.vue'
 };
