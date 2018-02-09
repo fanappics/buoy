@@ -69,8 +69,8 @@ function genConfig (opts) {
       }),
       new webpack.BannerPlugin({
         banner: `/*!
-* buoy v${version}
-* Forged by John Leider
+* Buoy v${version}
+* by Fanatics, Inc.
 * Released under the MIT License.
 */     `,
         raw: true,

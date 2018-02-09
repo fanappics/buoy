@@ -15,8 +15,10 @@ module.exports = {
     require('./webpack.prod.config.js'),{
       devServer: {
 	contentBase: resolve('../docs'),
-	publicPath: '/docs/',
-	disableHostCheck: true
+	publicPath: '/dev/',
+	disableHostCheck: true,
+	openPage: '/dev/',
+	hot: true	
       }
     }),
     mixins: [
