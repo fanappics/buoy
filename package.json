@@ -9,12 +9,11 @@
   },
   "scripts": {
     "build": "npm run build:dist && npm run build:es5",
-    "build:dev": "cross-env NODE_ENV=production node build/webpack.dev.config.js",
     "build:dist": "rimraf dist && cross-env NODE_ENV=production webpack --config build/config.js --progress --hide-modules",
     "build:es5": "rimraf es5 && cross-env NODE_ENV=es5 babel src --out-dir es5",
     "debug-build": "node --inspect --debug-brk build/config.js",
     "debug:test": "./node_modules/.bin/cross-env NODE_ENV=test node --inspect --inspect-brk ./node_modules/jest/bin/jest.js --no-cache --runInBand --verbose",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.config.js --open --hot",
+    "dev": "echo 'Use `npm run styleguide` and view the development version at http://localhost:6060/dev/\nYou can see individual componends in http://localhost:6060/dev/#!/<component-name>'; exit 0",
     "lint": "eslint --ext .js,.vue src",
     "lint:fix": "eslint --fix --ext .js,.vue src",
     "test": "cross-env NODE_ENV=test jest",
@@ -24,8 +23,7 @@
     "prepare": "npm run build",
     "prepush": "./prepush.sh",
     "styleguide": "vue-styleguidist server --config ./build/styleguide.config.js",
-    "styleguide:build": "vue-styleguidist build --config ./build/styleguide.config.js",
-    "watch": "cross-env TARGET=development webpack --config build/config.js --progress --hide-modules --watch"
+    "styleguide:build": "rimraf docs && vue-styleguidist build --config ./build/styleguide.config.js"
   },
   "repository": {
     "type": "git",
