@@ -10,9 +10,13 @@
             @keyup.enter.prevent="jumpTo(link)"
             @keydown.enter.prevent
             @keyup.up="upHandler($event)"
+            @keydown.up.prevent
             @keyup.left="upHandler($event)"
+            @keydown.left.prevent
             @keyup.right="downHandler($event)"
+            @keydown.right.prevent
             @keyup.down="downHandler($event)"
+            @keydown.down.prevent
           >
             <i v-if="link.completed" class="icon-complete ion-ios-checkmark" aria-hidden="true" />
             <i v-else class="icon-incomplete ion-record" aria-hidden="true" />
