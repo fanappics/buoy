@@ -11,6 +11,16 @@ describe('Page nav', () => {
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
+  it('fires optional event on click', () => {
+    events.$emit = jest.fn()
+    const wrapper = shallow(BPageNav, {
+      propsData: {
+        links: [{ label: 'Link', href: 'link-1', event: 'event' }]
+      }
+    })
+    wrapper.find('nav > ul > li > a').trigger('keyup.enter')
+    expect(events.$emit).toHaveBeenCalled()
+  })
 })
 
 describe('Page nav multiple links', () => {
@@ -21,18 +31,5 @@ describe('Page nav multiple links', () => {
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
-  })
-})
-
-describe('Page nav', () => {
-  it('fire optional event on click', () => {
-    events.$emit = jest.fn()
-    const wrapper = shallow(BPageNav, {
-      propsData: {
-        links: [{ label: 'Link', href: 'link-1', event: 'event' }]
-      }
-    })
-    wrapper.find('nav > ul > li > a').trigger('keyup.enter')
-    expect(events.$emit).toHaveBeenCalled()
   })
 })
