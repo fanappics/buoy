@@ -1,13 +1,18 @@
 <template>
-  <nav>
+  <nav :id="id">
       <ul role="menu" aria-label="Page Navigation">
-        <li v-for="(link, index) in links" role ="menuitem" :key="index">
+        <li v-for="(link, index) in links" role ="menuitem" :key="index" :class="{ 'inline': !column }">
           <a
             :href="`#${link.href}`"
             :aria-label="`${link.label} ${link.completed ? 'Completed' : 'Uncompleted'}`"
+            :class="{ 'inline': !column }"
             @click.prevent.stop="jumpTo(link)"
-            @keyup.enter="jumpTo(link)"
-            @keyup.space="jumpTo(link)"
+            @keyup.enter.prevent="jumpTo(link)"
+            @keydown.enter.prevent
+            @keyup.up="upHandler($event)"
+            @keyup.left="upHandler($event)"
+            @keyup.right="downHandler($event)"
+            @keyup.down="downHandler($event)"
           >
             <i v-if="link.completed" class="icon-complete ion-ios-checkmark" aria-hidden="true" />
             <i v-else class="icon-incomplete ion-record" aria-hidden="true" />
@@ -25,6 +30,20 @@ export default {
   name: 'b-page-nav',
   props: {
     //Required props
+    /** 
+    * <pre style="font-family: monospace;">
+    * Array of links to be rendered
+    * Each link is an object containing:
+    * |-------------|-----------|------------|----------------------------------------------------------|
+    * |  Prop name  |   Type    |  Default   |                      Description                         |
+    * |-------------|-----------|------------|----------------------------------------------------------|
+    * |  label      |  string   |  required  |  Display string of the link                              |
+    * |  href       |  string   |  required  |  Id of the element to navigate to                        |
+    * |  completed  |  boolean  |  optional  |  Specifies related section as ready for form submission  |
+    * |  event      |  string   |  optional  |  Name of an event to emit on the event-bus on click      |
+    * |-------------|-----------|------------|----------------------------------------------------------|
+    * </pre>
+    */
     links: {
       type: Array,
       required: true,
@@ -35,13 +54,31 @@ export default {
         }
         return true
       }
+    },
+    //Optional props
+    /** 
+    * Layout links in a column
+    */
+    column: Boolean,
+    /** 
+    * Override id on nav element
+    */
+    id: {
+      type: String,
+      default () {
+        return `page-nav-${this._uid}`
+      }
     }
   },
   data () {
-    return {
-    }
+    return {}
   },
   methods: {
+    /**
+    * @param {Object} link
+    * Scrolls to and focuses the element pertaining to link.href
+    * Also emits link.event if specified
+    */
     jumpTo (link) {
       if (link.event) {
         events.$emit(link.event)
@@ -53,6 +90,22 @@ export default {
           element.focus()
         }
       })
+    },
+    /**
+     * Handles up and left arrow keyup events
+     */
+    upHandler (event) {
+      const target = event.target.parentElement
+      if(target.previousSibling)
+        target.previousSibling.firstElementChild.focus()
+    },
+    /**
+     * Handles right and down arrow keyup events
+     */
+    downHandler (event) {
+      const target = event.target.parentElement
+      if(target.nextSibling)
+        target.nextSibling.firstElementChild.focus()
     }
   }
 }
@@ -60,6 +113,7 @@ export default {
 
 <style scoped>
   a {
+    background-color: #F5F6F8;
     color: #333333;
     display: block;
     padding: .5rem .5rem .5rem 1rem;
@@ -88,16 +142,11 @@ export default {
     padding-right: .5rem;
   }
 
-  li {
-    background-color: #F5F6F8;
-  }
-
-  nav {
-    margin-right: 3rem;
-  }
-
   ul {
     list-style: none;
+    display: inline;
+    margin: 0;
+    padding: 0;
   }
 
   .flex {
@@ -110,5 +159,9 @@ export default {
 
   .icon-incomplete {
     color: #FFFFFF;
+  }
+
+  .inline {
+    display: inline;
   }
 </style>

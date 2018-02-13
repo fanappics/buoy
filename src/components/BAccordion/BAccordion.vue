@@ -39,16 +39,18 @@ export default {
   name: 'b-accordion',
   props: {
     // Required props
-    id: {
-      type: String,
-      required: true
-    },
     label: {
       type: String,
       required: true
     },
     // Optional props
-    collapsed: Boolean
+    collapsed: Boolean,
+    id: {
+      type: String,
+      default () {
+        return `accordion-${this._uid}`
+      }
+    }
   },
 
   created () {
