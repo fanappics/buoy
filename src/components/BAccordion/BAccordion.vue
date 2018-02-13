@@ -1,17 +1,11 @@
 <template>
-  <section
-    :id="id"
-    class="acc-flex-column"
-  >
-    <div
-      role="heading"
-      class="acc-flex-center"
-    >
+  <section class="acc-flex-column">
+    <div role="heading" class="acc-flex-center">
       <button
-        :id="`${_uid}-heading`"
+        :id="id"
         class="acc-header"
         :aria-expanded="expanded"
-        :aria-controls="`${_uid}-content`"
+        :aria-controls="`${id}-content`"
         type="button"
         tabindex="0"
         @click="toggleExpansion"
@@ -20,27 +14,19 @@
         @keydown.space.prevent
         @keyup.space.prevent="toggleExpansion"
       >
-    
         {{ label }}
-        <span
-          :class="{
-            'acc-chevron': true,
-            'ion-chevron-down': expanded,
-            'ion-chevron-up': !expanded
-          }"
-        >
-        </span>
+        <span :class="{ 'acc-arrow': true, 'ion-arrow-down-b': expanded, 'ion-arrow-up-b': !expanded }" />
       </button>
     </div>
     <transition name="fade">
       <div
-        v-if="expanded"
-        :id="`${_uid}-content`"
+        v-show="expanded"
+        :id="`${id}-content`"
         class="acc-bordered acc-flex-center"
         role="region"
-        :aria-labelledby="`${_uid}-heading`"
+        :aria-labelledby="id"
       >
-        <slot></slot>
+        <slot />
       </div>
     </transition>
   </section>
@@ -52,24 +38,30 @@ import events from '../../event-bus'
 export default {
   name: 'b-accordion',
   props: {
-    id: {
-      type: String
-    },
+    // Required props
     label: {
       type: String,
       required: true
+    },
+    // Optional props
+    collapsed: Boolean,
+    id: {
+      type: String,
+      default () {
+        return `accordion-${this._uid}`
+      }
     }
   },
 
   created () {
-    events.$on(`collaps-${this.id}`, this.collapse)
+    events.$on(`collapse-${this.id}`, this.collapse)
     events.$on('collapse', this.collapse)
     events.$on('expand', this.expand)
     events.$on(`expand-${this.id}`, this.expand)
   },
 
   beforeDestroy () {
-    events.$off(`collaps-${this.id}`, this.collapse)
+    events.$off(`collapse-${this.id}`, this.collapse)
     events.$off('collapse', this.collapse)
     events.$off('expand', this.expand)
     events.$off(`expand-${this.id}`, this.expand)
@@ -77,7 +69,7 @@ export default {
 
   data: function() {
     return {
-      expanded: true
+      expanded: !this.collapsed
     }
   },
 
@@ -86,9 +78,7 @@ export default {
       this.expanded = !this.expanded
     },
     collapse () {
-      if (this.expandable) {
-        this.expanded = false
-      }
+      this.expanded = false
     },
     expand () {
       this.expanded = true
@@ -106,12 +96,14 @@ export default {
 <style scoped>
   .acc-bordered {
     flex-grow: 1;
-    border:1px solid rgb(217,217,217);
-    border-radius: 0.1875rem;
+    border-color: #C4C3C4;
+    border-style: solid none none none;
+    border-width: 1px;
     padding: 0.625rem;
   }
-  .acc-chevron {
+  .acc-arrow {
     float: right;
+    font-size: 1.29rem;
   }
   .fade-enter-active, .fade-leave-active {
     transition: opacity .3s;
@@ -136,7 +128,7 @@ export default {
     font-size: 1rem;
     line-height: 20px;
     text-align: left;
-    background-color: white;
+    background-color: #FFFFFF;
     margin-bottom: .5rem;
   }
 </style>

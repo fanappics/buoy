@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page nav mounted html should match snapshot 1`] = `
+<nav id="page-nav-1">
+    <ul role="menu" aria-label="Page Navigation">
+        <li role="menuitem" class="inline">
+            <a href="#link-1" aria-label="Link Completed" class="inline">
+                <i aria-hidden="true" class="icon-complete ion-ios-checkmark"></i>
+                Link
+            </a>
+        </li>
+    </ul>
+</nav>
+`;
+
+exports[`Page nav multiple links mounted html should match snapshot 1`] = `
+<nav id="page-nav-2">
+    <ul role="menu" aria-label="Page Navigation">
+        <li role="menuitem" class="inline">
+            <a href="#link-1" aria-label="Link Completed" class="inline">
+                <i aria-hidden="true" class="icon-complete ion-ios-checkmark"></i>
+                Link
+            </a>
+        </li>
+        <li role="menuitem" class="inline">
+            <a href="#link-2" aria-label="Link2 Uncompleted" class="inline">
+                <i aria-hidden="true" class="icon-incomplete ion-record"></i>
+                Link2
+            </a>
+        </li>
+    </ul>
+</nav>
+`;
