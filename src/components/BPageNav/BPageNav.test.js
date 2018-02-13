@@ -6,7 +6,8 @@ describe('Page nav', () => {
   it('mounted html should match snapshot', () => {
     const wrapper = shallow(BPageNav, {
       propsData: {
-        links: [{ label: 'Link', href: 'link-1', completed: true }]
+        links: [{ label: 'Link', href: 'link-1', completed: true }],
+        id: 'page-nav-1'
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
@@ -27,7 +28,8 @@ describe('Page nav multiple links', () => {
   it('mounted html should match snapshot', () => {
     const wrapper = shallow(BPageNav, {
       propsData: {
-        links: [{ label: 'Link', href: 'link-1', completed: true }, { label: 'Link2', href: 'link-2', completed: false }]
+        links: [{ label: 'Link', href: 'link-1', completed: true }, { label: 'Link2', href: 'link-2', completed: false }],
+        id: 'page-nav-2'
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
