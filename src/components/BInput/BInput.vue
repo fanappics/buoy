@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex column">
     <label :for="id" :class="{ disabled: disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
@@ -131,26 +131,20 @@ export default {
 }
 </script>
 
-<style scoped>
-  .currency {
-    align-items: baseline;
-    cursor: text;
-    display: flex;
-  }
-  .currency input {
-    background-color: transparent;
-    border: 0;
-    flex-grow: 1;
-    padding: 0 0 0 12px;
-  }
-  .currency input:focus {
-    box-shadow: none;
-  }
-  .disabled {
-    cursor: not-allowed;
-  }
-  .flex {
-    display: flex;
-    flex-direction: column;
-  }
+<style lang="stylus" scoped>
+  currency
+    align-items baseline
+    cursor text
+    display flex
+    input
+      background-color transparent
+      border 0
+      flex-grow 1
+      padding 0 0 0 12px
+      :focus
+        box-shadow none
+
+  .disabled
+    cursor not-allowed
+
 </style>
