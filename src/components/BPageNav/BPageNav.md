@@ -1,4 +1,4 @@
-### Example Usage
+### Default Layout Example
 
 ```js
 let links = [
@@ -6,9 +6,9 @@ let links = [
   { label: 'Email', href: 'bpn-input-2', completed: false }
 ]
 
-<div style="display: flex">
-  <div style="margin-right: 1rem;">
-    <b-page-nav :links="links" column />
+<div style="display: column-flex">
+  <div style="margin-bottom: 1rem;">
+    <b-page-nav :links="links" />
   </div>
   <div style="flex-grow: 1">
     <b-validator scope="bpn-scope-1" v-model="links[0].completed">
