@@ -1,7 +1,5 @@
-<docs>
-Sample documentation for BTable
-
 ```js
-Add code examples here!
+  <div>
+    <b-table id="table1" label="test label" />
+  </div>
 ```
-</docs>
