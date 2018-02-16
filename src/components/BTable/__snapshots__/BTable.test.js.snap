@@ -3,8 +3,22 @@
 exports[`BTable BTable renders correctly 1`] = `
 <div class="b-table-container">
     <table>
-        <th></th>
-        <td></td>
+        <tr>
+            <th>
+                testColumn1
+            </th>
+            <th>
+                testColumn2
+            </th>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
     </table>
 </div>
 `;
