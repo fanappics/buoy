@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BTextarea should add disabled class when the disabled prop is set 1`] = `
-<div class="flex">
+<div class="b-flex-column">
     <label for="test" class="disabled">
         test
         <!---->
@@ -12,33 +12,33 @@ exports[`BTextarea should add disabled class when the disabled prop is set 1`] =
 `;
 
 exports[`BTextarea should fail validation if input exceeds maxLength 1`] = `
-<div class="flex">
+<div class="b-flex-column">
     <label for="test" class="">
         test
         <!---->
     </label>
-    <textarea data-vv-as="maxLength" data-vv-name="5" data-vv-scope="5" data-vv-validate-on="input|blur" id="test" maxlength="1" class="fixed-size error-border" data-vv-id="5" aria-required="false" aria-invalid="true">12</textarea>
-    <div id="error-test" class="error-text"><span>
+    <textarea data-vv-as="maxLength" data-vv-name="5" data-vv-scope="5" data-vv-validate-on="input|blur" id="test" maxlength="1" class="fixed-size b-error-border" data-vv-id="5" aria-required="false" aria-invalid="true">12</textarea>
+    <div id="error-test" class="b-error-text"><span>
       The maxLength field may not be greater than 1 characters.
     </span></div>
 </div>
 `;
 
 exports[`BTextarea should fail validation if input is less than minLength 1`] = `
-<div class="flex">
+<div class="b-flex-column">
     <label for="test" class="">
         test
         <!---->
     </label>
-    <textarea data-vv-as="minLength" data-vv-name="6" data-vv-scope="6" data-vv-validate-on="input|blur" id="test" minlength="5" class="fixed-size error-border" data-vv-id="6" aria-required="false" aria-invalid="true">12</textarea>
-    <div id="error-test" class="error-text"><span>
+    <textarea data-vv-as="minLength" data-vv-name="6" data-vv-scope="6" data-vv-validate-on="input|blur" id="test" minlength="5" class="fixed-size b-error-border" data-vv-id="6" aria-required="false" aria-invalid="true">12</textarea>
+    <div id="error-test" class="b-error-text"><span>
       The minLength field must be at least 5 characters.
     </span></div>
 </div>
 `;
 
 exports[`BTextarea should render component 1`] = `
-<div class="flex">
+<div class="b-flex-column">
     <label for="test" class="">
         test
         <!---->
@@ -49,7 +49,7 @@ exports[`BTextarea should render component 1`] = `
 `;
 
 exports[`BTextarea should render component with a label 1`] = `
-<div class="flex">
+<div class="b-flex-column">
     <label for="test" class="">
         test
         <!---->
@@ -60,7 +60,7 @@ exports[`BTextarea should render component with a label 1`] = `
 `;
 
 exports[`BTextarea should render component with label and asterisk 1`] = `
-<div class="flex">
+<div class="b-flex-column">
     <label for="test" class="">
         test<span aria-label="Required">*</span></label>
     <textarea data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="input|blur" id="test" required="required" class="fixed-size" data-vv-id="3" aria-required="true" aria-invalid="false"></textarea>

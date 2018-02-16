@@ -1,14 +1,14 @@
 <template>
-  <div class="flex column">
-    <label :for="id" :class="{ disabled: disabled }">
+  <div class="b-input b-flex-column">
+    <label :for="id" :class="{ 'b-disabled': disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <div v-if="currency" :class="{ input: true, currency: true, focus: focused, disabled: disabled, 'error-border': showErrors }" @click="$refs.input.focus()">
+    <div v-if="currency" :class="{ 'b-input-el': true, currency: true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
       <span style="font-weight: bold;">$</span>
       <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false; touched = true" ref="input" />
     </div>
-    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'error-border': showErrors }" @blur="touched = true" />
-    <div v-if="showErrors" :id="`error-${id}`" class="error-text">
+    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'b-error-border': showErrors }" @blur="touched = true" />
+    <div v-if="showErrors" :id="`error-${id}`" class="b-error-text">
       <span v-for="(error,index) in errors.all()" :key='index'>
         {{ error }}
       </span>
@@ -132,7 +132,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  currency
+  .currency
     align-items baseline
     cursor text
     display flex
@@ -143,8 +143,5 @@ export default {
       padding 0 0 0 12px
       :focus
         box-shadow none
-
-  .disabled
-    cursor not-allowed
 
 </style>
