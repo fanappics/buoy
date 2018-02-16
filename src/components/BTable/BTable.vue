@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div class="b-table-container">
+    <table>
+      <th></th>
+      <td></td>
+    </table>
+    
+  </div>
 </template>
 
 <script>

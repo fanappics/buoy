@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BTable BTable renders correctly 1`] = `
+<div class="b-table-container">
+    <table>
+        <th></th>
+        <td></td>
+    </table>
+</div>
+`;
