@@ -6,19 +6,21 @@ let links = [
   { label: 'Email', href: 'bpn-input-2', completed: false }
 ]
 
-<div>
-  <b-page-nav :links="links" />
-  <br>
-  <b-validator scope="bpn-scope-1" v-model="links[0].completed">
-    <b-input id='bpn-input-1' label='Lone Required Input' required />
-  </b-validator>
-  <br>
-  <b-container label="Header">
-    <b-validator scope="bpn-scope-2" v-model="links[1].completed">
-      <b-input id="bpn-input-2" type="email" label="Email" required />
-      <b-toggle id="bpn-toggle-1" label="Toggle Me" />
+<div style="display: flex">
+  <div style="margin-right: 1rem;">
+    <b-page-nav :links="links" column />
+  </div>
+  <div style="flex-grow: 1">
+    <b-validator scope="bpn-scope-1" v-model="links[0].completed">
+      <b-input id='bpn-input-1' label='Lone Required Input' required />
     </b-validator>
-  </b-container>
+    <br>
+    <b-container label="Header">
+      <b-validator scope="bpn-scope-2" v-model="links[1].completed">
+        <b-input id="bpn-input-2" type="email" label="Email" required />
+      </b-validator>
+    </b-container>
+  </div>
 </div>
 ```
 
