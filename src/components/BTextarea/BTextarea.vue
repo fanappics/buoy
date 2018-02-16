@@ -1,5 +1,5 @@
 <template>
-  <div class="b-flex-column">
+  <div class="b-textarea b-flex-column">
     <label :for="id" :class="{ disabled: disabled }">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
@@ -7,7 +7,7 @@
       v-model="publicValue"
       v-validate.initial="validations"
       v-bind="Object.assign(validationAttributes,{id, autocomplete, disabled, maxLength, minLength, placeholder, required, resizable, rows})"
-      :class="{ 'fixed-size': !resizable, 'b-error-border': invalid }"
+      :class="{ 'b-fixed-size': !resizable, 'b-error-border': invalid }"
       @blur="touched = true"
     />
     <div v-if="invalid" :id="`error-${id}`" class="b-error-text">
@@ -118,7 +118,7 @@ export default {
 
 <style scoped>
 
-  .fixed-size {
+  .b-fixed-size {
     resize: none;
 }
 </style>

@@ -132,7 +132,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .currency
+  .b-currency
     align-items baseline
     cursor text
     display flex
