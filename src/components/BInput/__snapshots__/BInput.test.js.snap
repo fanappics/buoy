@@ -17,7 +17,7 @@ exports[`Currency input mounted html should match snapshot 1`] = `
         My Input
         <!---->
     </label>
-    <div class="b-input-el b-currency"><span>$</span>
+    <div class="b-input-el"><span>$</span>
         <input aria-describedby="" aria-label="My Input" id="input-1" placeholder="0.00" type="number" data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="blur|input" data-vv-id="3" aria-required="false" aria-invalid="false">
     </div>
     <!---->
