@@ -134,6 +134,9 @@ export default {
 <style lang="stylus" scoped>
   @import "../../styles/colors"
 
+  .b-input
+    margin-bottom 0.75rem
+
   .b-currency
     align-items baseline
     cursor text
