@@ -1,12 +1,12 @@
 <template>
   <!-- Group checkboxes: requires group id and label -->
-  <div v-if="groupId && groupLabel" class="column">
-    <div role="group" :aria-labelledby="groupId" class="flex">
-      <label :id="`group-${groupId}`" :class="{ bold: true, disabled: disabled }">
+  <div v-if="groupId && groupLabel" class="b-checkbox b-flex-column">
+    <div role="group" :aria-labelledby="groupId">
+      <label :id="`group-${groupId}`" :class="{ 'b-checkbox-group-label': true }">
         {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
       </label>
-      <div class="flex wrap">
-        <div v-for="(checkbox, index) in checkboxes" :key="index" class="flex baseline">
+      <div class="b-flex b-flex-wrap">
+        <div v-for="(checkbox, index) in checkboxes" :key="index" class="b-flex b-flex-center">
           <input type="checkbox" 
             v-model="publicValues" 
             v-validate:publicValues.initial="validations"
@@ -24,14 +24,14 @@
         </div>
       </div>
     </div>
-    <div v-if="touched && invalid" :id="`error-${groupId}`" class="error-text">
+    <div v-if="touched && invalid" :id="`error-${groupId}`" class="b-error-text">
       {{ errors.first(validationId, parentScope || validationId) }}
     </div>
   </div>
   <!-- Single checkbox -->
-  <div v-else-if="checkboxes.length == 1" class="column">
+  <div v-else-if="checkboxes.length == 1" class="b-checkbox b-flex-column">
     <template v-for="(checkbox,index) in checkboxes">
-      <div class="flex baseline" :key="index">
+      <div class="b-flex b-flex-center" :key="index">
         <input type="checkbox" 
           v-model="publicValues" 
           v-validate:publicValues.initial="validations" 
@@ -44,11 +44,11 @@
           :value="checkbox.id" 
           :key="index"
         />
-        <label :id="`label-${checkbox.id}`" :for="checkbox.id" class="bold" :key="index">
+        <label :id="`label-${checkbox.id}`" :for="checkbox.id" :key="index">
           {{ checkbox.value }}<span v-if="required" aria-hidden="true">*</span>
         </label>
       </div>
-      <div v-if="touched && invalid" :id="`error-${checkbox.id}`" class="error-text" :key="index">
+      <div v-if="touched && invalid" :id="`error-${checkbox.id}`" class="b-error-text" :key="index">
         {{ errors.first(validationId, parentScope || validationId) }}
       </div>
     </template>
@@ -131,36 +131,38 @@ export default {
 }
 </script>
 
-<style scoped>
-    
-  .baseline {
-    align-items: baseline;
-    flex: 1;
-  }
+<style lang="stylus" scoped>
+  @import "../../styles/colors"
 
-  .bold {
-    font-weight: bold;
-  }
+  .b-checkbox
+    margin-bottom 0.75rem
 
-  .column {
-    display: flex;
-    flex-direction: column;
-  }
+  .b-checkbox-group-label
+    margin 0 0 1rem 0
 
-  .flex {
-    display:flex;
-  }
+  label
+    margin-right 1.25rem
+    padding 0
 
-  .wrap {
-    flex-wrap: wrap;
-  }
+  input
+    -webkit-appearance none
+    background white
+    border 1px solid $checkbox-border
+    border-radius 2px
+    box-shadow none
+    height 0.875rem
+    margin 0 0.75rem 0 0
+    padding 0.375rem
+    &:checked
+      padding 0 0.092rem
+      &::before
+        color $checkbox-check
+        content "\f3fd"
+        font-family "Ionicons"
+        font-size 1.6em
+        line-height 0.9rem
+    &:focus
+      border-bottom 1px solid $input-focus
+      box-shadow none
 
-  label {
-    padding: 0;
-    margin-right: 0.3rem;
-  }
-
-  input {
-    margin-right: 0.3rem;
-  }
 </style>
