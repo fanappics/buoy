@@ -2,7 +2,7 @@
 
 exports[`BTextarea should add disabled class when the disabled prop is set 1`] = `
 <div class="b-textarea b-flex-column">
-    <label for="test" class="disabled">
+    <label for="test">
         test
         <!---->
     </label>
@@ -13,7 +13,7 @@ exports[`BTextarea should add disabled class when the disabled prop is set 1`] =
 
 exports[`BTextarea should fail validation if input exceeds maxLength 1`] = `
 <div class="b-textarea b-flex-column">
-    <label for="test" class="">
+    <label for="test">
         test
         <!---->
     </label>
@@ -26,7 +26,7 @@ exports[`BTextarea should fail validation if input exceeds maxLength 1`] = `
 
 exports[`BTextarea should fail validation if input is less than minLength 1`] = `
 <div class="b-textarea b-flex-column">
-    <label for="test" class="">
+    <label for="test">
         test
         <!---->
     </label>
@@ -39,7 +39,7 @@ exports[`BTextarea should fail validation if input is less than minLength 1`] = 
 
 exports[`BTextarea should render component 1`] = `
 <div class="b-textarea b-flex-column">
-    <label for="test" class="">
+    <label for="test">
         test
         <!---->
     </label>
@@ -50,7 +50,7 @@ exports[`BTextarea should render component 1`] = `
 
 exports[`BTextarea should render component with a label 1`] = `
 <div class="b-textarea b-flex-column">
-    <label for="test" class="">
+    <label for="test">
         test
         <!---->
     </label>
@@ -61,7 +61,7 @@ exports[`BTextarea should render component with a label 1`] = `
 
 exports[`BTextarea should render component with label and asterisk 1`] = `
 <div class="b-textarea b-flex-column">
-    <label for="test" class="">
+    <label for="test">
         test<span aria-label="Required">*</span></label>
     <textarea data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="input|blur" id="test" required="required" class="b-fixed-size" data-vv-id="3" aria-required="true" aria-invalid="false"></textarea>
     <!---->

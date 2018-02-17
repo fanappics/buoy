@@ -1,10 +1,10 @@
 <template>
   <div class="b-input b-flex-column">
-    <label :for="id" :class="{ 'b-disabled': disabled }">
+    <label :for="id">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <div v-if="currency" :class="{ 'b-input-el': true, currency: true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
-      <span style="font-weight: bold;">$</span>
+    <div v-if="currency" :class="{ 'b-input-el': true, 'b-currency': true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
+      <span>$</span>
       <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false; touched = true" ref="input" />
     </div>
     <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'b-error-border': showErrors }" @blur="touched = true" />
@@ -132,16 +132,31 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @import "../../styles/colors"
+
   .b-currency
     align-items baseline
     cursor text
     display flex
+    &.b-focus
+      box-shadow inset 0 -1px 0 0 $input-focus
+      border solid 1px $input-focus
+      outline none
+    &.b-disabled
+      background $input-disabled-background
+      cursor not-allowed
+      opacity 0.4
     input
       background-color transparent
       border 0
+      box-shadow none
       flex-grow 1
-      padding 0 0 0 12px
-      :focus
+      padding 0
+      &:focus
         box-shadow none
+
+  input[type="date"]
+    padding-top 0.594rem
+    padding-bottom 0.594rem
 
 </style>

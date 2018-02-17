@@ -1,6 +1,6 @@
 <template>
   <div class="b-textarea b-flex-column">
-    <label :for="id" :class="{ disabled: disabled }">
+    <label :for="id">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
     <textarea
