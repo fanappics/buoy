@@ -25,7 +25,7 @@ You can view the living style guide and documentation [here](https://fanappics.g
 
 1. When adding/updating a component you have [several options](https://github.com/vue-styleguidist/vue-styleguidist/blob/master/docs/Documenting.md)
    - JDoc as demonstrated in [b-header](./src/components/BHeader/BHeader.vue)
-   - A [Readme.md](src/components/BButton/Readme.md) referenced in the `.vue` file
+   - A [BButton.md](src/components/BButton/BButton.md) referenced in the `.vue` file
 1. Run `npm run styleguide`
 1. See the changes live at `localhost:6060`
 
