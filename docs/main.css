@@ -1,6 +1,71 @@
-body {
-  font-size: 85.7%;
+
+.b-input[data-v-3203eda1] {
+  margin-bottom: 0.75rem;
+}
+.b-input-el[data-v-3203eda1] {
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+  cursor: text;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.b-input-el.b-focus[data-v-3203eda1] {
+  -webkit-box-shadow: inset 0 -1px 0 0 #00aaed;
+          box-shadow: inset 0 -1px 0 0 #00aaed;
+  border: solid 1px #00aaed;
+  outline: none;
+}
+.b-input-el.b-disabled[data-v-3203eda1] {
+  background: #dde0e0;
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.b-input-el input[data-v-3203eda1] {
+  background-color: transparent;
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 0;
+}
+.b-input-el input[data-v-3203eda1]:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+input[type="date"][data-v-3203eda1] {
+  padding-top: 0.594rem;
+  padding-bottom: 0.594rem;
+}body {
+  color: #363436;
+  font-size: 87.5%;
   font-family: 'Open Sans', sans-serif;
+}
+.flex,
+.b-flex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.column,
+.b-flex-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+input,
+.input,
+textarea,
+button,
+.b-input-el {
+  font: 400 1em 'Open Sans', sans-serif;
 }
 button {
   background-color: #fff;
@@ -9,16 +74,60 @@ button {
   cursor: pointer;
   padding: 0.857rem;
 }
+button:not([disabled]):active {
+  border-style: inset;
+}
 input,
 textarea,
-.input {
-  border: solid 1px #dededf;
-  border-radius: 4px;
-  color: #333;
-  padding: 0.857rem;
+.input,
+.b-input-el {
+  background-color: #f5f6f8;
+  border: 1px solid #f5f6f8;
+  -webkit-box-shadow: inset 0 -2px 0 0 #c4c3c4;
+          box-shadow: inset 0 -2px 0 0 #c4c3c4;
+  padding: 0.75rem 0.9375rem;
 }
-li {
-  color: #333;
+input:focus,
+.input:focus,
+textarea:focus,
+.b-input-el:focus {
+  -webkit-box-shadow: inset 0 -1px 0 0 #00aaed;
+          box-shadow: inset 0 -1px 0 0 #00aaed;
+  border: solid 1px #00aaed;
+  outline: none;
+}
+input:disabled,
+textarea:disabled {
+  background: #dde0e0;
+  border-color: #dde0e0;
+  color: #605d60;
+  cursor: not-allowed;
+  opacity: 1;
+}
+input::-webkit-input-placeholder,
+.input::-webkit-input-placeholder,
+.b-input-el::-webkit-input-placeholder {
+  color: #6b686b;
+}
+::-webkit-input-placeholder,
+.placeholder,
+.b-placeholder {
+  color: #a1a0a2;
+}
+:-ms-input-placeholder,
+.placeholder,
+.b-placeholder {
+  color: #a1a0a2;
+}
+::-ms-input-placeholder,
+.placeholder,
+.b-placeholder {
+  color: #a1a0a2;
+}
+::placeholder,
+.placeholder,
+.b-placeholder {
+  color: #a1a0a2;
 }
 input::-webkit-inner-spin-button {
   margin: 0;
@@ -28,36 +137,29 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 label,
-.label {
-  color: #333;
+.label,
+.b-label {
   display: block;
-  font-weight: 400;
-  padding-bottom: 0.429rem;
+  font-weight: 600;
+  padding-bottom: 0.375rem;
 }
 :focus,
-.focus {
+.focus,
+.b-focus {
   outline: #4d90fe solid 2px;
 }
-::-webkit-input-placeholder,
-.placeholder {
-  color: #c1c1c1;
-}
-:-ms-input-placeholder,
-.placeholder {
-  color: #c1c1c1;
-}
-::-ms-input-placeholder,
-.placeholder {
-  color: #c1c1c1;
-}
-::placeholder,
-.placeholder {
-  color: #c1c1c1;
-}
-.error-border {
+.error-border,
+.b-error-border {
   border: solid 1px #d0021b;
 }
-.error-text {
+input.b-error-border,
+textarea.b-error-border,
+.b-input.b-error-border {
+  -webkit-box-shadow: inset 0 -1px 0 0 #d0021b;
+          box-shadow: inset 0 -1px 0 0 #d0021b;
+}
+.error-text,
+.b-error-text {
   color: #d0021b;
   display: inline-block;
   font-size: 85.7%;
@@ -70,7 +172,7 @@ label,
   cursor: not-allowed;
   opacity: 0.4;
 }
-button:not([disabled]):active {
-  border-style: inset;
+li {
+  color: #333;
 }
 /*# sourceMappingURL=src/main.css.map */
