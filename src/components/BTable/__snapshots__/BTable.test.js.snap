@@ -1,24 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BTable BTable renders correctly 1`] = `
-<div class="b-table-container">
-    <table>
-        <tr>
-            <th>
-                testColumn1
-            </th>
-            <th>
-                testColumn2
-            </th>
-        </tr>
-        <tr>
-            <td>
-
-            </td>
-            <td>
-
-            </td>
-        </tr>
-    </table>
-</div>
+<table class="b-table">
+    <tr class="b-table-row">
+        <th class="b-table-header">
+            testColumn1
+        </th>
+        <th class="b-table-header">
+            testColumn2
+        </th>
+    </tr>
+    <tr class="b-table-row">
+        <td class="b-table-cell"></td>
+        <td class="b-table-cell"></td>
+    </tr>
+</table>
 `;
