@@ -1,25 +1,25 @@
 <template>
-  <div class="b-table-container">
-    <table>
-      <tr>
-        <th 
-          v-for="header in headers"
-        >
-          {{ header.name }}
-        </th>
-      </tr>
-      <tr
-        v-for="row in rows"
+  <table class="b-table">
+    <tr class="b-table-row">
+      <th 
+        v-for="header in headers"
+        class="b-table-header"
       >
-        <td
-          v-for="cell in row"
-        >
-          {{ cell }}
-        </td>
-      </tr>
-    </table>
-    
-  </div>
+        {{ header.name }}
+      </th>
+    </tr>
+    <tr
+      v-for="row in rows"
+      class="b-table-row"
+    >
+      <td
+        v-for="cell in row"
+        class="b-table-cell"
+      >
+        {{ cell }}
+      </td>
+    </tr>
+  </table>
 </template>
 
 <script>
@@ -67,5 +67,25 @@ export default {
 </script>
 
 <style scoped>
+
+  .b-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .b-table-row {
+    height: 4.5rem;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f5f6f8;
+  }
+
+  th {
+    border-bottom: solid;
+    border-width: thin;
+    border-color: #c4c3c4;
+    text-align: left;
+  }
 
 </style>
