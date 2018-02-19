@@ -3,7 +3,7 @@
     <label :for="id">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <div v-if="currency" :class="{ 'b-input-el': true, 'b-currency': true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
+    <div v-if="currency" :class="{ 'b-input-el': true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
       <span>$</span>
       <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false; touched = true" ref="input" />
     </div>
@@ -137,7 +137,7 @@ export default {
   .b-input
     margin-bottom 0.75rem
 
-  .b-currency
+  .b-input-el
     align-items baseline
     cursor text
     display flex
