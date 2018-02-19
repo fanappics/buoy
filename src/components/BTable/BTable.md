@@ -21,6 +21,12 @@ const tableData = [
     label="test label" 
     :headers=headers 
     :tableData=tableData
-  />
+    :row="tableData"
+  >
+    <tr slot=row>
+      <b-cell>{{ data.header_one }}</bcell>
+      <b-cell><a href=''>{{ data.header_one }}</a></bcell>
+    </tr>
+  </b-table>
 </div>
 ```

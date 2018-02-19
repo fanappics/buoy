@@ -8,17 +8,7 @@
         {{ header.name }}
       </th>
     </tr>
-    <tr
-      v-for="row in rows"
-      class="b-table-row"
-    >
-      <td
-        v-for="cell in row"
-        class="b-table-cell"
-      >
-        {{ cell }}
-      </td>
-    </tr>
+    <slot></slot>
   </table>
 </template>
 
@@ -46,23 +36,8 @@ export default {
   },
   data () {
     return {
-      rows: this.buildRows(this.tableData, this.headers)
     }
   },
-  methods: {
-    buildRows: function(rowData, headers) {
-      let rows = []
-      rowData.forEach( function(data) {
-        let row = []
-        headers.forEach( function(header) {
-          row.push(data[header.key])
-        })
-        rows.push(row)
-      })
-      return rows
-    }
-  }
-
 }
 </script>
 
@@ -73,7 +48,7 @@ export default {
     border-collapse: collapse;
   }
   
-  .b-table-row {
+  tr {
     height: 4.5rem;
   }
   
