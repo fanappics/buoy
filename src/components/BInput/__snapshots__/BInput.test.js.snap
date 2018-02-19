@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Autofocused input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
@@ -12,22 +12,21 @@ exports[`Autofocused input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Currency input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
-    <div class="input currency"><span style="font-weight: bold;">$</span>
-        <input aria-describedby="" aria-label="My Input" id="input-1" placeholder="0.00" type="number" data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="blur|input" data-vv-id="3" aria-required="false"
-            aria-invalid="false">
+    <div class="b-input-el"><span>$</span>
+        <input aria-describedby="" aria-label="My Input" id="input-1" placeholder="0.00" type="number" data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="blur|input" data-vv-id="3" aria-required="false" aria-invalid="false">
     </div>
     <!---->
 </div>
 `;
 
 exports[`Disabled input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="disabled">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
@@ -37,8 +36,8 @@ exports[`Disabled input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Named input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
@@ -48,8 +47,8 @@ exports[`Named input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Number input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
@@ -59,8 +58,8 @@ exports[`Number input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Pattern input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
@@ -70,8 +69,8 @@ exports[`Pattern input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Readonly input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>
@@ -81,20 +80,20 @@ exports[`Readonly input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Required input failing validation mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input<span aria-label="Required">*</span></label>
     <input aria-describedby="error-input-1" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as=" " data-vv-name="10" data-vv-scope="10" data-vv-validate-on="blur|input"
-        class="error-border" data-vv-id="10" aria-required="true" aria-invalid="true">
-    <div id="error-input-1" class="error-text"><span>
+        class="b-error-border" data-vv-id="10" aria-required="true" aria-invalid="true">
+    <div id="error-input-1" class="b-error-text"><span>
       The   field is required.
     </span></div>
 </div>
 `;
 
 exports[`Required input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input<span aria-label="Required">*</span></label>
     <input aria-describedby="" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as=" " data-vv-name="5" data-vv-scope="5" data-vv-validate-on="blur|input" class="" data-vv-id="5"
         aria-required="true" aria-invalid="false">
@@ -103,8 +102,8 @@ exports[`Required input mounted html should match snapshot 1`] = `
 `;
 
 exports[`Text input mounted html should match snapshot 1`] = `
-<div class="flex">
-    <label for="input-1" class="">
+<div class="b-input b-flex-column">
+    <label for="input-1">
         My Input
         <!---->
     </label>

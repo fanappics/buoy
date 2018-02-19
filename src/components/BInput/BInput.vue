@@ -1,14 +1,14 @@
 <template>
-  <div class="flex">
-    <label :for="id" :class="{ disabled: disabled }">
+  <div class="b-input b-flex-column">
+    <label :for="id">
       {{ label }}<span v-if="required" aria-label="Required">*</span>
     </label>
-    <div v-if="currency" :class="{ input: true, currency: true, focus: focused, disabled: disabled, 'error-border': showErrors }" @click="$refs.input.focus()">
-      <span style="font-weight: bold;">$</span>
+    <div v-if="currency" :class="{ 'b-input-el': true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
+      <span>$</span>
       <input v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" @focus="focused = true" @blur="focused = false; touched = true" ref="input" />
     </div>
-    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'error-border': showErrors }" @blur="touched = true" />
-    <div v-if="showErrors" :id="`error-${id}`" class="error-text">
+    <input v-else v-model="publicValue" v-bind="Object.assign(inputAttributes,validationAttributes)" v-validate.initial="validations" :class="{ 'b-error-border': showErrors }" @blur="touched = true" />
+    <div v-if="showErrors" :id="`error-${id}`" class="b-error-text">
       <span v-for="(error,index) in errors.all()" :key='index'>
         {{ error }}
       </span>
@@ -131,26 +131,35 @@ export default {
 }
 </script>
 
-<style scoped>
-  .currency {
-    align-items: baseline;
-    cursor: text;
-    display: flex;
-  }
-  .currency input {
-    background-color: transparent;
-    border: 0;
-    flex-grow: 1;
-    padding: 0 0 0 12px;
-  }
-  .currency input:focus {
-    box-shadow: none;
-  }
-  .disabled {
-    cursor: not-allowed;
-  }
-  .flex {
-    display: flex;
-    flex-direction: column;
-  }
+<style lang="stylus" scoped>
+  @import "../../styles/colors"
+
+  .b-input
+    margin-bottom 0.75rem
+
+  .b-input-el
+    align-items baseline
+    cursor text
+    display flex
+    &.b-focus
+      box-shadow inset 0 -1px 0 0 $input-focus
+      border solid 1px $input-focus
+      outline none
+    &.b-disabled
+      background $input-disabled-background
+      cursor not-allowed
+      opacity 0.4
+    input
+      background-color transparent
+      border 0
+      box-shadow none
+      flex-grow 1
+      padding 0
+      &:focus
+        box-shadow none
+
+  input[type="date"]
+    padding-top 0.594rem
+    padding-bottom 0.594rem
+
 </style>

@@ -1,31 +1,55 @@
+@import "styles/colors"
+
 $font-family = 'Open Sans', sans-serif
 
-$cornflower-blue = #4D90FE 
-$night-rider = #333333
-$quartz = #DEDEDF
-$silver = #C1C1C1
-$venetian-red = #D0021B
-$white = #FFFFFF
-
 body
-  font-size 85.7%
+  color $text
+  font-size 87.5%
   font-family $font-family
 
+.flex, .b-flex
+  display flex
+
+.column, .b-flex-column
+  display flex
+  flex-direction column
+
+input, .input, textarea, button, .b-input-el
+  font 400 1em $font-family 
+
 button
-  background-color $white
-  border solid 1px $quartz
+  background-color $button-background
+  border solid 1px $button-border
   border-radius 4px
   cursor pointer
   padding 0.857rem
 
-input, textarea, .input
-  border solid 1px $quartz
-  border-radius 4px
-  color $night-rider
-  padding 0.857rem
-  
-li
-  color $night-rider
+button:not([disabled]):active
+  border-style inset
+
+input, textarea, .input, .b-input-el
+  background-color $input-background
+  border 1px solid $input-background
+  box-shadow inset 0 -2px 0 0 $input-shadow
+  padding 0.75rem 0.9375rem
+
+input:focus, .input:focus, textarea:focus, .b-input-el:focus
+    box-shadow inset 0 -1px 0 0 $input-focus
+    border solid 1px $input-focus
+    outline none
+
+input:disabled, textarea:disabled
+  background $input-disabled-background
+  border-color $input-disabled-background
+  color $input-disabled-text
+  cursor not-allowed
+  opacity 1
+
+input::-webkit-input-placeholder, .input::-webkit-input-placeholder, .b-input-el::-webkit-input-placeholder
+    color $input-placeholder
+
+::placeholder, .placeholder, .b-placeholder
+  color $placeholder
 
 input::-webkit-inner-spin-button
   margin 0
@@ -34,32 +58,31 @@ input::-webkit-inner-spin-button
 input[type=number]
   -moz-appearance textfield
 
-label, .label
-  color $night-rider
+label, .label, .b-label
   display block
-  font-weight 400
-  padding-bottom 0.429rem
+  font-weight 600
+  padding-bottom 0.375rem
 
-:focus, .focus
-  outline: $cornflower-blue solid 2px;
+:focus, .focus, .b-focus
+  outline $focus solid 2px
 
-::placeholder, .placeholder
-  color $silver
+.error-border, .b-error-border
+  border solid 1px $error
 
-.error-border
-  border solid 1px $venetian-red
+input.b-error-border, textarea.b-error-border, .b-input.b-error-border
+  box-shadow inset 0 -1px 0 0 $error
 
-.error-text
-  color $venetian-red
+.error-text, .b-error-text
+  color $error
   display inline-block
   font-size 85.7%
   padding-top 0.357rem
 
 :disabled, .disabled
-  background-color $white
-  color $night-rider
+  background-color $disabled-background
+  color $disabled-color
   cursor not-allowed
   opacity 0.4
 
-button:not([disabled]):active
-  border-style inset
+li
+  color $night-rider
