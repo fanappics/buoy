@@ -146,6 +146,7 @@ export default {
 
   input
     -webkit-appearance none
+    -moz-appearance none
     background white
     border 1px solid $checkbox-border
     border-radius 2px
