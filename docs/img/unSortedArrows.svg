@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="14px" viewBox="0 0 10 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Sort Arrows</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CO_Indiviual-Components-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Sort-Arrows">
+            <g id="Group"></g>
+            <polygon id="Page-1" fill="#6B686B" transform="translate(5.000000, 2.500000) rotate(-180.000000) translate(-5.000000, -2.500000) " points="0 0 5 5 10 0"></polygon>
+            <polygon id="Page-1" fill="#6B686B" points="0 9 5 14 10 9"></polygon>
+        </g>
+    </g>
+</svg>

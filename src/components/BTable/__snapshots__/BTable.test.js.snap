@@ -4,10 +4,16 @@ exports[`BTable BTable renders correctly 1`] = `
 <table class="b-table">
     <tr class="b-table-row">
         <th class="b-table-header">
-            testColumn1
+            <button type="button">
+                testColumn1
+                <img src="[object Object]" class="icon">
+            </button>
         </th>
         <th class="b-table-header">
-            testColumn2
+            <button type="button">
+                testColumn2
+                <img src="[object Object]" class="icon">
+            </button>
         </th>
     </tr>
     <tr class="b-table-row">

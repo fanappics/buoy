@@ -5,7 +5,11 @@
         v-for="header in headers"
         class="b-table-header"
       >
-        {{ header.name }}
+        <button
+        type="button"
+        >
+        {{ header.name }}<img v-if="header.name" class="icon" :src="unsorted" />
+      </button>
       </th>
     </tr>
     <tr
@@ -46,7 +50,8 @@ export default {
   },
   data () {
     return {
-      rows: this.buildRows(this.tableData, this.headers)
+      rows: this.buildRows(this.tableData, this.headers),
+      unsorted: require('../../../static/unSortedArrows.svg')
     }
   },
   methods: {
@@ -80,6 +85,10 @@ export default {
   .b-table-row {
     height: 4.5rem;
   }
+
+  td {
+    padding-left: .825rem
+  }
   
   tr:nth-child(even) {
     background-color: #f5f6f8;
@@ -90,6 +99,16 @@ export default {
     border-width: thin;
     border-color: #c4c3c4;
     text-align: left;
+  }
+
+  button {
+    border: none;
+    font-weight: 600;
+  }
+
+  img.icon {
+    position: absolute;
+    margin-left: .725rem;
   }
 
 </style>
