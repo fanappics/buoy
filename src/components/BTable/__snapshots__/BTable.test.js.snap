@@ -24,6 +24,25 @@ exports[`BTable BTable renders correctly 1`] = `
     </table>
     <div class="pagination">
         <div class="pagination-buttons">
+            <div class="results">
+                <p>Results per page: </p>
+            </div>
+            <div class="results">
+                <select>
+                    <option value="10">
+                        10
+                    </option>
+                    <option value="20">
+                        20
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                </select>
+            </div>
+            <p class="results">
+                1-10 of 100
+            </p>
             <button type="button" disabled="disabled" class="pagination-button">
                 <i aria-hidden="true" class="pagination-icon ion-arrow-left-c"></i>
             </button>

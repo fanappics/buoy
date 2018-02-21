@@ -30,6 +30,23 @@
     </table>
     <div class="pagination">
       <div class="pagination-buttons">
+        <div class="results">
+          <p>Results per page: </p>
+        </div>
+        <div class="results">
+          <select>
+            <option
+              v-for="option in options"
+              :value="option"
+              :selected="option === rowsPerPage"
+            >
+              {{ option }}
+            </option>
+          </select>
+        </div>
+        <p class="results">
+          {{ results }}
+        </p>
         <button
           type="button" 
           class="pagination-button"
@@ -42,6 +59,7 @@
           type="button"
           class="pagination-button"
           @click="paginate(currentPage+1)"
+          :disabled="((currentPage + 1) * rowsPerPage) >= totalResults"
         >
           <i class='pagination-icon ion-arrow-right-c' aria-hidden='true'></i>
         </button>
@@ -61,7 +79,7 @@ export default {
       required: true
     },
     label: {
-      type: String,
+      type: String, 
       required: true
     },
     headers: {
@@ -82,13 +100,29 @@ export default {
     },
     totalResults: {
       type: Number,
+      required: true
+    },
+    rowDisplayOptions: {
+      type: Array,
     }
   },
   data () {
     return {
       rows: this.buildRows(this.tableData, this.headers),
       unsorted: require('../../../static/unSortedArrows.svg'),
-      currentPage: this.pageNumber ? this.pageNumber : 0
+      currentPage: this.pageNumber ? this.pageNumber : 0,
+      options: this.rowDisplayOptions ? this.rowDisplayOptions : [10, 20, 50]
+    }
+  },
+  computed: {
+    results: function () {
+      const start = (this.currentPage * this.rowsPerPage) + 1
+      let end = (start + this.rowsPerPage) - 1
+      end = end > this.totalResults ? this.totalResults : end
+      return `${start}-${end} of ${this.totalResults}`
+    },
+    displayOptions: function () {
+      return [10, 20, 50]
     }
   },
   methods: {
@@ -181,12 +215,21 @@ export default {
     font-size: 22px;
   }
 
-  .pagination-buttons{
+  .pagination-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     padding-right: .5rem;
+    height: 2.5rem
   }
-  .pagination-button{
+
+  .pagination-button {
     padding: 0 .5rem;
-    margin-top: .5rem
+  }
+
+  .results {
+    display: inline;
+    padding-right: 3rem;
   }
 
 </style>

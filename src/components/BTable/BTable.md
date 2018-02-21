@@ -54,6 +54,8 @@ const tableData = [
     label="test label" 
     :headers=headers 
     :tableData=tableData
+    :totalResults=100
+    :rowsPerPage=20
   />
 </div>
 ```

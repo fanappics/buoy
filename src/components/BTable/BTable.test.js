@@ -10,6 +10,7 @@ describe('BTable', () => {
   const tableData = [
     { header_one: 'column 1', header_two: 'column 2', header_three: 'column 3', header_four: 'column 4', header_five: 'column 5', header_six: 'column 6', name: 'example row 1' }
   ]
+  const totalResults = 100
 
   it('BTable renders correctly', () => {
     const wrapper = mount(BTable, {
@@ -17,7 +18,8 @@ describe('BTable', () => {
         id: testId,
         label: label,
         headers: testHeaders,
-        tableData: tableData
+        tableData: tableData,
+        totalResults: totalResults
       }
     })
     expect(wrapper.html()).toMatchSnapshot()
