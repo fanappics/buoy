@@ -73,4 +73,11 @@ label,
 button:not([disabled]):active {
   border-style: inset;
 }
+a:link {
+  color: #4d90fe;
+  text-decoration: none;
+}
+.link-group {
+  margin-right: 0.75rem;
+}
 /*# sourceMappingURL=src/main.css.map */
