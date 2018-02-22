@@ -34,11 +34,13 @@
           <p>Results per page: </p>
         </div>
         <div class="results">
-          <select>
+          <select 
+            @change="updateRows($event.target.value)"
+          >
             <option
               v-for="option in options"
               :value="option"
-              :selected="option === rowsPerPage"
+              :selected="option === currentRowsPerPage"
             >
               {{ option }}
             </option>
@@ -59,7 +61,7 @@
           type="button"
           class="pagination-button"
           @click="paginate(currentPage+1)"
-          :disabled="((currentPage + 1) * rowsPerPage) >= totalResults"
+          :disabled="((currentPage + 1) * currentRowsPerPage) >= totalResults"
         >
           <i class='pagination-icon ion-arrow-right-c' aria-hidden='true'></i>
         </button>
@@ -95,8 +97,7 @@ export default {
       required: false
     },
     rowsPerPage: {
-      type: Number,
-      default: 10
+      type: Number
     },
     totalResults: {
       type: Number,
@@ -111,13 +112,14 @@ export default {
       rows: this.buildRows(this.tableData, this.headers),
       unsorted: require('../../../static/unSortedArrows.svg'),
       currentPage: this.pageNumber ? this.pageNumber : 0,
-      options: this.rowDisplayOptions ? this.rowDisplayOptions : [10, 20, 50]
+      options: this.rowDisplayOptions ? this.rowDisplayOptions : [10, 20, 50],
+      currentRowsPerPage: this.rowsPerPage ? this.rowsPerPage : 10
     }
   },
   computed: {
     results: function () {
-      const start = (this.currentPage * this.rowsPerPage) + 1
-      let end = (start + this.rowsPerPage) - 1
+      const start = (this.currentPage * this.currentRowsPerPage) + 1
+      let end = (start + parseInt(this.currentRowsPerPage)) - 1
       end = end > this.totalResults ? this.totalResults : end
       return `${start}-${end} of ${this.totalResults}`
     },
@@ -147,7 +149,10 @@ export default {
     paginate: function(page) {
       this.$emit("paginate", page)
       this.currentPage = page
-      console.log(this.currentPage)
+    },
+    updateRows: function(rowSize) {
+      this.$emit("rowsUpdate", rowSize)
+      this.currentRowsPerPage = parseInt(rowSize)
     }
   }
 
@@ -230,6 +235,20 @@ export default {
   .results {
     display: inline;
     padding-right: 3rem;
+  }
+
+  select {
+    border:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='#6b686b' height='18' viewBox='0 0 18 18' width='18' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: .6rem;
+    background-position-y: -5px;
+    width: 2rem;
   }
 
 </style>
