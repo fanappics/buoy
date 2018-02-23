@@ -4,7 +4,7 @@
     :class="computedClass"
     :disabled="disabled"
     :style="computedStyle"
-    @click="clickHandler($event)"
+    @click="onClick($event)"
   >
     <slot></slot>
   </button>
@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    clickHandler (event) {
+    onClick (event) {
       /**
       * Event fires when the button is pressed
       *
