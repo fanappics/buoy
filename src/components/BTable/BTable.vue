@@ -312,7 +312,7 @@ export default {
   .arrow {
     position: absolute;
     margin-left: .75rem;
-    bottom: .45rem;
+    bottom: .75rem;
     font-size: 20px;
     color: #737373;
   }
