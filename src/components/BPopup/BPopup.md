@@ -28,7 +28,7 @@ let popupVisible = false
       :visible="popupVisible"
       message="A slim popup."
       width="200"
-      height="25"
+      height="44"
       @close="popupVisible = false"
     />
   </b-button>
