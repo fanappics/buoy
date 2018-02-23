@@ -9,7 +9,7 @@
           <button
           type="button"
           class="header-button"
-          @click="sortColumn(header.key)"
+          @click="onColumnHeaderClick(header.key)"
           :disabled="!header.sort"
           >
             {{ header.name }}<img v-if="header.name && header.sort && !sorted[header.key]" class="icon" :src="unsorted" />
@@ -37,7 +37,8 @@
         </div>
         <div class="results">
           <select 
-            @change="updateRows($event.target.value)"
+            id='rowAmount'
+            @change="onRowAmountChange($event.target.value)"
           >
             <option
               v-for="option in options"
@@ -52,17 +53,19 @@
           {{ results }}
         </p>
         <button
+          id="paginate-back"
           type="button" 
           class="pagination-button"
-          @click="paginate(currentPage-1)"
+          @click="onPaginateClick(currentPage-1)"
           :disabled="currentPage <= 0"
         >
           <i class='pagination-icon ion-arrow-left-c' aria-hidden='true'></i>
         </button>
         <button
+          id="paginate-forward"
           type="button"
           class="pagination-button"
-          @click="paginate(currentPage+1)"
+          @click="onPaginateClick(currentPage+1)"
           :disabled="((currentPage + 1) * currentRowsPerPage) >= totalResults"
         >
           <i class='pagination-icon ion-arrow-right-c' aria-hidden='true'></i>
@@ -175,7 +178,7 @@ export default {
     * that object to the 'sort' event which a parent
     * component can listen to using '.$on'
     */
-    sortColumn: function(sortBy) {
+    onColumnHeaderClick: function(sortBy) {
       if (sortBy in this.sorted) {
         this.sorted[sortBy] === 'desc' ? this.sorted[sortBy] = 'asc' : delete this.sorted[sortBy]
       } else {
@@ -191,7 +194,7 @@ export default {
     * to the 'paginate' event which a parent
     * component can listen to using '.$on'
     */
-    paginate: function(page) {
+    onPaginateClick: function(page) {
       this.$emit("paginate", {"page": page, "rowsize": this.currentRowsPerPage})
       this.currentPage = page
     },
@@ -201,7 +204,7 @@ export default {
     * to the 'rowsUpdate' event which a parent
     * component can listen to using '.$on'
     */
-    updateRows: function(rowSize) {
+    onRowAmountChange: function(rowSize) {
       this.$emit("rowsUpdate", rowSize)
       this.currentRowsPerPage = parseInt(rowSize)
     }

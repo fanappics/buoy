@@ -4,8 +4,8 @@ The headers array holds objects that represent columns
 | -------- | ----------------- | ------- | ---------------------------------------- |
 | name     | Required          |         | This is what will be displayed as the column header.  |
 | key      | Required          |         | This is the matching key for that column to access the corresponding data in the rows. |
-| filter   | Optional          |         | Enables sorting on that column.                   |
-| render   | Optional          |         | Holds the rendering function name if applicable.                   |
+| sort     | Optional          |         | Enables sorting on that column.                   |
+| render   | Optional          |         | Holds the rendering function name if applicabled.                   |
 
 ```js
 

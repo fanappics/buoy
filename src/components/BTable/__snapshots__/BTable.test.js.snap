@@ -5,9 +5,9 @@ exports[`BTable BTable renders correctly 1`] = `
     <table class="b-table-el">
         <tr class="b-table-row">
             <th class="b-table-header">
-                <button type="button" disabled="disabled" class="header-button">
+                <button type="button" class="header-button">
                     testColumn1
-                    <!---->
+                    <img src="[object Object]" class="icon">
                 </button>
             </th>
             <th class="b-table-header">
@@ -18,8 +18,8 @@ exports[`BTable BTable renders correctly 1`] = `
             </th>
         </tr>
         <tr class="b-table-row">
-            <td class="b-table-cell"></td>
-            <td class="b-table-cell"></td>
+            <td class="b-table-cell">column 1</td>
+            <td class="b-table-cell">column 2</td>
         </tr>
     </table>
     <div class="pagination">
@@ -28,7 +28,7 @@ exports[`BTable BTable renders correctly 1`] = `
                 <p>Results per page: </p>
             </div>
             <div class="results">
-                <select>
+                <select id="rowAmount">
                     <option value="10">
                         10
                     </option>
@@ -43,10 +43,10 @@ exports[`BTable BTable renders correctly 1`] = `
             <p class="results">
                 1-10 of 100
             </p>
-            <button type="button" disabled="disabled" class="pagination-button">
+            <button id="paginate-back" type="button" disabled="disabled" class="pagination-button">
                 <i aria-hidden="true" class="pagination-icon ion-arrow-left-c"></i>
             </button>
-            <button type="button" class="pagination-button">
+            <button id="paginate-forward" type="button" class="pagination-button">
                 <i aria-hidden="true" class="pagination-icon ion-arrow-right-c"></i>
             </button>
         </div>
