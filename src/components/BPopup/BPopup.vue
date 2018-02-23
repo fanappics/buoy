@@ -5,8 +5,8 @@
         <span>{{message}}</span>
       </div>
       <div v-if="confirm" class="b-footer">
-        <button @click="cancelClickHandler">Cancel</button>
-        <button @click="confirmClickHandler">Confirm</button>
+        <button @click="onCancelClick">Cancel</button>
+        <button @click="onConfirmClick">Confirm</button>
       </div>
     </div>
   </div>
@@ -80,7 +80,15 @@ export default {
     }
   },
   methods: {
-    cancelClickHandler () {
+    close () {
+      /**
+      * Event fires when the popup finishes its dialog and recommends being closed
+      *
+      * @event close
+      */
+      this.$emit('close')
+    },
+    onCancelClick () {
       /**
       * Event fires when cancel is clicked on confirmation
       *
@@ -91,15 +99,7 @@ export default {
         this.close()
       })
     },
-    close () {
-      /**
-      * Event fires when the popup finishes its dialog and recommends being closed
-      *
-      * @event close
-      */
-      this.$emit('close')
-    },
-    confirmClickHandler () {
+    onConfirmClick () {
       /**
       * Event fires when confirm is clicked on confirmation
       *
