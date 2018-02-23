@@ -1,5 +1,5 @@
 <template>
-  <div class="b-table">
+  <div class="b-table" :id="id">
     <table class="b-table-el">
       <tr class="b-table-row">
         <th 
@@ -10,9 +10,9 @@
           type="button"
           class="header-button"
           @click="sortColumn(header.key)"
-          :disabled="!header.filter"
+          :disabled="!header.sort"
           >
-            {{ header.name }}<img v-if="header.name && header.filter && !sorted[header.key]" class="icon" :src="unsorted" />
+            {{ header.name }}<img v-if="header.name && header.sort && !sorted[header.key]" class="icon" :src="unsorted" />
             <i v-else-if="sorted[header.key] === 'desc'" class='arrow ion-android-arrow-dropdown' />
             <i v-else-if="sorted[header.key] === 'asc'" class='arrow ion-android-arrow-dropup' />
           </button>
@@ -78,33 +78,43 @@ export default {
 
   name: 'b-table',
   props: {
-    id: {
-      type: String,
-      required: true
-    },
-    label: {
-      type: String, 
-      required: true
-    },
+    /**
+    * The column headers for the table.
+    */
     headers: {
       type: Array,
       required: true
     },
+    /**
+    * The table data that will be displayed, and array of strings and/or objects.
+    */
     tableData: {
       type: Array,
       required: true
     },
+    /**
+    * Preload a page if provided.  Defualts to zero if not provided.
+    */
     pageNumber: {
       type: Number,
       required: false
     },
+    /**
+    * The number of rows to be displayed in the table per page. Defualts to 10 if not provided.
+    */
     rowsPerPage: {
       type: Number
     },
+    /**
+    * The total number of rows for the table.
+    */
     totalResults: {
       type: Number,
       required: true
     },
+    /**
+    * The different row sizes availablt to the user, will default to [10, 20, 50] if not provided.
+    */
     rowDisplayOptions: {
       type: Array,
     }
@@ -116,21 +126,34 @@ export default {
       currentPage: this.pageNumber ? this.pageNumber : 0,
       options: this.rowDisplayOptions ? this.rowDisplayOptions : [10, 20, 50],
       currentRowsPerPage: this.rowsPerPage ? this.rowsPerPage : 10,
-      sorted: {}
+      sorted: {},
+      id: null
     }
   },
+  mounted() {
+    this.id = this._uid
+  },
   computed: {
+    /**
+    * @returns{String}
+    * This builds the string used in the table to show meta information on the table rows.
+    */
     results: function () {
       const start = (this.currentPage * this.currentRowsPerPage) + 1
       let end = (start + parseInt(this.currentRowsPerPage)) - 1
       end = end > this.totalResults ? this.totalResults : end
       return `${start}-${end} of ${this.totalResults}`
-    },
-    displayOptions: function () {
-      return [10, 20, 50]
     }
   },
   methods: {
+    /**
+    * @param {Array<Object|String>} rowData
+    * @param {Array<String>} headers
+    * @returns {Array<String>}
+    * This maps the rowData with the applicable headers to form the rows.
+    * If the render key is present, a supplied render funtion will be called
+    * to populate that cell instead of a string.
+    */
     buildRows: function(rowData, headers) {
       let rows = []
       rowData.forEach( function(data) {
@@ -146,6 +169,12 @@ export default {
       })
       return rows
     },
+    /**
+    * @param {String} sortBy
+    * Populates an object to track sort state and emits
+    * that object to the 'sort' event which a parent
+    * component can listen to using '.$on'
+    */
     sortColumn: function(sortBy) {
       if (sortBy in this.sorted) {
         this.sorted[sortBy] === 'desc' ? this.sorted[sortBy] = 'asc' : delete this.sorted[sortBy]
@@ -154,12 +183,24 @@ export default {
       }
       this.$emit("sort", this.sorted)
       this.$forceUpdate()
-      console.log(this.sorted)
     },
+    /**
+    * @param {String} page
+    * Updates the current row the table is on, and emits
+    * an object holding the new page and the rowzsize
+    * to the 'paginate' event which a parent
+    * component can listen to using '.$on'
+    */
     paginate: function(page) {
-      this.$emit("paginate", page)
+      this.$emit("paginate", {"page": page, "rowsize": this.currentRowsPerPage})
       this.currentPage = page
     },
+    /**
+    * @param {String} rowSize
+    * Updates the current rowSize and emits a string
+    * to the 'rowsUpdate' event which a parent
+    * component can listen to using '.$on'
+    */
     updateRows: function(rowSize) {
       this.$emit("rowsUpdate", rowSize)
       this.currentRowsPerPage = parseInt(rowSize)
@@ -209,6 +250,10 @@ export default {
     color: #000000;
     opacity: 100;
     cursor: default;
+  }
+
+  button.header-button {
+    position: relative;
   }
 
   img.icon {
@@ -264,7 +309,7 @@ export default {
   .arrow {
     position: absolute;
     margin-left: .75rem;
-    bottom: -12.15rem;
+    bottom: .45rem;
     font-size: 20px;
     color: #737373;
   }

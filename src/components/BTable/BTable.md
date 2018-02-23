@@ -1,3 +1,12 @@
+The headers array holds objects that represent columns
+
+| Key      | Required/Optional | Default | Description                              |
+| -------- | ----------------- | ------- | ---------------------------------------- |
+| name     | Required          |         | This is what will be displayed as the column header.  |
+| key      | Required          |         | This is the matching key for that column to access the corresponding data in the rows. |
+| filter   | Optional          |         | Enables sorting on that column.                   |
+| render   | Optional          |         | Holds the rendering function name if applicable.                   |
+
 ```js
 
 const makeLink = function(data) {
@@ -24,9 +33,9 @@ const makeLinkGroup = function(data) {
 }
 
 const headers = [
-  {name: 'Header 1', key: 'header_one', filter: true}, 
-  {name: 'Header 2', key: 'header_two', render: makeLink, filter: true},
-  {name: 'Header 3', key: 'header_three', render: makeImage, filter: false},
+  {name: 'Header 1', key: 'header_one', sort: true}, 
+  {name: 'Header 2', key: 'header_two', render: makeLink, sort: true},
+  {name: 'Header 3', key: 'header_three', render: makeImage, sort: false},
   {name: 'Header 4', key: 'header_four'},
   {name: 'Header 5', key: 'header_five'},
   {name: 'Header 6', key: 'header_six'},
@@ -50,8 +59,6 @@ const tableData = [
 
 <div>
   <b-table 
-    id="table1" 
-    label="test label" 
     :headers=headers 
     :tableData=tableData
     :totalResults=100
