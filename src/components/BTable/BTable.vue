@@ -12,7 +12,9 @@
           @click="sortColumn(header.key)"
           :disabled="!header.filter"
           >
-            {{ header.name }}<img v-if="header.name && header.filter" class="icon" :src="unsorted" />
+            {{ header.name }}<img v-if="header.name && header.filter && !sorted[header.key]" class="icon" :src="unsorted" />
+            <i v-else-if="sorted[header.key] === 'desc'" class='arrow ion-android-arrow-dropdown' />
+            <i v-else-if="sorted[header.key] === 'asc'" class='arrow ion-android-arrow-dropup' />
           </button>
         </th>
       </tr>
@@ -113,7 +115,8 @@ export default {
       unsorted: require('../../../static/unSortedArrows.svg'),
       currentPage: this.pageNumber ? this.pageNumber : 0,
       options: this.rowDisplayOptions ? this.rowDisplayOptions : [10, 20, 50],
-      currentRowsPerPage: this.rowsPerPage ? this.rowsPerPage : 10
+      currentRowsPerPage: this.rowsPerPage ? this.rowsPerPage : 10,
+      sorted: {}
     }
   },
   computed: {
@@ -144,7 +147,14 @@ export default {
       return rows
     },
     sortColumn: function(sortBy) {
-      this.$emit("sort", sortBy)
+      if (sortBy in this.sorted) {
+        this.sorted[sortBy] === 'desc' ? this.sorted[sortBy] = 'asc' : delete this.sorted[sortBy]
+      } else {
+        this.sorted[sortBy] = 'desc'
+      }
+      this.$emit("sort", this.sorted)
+      this.$forceUpdate()
+      console.log(this.sorted)
     },
     paginate: function(page) {
       this.$emit("paginate", page)
@@ -249,6 +259,14 @@ export default {
     background-position-x: .6rem;
     background-position-y: -5px;
     width: 2rem;
+  }
+
+  .arrow {
+    position: absolute;
+    margin-left: .75rem;
+    bottom: -12.15rem;
+    font-size: 20px;
+    color: #737373;
   }
 
 </style>
