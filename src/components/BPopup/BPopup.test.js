@@ -36,6 +36,34 @@ describe('BPopup with confirmation buttons', () => {
     })
     expect(wrapper.html()).toMatchSnapshot()
   })
+
+  it('emits a confirm event when confirm button is pressed', () => {
+    const confirm = jest.fn()
+    const wrapper = mount(BPopup, {
+      propsData: {
+        message: 'Are you sure?',
+        visible: true,
+        confirm: true
+      }
+    })
+    wrapper.vm.$on('confirm', confirm)
+    wrapper.find('.b-footer > button:last-child').trigger('click')
+    expect(confirm).toHaveBeenCalled()
+  })
+
+  it('emits a cancel event when cancel button is pressed', () => {
+    const cancel = jest.fn()
+    const wrapper = mount(BPopup, {
+      propsData: {
+        message: 'Are you sure?',
+        visible: true,
+        confirm: true
+      }
+    })
+    wrapper.vm.$on('cancel', cancel)
+    wrapper.find('.b-footer > button:first-child').trigger('click')
+    expect(cancel).toHaveBeenCalled()
+  })
 })
 
 describe('BPopup with overriding size styling', () => {
