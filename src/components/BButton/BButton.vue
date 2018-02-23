@@ -4,6 +4,7 @@
     :class="computedClass"
     :disabled="disabled"
     :style="computedStyle"
+    @click="clickHandler($event)"
   >
     <slot></slot>
   </button>
@@ -71,6 +72,17 @@ export default {
         styleObject.width = this.width
       }
       return styleObject
+    }
+  },
+  methods: {
+    clickHandler (event) {
+      /**
+      * Event fires when the button is pressed
+      *
+      * @event click
+      * @type event
+      */
+      this.$emit('click', event)
     }
   }
 }

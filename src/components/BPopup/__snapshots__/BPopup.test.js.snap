@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BPopup mounted html should match snapshot 1`] = `
+<div class="b-popup">
+    <div class="b-wrapper" style="left: 0px; top: 0px;">
+        <div class="b-content"><span>Sample popup message</span></div>
+        <!---->
+    </div>
+</div>
+`;
+
+exports[`BPopup not visible mounted html should match snapshot 1`] = `undefined`;
+
+exports[`BPopup with confirmation buttons mounted html should match snapshot 1`] = `
+<div class="b-popup">
+    <div class="b-wrapper" style="left: 0px; top: 0px;">
+        <div class="b-content"><span>Are you sure?</span></div>
+        <div class="b-footer">
+            <button>Cancel</button>
+            <button>Confirm</button>
+        </div>
+    </div>
+</div>
+`;
+
+exports[`BPopup with offset styling mounted html should match snapshot 1`] = `
+<div class="b-popup">
+    <div class="b-wrapper">
+        <div class="b-content"><span>Sample popup message</span></div>
+        <!---->
+    </div>
+</div>
+`;
+
+exports[`BPopup with overriding size styling mounted html should match snapshot 1`] = `
+<div class="b-popup">
+    <div class="b-wrapper" style="left: 0px; top: 0px;">
+        <div class="b-content"><span>Sample popup message</span></div>
+        <!---->
+    </div>
+</div>
+`;
