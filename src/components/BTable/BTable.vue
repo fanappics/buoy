@@ -116,7 +116,7 @@ export default {
       required: true
     },
     /**
-    * The different row sizes availablt to the user, will default to [10, 20, 50] if not provided.
+    * The different row sizes available to the user, will default to [10, 20, 50] if not provided.
     */
     rowDisplayOptions: {
       type: Array,
