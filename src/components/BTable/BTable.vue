@@ -245,7 +245,14 @@ export default {
   }
 
   button:focus {
-    outline: 0;
+    outline: none;
+    border: none;
+    -moz-outline-style: none
+  }
+
+  button:active {
+    -moz-outline-style: none;
+    border-style: none;
     border: none;
   }
 
