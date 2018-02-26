@@ -16,10 +16,12 @@ exports[`BTable BTable renders correctly 1`] = `
                     <!---->
                 </button>
             </th>
+            <!---->
         </tr>
         <tr class="b-table-row">
             <td class="b-table-cell">column 1</td>
             <td class="b-table-cell">column 2</td>
+            <!---->
         </tr>
     </table>
     <div class="pagination">

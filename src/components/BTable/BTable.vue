@@ -3,7 +3,8 @@
     <table class="b-table-el">
       <tr class="b-table-row">
         <th 
-          v-for="header in headers"
+          v-for="(header, index) in headers"
+          :key="`header-${id}-${index}`"
           class="b-table-header"
         >
           <button
@@ -17,16 +18,34 @@
             <i v-else-if="sorted[header.key] === 'asc'" class='arrow ion-android-arrow-dropup' />
           </button>
         </th>
+        <th 
+          class="b-table-header"
+          v-if="deleteAction"
+        >
+        </th>
       </tr>
       <tr
-        v-for="row in rows"
+        v-for="(row, index) in rows"
+        :key="`row-${id}-${index}`"
         class="b-table-row"
       >
         <td
-          v-for="cell in row"
+          v-for="(cell, index) in row.data"
+          :key="`cell-${id}-${index}`"
           class="b-table-cell"
           v-html='cell'
         />
+        </td>
+        <td
+          v-if="deleteAction"
+          class='b-table-cell'
+        >
+          <span class="ion-ios-trash" style="color: #4d90fe; font-size: 18px"></span>
+          <a
+            @click.prevent="onDeleteClick(row.id)"
+            href="" 
+            class='link-group'
+            > Delete</a>
         </td>
       </tr>
     </table>
@@ -41,7 +60,8 @@
             @change="onRowAmountChange($event.target.value)"
           >
             <option
-              v-for="option in options"
+              v-for="(option, index) in options"
+              :key="`option-${id}-${index}`"
               :value="option"
               :selected="option === currentRowsPerPage"
             >
@@ -120,6 +140,13 @@ export default {
     */
     rowDisplayOptions: {
       type: Array,
+    },
+    /**
+    * Toggles the delete action on/off
+    */
+    deleteAction: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -160,14 +187,17 @@ export default {
     buildRows: function(rowData, headers) {
       let rows = []
       rowData.forEach( function(data) {
-        let row = []
+        let row = {}
+        let rowData =[]
         headers.forEach( function(header) {
           if (header.render) {
-            row.push(header.render(data[header.key]))
+            rowData.push(header.render(data[header.key]))
           } else {
-            row.push(data[header.key])
+            rowData.push(data[header.key])
           }
         })
+        row['id'] = data.id
+        row['data'] = rowData
         rows.push(row)
       })
       return rows
@@ -207,6 +237,14 @@ export default {
     onRowAmountChange: function(rowSize) {
       this.$emit("rowsUpdate", rowSize)
       this.currentRowsPerPage = parseInt(rowSize)
+    },
+    /**
+    * @param {String} row id
+    * emits a delete event with the row id
+    * to the parent component
+    */
+    onDeleteClick: function(rowId) {
+      this.$emit("delete", rowId)
     }
   }
 

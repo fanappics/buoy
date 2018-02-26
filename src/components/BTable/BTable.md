@@ -33,28 +33,27 @@ const makeLinkGroup = function(data) {
 }
 
 const headers = [
-  {name: 'Header 1', key: 'header_one', sort: true}, 
-  {name: 'Header 2', key: 'header_two', render: makeLink, sort: true},
-  {name: 'Header 3', key: 'header_three', render: makeImage, sort: false},
-  {name: 'Header 4', key: 'header_four'},
-  {name: 'Header 5', key: 'header_five'},
-  {name: 'Header 6', key: 'header_six'},
-  {name: '', key: 'actions', render: makeLinkGroup}
+  {name: 'Header 1', key: 'headerOne', sort: true}, 
+  {name: 'Header 2', key: 'headerTwo', render: makeLink, sort: true},
+  {name: 'Header 3', key: 'headerThree', render: makeImage, sort: false},
+  {name: 'Header 4', key: 'headerFour'},
+  {name: 'Header 5', key: 'headerFive'},
+  {name: 'Header 6', key: 'headerSix'},
   ]
 
 
 const tableData = [
   {
-    header_one: 'column 1', 
-    header_two: {name: 'column 2', id: 2}, 
-    header_three: {source:'https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png', name: 'buoy logo'}, 
-    header_four: 'column 4', 
-    header_five: 'column 5', 
-    header_six: 'column 6', 
+    headerOne: 'column 1', 
+    headerTwo: {name: 'column 2', id: 2}, 
+    headerThree: {source:'https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png', name: 'buoy logo'}, 
+    headerFour: 'column 4', 
+    headerFive: 'column 5', 
+    headerSix: 'column 6', 
     name: 'example row 1', 
-    actions: ['delete']
-  },{header_one: 'column 1', header_two: {name: 'column 2', id: 2}, header_three: {source:'https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png', name: 'buoy logo'}, header_four: 'column 4', header_five: 'column 5', header_six: 'column 6', name: 'example row 2', actions: ['delete', 'edit']},
-  {header_one: 'column 1', header_two: {name: 'column 2', id: 2}, header_three: {source:'https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png', name: 'buoy logo'}, header_four: 'column 4', header_five: 'column 5', header_six: 'column 6', name: 'example row 3', actions: []}
+    id: 1
+  },{headerOne: 'column 1', headerTwo: {name: 'column 2', id: 2}, headerThree: {source:'https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png', name: 'buoy logo'}, headerFour: 'column 4', headerFive: 'column 5', headerSix: 'column 6', name: 'example row 2', id: 2},
+  {headerOne: 'column 1', headerTwo: {name: 'column 2', id: 2}, headerThree: {source:'https://raw.githubusercontent.com/fanappics/buoy/master/buoylogo.png', name: 'buoy logo'}, headerFour: 'column 4', headerFive: 'column 5', headerSix: 'column 6', name: 'example row 3', id: 3}
 ]
 
 <div>
@@ -63,6 +62,7 @@ const tableData = [
     :tableData=tableData
     :totalResults=100
     :rowsPerPage=20
+    :deleteAction=true
   />
 </div>
 ```
