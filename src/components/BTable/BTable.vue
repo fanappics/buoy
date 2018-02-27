@@ -8,14 +8,28 @@
           class="b-table-header"
         >
           <button
+          :disabled="!header.sort"
+          aria-describedby="headerDescription"
+          @click="onColumnHeaderClick(header.key)"
           type="button"
           class="header-button"
-          @click="onColumnHeaderClick(header.key)"
-          :disabled="!header.sort"
           >
-            {{ header.name }}<img v-if="header.name && header.sort && !sorted[header.key]" class="icon" :src="unsorted" />
-            <i v-else-if="sorted[header.key] === 'desc'" class='arrow ion-android-arrow-dropdown' />
-            <i v-else-if="sorted[header.key] === 'asc'" class='arrow ion-android-arrow-dropup' />
+            {{ header.name }}<img 
+              v-if="header.name && header.sort && !sorted[header.key]" 
+              :src="unsorted" 
+              aria-label="unsorted, click to sort"
+              class="icon" 
+              id="headerDescription" />
+            <i 
+              v-else-if="sorted[header.key] === 'desc'" 
+              class='arrow ion-android-arrow-dropdown' 
+              aria-label="sorted descending, click to sort"
+              id="headerDescription" />
+            <i 
+              v-else-if="sorted[header.key] === 'asc'" 
+              aria-label="sorted ascending, click to sort"
+              class='arrow ion-android-arrow-dropup' 
+              id="headerDescription" />
           </button>
         </th>
         <th 
@@ -56,8 +70,9 @@
         </div>
         <div class="results">
           <select 
-            id='rowAmount'
             @change="onRowAmountChange($event.target.value)"
+            aria-label="rows per page"
+            id='rowAmount'
           >
             <option
               v-for="(option, index) in options"
@@ -73,20 +88,22 @@
           {{ results }}
         </p>
         <button
+          @click="onPaginateClick(currentPage-1)"
+          :disabled="currentPage <= 0"
+          aria-label='page back'
           id="paginate-back"
           type="button" 
           class="pagination-button"
-          @click="onPaginateClick(currentPage-1)"
-          :disabled="currentPage <= 0"
         >
           <i class='pagination-icon ion-arrow-left-c' aria-hidden='true'></i>
         </button>
         <button
+          @click="onPaginateClick(currentPage+1)"
+          :disabled="((currentPage + 1) * currentRowsPerPage) >= totalResults"
+          aria-label='page forward'
           id="paginate-forward"
           type="button"
           class="pagination-button"
-          @click="onPaginateClick(currentPage+1)"
-          :disabled="((currentPage + 1) * currentRowsPerPage) >= totalResults"
         >
           <i class='pagination-icon ion-arrow-right-c' aria-hidden='true'></i>
         </button>
@@ -283,7 +300,6 @@ export default {
   }
 
   button:focus {
-    outline: none;
     border: none;
     -moz-outline-style: none
   }
