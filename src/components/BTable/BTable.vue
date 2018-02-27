@@ -131,7 +131,19 @@ export default {
   name: 'b-table',
   props: {
     /**
-    * The column headers for the table.
+    * <pre style="font-family: monospace;">
+    * Array of links to be rendered
+    * Each link is an object containing:
+    * |-------------|-----------|------------|----------------------------------------------------------|
+    * |  Prop name  |   Type    |  Default   |                      Description                         |
+    * |-------------|-----------|------------|----------------------------------------------------------|
+    * |  name       |  string   |  required  |  This is what will be displayed as the column header.    |
+    * |  key        |  string   |  required  |  This is the matching key for that column to access      |
+    * |             |           |            |  the corresponding data in the rows.                     |
+    * |  sort       |  boolean  |  optional  |  Enables sorting on that column.                         |
+    * |  render     |  function |  optional  |  Holds the rendering function name if applicable.        |
+    * |-------------|-----------|------------|----------------------------------------------------------|
+    * </pre>
     */
     headers: {
       type: Array,
@@ -246,9 +258,10 @@ export default {
     },
     /**
     * @param {String} sortBy
-    * Populates an object to track sort state and emits
-    * that object to the 'sort' event which a parent
-    * component can listen to using '.$on'
+    * @description Populates an object to track sort state and emits
+    * that object to the 'sort' event.  ex: { name: "desc", age: "asc" }
+    * @event sortBy
+    * @type Object
     */
     onColumnHeaderClick: function(sortBy) {
       if (sortBy in this.sorted) {
@@ -261,10 +274,10 @@ export default {
     },
     /**
     * @param {String} page
-    * Updates the current row the table is on, and emits
-    * an object holding the new page and the rowzsize
-    * to the 'paginate' event which a parent
-    * component can listen to using '.$on'
+    * @description Updates the current row the table is on, and emits
+    * an object holding the new page and the rowzsize.  ex: { page: 5, rowSize: 20 }
+    * @event paginate
+    * @type Object
     */
     onPaginateClick: function(page) {
       this.$emit("paginate", {"page": parseInt(page), "rowsize": parseInt(this.currentRowsPerPage)})
@@ -272,9 +285,10 @@ export default {
     },
     /**
     * @param {String} rowSize
-    * Updates the current rowSize and emits a string
-    * to the 'rowsUpdate' event which a parent
-    * component can listen to using '.$on'
+    * @description Updates the current rowSize and emits a string
+    * to the 'rowsUpdate' event.
+    * @event rowsUpdate
+    * @type Integer
     */
     onRowAmountChange: function(rowSize) {
       this.$emit("rowsUpdate", rowSize)
@@ -282,8 +296,10 @@ export default {
     },
     /**
     * @param {String} row id
-    * emits a delete event with the row id
+    * @description emits a delete event with the row id
     * to the parent component
+    * @event delete
+    * @type Integer
     */
     onDeleteClick: function(rowId) {
       this.$emit("delete", rowId)
