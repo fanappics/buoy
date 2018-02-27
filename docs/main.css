@@ -39,6 +39,56 @@
 input[type="date"][data-v-3203eda1] {
   padding-top: 0.594rem;
   padding-bottom: 0.594rem;
+}
+.b-content[data-v-46d9ef74] {
+  padding: 0.857rem;
+}
+.b-footer[data-v-46d9ef74] {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.b-footer > button[data-v-46d9ef74] {
+  background-color: transparent;
+  border: none;
+  padding-top: 0;
+}
+.b-footer > button[data-v-46d9ef74]:focus {
+  color: #00aaed;
+  outline: none;
+}
+.b-footer > button[data-v-46d9ef74]:hover {
+  color: #00aaed;
+}
+.b-footer > button[data-v-46d9ef74]:active {
+  border-style: none;
+}
+.b-popup[data-v-46d9ef74] {
+  position: relative;
+  z-index: 50;
+}
+.b-wrapper[data-v-46d9ef74] {
+  background-color: #fff;
+  -webkit-box-shadow: 0 1px 2px 0;
+          box-shadow: 0 1px 2px 0;
+  cursor: default;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  position: absolute;
+}
+div[data-v-46d9ef74] {
+  color: #363436;
 }body {
   color: #363436;
   font-size: 87.5%;
