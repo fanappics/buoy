@@ -63,3 +63,19 @@ Buoy Checkbox Component
    checked {{ checked }}
   </div>
 ```
+
+### Disabled
+
+```js
+  const checkbox5 = {
+    checkboxes:[
+      { id: 'checkbox-10', value: 'Option #1' },
+      { id: 'checkbox-11', value: 'Option #2' },
+      { id: 'checkbox-12', value: 'Option #3' }
+    ],
+    groupId: 'checkbox-group-4',
+    groupLabel: 'Select an option:'
+  }
+  let checked = ['checkbox-11'];
+  <b-checkbox v-bind="checkbox5" disabled />
+```
