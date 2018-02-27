@@ -242,7 +242,7 @@ export default {
     * component can listen to using '.$on'
     */
     onPaginateClick: function(page) {
-      this.$emit("paginate", {"page": page, "rowsize": this.currentRowsPerPage})
+      this.$emit("paginate", {"page": parseInt(page), "rowsize": parseInt(this.currentRowsPerPage)})
       this.currentPage = page
     },
     /**

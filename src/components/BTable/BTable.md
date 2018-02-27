@@ -7,6 +7,15 @@ The headers array holds objects that represent columns
 | sort     | Optional          |         | Enables sorting on that column.                   |
 | render   | Optional          |         | Holds the rendering function name if applicable.                   |
 
+BTable uses events to handle pagination, sorting, and deletion.  Use .$on in the parent component to listen for these events.
+
+| Event      | Data Emitted                                                                   | Example                  | Description                               |
+| ---------- | ------------------------------------------------------------------------------ | ------------------------ | ---------------------------------------- |
+| delete     | Integer Row Id                                                                 | 5                        | The row id of the row delete was clicked on.  |
+| rowsUpdate | Integer Row Size                                                               | 20                       | The rowSize selected from the rowSize dropdown. |
+| paginate   | Object Containing Page and Rowsize                                             | { page: 5, rowSize: 20 } | The page number with rowsize the user has selected. |
+| sort       | Object Containing Sorted Columns as keys whose value is the sort direction     | { name: "desc", age: "asc" } | This object holds all of the sorted headers. |
+
 ```js
 
 const makeLink = function(data) {
