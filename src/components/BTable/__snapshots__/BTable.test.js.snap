@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BTable BTable renders correctly 1`] = `
+<div class="b-table">
+    <table class="b-table-el">
+        <tr class="b-table-row">
+            <th class="b-table-header">
+                <button aria-describedby="headerDescription" type="button" class="header-button">
+                    testColumn1
+                    <img src="[object Object]" aria-label="unsorted, click to sort" id="headerDescription" class="icon">
+                </button>
+            </th>
+            <th class="b-table-header">
+                <button disabled="disabled" aria-describedby="headerDescription" type="button" class="header-button">
+                    testColumn2
+                    <!---->
+                </button>
+            </th>
+            <!---->
+        </tr>
+        <tr class="b-table-row">
+            <td class="b-table-cell">column 1</td>
+            <td class="b-table-cell">column 2</td>
+            <!---->
+        </tr>
+    </table>
+    <div class="pagination">
+        <div class="pagination-buttons">
+            <div class="results">
+                <p>Results per page: </p>
+            </div>
+            <div class="results">
+                <select aria-label="rows per page" id="rowAmount">
+                    <option value="10">
+                        10
+                    </option>
+                    <option value="20">
+                        20
+                    </option>
+                    <option value="50">
+                        50
+                    </option>
+                </select>
+            </div>
+            <p class="results">
+                1-10 of 100
+            </p>
+            <button disabled="disabled" aria-label="page back" id="paginate-back" type="button" class="pagination-button">
+                <i aria-hidden="true" class="pagination-icon ion-arrow-left-c"></i>
+            </button>
+            <button aria-label="page forward" id="paginate-forward" type="button" class="pagination-button">
+                <i aria-hidden="true" class="pagination-icon ion-arrow-right-c"></i>
+            </button>
+        </div>
+    </div>
+</div>
+`;

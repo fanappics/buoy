@@ -354,6 +354,10 @@ textarea.b-error-border,
   cursor: not-allowed;
   opacity: 0.4;
 }
+a:link {
+  color: #4d90fe;
+  text-decoration: none;
+}
 li {
   color: #333;
 }
