@@ -419,4 +419,8 @@ export default {
     color: #737373;
   }
 
+  .link-group {
+    margin-right: .75rem;
+  }
+
 </style>
