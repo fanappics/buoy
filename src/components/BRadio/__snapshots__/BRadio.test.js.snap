@@ -1,21 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Multiple radio in column display format mounted html should match snapshot 1`] = `
-<div class="container">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group
             <!---->
         </label>
-        <div role="radiogroup" class="button-group column">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group b-flex-column">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2" id="radio-1" name="radio-group" data-vv-as=" " data-vv-name="7" data-vv-scope="7" data-vv-validate-on="input|blur" data-vv-id="12"
                     aria-required="false" aria-invalid="false">
                 <label id="label-radio-1" for="radio-1">
                     Radio
                 </label>
             </div>
-            <div class="button">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2" id="radio-2" name="radio-group" data-vv-id="13" aria-required="false" aria-invalid="false">
                 <label id="label-radio-2" for="radio-2">
                     Radio2
@@ -28,21 +28,21 @@ exports[`Multiple radio in column display format mounted html should match snaps
 `;
 
 exports[`Multiple radio mounted html should match snapshot 1`] = `
-<div class="container">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group
             <!---->
         </label>
-        <div role="radiogroup" class="button-group">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2" id="radio-1" name="radio-group" data-vv-as=" " data-vv-name="2" data-vv-scope="2" data-vv-validate-on="input|blur" data-vv-id="2"
                     aria-required="false" aria-invalid="false">
                 <label id="label-radio-1" for="radio-1">
                     Radio
                 </label>
             </div>
-            <div class="button">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2" id="radio-2" name="radio-group" data-vv-id="3" aria-required="false" aria-invalid="false">
                 <label id="label-radio-2" for="radio-2">
                     Radio2
@@ -55,21 +55,21 @@ exports[`Multiple radio mounted html should match snapshot 1`] = `
 `;
 
 exports[`Multiple radio with all disabled mounted html should match snapshot 1`] = `
-<div class="container disabled">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group
             <!---->
         </label>
-        <div role="radiogroup" class="button-group">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2" disabled="disabled" id="radio-1" name="radio-group" data-vv-as=" " data-vv-name="5" data-vv-scope="5" data-vv-validate-on="input|blur"
                     data-vv-id="8" aria-required="false" aria-invalid="false">
                 <label id="label-radio-1" for="radio-1">
                     Radio
                 </label>
             </div>
-            <div class="button">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2" disabled="disabled" id="radio-2" name="radio-group" data-vv-id="9" aria-required="false" aria-invalid="false">
                 <label id="label-radio-2" for="radio-2">
                     Radio2
@@ -82,21 +82,21 @@ exports[`Multiple radio with all disabled mounted html should match snapshot 1`]
 `;
 
 exports[`Multiple radio with default mounted html should match snapshot 1`] = `
-<div class="container">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group
             <!---->
         </label>
-        <div role="radiogroup" class="button-group">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2" id="radio-1" name="radio-group" data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="input|blur" data-vv-id="4"
                     aria-required="false" aria-invalid="false">
                 <label id="label-radio-1" for="radio-1">
                     Radio
                 </label>
             </div>
-            <div class="button">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2" id="radio-2" name="radio-group" data-vv-id="5" aria-required="false" aria-invalid="false">
                 <label id="label-radio-2" for="radio-2">
                     Radio2
@@ -109,21 +109,21 @@ exports[`Multiple radio with default mounted html should match snapshot 1`] = `
 `;
 
 exports[`Multiple radio with disabled mounted html should match snapshot 1`] = `
-<div class="container">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group
             <!---->
         </label>
-        <div role="radiogroup" class="button-group">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2" id="radio-1" name="radio-group" data-vv-as=" " data-vv-name="4" data-vv-scope="4" data-vv-validate-on="input|blur" data-vv-id="6"
                     aria-required="false" aria-invalid="false">
                 <label id="label-radio-1" for="radio-1">
                     Radio
                 </label>
             </div>
-            <div class="button">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2" disabled="disabled" id="radio-2" name="radio-group" data-vv-id="7" aria-required="false" aria-invalid="false">
                 <label id="label-radio-2" for="radio-2">
                     Radio2
@@ -136,19 +136,19 @@ exports[`Multiple radio with disabled mounted html should match snapshot 1`] = `
 `;
 
 exports[`Multiple radio with required mounted html should match snapshot 1`] = `
-<div class="container">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group<span aria-hidden="true">*</span></label>
-        <div role="radiogroup" class="button-group">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-1" aria-posinset="0" aria-setsize="2" id="radio-1" name="radio-group" data-vv-as=" " data-vv-name="6" data-vv-scope="6" data-vv-validate-on="input|blur" data-vv-id="10"
                     aria-required="true" aria-invalid="false">
                 <label id="label-radio-1" for="radio-1">
                     Radio
                 </label>
             </div>
-            <div class="button">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio-2" aria-posinset="1" aria-setsize="2" id="radio-2" name="radio-group" data-vv-id="11" aria-required="false" aria-invalid="false">
                 <label id="label-radio-2" for="radio-2">
                     Radio2
@@ -161,14 +161,14 @@ exports[`Multiple radio with required mounted html should match snapshot 1`] = `
 `;
 
 exports[`Single radio mounted html should match snapshot 1`] = `
-<div class="container">
+<div class="b-radio">
     <div role="radiogroup" aria-labelledby="radio-group">
-        <label id="radio-group" class="description">
+        <label id="radio-group">
             Radio Group
             <!---->
         </label>
-        <div role="radiogroup" class="button-group">
-            <div class="button">
+        <div role="radiogroup" class="b-radio-group">
+            <div class="b-flex b-flex-center">
                 <input type="radio" aria-describedby="" aria-labelledby="radio-group label-radio" aria-posinset="0" aria-setsize="1" id="radio" name="radio-group" data-vv-as=" " data-vv-name="1" data-vv-scope="1" data-vv-validate-on="input|blur" data-vv-id="1"
                     aria-required="false" aria-invalid="false">
                 <label id="label-radio" for="radio">
