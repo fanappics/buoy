@@ -162,6 +162,13 @@ export default {
         font-family "Ionicons"
         font-size 1.6em
         line-height 0.9rem
+    &:disabled
+      background-color $input-disabled-background
+      border-color $input-disabled-border
+      &:checked
+        background none
+        &::before
+          color $input-disabled-background
     &:focus
       border-bottom 1px solid $input-focus
       box-shadow none
