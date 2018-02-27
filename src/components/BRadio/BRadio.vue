@@ -1,11 +1,11 @@
 <template>
-  <div class="container" :class="{ disabled: disabled }">
+  <div class="b-radio" >
     <div role="radiogroup" :aria-labelledby="groupId">
-      <label :id="groupId" class="description">
+      <label :id="groupId">
       {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
       </label>
-      <div class="button-group" :class="{ column: column }" role="radiogroup">
-        <div v-for="(radio, index) in radios" class="button" :key="index">
+      <div class="b-radio-group" :class="{ 'b-flex-column': column }" role="radiogroup">
+        <div v-for="(radio, index) in radios" class="b-flex b-flex-center" :key="index">
           <input type="radio" 
             v-model="publicValue" 
             v-validate.initial="index === 0 ? validations : {}"
@@ -128,45 +128,61 @@ export default {
 }
 </script>
 
-<style scoped>
-  label {
-    flex-grow: 0;
-  }
+<style lang="stylus" scoped>
+  @import "../../styles/colors"
 
-  .button {
-    display: flex;
-    align-items: baseline;
-  }
-
-  .button > input {
-    margin-right: .5rem;
-  }
-
-  .button input[type="radio"]:checked+label {
-    font-weight: 600;  
-  }
-
-  input+label {
-    padding-right: .5rem;
-  }
-
-  .button-group {
-    display: flex;
-    flex: 1;
-  }
-
-  .column {
-    flex-direction: column;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .description {
-    font-weight: 600;
-  }
+  .b-radio
+    display flex
+    flex-direction column
+    align-items flex-start
+  
+  .b-radio-group
+    display flex
+    flex 1
+    & > div
+      margin-bottom 0.3125rem
+  
+  label
+    flex-grow 0
+  
+  input+label
+    font-weight normal
+    padding-bottom 0
+    padding-right 1.25rem
+  
+  input
+    -webkit-appearance none
+    -moz-appearance none
+    box-shadow none
+    background none
+    border-radius 50%
+    border 2px solid $input-border
+    height 1.063rem
+    margin-right 0.3125rem
+    padding 0
+    width 1.063rem
+    &+label
+      font-weight normal
+      padding-bottom 0
+      padding-right 1.25rem
+    &:checked::after
+      background $radio-dot
+      border-radius 50%
+      content ''
+      display block
+      height 0.563rem
+      left 0.125rem
+      position relative
+      top 0.125rem
+      width 0.563rem
+    &:disabled+label
+      color $input-disabled-text
+    &:disabled:checked
+      background none
+    &:disabled:checked::after
+      background $input-disabled-background
+    &:focus
+      border-width 2px
+      box-shadow none
 
 </style>
