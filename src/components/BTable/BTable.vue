@@ -56,10 +56,19 @@
         >
           <span class="ion-ios-trash" style="color: #4d90fe; font-size: 18px"></span>
           <a
-            @click.prevent="onDeleteClick(row.id)"
+            @click.prevent="popupVisible[row.id] = true"
             href="" 
             class='link-group'
             > Delete</a>
+          <div>
+            <b-popup
+              :visible="popupVisible[row.id]"
+              message="Are you sure you want to Delete this row?"
+              confirm
+              @close="popupVisible[row.id] = false"
+              @confirm="onDeleteClick(row.id)"
+            />
+          </div>
         </td>
       </tr>
     </table>
@@ -114,7 +123,10 @@
 
 <script>
 
+import BPopup from '../BPopup'
+
 export default {
+
 
   name: 'b-table',
   props: {
@@ -174,6 +186,7 @@ export default {
       options: this.rowDisplayOptions ? this.rowDisplayOptions : [10, 20, 50],
       currentRowsPerPage: this.rowsPerPage ? this.rowsPerPage : 10,
       sorted: {},
+      popupVisible: this.buildPopupData(this.tableData),
       id: null
     }
   },
@@ -218,6 +231,18 @@ export default {
         rows.push(row)
       })
       return rows
+    },
+    /**
+    * @param {Array<Object|String>} rowData
+    * @returns {Object}
+    * This creates an object to hold the state of popup confirmations by row.
+    */
+    buildPopupData: function(rowData) {
+      let popUpData = {}
+      rowData.forEach( function(data) {
+        popUpData[data.id] = false
+      })
+      return popUpData
     },
     /**
     * @param {String} sortBy
