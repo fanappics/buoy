@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BAccordion mounted html should match snapshot 1`] = `
+<section class="b-accordion">
+    <div role="heading" class="b-flex b-flex-center">
+        <button id="accordion-1" aria-expanded="true" aria-controls="accordion-1-content" type="button" tabindex="0" class="b-accordion-header">
+            hello world
+            <span class="b-arrow ion-arrow-down-b"></span></button>
+    </div>
+    <div id="accordion-1-content" role="region" aria-labelledby="accordion-1" class="b-accordion-content b-flex b-flex-center" name="b-fade"></div>
+</section>
+`;
