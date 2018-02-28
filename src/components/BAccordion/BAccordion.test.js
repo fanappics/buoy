@@ -2,15 +2,31 @@ import { mount, shallow } from 'vue-test-utils'
 import BAccordion from './BAccordion'
 
 describe('BAccordion', () => {
-  it('mounted html should match snapshot', () => {
-    const wrapper = shallow(BAccordion, {
-      propsData: {
-        id: 'accordion-1',
-        label: 'hello world'
-      }
+  describe('basic accordion', () => {
+    it('mounted html should match snapshot', () => {
+      const wrapper = shallow(BAccordion, {
+        propsData: {
+          id: 'accordion-1',
+          label: 'hello world'
+        }
+      })
+      expect(wrapper.html()).toMatchSnapshot()
     })
-    expect(wrapper.html()).toMatchSnapshot()
   })
+
+  describe('collapsed accordion', () => {
+    it('mounted html should match snapshot', () => {
+      const wrapper = shallow(BAccordion, {
+        propsData: {
+          id: 'accordion-1',
+          label: 'hello world',
+          collapsed: true
+        }
+      })
+      expect(wrapper.html()).toMatchSnapshot()
+    })
+  })
+
   describe('header actions', () => {
     it('triggers toggleExpansion when header button is clicked', () => {
       const spy = jest.fn()
