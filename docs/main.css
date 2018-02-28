@@ -1,5 +1,5 @@
 
-.b-accordion[data-v-31b7db3d] {
+.b-accordion[data-v-c49adb7a] {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12,7 +12,7 @@
           flex-direction: column;
   margin-bottom: 1rem;
 }
-button.b-accordion-header[data-v-31b7db3d] {
+button.b-accordion-header[data-v-c49adb7a] {
   background-color: #fff;
   border: none;
   border-bottom: 1px solid #363436;
@@ -27,32 +27,32 @@ button.b-accordion-header[data-v-31b7db3d] {
   padding-bottom: 0.5625rem;
   text-align: left;
 }
-button.b-accordion-header[data-v-31b7db3d]:active {
+button.b-accordion-header[data-v-c49adb7a]:active {
   border: none;
   border-bottom: 1px solid #363436;
 }
-button.b-accordion-header[data-v-31b7db3d]:focus {
+button.b-accordion-header[data-v-c49adb7a]:focus {
   border-color: #00aaed;
   color: #00aaed;
   outline: none;
 }
-.b-arrow[data-v-31b7db3d] {
+.b-arrow[data-v-c49adb7a] {
   float: right;
   font-size: 1.5rem;
 }
-.b-accordion-content[data-v-31b7db3d] {
+.b-accordion-content[data-v-c49adb7a] {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   padding-top: 1.25rem;
 }
-.b-fade-enter-active[data-v-31b7db3d],
-.b-fade-leave-active[data-v-31b7db3d] {
+.b-fade-enter-active[data-v-c49adb7a],
+.b-fade-leave-active[data-v-c49adb7a] {
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }
-.b-fade-enter[data-v-31b7db3d],
-.b-fade-leave-to[data-v-31b7db3d] {
+.b-fade-enter[data-v-c49adb7a],
+.b-fade-leave-to[data-v-c49adb7a] {
   opacity: 0;
 }
 .b-checkbox[data-v-2a4af1e6] {

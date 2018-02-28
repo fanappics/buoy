@@ -4,7 +4,7 @@
       <button
         :id="id"
         class="b-accordion-header"
-        :aria-expanded="expanded"
+        :aria-expanded="expanded ? 'true' : 'false'"
         :aria-controls="`${id}-content`"
         type="button"
         tabindex="0"
