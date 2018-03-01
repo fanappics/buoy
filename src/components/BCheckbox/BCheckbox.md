@@ -57,7 +57,7 @@ Buoy Checkbox Component
   <div>
     <b-validator scope="checkbox-group-validator" v-model="checkboxGroupsValid" >
       <b-checkbox v-bind="checkbox4" v-model="checked" required />
-      <b-button :disabled="!checkboxGroupsValid">Submit</b-button>
+      <b-button :disabled="!checkboxGroupsValid" label="Submit"> />
     </b-validator>
 
    checked {{ checked }}

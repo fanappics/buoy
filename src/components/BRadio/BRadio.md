@@ -84,7 +84,7 @@ let isValidRadioGroup = false;
 
 <b-validator v-model="isValidRadioGroup" scope="radio-group-5">
   <b-radio group-id="r5" group-label="Select to enable button" :radios="radios5" validation-name="radio" required />
-  <b-button :disabled="!isValidRadioGroup">Submit</b-button>
+  <b-button :disabled="!isValidRadioGroup" label="Submit" />
 </b-validator>
 
 ```
