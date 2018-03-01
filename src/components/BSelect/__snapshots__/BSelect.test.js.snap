@@ -125,7 +125,7 @@ exports[`BSelect rendors a select list with an initial value 1`] = `
 exports[`BSelect throws error if option not chosen when required 1`] = `
 <div class="b-select">
     <div>
-        <label id="label-testId">test<span aria-label="Required">*</span></label>
+        <label id="label-testId">test<span aria-hidden="true" class="b-required">*</span></label>
     </div>
     <button aria-owns="testId" aria-required="true" aria-describedby="error-testId" aria-labelledby="label-testId dropdown-testId" id="dropdown-testId" text="test" aria-haspopup="listbox" type="button" class="dropdown placeholder">
         Choose Option

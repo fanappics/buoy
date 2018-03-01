@@ -1,7 +1,7 @@
 <template>
   <div class="b-input b-flex-column">
     <label :for="id">
-      {{ label }}<span v-if="required" aria-label="Required">*</span>
+      {{ label }}<span v-if="required" class="b-required" aria-hidden="true">*</span>
     </label>
     <div v-if="currency" :class="{ 'b-input-el': true, 'b-focus': focused, 'b-disabled': disabled, 'b-error-border': showErrors }" @click="$refs.input.focus()">
       <span>$</span>

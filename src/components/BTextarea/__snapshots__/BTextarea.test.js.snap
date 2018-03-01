@@ -62,8 +62,9 @@ exports[`BTextarea should render component with a label 1`] = `
 exports[`BTextarea should render component with label and asterisk 1`] = `
 <div class="b-textarea b-flex-column">
     <label for="test">
-        test<span aria-label="Required">*</span></label>
-    <textarea data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="input|blur" id="test" required="required" class="b-fixed-size" data-vv-id="3" aria-required="true" aria-invalid="false"></textarea>
+        test<span aria-hidden="true" class="b-required">*</span></label>
+    <textarea data-vv-as=" " data-vv-name="3" data-vv-scope="3" data-vv-validate-on="input|blur" id="test" required="required" class="b-fixed-size" data-vv-id="3" aria-required="true"
+        aria-invalid="false"></textarea>
     <!---->
 </div>
 `;

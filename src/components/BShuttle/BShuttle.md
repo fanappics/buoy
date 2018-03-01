@@ -38,6 +38,7 @@ const placeholder = 'You need to do something first'
       chosenLabel='These have been chosen'
       availableLabel='These can be chosen'
       v-model="selected2"
+      required
     />
   </div>
 

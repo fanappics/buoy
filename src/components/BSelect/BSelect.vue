@@ -1,7 +1,7 @@
 <template>
   <div class="b-select">
     <div>
-      <label :id="`label-${id}`">{{ label }}<span v-if="required" aria-label='Required'>*</span></label>
+      <label :id="`label-${id}`">{{ label }}<span v-if="required" class="b-required" aria-hidden="true">*</span></label>
     </div>
     <button
       :class="dropdownClass"

@@ -82,7 +82,7 @@ exports[`Readonly input mounted html should match snapshot 1`] = `
 exports[`Required input failing validation mounted html should match snapshot 1`] = `
 <div class="b-input b-flex-column">
     <label for="input-1">
-        My Input<span aria-label="Required">*</span></label>
+        My Input<span aria-hidden="true" class="b-required">*</span></label>
     <input aria-describedby="error-input-1" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as=" " data-vv-name="10" data-vv-scope="10" data-vv-validate-on="blur|input"
         class="b-error-border" data-vv-id="10" aria-required="true" aria-invalid="true">
     <div id="error-input-1" class="b-error-text"><span>
@@ -94,9 +94,9 @@ exports[`Required input failing validation mounted html should match snapshot 1`
 exports[`Required input mounted html should match snapshot 1`] = `
 <div class="b-input b-flex-column">
     <label for="input-1">
-        My Input<span aria-label="Required">*</span></label>
-    <input aria-describedby="" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as=" " data-vv-name="5" data-vv-scope="5" data-vv-validate-on="blur|input" class="" data-vv-id="5"
-        aria-required="true" aria-invalid="false">
+        My Input<span aria-hidden="true" class="b-required">*</span></label>
+    <input aria-describedby="" aria-label="My Input" id="input-1" required="required" type="text" data-vv-as=" " data-vv-name="5" data-vv-scope="5" data-vv-validate-on="blur|input"
+        class="" data-vv-id="5" aria-required="true" aria-invalid="false">
     <!---->
 </div>
 `;
