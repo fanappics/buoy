@@ -1,10 +1,10 @@
 <template>
-  <section class="acc-flex-column">
-    <div role="heading" class="acc-flex-center">
+  <section class="b-accordion">
+    <div role="heading" class="b-flex b-flex-center">
       <button
         :id="id"
-        class="acc-header"
-        :aria-expanded="expanded"
+        class="b-accordion-header"
+        :aria-expanded="expanded ? 'true' : 'false'"
         :aria-controls="`${id}-content`"
         type="button"
         tabindex="0"
@@ -15,18 +15,19 @@
         @keyup.space.prevent="toggleExpansion"
       >
         {{ label }}
-        <span :class="{ 'acc-arrow': true, 'ion-arrow-down-b': expanded, 'ion-arrow-up-b': !expanded }" />
+        <span :class="{ 'b-arrow': true, 'ion-arrow-down-b': expanded, 'ion-arrow-up-b': !expanded }" />
       </button>
     </div>
-    <transition name="fade">
+    <transition name="b-fade">
       <div
         v-show="expanded"
         :id="`${id}-content`"
-        class="acc-bordered acc-flex-center"
+        class="b-accordion-content b-flex b-flex-center"
         role="region"
         :aria-labelledby="id"
       >
-        <slot />
+        <!-- @slot Use for accordion content -->
+        <slot name="content"/>
       </div>
     </transition>
   </section>
@@ -39,11 +40,17 @@ export default {
   name: 'b-accordion',
   props: {
     // Required props
+    /**
+    * Label text.  Will be used in display label for accordion heading
+    */
     label: {
       type: String,
       required: true
     },
     // Optional props
+    /**
+    * Initializes accordion collapsed when true.
+    */
     collapsed: Boolean,
     id: {
       type: String,
@@ -93,42 +100,44 @@ export default {
 }
 </script>
 
-<style scoped>
-  .acc-bordered {
-    flex-grow: 1;
-    border-color: #C4C3C4;
-    border-style: solid none none none;
-    border-width: 1px;
-    padding: 0.625rem;
-  }
-  .acc-arrow {
-    float: right;
-    font-size: 1.29rem;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .3s;
-  }
-  .fade-enter, .fade-leave-to {
-    opacity: 0;
-  }
-  .acc-flex-center {
-    display: flex;
-    align-items: center
-  }
-  .acc-flex-column {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-  .acc-header {
-    padding: 0;
-    flex-grow: 1;
-    border-width: 0px;
-    font-size: 1rem;
-    line-height: 20px;
-    text-align: left;
-    background-color: #FFFFFF;
-    margin-bottom: .5rem;
-  }
+<style lang="stylus" scoped>
+  @import "../../styles/colors"
+
+  .b-accordion
+    display flex
+    flex 1
+    flex-direction column
+    margin-bottom 1rem
+
+  button.b-accordion-header
+    background-color $accordion-background
+    border none
+    border-bottom 1px solid $accordion-border
+    border-radius 0px
+    flex-grow 1
+    font-size 1rem
+    font-weight 600
+    line-height 1.5rem
+    padding 0
+    padding-bottom 0.5625rem
+    text-align left
+    &:active, &:focus, &:focus-within
+      border-color $input-focus
+      color $input-focus
+      outline none
+  
+  .b-arrow
+    float right
+    font-size 1.5rem
+
+  .b-accordion-content
+    flex-grow 1
+    padding-top 1.25rem
+
+  .b-fade-enter-active, .b-fade-leave-active
+    transition opacity .3s
+
+  .b-fade-enter, .b-fade-leave-to
+    opacity 0
+
 </style>
