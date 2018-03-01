@@ -44,6 +44,6 @@ let text = 'My default message...\n\ncontinuing on line 3.'
     <br />
     <b-textarea id="bta7" label="Textarea 2" validation-name="textarea2" min-length="5" required />
     <br />
-    <b-button :disabled="!textAreasValid">Submit</b-button>
+    <b-button :disabled="!textAreasValid" label="Submit" />
   </b-validator>
 ```

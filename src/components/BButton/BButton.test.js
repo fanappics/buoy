@@ -4,40 +4,67 @@ import BButton from './BButton'
 describe('BButton', () => {
   it('renders a button', () => {
     const wrapper = mount(BButton, {
+      propsData: {
+        id: 'button-1',
+        label: 'button test'
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('renders a secondary button', () => {
+    const wrapper = shallow(BButton, {
+      propsData: {
+        id: 'button-secondary',
+        label: 'secondary',
+        color: 'b-secondary'
+      }
+    })
+    expect(wrapper.classes()).toContain('b-secondary')
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('renders a disabled button', () => {
+    const wrapper = shallow(BButton, {
+      propsData: {
+        id: 'button-disabled',
+        label: 'disabled',
+        disabled: true
+      }
+    })
+
+    expect(wrapper.html()).toMatchSnapshot()
+  })
+
+  it('renders icon when one is passed', () => {
+    const wrapper = shallow(BButton, {
+      propsData: {
+        id: 'button-icon',
+        label: 'icon button'
+      },
       slots: {
-        default: 'hello world'
+        icon: 'test'
       }
     })
 
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it('puts height and width props into style', () => {
+  it('does not render label when iconOnly true', () => {
     const wrapper = shallow(BButton, {
       propsData: {
-        height: '50px',
-        width: '100px'
+        id: 'button-iconOnly',
+        label: 'iconOnly button',
+        iconOnly: true
+      },
+      slots: {
+        icon: 'test'
       }
     })
 
-    expect(wrapper.hasStyle('height', '50px')).toBe(true)
-    expect(wrapper.hasStyle('width', '100px')).toBe(true)
-  })
-
-  it('is enabled when disabled prop is not passed', () => {
-    const wrapper = shallow(BButton, {})
-
-    expect(wrapper.html()).toMatchSnapshot()
-  })
-
-  it('has an aria-label if one is passed', () => {
-    const wrapper = shallow(BButton, {
-      propsData: {
-        'aria-label': 'submit button'
-      }
-    })
-
-    expect(wrapper.props()['aria-label']).toBe('submit button')
+    expect(wrapper.attributes()['title']).toBe('iconOnly button')
+    expect(wrapper.text()).not.toBe('iconOnly button')
     expect(wrapper.html()).toMatchSnapshot()
   })
 
@@ -45,7 +72,8 @@ describe('BButton', () => {
     const stub = jest.fn()
     const wrapper = shallow(BButton, {
       propsData: {
-        default: 'hello world'
+        id: 'button-click',
+        label: 'click button'
       }
     })
     wrapper.vm.$on('click', stub)

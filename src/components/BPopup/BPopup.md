@@ -5,9 +5,7 @@ BPopup on a Button
 let popupVisible = false
 
 <div>
-  <b-button @click="popupVisible = true">
-    Click me
-  </b-button>
+  <b-button label="Click Me" @click="popupVisible = true" />
   <b-popup
     :visible="popupVisible"
     message="You clicked this button."
@@ -22,9 +20,7 @@ Play with size
 let popupVisible = false
 
 <div>
-  <b-button @click="popupVisible = true">
-    Click me
-  </b-button>
+  <b-button label="Click Me" @click="popupVisible = true" />
   <b-popup
     :visible="popupVisible"
     message="A slim popup."
@@ -41,9 +37,7 @@ Play with position
 let popupVisible = false
 
 <div>
-  <b-button @click="popupVisible = true">
-    Click me
-  </b-button>
+  <b-button label="Click Me" @click="popupVisible = true" />
   <b-popup
     :visible="popupVisible"
     message="Above the button."
@@ -61,9 +55,7 @@ let popupVisible = false
 let confirmed = false
 
 <div>
-  <b-button @click="popupVisible = true">
-    Delete all files
-  </b-button>
+  <b-button label="Delete" @click="popupVisible = true" />
   <b-popup
     :visible="popupVisible"
     message="Are you sure this is what you want?"
