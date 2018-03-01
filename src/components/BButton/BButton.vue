@@ -104,22 +104,25 @@ button
   font-weight 600
   margin 0.525rem
   padding 0.75rem 2rem
+  &.b-primary, &.b-secondary, &.b-tertiary
+    &:active, &:disabled, &:focus
+      border none
   &.b-primary
     background-color $button-background
     &:active
-      background-color $button-active-background
+      background-color $button-background-active
       box-shadow inset 0 1px 5px 0 rgba(0, 0, 0, 0.2)
     &:focus
-      background-color $button-focus-background
+      background-color $button-background-focus
       box-shadow inset 0 1px 5px 0 rgba(48, 48, 48, 0.4)
       outline none
   &.b-secondary
     background-color $secondary-button-background
     &:active
-      background-color $secondary-button-active-background
+      background-color $secondary-button-background-active
       box-shadow inset 0 1px 5px 0 rgba(54, 52, 54, 0.8)
     &:focus
-      background-color $secondary-button-focus-background
+      background-color $secondary-button-background-focus
       box-shadow inset 0 1px 5px 0 rgba(54, 52, 54, 0.8)
       outline none
   &.b-tertiary
@@ -131,11 +134,14 @@ button
       font-size 1.2rem
       padding-right 0.3125rem
       vertical-align middle
+    &:active
+      color $tertiary-button-text-active
     &:focus
       outline-color $input-focus
-  &:disabled
-    background $button-disabled-background
-    color $button-disabled-text
+  &:disabled, &:disabled:active, &:disabled:focus
+    background $button-background-disabled
+    box-shadow none
+    color $button-text-disabled
     cursor not-allowed
     opacity 1
     
