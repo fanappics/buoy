@@ -1,7 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BButton has an aria-label if one is passed 1`] = `<button class=""></button>`;
+exports[`BButton does not render label when iconOnly true 1`] = `
+<button id="button-iconOnly" title="iconOnly button" class="b-button b-primary">test
 
-exports[`BButton is enabled when disabled prop is not passed 1`] = `<button class=""></button>`;
+</button>
+`;
 
-exports[`BButton renders a button 1`] = `<button class="">hello world</button>`;
+exports[`BButton renders a button 1`] = `
+<button id="button-1" title="" class="b-button b-primary">
+    button test
+</button>
+`;
+
+exports[`BButton renders a disabled button 1`] = `
+<button id="button-disabled" title="" disabled="disabled" class="b-button b-primary">
+    disabled
+</button>
+`;
+
+exports[`BButton renders a secondary button 1`] = `
+<button id="button-secondary" title="" class="b-button b-secondary">
+    secondary
+</button>
+`;
+
+exports[`BButton renders icon when one is passed 1`] = `
+<button id="button-icon" title="" class="b-button b-primary">test icon button
+</button>
+`;

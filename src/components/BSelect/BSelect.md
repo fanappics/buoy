@@ -74,6 +74,6 @@ let selectValid = false;
     v-model="selected4"
   />
   {{ selectValid }}
-  <b-button :disabled="!selectValid">Submit</b-button>
+  <b-button :disabled="!selectValid" label="Submit" />
 </b-validator>
 ```
