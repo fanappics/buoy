@@ -121,10 +121,7 @@ export default {
     padding 0
     padding-bottom 0.5625rem
     text-align left
-    &:active
-      border none
-      border-bottom 1px solid $accordion-border
-    &:focus
+    &:active, &:focus, &:focus-within
       border-color $input-focus
       color $input-focus
       outline none
