@@ -1,7 +1,7 @@
 <template>
   <div class="b-textarea b-flex-column">
     <label :for="id">
-      {{ label }}<span v-if="required" aria-label="Required">*</span>
+      {{ label }}<span v-if="required" class="b-required" aria-hidden="true">*</span>
     </label>
     <textarea
       v-model="publicValue"

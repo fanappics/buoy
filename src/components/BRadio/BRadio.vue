@@ -2,7 +2,7 @@
   <div class="b-radio" >
     <div role="radiogroup" :aria-labelledby="groupId">
       <label :id="groupId">
-      {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
+      {{ groupLabel }}<span v-if="required" class="b-required" aria-hidden="true">*</span>
       </label>
       <div class="b-radio-group" :class="{ 'b-flex-column': column }" role="radiogroup">
         <div v-for="(radio, index) in radios" class="b-flex b-flex-center" :key="index">

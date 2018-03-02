@@ -3,7 +3,7 @@
   <div v-if="groupId && groupLabel" class="b-checkbox b-flex-column">
     <div role="group" :aria-labelledby="groupId">
       <label :id="`group-${groupId}`" :class="{ 'b-checkbox-group-label': true }">
-        {{ groupLabel }}<span v-if="required" aria-hidden="true">*</span>
+        {{ groupLabel }}<span v-if="required" class="b-required" aria-hidden="true">*</span>
       </label>
       <div class="b-flex b-flex-wrap">
         <div v-for="(checkbox, index) in checkboxes" :key="index" class="b-flex b-flex-center">
@@ -45,7 +45,7 @@
           :key="index"
         />
         <label :id="`label-${checkbox.id}`" :for="checkbox.id" :key="index">
-          {{ checkbox.value }}<span v-if="required" aria-hidden="true">*</span>
+          {{ checkbox.value }}<span v-if="required" class="b-required" aria-hidden="true">*</span>
         </label>
       </div>
       <div v-if="touched && invalid" :id="`error-${checkbox.id}`" class="b-error-text" :key="index">

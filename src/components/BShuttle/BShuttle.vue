@@ -2,7 +2,7 @@
   <div class="shuttle">
 
     <div class="b-shuttle-available">
-      <label :id="`available-label-${id}`">{{ availableLabel }}</label>
+      <label :id="`available-label-${id}`">{{ availableLabel }}<span v-if="required" class="b-required" aria-hidden="true">*</span></label>
       <ul
         :aria-labelledby="`available-label-${id}`"
         :aria-describedby="`placeholder-${id}`"
@@ -80,7 +80,7 @@
     </div>
 
     <div class="b-shuttle-chosen">
-      <label :id="`chosen-label-${id}`">{{ chosenLabel }}</label>
+      <label :id="`chosen-label-${id}`">{{ chosenLabel }}<span v-if="required" class="b-required" aria-hidden="true">*</span></label>
       <ul
         :aria-labelledby="`chosen-label-${id}`"
         role="listbox"
