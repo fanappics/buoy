@@ -23,16 +23,6 @@ body
 input, .input, textarea, button, .b-input-el
   font 400 1em $font-family
 
-button
-  background-color $old-button-background
-  border solid 1px $old-button-border
-  border-radius 4px
-  cursor pointer
-  padding 0.857rem
-
-button:not([disabled]):active
-  border-style inset
-
 input, textarea, .input, .b-input-el
   background-color $input-background
   border 1px solid $input-background
@@ -40,9 +30,9 @@ input, textarea, .input, .b-input-el
   padding 0.75rem 0.9375rem
 
 input:focus, .input:focus, textarea:focus, .b-input-el:focus
-    box-shadow inset 0 -1px 0 0 $input-focus
-    border solid 1px $input-focus
-    outline none
+  box-shadow inset 0 -1px 0 0 $input-focus
+  border solid 1px $input-focus
+  outline none
 
 input:disabled, textarea:disabled
   background $input-disabled-background

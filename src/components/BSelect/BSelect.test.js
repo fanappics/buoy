@@ -37,7 +37,7 @@ describe('BSelect', () => {
       },
       localVue
     })
-    const div = wrapper.find(`#dropdown-${id}`)
+    const div = wrapper.find(`#select-${id}`)
     expect(div.text())
       .toBe(options[options.map(function (option) { return option.id }).indexOf(initialValue)].value)
   })
@@ -53,7 +53,7 @@ describe('BSelect', () => {
       },
       localVue
     })
-    const div = wrapper.find(`#dropdown-${id}`)
+    const div = wrapper.find(`#select-${id}`)
     expect(div.text()).toBe('test placeholder')
   })
 
@@ -68,7 +68,7 @@ describe('BSelect', () => {
       },
       localVue
     })
-    const div = wrapper.find(`#dropdown-${id}`)
+    const div = wrapper.find(`#select-${id}`)
     expect(wrapper.html()).toMatchSnapshot()
     expect(wrapper.vm.opened).toBe(false)
     div.trigger('mousedown')
@@ -87,7 +87,7 @@ describe('BSelect', () => {
       },
       localVue
     })
-    const div = wrapper.find(`#dropdown-${id}`)
+    const div = wrapper.find(`#select-${id}`)
     div.trigger('mousedown')
     await wrapper.vm.$nextTick()
     const line = wrapper.find('li')
@@ -106,7 +106,7 @@ describe('BSelect', () => {
       },
       localVue
     })
-    const div = wrapper.find(`#dropdown-${id}`)
+    const div = wrapper.find(`#select-${id}`)
     div.trigger('mousedown')
     await wrapper.vm.$nextTick()
     div.trigger('mousedown')
@@ -168,7 +168,7 @@ describe('BSelect', () => {
     })
     const upHandler = jest.fn()
     wrapper.vm.$on('upHandler', upHandler)
-    const div = wrapper.find(`#dropdown-${id}`)
+    const div = wrapper.find(`#select-${id}`)
     div.trigger('mousedown')
     await wrapper.vm.$nextTick()
     const line = wrapper.find('li')

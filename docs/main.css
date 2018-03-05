@@ -342,6 +342,79 @@ input[data-v-0a53a650]:focus {
   border-width: 2px;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+.b-select[data-v-c4f87e84] {
+  position: relative;
+}
+.b-select button[data-v-c4f87e84] {
+  background-color: #f5f6f8;
+  border: 1px solid #b5b5b5;
+  -webkit-box-shadow: inset 0 -2px 0 0 #c4c3c4;
+          box-shadow: inset 0 -2px 0 0 #c4c3c4;
+  padding: 0.75rem 0.9375rem;
+  text-align: left;
+  width: 100%;
+}
+.b-select button.b-select-opened[data-v-c4f87e84] {
+  border: 1px solid #00aaed;
+  border-bottom: 1px solid #b5b5b5;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.b-select button.b-error-border[data-v-c4f87e84] {
+  border: 1px solid #d0021b;
+}
+.b-select button.b-error-border[data-v-c4f87e84],
+.b-select button.b-error-border[data-v-c4f87e84]:focus,
+.b-select button.b-error-border[data-v-c4f87e84]:active {
+  -webkit-box-shadow: inset 0 -2px 0 0 #d0021b;
+          box-shadow: inset 0 -2px 0 0 #d0021b;
+}
+.b-select button[data-v-c4f87e84]:active {
+  -webkit-box-shadow: inset 0 -2px 0 0 #00a9f0, inset 0 1px 5px 0 #c4c3c4;
+          box-shadow: inset 0 -2px 0 0 #00a9f0, inset 0 1px 5px 0 #c4c3c4;
+}
+.b-select button[data-v-c4f87e84]:active,
+.b-select button[data-v-c4f87e84]:focus {
+  -webkit-box-shadow: inset 0 -2px 0 0 #00aaed;
+          box-shadow: inset 0 -2px 0 0 #00aaed;
+  border: solid 1px #00aaed;
+  outline: none;
+}
+.b-select ul[data-v-c4f87e84] {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  width: calc(100% - 2px);
+}
+.b-select ul.b-options-opened[data-v-c4f87e84] {
+  border: 1px solid #00aaed;
+  border-bottom-width: 2px;
+  border-top: none;
+  z-index: 10;
+}
+.b-select ul li.b-option[data-v-c4f87e84] {
+  background-color: #f5f6f8;
+  padding: 0.5rem;
+}
+.b-select ul li.b-option[aria-selected][data-v-c4f87e84] {
+  font-weight: 600;
+}
+.b-select ul li.b-option[data-v-c4f87e84]:focus {
+  outline: none;
+}
+.b-select ul li.b-option[data-v-c4f87e84]:focus,
+.b-select ul li.b-option[data-v-c4f87e84]:hover {
+  background-color: #e6e6e7;
+  font-weight: 600;
+}
+.b-select ul li.b-option[data-v-c4f87e84]:last-child {
+  border-style: none;
+}
+.b-select-arrow[data-v-c4f87e84] {
+  color: #6b686b;
+  float: right;
 }body {
   color: #363436;
   font-size: 87.5%;
@@ -378,16 +451,6 @@ textarea,
 button,
 .b-input-el {
   font: 400 1em 'Open Sans', sans-serif;
-}
-button {
-  background-color: #fff;
-  border: solid 1px #dededf;
-  border-radius: 4px;
-  cursor: pointer;
-  padding: 0.857rem;
-}
-button:not([disabled]):active {
-  border-style: inset;
 }
 input,
 textarea,
