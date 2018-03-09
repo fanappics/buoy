@@ -64,7 +64,7 @@ const selected4 = null
 
 let selectValid = false;
 
-<b-validator scope="textarea-validator" v-model="selectValid">
+<b-validator scope="select-validator" v-model="selectValid">
   <b-select
     :options="selectOptions4"
     id="example-id-4"
