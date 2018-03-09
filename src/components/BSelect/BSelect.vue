@@ -1,30 +1,28 @@
 <template>
   <div class="b-select">
-    <div>
-      <label :id="`label-${id}`">{{ label }}<span v-if="required" class="b-required" aria-hidden="true">*</span></label>
-    </div>
+    <label :id="`label-${id}`">{{ label }}<span v-if="required" class="b-required" aria-hidden="true">*</span></label>
     <button
-      :class="dropdownClass"
+      :class="selectClass"
       :aria-expanded="opened"
       :aria-owns="id"
       :aria-required="required"
       :aria-describedby="`error-${id}`"
-      :aria-labelledby="`label-${id} dropdown-${id}`"
-      :id="`dropdown-${id}`"
-      :ref="`dropdown-${id}`"
+      :aria-labelledby="`label-${id} select-${id}`"
+      :id="`select-${id}`"
+      :ref="`select-${id}`"
+      :text="label"
       @keyup.space.prevent.stop="toggleList"
       @keyup.enter.prevent.stop="toggleList"
       @mousedown.prevent.stop="toggleList"
-      :text="label"
       aria-haspopup="listbox"
       type="button"
       >
       {{ selectedOption ? selectedOption.value : placeholder }}
-      <span class="dropdown-arrow"><i class='icon ion-arrow-down-b' aria-hidden='true'></i></span>
+      <span class="b-select-arrow"><i class='icon ion-arrow-down-b' aria-hidden='true'></i></span>
     </button>
     <ul
       v-show="opened"
-      :class="ulClass"
+      :class="optionsClass"
       :id="id"
       role="listbox"
     >
@@ -44,14 +42,14 @@
         @keyup.enter.prevent.stop="selectOption(option)"
         @keyup.space.prevent.stop="selectOption(option)"
         @keyup.esc.prevent.stop="toggleList"
-        class="options"
+        class="b-option"
         role="option"
         tabindex="-1"
       > 
         {{ option.value }}
       </li>
     </ul>
-    <span v-if="invalid" class="error-text" :id="`error-${id}`">{{ errors.first(validationId) }}</span>
+    <span v-if="invalid" class="b-error-text" :id="`error-${id}`">{{ errors.first(validationId) }}</span>
   </div>
 </template>
 
@@ -114,17 +112,16 @@ export default {
     }
   },
   computed: {
-    ulClass: function () {
+    optionsClass: function () {
       return {
-        'ul-opened': this.opened
+        'b-options-opened': this.opened // b-options-opened
       }
     },
-    dropdownClass: function () {
+    selectClass: function () {
       return {
-        'dropdown-opened': this.opened,
-        'dropdown': true,
-        'placeholder': !this.selectedOption,
-        'error-border': this.invalid
+        'b-select-opened': this.opened, // b-select-opened
+        'b-placeholder': !this.selectedOption, // b-placeholder
+        'b-error-border': this.invalid // b-error-border
       }
     }
   },
@@ -170,7 +167,7 @@ export default {
       this.opened = !this.opened
       this.validate()
       this.$emit("input", this.selectedOption.id)
-      document.querySelector(`#dropdown-${this.id}`).focus()
+      document.querySelector(`#select-${this.id}`).focus()
     },
     /**
      * Handles the focus setting for accessibility purposes
@@ -195,7 +192,7 @@ export default {
         })
       } else {
         this.validate()
-        document.querySelector(`#dropdown-${this.id}`).focus()
+        document.querySelector(`#select-${this.id}`).focus()
       }
     },
     /**
@@ -223,63 +220,58 @@ export default {
 
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
+  @import "../../styles/colors"
 
-  .b-select {
-    position: relative;
-  }
+  .b-select
+    position relative
+    button
+      background-color $input-background
+      border 1px solid $select-border
+      box-shadow inset 0 -2px 0 0 $input-shadow
+      padding 0.75rem 0.9375rem
+      text-align left
+      width 100%
+      &.b-select-opened
+        border 1px solid $input-focus
+        border-bottom 1px solid $select-border
+        box-shadow none
+      &.b-error-border
+        border 1px solid $error
+      &.b-error-border, &.b-error-border:focus, &.b-error-border:active
+        box-shadow inset 0 -2px 0 0 $error
+      &:active
+        box-shadow inset 0 -2px 0 0 $select-shadow-active, inset 0 1px 5px 0 $select-shadow-active-2
+      &:active, &:focus
+        box-shadow inset 0 -2px 0 0 $input-focus
+        border solid 1px $input-focus
+        outline none
+    ul
+      list-style none
+      margin 0
+      padding 0
+      position absolute
+      width calc(100% - 2px)
+      &.b-options-opened
+        border 1px solid $input-focus
+        border-bottom-width 2px
+        border-top none
+        z-index 10
+      li.b-option
+        background-color $select-option-background
+        padding .5rem
+        &[aria-selected]
+          font-weight 600
+        &:focus
+          outline none
+        &:focus, &:hover
+          background-color $select-option-background-focus
+          font-weight 600
+        &:last-child
+          border-style none
 
-  button.dropdown {
-    width: 100%;
-    text-align: left;
-  }
-
-  button.dropdown-opened {
-    margin-bottom: 0;
-    border-radius: .25rem .25rem 0 0;
-  }
-
-  ul {
-    padding: 0;
-    list-style: none;
-    margin: 0;
-    position: absolute;
-    width: calc(100% - 2px);
-  }
-
-  .ul-opened {
-    border-style: none solid solid solid;
-    border-radius: 0 0 .25rem .25rem;
-    border-width: 1px;
-    box-shadow:  .125rem .25rem .3rem #cccccc;
-    border-color: #cccccc;
-    z-index: 10;
-  }
-
-  .options {
-    background-color: #ffffff;
-    border-color: #cccccc;
-    border-radius: 0;
-    border-style: none none solid none;
-    border-width: 1px;
-    padding: .5rem;
-  }  
-
-  .options[aria-selected] {
-    font-weight: 600;
-  }
-
-  .options:hover {
-    background-color: #f2f2f2;
-  }
-
-  .options:last-child {
-    border-style: none;
-  }
-
-  .dropdown-arrow {
-    float: right;
-    color: #000000;
-  }
+  .b-select-arrow
+    color $select-arrow
+    float right
 
 </style>

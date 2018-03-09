@@ -73,6 +73,7 @@ let selectValid = false;
     label="Required Select Example"
     v-model="selected4"
   />
+  {{ selected4 }}
   {{ selectValid }}
   <b-button :disabled="!selectValid" label="Submit" />
 </b-validator>
